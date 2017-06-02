@@ -1,0 +1,74 @@
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+        <div class="footer-col footer-col-1">
+            <img height=150 width=150 class="img-circle" src="{{ site.avatar }}">
+            <h2>{{site.author}}<h2>
+        </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+            <!-- email -->
+            {% if site.email %}
+            <li>
+                <a href="mailto:{{ site.email }}">
+                    <i class="fa fa-envelope"></i> Email
+                </a>
+            </li>
+            {% endif %}
+
+            <!-- github -->
+            {% if site.github %}
+            <li>
+                <a href="https://github.com/{{ site.github }}">
+                    <i class="fa fa-github"></i> GitHub
+                </a>
+            </li>
+            {% endif %}
+
+            <!-- linkedin -->
+            {% if site.linkedin %}
+            <li>
+                <a href="https://linkedin.com/in/{{ site.linkedin }}">
+                    <i class="fa fa-linkedin"></i> Linkedin
+                </a>
+            </li>
+            {% endif %}
+
+            <!-- facebook -->
+            {% if site.facebook %}
+            <li>
+                <a href="https://facebook.com/{{ site.facebook }}">
+                    <i class="fa fa-facebook"></i> Facebook
+                </a>
+            </li>
+            {% endif %}
+
+            <!-- steam -->
+            {% if site.steam %}
+            <li>
+                <a href="http://steamcommunity.com/id/{{ site.steam }}">
+                    <i class="fa fa-steam"></i> Steam
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>{{ site.description | escape }}</p>
+      </div>
+    </div>
+
+  </div>
+
+
+
+</footer>
+
+<div style="position:relative; margin-left:-150px; bottom:0px; left:50%; color:black;">
+<span> &copy; {{ site.author }} {{ site.time | date: '%Y'}}. Made with <a href="https://jekyllrb.com">Jekyll. </a> </span>
+<span> <a href="https://github.com/owenstranathan/owenstranathan.github.io/"><i class="fa fa-code-fork"></i> this website</a>.</span>
+
+</div>
