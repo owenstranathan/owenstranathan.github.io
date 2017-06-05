@@ -15,7 +15,7 @@ and I built this blog using [***Jekyll***](https://jekyllrb.com),
 I'll use this opportunity to talk a little
 about what that experience was like.
 
-[TL;DR](#so-whats-this-all-about-really)
+[TL;DR](#so-what-was-this-all-for)
 
 # What is Jekyll?
 
@@ -64,29 +64,30 @@ Pitfalls I encountered in my first Jekyll use experience.
 ### Likes
 
 I have a bit of a "bias"(read "unnatural confusingly sexual love") for a little
-language called Python, you might have heard of it. If I can I use Python for something
+language called Python, you might have heard of it. If I can use Python for something
 I do. I admit that it's not the best language for all situations, but its super amazing
 and I like it ok? OK.
 
-That said, I don't need to tell you that when I want to write a web app, I fire up
+That said, I don't need to tell you that, when I want to write a web app, I fire up
 the old terminal and spin up some Django. The reason I'm telling you all this, other
 than the fact that I'm all alone and just need some one to talk to, is I've had
-my first exposure to a Liquid. Liquid is... well I'll let Liquid tell you what it is.
+my first exposure to a Liquid. 
+
+Liquid is... well I'll let Liquid tell you what it is.
 [Liquid](https://shopify.github.io/liquid/). Suffice it to say it's a template language.
 And lets just say that I think it's pretty amazing. I like it almost as much as Django's
-template language (almost...). Which brings me to the first think I like about Jekyll.
+template language (almost...). Which brings me to the first thing I like about Jekyll.
 
 One of the things I like the most about Jekyll is that you can pretty much use
 templates anywhere you like all over your website. Want a template in your Markdown?
-Go for it! What it in your html layouts? Uhhh that's what they're meant for....
+Go for it! Want it in your html layouts? Uhhh that's what they're meant for....
 What about in your sass? Well maybe not... I couldn't use templates in sass for a very specific
 use case, but from what I read in [this](https://github.com/jekyll/jekyll/issues/2573) issue,
-you can in fact render sass with liquid just nothing that is rendered can go in your layouts.
+you can in fact render sass with liquid, just nothing that is rendered can go in your layouts.
 I might be wrong though, probably I am, I'm usually always wrong about something (this
 might be that thing).
 
-I'm starting to feel less interested in this blog post. I'm gonna hurry up now.
-Other things I like about Jekyll in no specific order:
+Other things I like about Jekyll in no specific order are:
 
 * Use of Markdown (Markdown is awesome)
 * Simplicity (it really is super easy)
@@ -103,7 +104,8 @@ I really only have one complaint so far and that is that Jekyll creates a sort
 of messy and flat project file structure. Jekyll requires that all your page files
 be in the base directory of your project, and all the posts are just kinda crammed
 in the _posts directory which makes everything sorta flat and cluster-fucky,
-which is not necessarily a bad thing I just think it's ugly as sin.
+which is not necessarily a bad thing I just think it's ugly as sin. But now that 
+I'm looking at it again, it's really not that bad. I've seen so much worse.
 
 ### Pitfalls
 
@@ -111,7 +113,7 @@ So I got a simple site up and running in like 30 mins (which honestly is too lon
 I think there's something wrong with me, like a learning disability or something).
 But then I started to get into some heavy personalization stuff and that's where
 the learning curve started to asymptote. (This probably wont happen for you, you'll
-likely have a much smoother learning curve. Like I said above I'm just retarded or something)
+likely have a much smoother experience. Like I said I'm just retarded or something)
 
 ![Learing curves](/images/2017/06/01/learning_curves.png)
 
@@ -119,9 +121,9 @@ As you can see there is an intersection there where we're almost equals but I qu
 spiral off into adult day care, while you calmly get your work done with little trouble.
 
 As I was saying, after I got into matters of personlization I hit a few Pitfalls.
-I'll just tell what you should do off the bat to avoid problems.
+I'll just tell you what you should do off the bat to avoid problems.
 
-Find your theme's files by typing this into the command line
+Find your theme's files by typing this into terminal from the base directory of your project
 
 {% highlight shell %}
 bundle show <theme name>
@@ -130,7 +132,7 @@ bundle show <theme name>
 where \<theme name\> is the name of the theme you're using. (*Minima* is the default
 and it's what I'm using now.)
 
-Copy all the stuff (mainly just the *_includes*, *_layouts*, and *_sass* directories) and
+Copy all the stuff there (mainly just the *_includes*, *_layouts*, and *_sass* directories) and
 place it lovingly in your local project directory.
 
 The reason you should do this is because you're going to need to override stuff in your theme.
@@ -170,7 +172,7 @@ and that would look like this.
 <img src="{{site.favicon32}}">
 <p>My name is {{site.author}} and my favorite food is noodles</p>
 
-# So what's this all about really?
+# So what was this all for?
 
 This whole blog post was really about me telling you that my favorite food is noodles.
 My favicon's name is L'il Fella and he's a bowl of noodles. And that's all.
