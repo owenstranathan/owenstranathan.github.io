@@ -1,14 +1,10 @@
 ---
-layout: page
-title: Blog
-permalink: /blog/
+layout: home
 ---
-
-<br>
 
 <div class="paginate-wrapper">
 <ul class="post-list">
-  {% for post in site.posts %}
+  {% for post in paginator.posts %}
     <li>
       {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
       <div class="post-meta">{{ post.date | date: date_format }}</div>
