@@ -21,6 +21,8 @@ avatar: /images/avatar.png
 favicon32: /images/noodles32.png
 favicon16: /images/noodles16.png
 
+reading: <a href="https://en.wikipedia.org/wiki/East_of_Eden_(novel)">East of Eden</a>
+
 CV: /extras/CV.pdf
 
 description: > # this means to ignore newlines until "baseurl:"
