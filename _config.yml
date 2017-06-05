@@ -21,6 +21,8 @@ avatar: /images/avatar.png
 favicon32: /images/noodles32.png
 favicon16: /images/noodles16.png
 
+CV: /extras/CV.pdf
+
 description: > # this means to ignore newlines until "baseurl:"
   I am a writer, programmer, musician and world traveler.
   I work hard to create beautiful works in my respective fields of interest.

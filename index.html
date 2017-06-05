@@ -5,44 +5,36 @@
 layout: home
 ---
 
-<br>
+<style media="screen">
+    .content{
+        margin-top: 20 px;
+    }
+    content .a
+    {
+        color=#63AAD1;
+    }
+</style>
 
-<div class="paginate-wrapper">
-<ul class="post-list">
-  {% for post in paginator.posts %}
-    <li>
-      {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
-      <div class="post-meta">{{ post.date | date: date_format }}</div>
+<div class="top">
+<img  style="display: inline;" height=150 width=150 class="img-circle" src="{{ site.avatar }}">
+<h1  style="display: inline; margin-left: 15px;" style="font-size:130 px;">Owen Stranathan</h1>
+</div>
 
-      <h2>
-        <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
-      </h2>
-    </li>
-  {% endfor %}
-</ul>
+<div class="content">
+    <p>I grew up in a <a href="https://en.wikipedia.org/wiki/Rootstown_Township,_Portage_County,_Ohio" >tiny little town</a> in Ohio</p>
+    <p>When I was in highschool I read <a href="https://www.amazon.com/Kitchen-Confidential-Updated-Adventures-Underbelly/dp/0060899220/ref=sr_1_1?ie=UTF8&qid=1496632464&sr=8-1&keywords=kitchen+confidential">a book</a>
+        by Anthony Bourdain, that inspired me to learn to cook. For a time I wanted to be a Chef.</p>
+    <p>
+    <p>I spent my summers and after school hours in hot kitchens working and learning.</p>
+    <p>I never became a Chef, but I still love to cook.</p>
+    <p>I went to <a href="uakron.edu">The University of Akron</a> to study Computer Science.</p>
+    <p>While I was there I met my <a href="http://shannashu.tumblr.com">beautiful wife</a>, who is a <a href="https://www.behance.net/susannashu6573">crazy talented designer</a></p>
+    <p>I got along well with <a href="https://github.com/asutton">one specific professor</a> who got me interested in <a href="https://github.com/owenstranathan/banjo"> Language Design.</a></p>
+    <p>More recently I've been getting interested in UXD and (forever and ever) Game Design</p>
+    <p>I graduated in May 2016 with a B.S. in Computer Science and a 3.4 GPA</p>
+    <p>In January 2016, before I graduated school, I took a job with <a href="http://www.rovisys.com">a company</a> as a Software developer. I left them in July 2016.</p>
+    <p>I threw out everything I own except the essentials and everything I own now fits in a backpack</p>
+    <p>I've been traveling the world pretty non-stop for about a year now, and I feel ready to start work on something bigger than that.</p>
+    <p>My wife and I live in Brooklyn and I am looking for work as a <strong>Software Developer</strong> in NYC.</p>
 
 </div>
-<br>
-<!-- Pagination links -->
-<div class=paginate-links-wrapper>
-        {% if paginator.total_pages < 2 %}
-            <span></span>
-        {% else %}
-        <span> Page <span>
-        <div class="pagination">
-            {% if paginator.previous_page %}
-                <a href="{{ paginator.previous_page_path }}" class="previous"><i class="fa fa-caret-square-o-left"></i></a>
-            {% else %}
-                <i class="fa fa-chevron-circle-left"></i>
-            {% endif %}
-
-            <span class="page_number ">   {{ paginator.page }} of {{ paginator.total_pages }}   </span>
-
-            {% if paginator.next_page %}
-                <a href="{{ paginator.next_page_path }}" class="next"><i class="fa fa-caret-square-o-right"></i></a>
-            {% else %}
-                <i class="fa fa-chevron-circle-right"></i>
-            {% endif %}
-        {% endif %}
-        </div>
-<div>

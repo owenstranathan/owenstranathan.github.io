@@ -1,74 +1,47 @@
 <footer class="site-footer">
 
   <div class="wrapper">
-    <div class="footer-col-wrapper">
-        <div class="footer-col footer-col-1">
-            <img height=150 width=150 class="img-circle" src="{{ site.avatar }}">
-            <h2>{{site.author}}<h2>
-        </div>
-
-      <div class="footer-col footer-col-2">
-        <ul class="social-media-list">
             <!-- email -->
             {% if site.email %}
-            <li>
-                <a href="mailto:{{ site.email }}">
-                    <i class="fa fa-envelope"></i> Email
+                <a style="color:black;"href="mailto:{{ site.email }}">
+                    <i style="color:#B63426;" class="fa fa-envelope"></i>
                 </a>
-            </li>
             {% endif %}
-
+            <span>|</span>
             <!-- github -->
             {% if site.github %}
-            <li>
-                <a href="https://github.com/{{ site.github }}">
-                    <i class="fa fa-github"></i> GitHub
+                <a style="color:black;" href="https://github.com/{{ site.github }}">
+                    <i class="fa fa-github"></i>
                 </a>
-            </li>
             {% endif %}
-
+            <span>|</span>
             <!-- linkedin -->
             {% if site.linkedin %}
-            <li>
-                <a href="https://linkedin.com/in/{{ site.linkedin }}">
-                    <i class="fa fa-linkedin"></i> Linkedin
+                <a style="color:black;" href="https://linkedin.com/in/{{ site.linkedin }}">
+                    <i style="color:#0077B5;" class="fa fa-linkedin"></i>
                 </a>
-            </li>
             {% endif %}
-
+            <span>|</span>
             <!-- facebook -->
             {% if site.facebook %}
-            <li>
-                <a href="https://facebook.com/{{ site.facebook }}">
-                    <i class="fa fa-facebook"></i> Facebook
+                <a style="color:black;" href="https://facebook.com/{{ site.facebook }}">
+                    <i style="color:#3B5998;" class="fa fa-facebook"></i>
                 </a>
-            </li>
             {% endif %}
-
+            <span>|</span>
             <!-- steam -->
             {% if site.steam %}
-            <li>
-                <a href="http://steamcommunity.com/id/{{ site.steam }}">
-                    <i class="fa fa-steam"></i> Steam
+                <a style="color: black;" href="http://steamcommunity.com/id/{{ site.steam }}"><i class="fa fa-steam"></i>
                 </a>
-            </li>
             {% endif %}
-        </ul>
-      </div>
-
-      <div class="footer-col footer-col-3">
-        <p>{{ site.description | escape }}</p>
-      </div>
-    </div>
+            <br>
+            <span> &copy; {{ site.author }} {{ site.time | date: '%Y'}}. Made with <a href="https://jekyllrb.com">Jekyll. </a> </span>
+            <span> <a href="https://github.com/owenstranathan/owenstranathan.github.io/"><i class="fa fa-code-fork"></i> this website</a>.</span>
 
   </div>
 
 
 
+
+
 </footer>
-
-<div style="position:relative; margin-left:-150px; bottom:0px; left:50%; color:black;">
-<span> &copy; {{ site.author }} {{ site.time | date: '%Y'}}. Made with <a href="https://jekyllrb.com">Jekyll. </a> </span>
-<span> <a href="https://github.com/owenstranathan/owenstranathan.github.io/"><i class="fa fa-code-fork"></i> this website</a>.</span>
-
-</div>
