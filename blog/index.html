@@ -1,10 +1,11 @@
 ---
-layout: home
+layout: page
+title: Blog
 ---
 
 <div class="paginate-wrapper">
 <ul class="post-list">
-  {% for post in paginator.posts %}
+  {% for post in site.posts %}
     <li>
       {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
       <div class="post-meta">{{ post.date | date: date_format }}</div>
@@ -17,9 +18,8 @@ layout: home
 </ul>
 
 </div>
-<br>
 <!-- Pagination links -->
-<div class=paginate-links-wrapper>
+<!-- <div class=paginate-links-wrapper>
         {% if paginator.total_pages < 2 %}
             <span></span>
         {% else %}
@@ -40,4 +40,4 @@ layout: home
             {% endif %}
         {% endif %}
         </div>
-<div>
+<div> -->
