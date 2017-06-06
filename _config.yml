@@ -14,7 +14,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: Owen Stranathan's Blog
-logo: /images/signature_32.png
+logo: /images/signature_64.png
 
 author: Owen Stranathan
 avatar: /images/avatar.png
