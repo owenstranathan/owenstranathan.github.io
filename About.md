@@ -27,14 +27,6 @@ to the source code of, and the details of which I am not at liberty to discuss. 
 up a repository pattern for the database facing data access layer of the web app service in C#/.NET which I
 generalized and saved. [Here](https://github.com/owenstranathan/Noodles/tree/master/EFRepositoryPattern) is a link to that bit of code.
 
-## Side Projects
-
-I am currently working with a friend in another state (Ohio) on a video game. We went to school together and in our freshman year we started making a game. We lost track of one another somewhere along the way but have since reconnected and started working on a game together. Here is a [link](https://owenstranathan.github.io/KungFu/) to the Game Design Document (in progress) which I have authored.
-
-I have also made a simple blog/personal website to hold my thoughts(the blog part) and to help me in my job search by being an online resume of sorts here is a [link](https://owenstranathan.github.io) to that site.
-It's currently a static site built with [Jekyll](https://jekyllrb.com/) because that is sufficient for now.
-Eventually I'd like to make it a dynamic site using Django/Python or possibly Ruby on Rails(because that sounds like a fun learning experience), but since that will require that I host it somewhere else (currently on gh-pages) I'll hold off for now.
-
 
 ## I’m really good at
 
