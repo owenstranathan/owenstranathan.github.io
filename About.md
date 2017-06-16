@@ -4,6 +4,10 @@ title:  About
 permalink: /About/
 ---
 
+# Mission
+
+To live honestly and fully. And to create something truly beautiful.
+
 ## My self-summary
 
 I am a young programmer and creative. I am passionate about elegance in design and making things that not only work but work beautifully. I derive pleasure from organizing thoughts and principles into cohesive systems and abstractions. I have spent a lot of time traveling the world and studying literature and philosophy. I have a deep appreciation for art, not simply what you might preconceive art to be(viz. painting, sculpture, music, etc.), but rather the art within all things. I believe that everything that is created, if it is done honestly and if it comes from a place of passion within a person's soul, is truly art. As such, things like software can be art, the experiences can be art, even businesses can be works of art. I want to work in my capacity as a programmer in a field that is important to me. Such fields include but are not limited to:
