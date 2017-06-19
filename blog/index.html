@@ -3,19 +3,32 @@ layout: page
 title: Blog
 ---
 
-<div class="paginate-wrapper">
-<ul class="post-list">
-  {% for post in site.posts %}
-    <li>
-      {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
-      <div class="post-meta">{{ post.date | date: date_format }}</div>
+<div id="archives">
+{% for category in site.categories %}
+  <div class="archive-group">
+    {% capture category_name %}{{ category | first }}{% endcapture %}
+    <div id="#{{ category_name | slugize }}"></div>
+    <p></p>
 
-      <h2>
-        <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
-      </h2>
-    </li>
-  {% endfor %}
-</ul>
+    <h3 class="category-head">{{ category_name | capitalize }}</h3>
+    <a name="{{ category_name | slugize }}"></a>
+    {% for post in site.categories[category_name] %}
+    <article class="archive-item">
+        <div class="post-list">
+          {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
+          <div class="post-meta">{{ post.date | date: date_format }}</div>
+
+          <h2>
+            <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+          </h2>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+{% endfor %}
+</div>
+
+
 
 </div>
 <!-- Pagination links -->

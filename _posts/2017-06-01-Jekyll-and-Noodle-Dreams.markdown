@@ -2,7 +2,7 @@
 layout: post
 title:  "Jekyll and Noodle Dreams"
 date:   2017-06-01 12:00:00 -0400
-categories:
+categories: tech
 ---
 # Hello
 Hello and welcome. You have found my blog. This is good news
@@ -71,7 +71,7 @@ and I like it ok? OK.
 That said, I don't need to tell you that, when I want to write a web app, I fire up
 the old terminal and spin up some Django. The reason I'm telling you all this, other
 than the fact that I'm all alone and just need some one to talk to, is I've had
-my first exposure to a Liquid. 
+my first exposure to a Liquid.
 
 Liquid is... well I'll let Liquid tell you what it is.
 [Liquid](https://shopify.github.io/liquid/). Suffice it to say it's a template language.
@@ -104,7 +104,7 @@ I really only have one complaint so far and that is that Jekyll creates a sort
 of messy and flat project file structure. Jekyll requires that all your page files
 be in the base directory of your project, and all the posts are just kinda crammed
 in the _posts directory which makes everything sorta flat and cluster-fucky,
-which is not necessarily a bad thing I just think it's ugly as sin. But now that 
+which is not necessarily a bad thing I just think it's ugly as sin. But now that
 I'm looking at it again, it's really not that bad. I've seen so much worse.
 
 ### Pitfalls

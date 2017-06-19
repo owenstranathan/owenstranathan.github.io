@@ -10,6 +10,18 @@
   position: relative;
 }
 
+.category-head{
+    color: $grey-color;
+    display: inline;
+}
+
+.post-categories {
+    color: $grey-color;
+    display: inline-block;
+    float: right;
+}
+
+
 .site-title {
   @include relative-font-size(1.625);
   font-weight: 300;
@@ -183,12 +195,11 @@
 }
 
 .post-list {
-  margin-left: 0;
-  list-style: none;
+  margin-left: 50px;
+}
 
-  > li {
-    margin-bottom: $spacing-unit;
-  }
+.archive-group {
+    margin: 0 auto;
 }
 
 .post-meta {

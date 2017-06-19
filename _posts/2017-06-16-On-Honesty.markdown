@@ -2,7 +2,7 @@
 layout: post
 title:  "On Honesty"
 date:   2017-06-16 01:00:00 -0400
-categories:
+categories: philosophy
 ---
 
 # Story time
