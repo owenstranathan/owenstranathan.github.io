@@ -14,18 +14,7 @@ layout: default
         • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>
       {% endif %}</p>
     <!-- post categories -->
-    <div class="post-categories">
-        {% if post %}
-          {% assign categories = post.categories %}
-        {% else %}
-          {% assign categories = page.categories %}
-        {% endif %}
-        <span style="font-size:10pt">categories: </span>
-        {% for category in categories %}
-        <a href="{{site.baseurl}}/blog/#{{category|slugize}}">{{category | capitalize}}</a>
-        {% unless forloop.last %},&nbsp;{% endunless %}
-        {% endfor %}
-    </div>
+    {% include category-links.html %}
 
   </header>
 

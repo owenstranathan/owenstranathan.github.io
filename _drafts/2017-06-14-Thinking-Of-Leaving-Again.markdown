@@ -2,7 +2,7 @@
 layout: post
 title:  "Jekyll and Noodle Dreams"
 date:   2017-06-01 12:00:00 -0400
-categories:
+categories: philosophy
 ---
 
 # It's about that time again

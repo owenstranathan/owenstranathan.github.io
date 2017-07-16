@@ -1,0 +1,17 @@
+<div class="categories">
+    {% if post %}
+      {% assign categories = post.categories %}
+    {% else %}
+      {% assign categories = page.categories %}
+    {% endif %}
+    <!-- <span style="font-size:10pt">categories: </span> -->
+    {% for category in categories %}
+    <a href="{{site.baseurl}}/blog/#{{category|slugize}}">{{category | capitalize}}</a>
+    {% assign lengthMinusOne = forloop.length| minus: 1 %}
+    {% if forloop.index == lengthMinusOne %}
+        and
+    {% else%}
+    {% unless forloop.last %},{% endunless %}
+    {% endif %}
+    {% endfor %}
+</div>
