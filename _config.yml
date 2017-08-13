@@ -23,7 +23,7 @@ favicon16: /images/noodles16.png
 
 reading: '<a href="https://en.wikipedia.org/wiki/Bushido:_The_Soul_of_Japan">Bushido: The Soul of Japan</a>'
 studying: '<a href="http://gameprogrammingpatterns.com">Game Programming Patterns</a>'
-learning: 'Android Studio and the Android API'
+learning: '<a href="https://developer.android.com/guide/index.html">Android Studio and the Android API</a>'
 
 CV: /extras/CV.pdf
 
