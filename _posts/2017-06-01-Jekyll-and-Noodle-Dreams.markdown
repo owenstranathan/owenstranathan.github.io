@@ -172,9 +172,8 @@ and that would look like this.
 <img src="{{site.favicon32}}">
 <p>My name is {{site.author}} and my favorite food is noodles</p>
 
-# So what was this all for?
 
-This whole blog post was really about me telling you that my favorite food is noodles.
-My favicon's name is L'il Fella and he's a bowl of noodles. And that's all.
+# The End
 
-Thanks for reading :) See you next time!
+So that's it, a brief introduction to Jekyll as told by me. Check back for more
+blogs and other tech-related buffoonery.
