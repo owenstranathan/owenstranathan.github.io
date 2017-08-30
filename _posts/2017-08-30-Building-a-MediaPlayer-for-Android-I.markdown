@@ -1,18 +1,18 @@
 ---
 layout: post
-title:  "Building a MediaPlayer for Android"
+title:  "Building a MediaPlayer for Android I"
+date: 2017-08-30 12:00:00 -0400
 categories: technology
 ---
 
-date: 2017-08-23 12:00:00 -0400
 
 In this post I will give a brief overview of my experience working with Android Studio
 and the android API to build a basic media player that suits my needs.
 
 # Introduction and Motivation
 
-You might be wondering why the hell would a person want to build a media player
-when there are so many media player apps on the google play store. The simple
+You might be wondering: "Why the hell would a person want to build a media player
+when there are so many media player apps on the google play store?" The simple
 answer is, two reasons:
 
 1. None of those apps do exactly what I want.
@@ -32,24 +32,25 @@ various reasons, most notably that most of it is "pirated").
 And so I must either find a way to edit the meta data for each file of my
 roughly 24 GB worth of music, or make a media player with a
 file-explorer style UI that gives me access to the tree-like file structure I already
-have my files arranged in. I opted for the second one although the search-ability proffered by
+have my files arranged in.
+
+I opted for the second one, although the search-ability proffered by
 the use of meta-data as a means of building a tag-based file system is almost enough of a boon,
 that I'm seriously considering extending the app to offer the ability to edit file meta-data
 and then switch back and forth between a tagging/meta-data based UI and the current file system UI.
+
 In any case the app is basic and it works for my needs, and it taught me a lot about Android which is
-pretty easy to be honest, the only challenges are the same challenges facing any UI programming,
-that is the use of threading to avoid UI blocking - but let's be honest that isn't that hard.
-I'm considering doing a re-write because everything is always cleaner if you re-write it.
+pretty easy to be honest. After I write this blog post, I'm considering doing a re-write because everything is always cleaner if you re-write it.
 
 So without further adieu lets talk about first times and working with Android studio.
 
 # Android Virgin
 
-Ahhh virginity... I mean for a technology...
+Ahhh virginity...
 
 As with anything the first experience with a new technology can make or break the
-way you feel about it for a long time. If you have a terrible time because there are no
-good tutorials or the documentation sucks or because you are just having a shit day that
+way you feel about it for a long time. If you have a terrible time, because there are no
+good tutorials or because the documentation sucks or because you are just having a shit day that
 day, it can ruin it for you for the rest of your life.
 
 Luckily this was not the case for me and Android - at least not entirely. From the
@@ -58,6 +59,7 @@ was horrendously slow and I nearly gave up after it stalled 2 hours in). But thi
 agreeable relationship wasn't always so, I had a brief brush with Android back in college,
 back when I was certain that all I needed to know to be a rich and famous tech mogul
 was how to write an app and my intrinsic genius would take care of the rest (if only TT).
+
 That encounter ended with me frustrated and app-less (this was due in large part to
 my own inexperience and naiveté), needless to say it soured me to mobile development for
 awhile.
@@ -75,7 +77,10 @@ The basic process for getting up and running with android is simple:
 6. Play with your cat for a few hours to procrastinate
 7. Come back to your computer and google "How to make sick android appz".
 8. Reminisce about the 90s and how cool it was to add 'z' to the end of a word.
-9. Get serious and follow a tutorial until 5 is no longer true .... (never)...
+9. Remember that you were just a little kid and the 90s and that everything was cool.
+10. Miss being a kid.
+11. Remember that, being a kid actually sucked and adulthood is way better because, if you want you can order a pizza right now and no one can stop you. No. One.
+12. Get serious and follow a tutorial until 5 is no longer true .... (never)...
 
 I found Derek Banas' Android tutorial to be a really concise starting point.
 [check...](https://www.youtube.com/playlist?list=PLGLfVvz_LVvSPjWpLPFEfOCbezi6vATIh)
@@ -102,7 +107,7 @@ away young Skywalker.
 
 That said we need like a picture, I work better with pictures of things...
 
-What's this I have a picture? Sick city.
+What's this I have a picture? Sweet.
 
 ![Layout](/images/2017/08/22/app_layout.png)
 
@@ -110,6 +115,11 @@ So that's the layout design. You want a list of files in the current directory,
 a bit of text at the top to show you where you are in the file system, and a bit of
 text at the bottom to tell you what's currently playing. And obviously at some point
 some player controls to control music playback. Easy! (shhhh. It's way harder than that)
+
+What we don't want is like google play, which imho really sucks. We don't want a
+needlessly complicated system of categorization that makes it harder to get to the
+music we know is there. And also we don't want to turn into a money grubbing "music-as-a-service"
+evil empire.
 
 This is what I started with and from here I just started working, so let's talk about what I did.
 
@@ -123,16 +133,15 @@ managing that UI.
 
 So a good place to start when writing an application is to make the thing you know you need.
 (Actually it would probably be best to start with a perfect abstraction and building everything
-up from first principles, perfectly abstracting visuals away from logic and logic away from data, and so on
-and so forth. But you can't do that right away because when you first start anything you always
-have no fucking clue what you're doing.)
+up from first principles. But you can't do that right away because, again, you have no fucking clue what you're doing!)
 
 So I need a layout, let's learn how that works.
 
 In Android Studio there are 2 ways to edit an application's layout.
 
-The first is to use the weird/difficult to understand GUI or just edit the xml using the
-preview renderer for reference as you hopelessly mash the keyboard hoping that each
+The first is to use the weird/difficult to understand GUI editor that comes with Android Studio
+(which is a weird because it's a GUI for editing GUIs) or just edit the xml file that is edited by the GUI
+using the preview renderer for reference as you hopelessly mash the keyboard hoping that each
 change to the code is the one that moves that fucking button down 2 millimeters, god damn it!
 
 I opt for the later and just spend all my time staring at a text editor because I'm a robot
@@ -165,15 +174,17 @@ there is to know about each new thing you encounter. Capiche?
 
 Ok back to bid-nis. So you get these widgets for free from the API, that's the point
 of an API it elevates your work flow and thinking up a level of abstraction. So the layout is
-composed of these two widgets and you express your desire to used a widget in a layout
+composed of these widgets and you express your desire to used a widget in a layout
 through xml.
 
 Lets just look at an example that corresponds to the picture we made.
 
 {% highlight xml %}
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
     android:orientation="vertical">
 
@@ -222,8 +233,15 @@ it's a screen shot of my Android Studio preview window)
 So that takes care of the layout stuff. It's super easy and if you don't know something
 it's as easy as looking up syntax and convention.
 
-# Onward and Upward
+# Coming up next...
 
+This post has become too long. (Probably a result of my garrulous narrative style of writing).
+So I'm breaking it into parts.
+
+Programming? In the next part I'll talk about how to write the java class that will drive the UI
+of our MediaPlayer.
+
+[Click here for part 2](/posts/2017-08-30-Building-a-MediaPlayer-for-Android-II)
 
 
 
