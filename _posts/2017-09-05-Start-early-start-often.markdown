@@ -51,14 +51,14 @@ make a leap and actually do the thing you've been planning. This isn't an argume
 planning, planning is to a certain extent necessary. But there is a time in every plan
 when you ***feel*** that you're ready to start, ***but*** you don't feel confident, and you think
 "maybe if I plan just a little more it'll go better". It is at this point that you need to jump in,
-you need to go to the store and put money on the supplies, viz. you need to commit.
+you need to put money on the table, viz. you need to commit.
 
 And then when things start to tilt, and the plan begins to fall apart, you need to have the
 patience, foresight and level-headedness to regroup, reformulate and retry. If you're code
 is buggy as hell and you've lost track of what's happening where. If every change unleashes a
-one hour slew of tweaking to make that change work, then it's time to start over, and keep the lessons
-learned from this attempt. Starting over is like waking up in the morning, it's hard to do,
-but it feels hopeful. You have the chance to change the wrong of the past.
+one hour slew of tweaking to make that change work, then it's time to start over, throw away the work
+and keep the lessons learned from this attempt. Starting over is like waking up in the morning,
+it's hard to do, but it feels hopeful. You have the chance to change the wrongs of the past.
 
 Don't like the way your game draws everything to the screen? Know a better way? Re-write it!
 
@@ -67,7 +67,9 @@ faster standard library stack? Use it in your re-write!
 
 But what about all that work I just did? I can't just throw that away, my time is so important that
 everything I make, no matter how non-functional, buggy or out right trashy it is, it intrinsically has
-value and must be saved! WRONG!
+value and must be saved!
+
+WRONG!
 
 People make garbage all the time, just look at the all the landfills!
 
