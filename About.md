@@ -6,13 +6,18 @@ permalink: /About/
 
 # Mission
 
-To live honestly and fully. And to create something truly beautiful.
+To live honestly and fully and to constantly create.
 
 ## My self-summary
 
-I am a young programmer and creative. I am passionate about elegance in design and making things that not only work but work beautifully. I derive pleasure from organizing thoughts and principles into cohesive systems and abstractions. I have spent a lot of time traveling the world and studying literature and philosophy. And I have found that the thing I truly enjoy is learning and creating, building things that
-have a use to me and to those around me. In fact I spend all my time working on software projects, because
-programming is my craft and a craftsman must needs create.
+I am a programmer.<br>
+I am passionate about making things that not only work but work beautifully.<br>
+I derive pleasure from organizing thoughts and principles into cohesive systems and abstractions.<br>
+I have spent a lot of time traveling the world and studying literature and philosophy.<br>
+I have found that the thing I truly enjoy is learning and creating, building things that
+have a use to me and to those around me.<br>
+In fact I spend all my time programming, writing and building with my hands.<br>
+I am a craftsman.
 
 ## What I’ve worked on
 
@@ -40,6 +45,24 @@ The code is open source and can be forked and cloned and hacked and improved by 
 * Piano
 * Cooking
 * Traveling lightly (Everything I own fits in a 44 liter backpack, [this one](https://www.rei.com/product/895780/kelty-redwing-44-pack), but mine's black.
+
+## What I like to do when I don't have to be doing anything
+
+I don't like to have a lot of free time. The worst times in my life have been when
+I've been the least busy. So I try and stay occupied.
+
+In my free time I do in no specific order:
+
+* Cycling
+* Cooking
+* Writing
+* Woodworking
+* Reading (Technical, News, Literature, Fiction)
+* More Programming
+* Sewing
+* Designing (SketchUp, Affinity Designer)
+* Game Design (Unity)
+* Play video games (I play Borderlands 2 with a friend **sometimes** and only when I'm too stressed to work)
 
 ## What I’m looking to do next
 
