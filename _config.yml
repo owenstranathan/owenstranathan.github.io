@@ -21,9 +21,9 @@ avatar: /images/avatar.png
 favicon32: /images/noodles32.png
 favicon16: /images/noodles16.png
 
-reading: '<a href="https://en.wikipedia.org/wiki/Bushido:_The_Soul_of_Japan">Bushido: The Soul of Japan</a>'
-studying: '<a href="http://gameprogrammingpatterns.com">Game Programming Patterns</a>'
-learning: '<a href="https://developer.android.com/guide/index.html">Android Studio and the Android API</a>'
+reading: '<a href="https://en.wikipedia.org/wiki/Snow_Country">Snow Countryn</a>'
+studying: '<a href="https://www.twoscoopspress.com/products/two-scoops-of-django-1-11">Two Scoops of Django 1.11</a>'
+learning: '<a href="www.djangoproject.com">Django Web Framework</a>'
 
 CV: /extras/CV.pdf
 
