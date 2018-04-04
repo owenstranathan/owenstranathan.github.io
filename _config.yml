@@ -22,7 +22,7 @@ favicon32: /images/noodles32.png
 favicon16: /images/noodles16.png
 
 reading: '<a href="https://en.wikipedia.org/wiki/Runaway_Horses">Runaway Horses</a>'
-studying: '<a href="gamasutra.com">Game design</a>'
+studying: '<a href="gamasutra.com">Game design</a> and <a href="http://gameprogrammingpatterns.com/contents.html">Game Programming Patterns<a> (this is kind of reading)'
 learning: '<a href="https://golang.org/">Golang</a>'
 
 CV: /extras/CV.pdf
