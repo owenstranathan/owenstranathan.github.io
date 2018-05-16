@@ -4,52 +4,37 @@ title:  About
 permalink: /About/
 ---
 
-# Mission
+## About me
 
-To live honestly and fully and to constantly create.
+*Yell at computers.  
+Sometimes they listen to me.  
+Mostly they do not.*
 
-## My self-summary
+I work as a computer wrangler (dev-ops engineer) at [appfigures](https://appfigures.com). 
 
-I am a programmer.<br>
-I am passionate about making things that not only work but work beautifully.<br>
-I derive pleasure from organizing thoughts and principles into cohesive systems and abstractions.<br>
-I have spent a lot of time traveling the world and studying literature and philosophy.<br>
-I have found that the thing I truly enjoy is learning and creating, building things that
-have a use to me and to those around me.<br>
-In fact I spend all my time programming, writing and building with my hands.<br>
-I am a craftsman.
+Appfigures is really great, you should check us out.
 
-## What I’ve worked on
+I graduated in 2016 from the University of Akron in Akron, OH with a B.S. in Computer Science
 
-In university I spent time working on a compiler with a professor, which was an enlightening experience in large open source software development. Here is a [link](https://github.com/owenstranathan/banjo) to my fork of the repository we worked on. (I've lost touch with the professor but from what I understand he has since stopped work on the project in favor of other projects)
+Fun fact:  
+I spent most of my pre programming days as a cook at restaurants (haute-cuisine and greasy spoons alike)
 
-In school I did a lot of projects but the only one I really enjoyed enough and feel proud enough of to show is a Video Game Database similar to iMDB but for video games called GameBean. I don't have it hosted and I haven't looked at it in a while, but here is [a link to it's GitHub repository](https://github.com/owenstranathan/GameBean) it's written in Python using Django.
+In university I got really interested in Compiler and Language design, I still think that stuff  
+is cool and I'm always down to talk about it.
 
-In my last job as a software developer I worked on a project that I no longer have access
-to the source code of, and the details of which I am not at liberty to discuss. On that project, I wrote
-up a repository pattern for the database facing data access layer of the web app service in C#/.NET which I
-generalized and saved. [Here](https://github.com/owenstranathan/Noodles/tree/master/EFRepositoryPattern) is a link to that bit of code.
+As a programmer at appfigures I spend a lot of time messing around with kubernetes,   
+pretending to know what I'm doing writing python (python is the best), and suffering from bash [Stockholm syndrome](https://en.wikipedia.org/wiki/Stockholm_syndrome)
 
-Most recently I've built a **very basic** android app for playing music. I emphasize
-basic because it is, by design, very basic.
-The code is open source and can be forked and cloned and hacked and improved by going [here](https://github.com/owenstranathan/NobleShitMusic).
+## Work
 
-## I’m really good at
+#### Bender
 
-* Learning new things quickly in order to accomplish a greater goal.
-* Organizing messes.
-* Abstraction
-* Writing and otherwise textually organizing my thoughts
-* Communicating (except with my wife) <- that's just a joke
-* Intuitively grasping complex ideas and concepts.
-* Piano
-* Cooking
-* Traveling lightly (Everything I own fits in a 44 liter backpack, [this one](https://www.rei.com/product/895780/kelty-redwing-44-pack), but mine's black.
+One of the first projects I worked on at appfigures was a CI/CD bot which I loving named "Bender", after my favorite cartoon robot. Bender listens on an endpoint for a webhook from our CI platform and posts to a slack channel when a build succeeds to allow engineers at appfigures to "bless" a build before deploying them to a kubernetes cluster.
+
 
 ## What I like to do when I don't have to be doing anything
 
-I don't like to have a lot of free time. The worst times in my life have been when
-I've been the least busy. So I try and stay occupied.
+I don't like to have a lot of free time.
 
 In my free time I do in no specific order:
 
@@ -62,10 +47,8 @@ In my free time I do in no specific order:
 * Sewing
 * Designing (SketchUp, Affinity Designer)
 * Game Design (Unity)
-* Play video games (I play Borderlands 2 with a friend **sometimes** and only when I'm too stressed to work)
+* Play video games (I started a Game Club - like a book club but with video games - with some co-workers and we make a [podcast](https://soundcloud.com/hard-af-games))
 
 ## What I’m looking to do next
 
-Work on something new and exciting, but mostly I would like to get some solid new experiences
-working at a software company as part of a team. I'd very much like to settle down for a while
-and focus on building my skills as a software craftsman <- totally cool new term I just coined ;)
+Make games and contribute to OSS I use and like. 
