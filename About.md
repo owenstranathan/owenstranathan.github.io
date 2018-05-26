@@ -7,8 +7,8 @@ permalink: /About/
 ## About me
 
 *Yell at computers.  
-Sometimes they listen to me.  
-Mostly they do not.*
+Sometimes they listen. Such peace.  
+Mostly they don't. Sad.*
 
 I work as a computer wrangler (dev-ops engineer) at [appfigures](https://appfigures.com). 
 
@@ -29,7 +29,13 @@ pretending to know what I'm doing writing python (python is the best), and suffe
 
 #### Bender
 
-One of the first projects I worked on at appfigures was a CI/CD bot which I loving named "Bender", after my favorite cartoon robot. Bender listens on an endpoint for a webhook from our CI platform and posts to a slack channel when a build succeeds to allow engineers at appfigures to "bless" a build before deploying them to a kubernetes cluster.
+One of the first projects I worked on at appfigures was a CI/CD bot which I lovingly named "Bender", after my favorite cartoon robot. Bender listens on an endpoint for a webhook from our CI platform and posts to a slack channel when a build succeeds to allow engineers at appfigures to "bless" a build before deploying them to a kubernetes cluster.
+
+#### iOS SDKs
+
+Since completing work on our CI/CD pipeline I've spent most of my time
+focusing on our iOS sdk analysis tools. I can't really give the details, just 
+know that I have a healthy level of hate for Apple as a result.
 
 
 ## What I like to do when I don't have to be doing anything
@@ -51,4 +57,4 @@ In my free time I do in no specific order:
 
 ## What I’m looking to do next
 
-Make games and contribute to OSS I use and like. 
+Make games and contribute to OSS I use and like (like [pipenv](pipenv.org)). 
