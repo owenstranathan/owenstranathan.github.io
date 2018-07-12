@@ -21,12 +21,12 @@ avatar: /images/avatar.png
 favicon32: /images/noodles32.png
 favicon16: /images/noodles16.png
 
-reading: The Miracle of Mindfulness
-reading-link: https://en.wikipedia.org/wiki/The_Miracle_of_Mindfulness
-studying: Game design
-studying-link: http://gameprogrammingpatterns.com/contents.html
-learning: Unity
-learning-link: https://unity3d.com/
+reading: Stackoverflow mostly
+reading-link: https://stackoverflow.com/ 
+studying: Bash
+studying-link: https://linux.die.net/man/1/bash
+learning: Go
+learning-link: https://golang.org
 
 CV: /extras/CV.pdf
 

@@ -2,7 +2,7 @@
 layout: post
 title: "Start Early, Start Often"
 date: 2017-09-05 9:00:00 -0400
-categories: life
+categories: bullshit
 ---
 
 # Start Early, Start Often

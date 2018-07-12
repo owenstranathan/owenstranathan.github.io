@@ -2,7 +2,7 @@
 layout: post
 title: "Work and Ego"
 date: 2017-10-13 15:00:00 -0400
-categories: life
+categories: bullshit
 ---
 
 # Work

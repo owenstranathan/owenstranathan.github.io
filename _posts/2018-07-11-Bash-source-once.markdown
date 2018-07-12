@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Source a bash file only once
+title: Source a bash file once
 date: 2018-07-11 23:00:00 -0400
 categories: programming
 ---
@@ -50,11 +50,16 @@ function source_once(){
 
 ```
 
-then in a script that you want to make sure you only source once. Like this logging script I use
+then use it in a script that you want to make sure you only source once. Like this logging script I use
 
 ``` bash
 #!/bin/bash
 # logging.sh
+
+# your path may vary because paths are bullshit. I'm sorry...
+source "./pragma.sh" 
+source_once "$BASH_SOURCE"
+if [[ "$?" -ne "0" ]]; then return 0; fi
 
 function log(){
     if [[ ! $SCRIPT_NAME ]]; then
@@ -67,17 +72,10 @@ function log(){
 function _log(){
     # ...getopts and args and set levels and all the good shit...
     datetime="$(date +%H:%M:%ST%m-%d-%YZ)"
+    # this is cool the -20 and -35 and all that sets the width
     printf "%-20s %-35s %-8s %s\n" "$datetime" "<$CALLER>" "[$LOGLEVEL_STR]" "$MESSAGE" 
     # ...send logs to logstash server and junk...
 }
-```
-
-all you have to do is throw these couple of lines at the top
-
-``` bash
-source "./pragma.sh" # your path may vary because paths are bullshit. I'm sorry...
-source_once "$BASH_SOURCE"
-if [[ "$?" -ne "0" ]]; then return 0; fi
 ```
 
 That will stop the source if name of the file given by `"$BASH_SOURCE"` is already in the 

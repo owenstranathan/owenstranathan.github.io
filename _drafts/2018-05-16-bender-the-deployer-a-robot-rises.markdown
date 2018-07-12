@@ -54,6 +54,16 @@ Bender should:
 
 Bender has his work cut out for him.
 
+## Kubernetes
+
+We are gonna start with how our application will handle affecting deployments and things on kubernetes.
+We are lucky to have an API client library in the language of choice, we are unlucky in that the 
+documentation for it is very dense, and lucky again that it exists at all. So double lucky!
+
+Lets think of the 
+
+
+
 Let's just do this all in order then.
 
 ## Flask is cool
@@ -140,6 +150,26 @@ As we progress there are a few big things we'll need to add but that will come w
 For the most part this is the basic structure for the web-app portion of our project.
 
 All the work of talking to kubernetes and managing a git repository will come later (it's also
-the most difficult task we have to do and as such we'll save it for later and get the easy stuff
+the most difficult task we have to do and as such we'll save ot for later and get the easy stuff
 out of the way first)
+
+Let's break this down a bit using my favorite text structure the ordered list:
+
+1. `Pipfile & Pipfile.lock` - these are artifacts of pipenv (did I mention how great pipenv is?) You 
+should keep both of these in version control.
+2. `bender/app.py` - This is the main flask application what will be used by wsgi(see below if you're 
+confused about wtf wsgi is).
+3. `bender/blueprints/ci.py & slack.py` - I use blueprints to modularize the application (if you want 
+you can put all the code that I put in the blueprints in the main application `app.py` as main app 
+routes) `ci.py` will handle webhooks from our CI (continouse integration) service, which is TravisCI in 
+this case. Slack will send and recieve requests to and from slack.
+4. `bender/helpers.py` - this is were all the utilities and ancillary with code with no home will live.
+5. `models.py` - this is were the models for the state we care about will be defined (for brievity I  
+won't show you these because I don't think they are super important and they are really dependent on
+the information you have available from your CI service and what your projects--the ones that you are
+tryiung to deploy--look like) just suffice it to say that you should model your deployment data 
+somehow. Or you can devise a way to store any information you need to recieve witout building it into 
+your application and save yourself the trouble.
+
+
 
