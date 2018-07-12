@@ -15,6 +15,34 @@ I learn a new thing about bash almost everyday (or rather, I find a new hacky-as
 do, and probably **shouldn't** do). Today what I learned was sourcing files that contain functions at the
 top of a bash script and using this functionality similarly to the `import` statement in python.
 
+like this
+
+``` bash
+#!/bin/bash
+# util.sh
+
+function useful_function(){
+    echo "I'm useful"
+}
+```
+
+``` bash
+#!/bin/bash
+# needs_help.sh
+
+source "./util.sh"
+
+function main(){
+    useful_function
+    # ... presumably other things ...
+}
+```
+
+```
+$ ./needs_help.sh
+I'm useful
+```
+
 So naturally realizing this pattern's potential I decided to take a monster bash program comprized of 20ish scripts all 
 clumped together in a disgusting and down right miraculous glob that amazingly does what it's supposed to 
 (and probably other shit too), and modularize the sweet jesus out of it...   
