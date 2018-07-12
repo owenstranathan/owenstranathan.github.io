@@ -24,6 +24,8 @@ like this
 function useful_function(){
     echo "I'm useful"
 }
+
+export -f useful_function
 ```
 
 ``` bash
@@ -104,10 +106,17 @@ function _log(){
     printf "%-20s %-35s %-8s %s\n" "$datetime" "<$CALLER>" "[$LOGLEVEL_STR]" "$MESSAGE" 
     # ...send logs to logstash server and junk...
 }
+
+export -f log 
+export -f _log
 ```
 
 That will stop the source if name of the file given by `"$BASH_SOURCE"` is already in the 
 varible `"$INCLUDES"`.
+
+One more thing! Those `export -f` statements at the bottom of the source files are important
+If they aren't there then any subshell or subscript entered from the environment that has sourced
+the file will not inherit the functions! So make sure you do that.
 
 I'm not a master of bash or of anything for that matter, and there is almost certainly a situation
 where this will breakdown and become useless. That said it's working for me so far.
