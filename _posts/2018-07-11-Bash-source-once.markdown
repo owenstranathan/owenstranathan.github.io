@@ -52,6 +52,8 @@ Immediately I created like 5 circular imports and because bash has no enforced m
 recursion depth and no error reporting to speak of (who fucking needs it, am-I-right?)
 I spent a few minutes staring at a blank terminal scratching my head.
 
+# Solution 
+
 Once I realized what I'd done I was like, "Awe shit that's a thing, I forgot about that because **python**"
 Then I thought well I just gotta do that thing that old c programmers used to do to make sure they didn't
 get circular includes. And that's when I write this little bad boy.
