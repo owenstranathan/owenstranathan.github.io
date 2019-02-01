@@ -21,12 +21,12 @@ avatar: /images/avatar.png
 favicon32: /images/noodles32.png
 favicon16: /images/noodles16.png
 
-reading: The DevOps Handbook
-reading-link: https://www.worldcat.org/title/devops-handbook-how-to-create-world-class-agility-reliability-and-security-in-technology-organizations/oclc/907166314
-studying: Godot
-studying-link: https://www.youtube.com/channel/UCqJ-Xo29CKyLTjn6z2XwYAw
-learning: Godot
-learning-link: https://godotengine.org/
+reading: Game Engine Architecture
+reading-link: https://www.gameenginebook.com/
+studying: Unity
+studying-link: https://unity3d.com/
+learning: lots
+learning-link: "#"
 
 CV: /extras/CV.pdf
 
