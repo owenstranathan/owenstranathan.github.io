@@ -21,12 +21,8 @@
       "C#",
       "Swift"
     ],
-    "SQL": [
-      "MySQL",
-      "SQLite",
-      "PostgreSQL"
-    ],
-    "NoSQL": [ "Redis" ],
+    "SQL": ["MySQL", "SQLite", "PostgreSQL"],
+    "NoSQL": ["Redis"],
     "operating systems": ["Windows", "Linux", "Mac"],
     "technologies": ["Kubernetes", "Docker", "iOS Hacking"],
     "languages": {

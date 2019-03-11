@@ -13,13 +13,12 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Owen Stranathan's Blog
+title: Owen Stranathan's Super Awesome Website! Yay!
 logo: /images/signature_64.png
 
 author: Owen Stranathan
-avatar: /images/avatar.png
-favicon32: /images/noodles32.png
-favicon16: /images/noodles16.png
+favicon32: /images/favicon.png
+favicon16: /images/favicon.png
 
 reading: Game Engine Architecture
 reading-link: https://www.gameenginebook.com/
@@ -30,24 +29,14 @@ learning-link: "#"
 
 CV: /extras/CV.pdf
 
-description: > # this means to ignore newlines until "baseurl:"
-  I am a writer, programmer, musician and world traveler.
-  I work hard to create beautiful works in my respective fields of interest.
-  The primary purpose of this site is to host my CV and some writings.
-  I write about my life and whatever I'm currently working on/interested in.
-  You can follow me on some of my social media thingies.
-
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "owenstranathan.com" # the base hostname & protocol for your site, e.g. http://example.com
 
 email: owenstranathan@gmail.com
-github:  owenstranathan
+github: https://github.com/owenstranathan
 linkedin: owenstranathan
 facebook: owen.stranathan.1
 steam: OwenStranathan
-
-paginate: 4
-paginate-path: "/blog/page:num/"
 
 # Build settings
 markdown: kramdown

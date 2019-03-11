@@ -1,52 +1,50 @@
 <footer class="site-footer">
-
   <div class="wrapper">
+    <p>
+      Currently reading:
+      <a href="{{ site.reading - link }}">{{ site.reading }}</a>
+    </p>
+    <p>
+      Currently studying:
+      <a href="{{ site.studying - link }}">{{ site.studying }}</a>
+    </p>
+    <p>
+      Currently learning:
+      <a href="{{ site.learning - link }}">{{ site.learning }}</a>
+    </p>
 
-            <p>Currently reading: <a href="{{ site.reading-link }}">{{ site.reading }}</a></p>
-            <p>Currently studying: <a href="{{ site.studying-link }}">{{ site.studying }}</a></p>
-            <p>Currently learning: <a href="{{ site.learning-link }}">{{ site.learning }}</a></p>
-
-            <!-- email -->
-            {% if site.email %}
-                <a style="color:black;"href="mailto:{{ site.email }}">
-                    <i style="color:#B63426;" class="fa fa-envelope"></i>
-                </a>
-            {% endif %}
-            <span>|</span>
-            <!-- github -->
-            {% if site.github %}
-                <a style="color:black;" href="https://github.com/{{ site.github }}">
-                    <i class="fa fa-github"></i>
-                </a>
-            {% endif %}
-            <span>|</span>
-            <!-- linkedin -->
-            {% if site.linkedin %}
-                <a style="color:black;" href="https://linkedin.com/in/{{ site.linkedin }}">
-                    <i style="color:#0077B5;" class="fa fa-linkedin"></i>
-                </a>
-            {% endif %}
-            <span>|</span>
-            <!-- facebook -->
-            {% if site.facebook %}
-                <a style="color:black;" href="https://facebook.com/{{ site.facebook }}">
-                    <i style="color:#3B5998;" class="fa fa-facebook"></i>
-                </a>
-            {% endif %}
-            <span>|</span>
-            <!-- steam -->
-            {% if site.steam %}
-                <a style="color: black;" href="http://steamcommunity.com/id/{{ site.steam }}"><i class="fa fa-steam"></i>
-                </a>
-            {% endif %}
-            <br>
-            <span> &copy; {{ site.author }} {{ site.time | date: '%Y'}}. Made with <a href="https://jekyllrb.com">Jekyll. </a> </span>
-            <span> <a href="https://github.com/owenstranathan/owenstranathan.github.io/"><i class="fa fa-code-fork"></i> this website</a>.</span>
-
+    <!-- email -->
+    {% if site.email %}
+    <a style="color:black;" href="mailto:{{ site.email }}">
+      <i class="fa fa-envelope"></i>
+    </a>
+    {% endif %}
+    <!-- github -->
+    {% if site.github %}
+    <a style="color:black;" href="https://github.com/{{ site.github }}">
+      <i class="fa fa-github"></i>
+    </a>
+    {% endif %}
+    <!-- linkedin -->
+    {% if site.linkedin %}
+    <a style="color:black;" href="https://linkedin.com/in/{{ site.linkedin }}">
+      <i class="fa fa-linkedin"></i>
+    </a>
+    {% endif %}
+    <!-- steam -->
+    {% if site.steam %}
+    <a
+      style="color: black;"
+      href="http://steamcommunity.com/id/{{ site.steam }}"
+      ><i class="fa fa-steam"></i>
+    </a>
+    {% endif %}
+    <a href="https://github.com/owenstranathan/owenstranathan.github.io/"
+      ><i class="fa fa-code-fork"></i>
+    </a>
+    <br />
+    <span class="copyright">
+      &copy; {{ site.author }} {{ site.time | date: "%Y" }}.
+    </span>
   </div>
-
-
-
-
-
 </footer>
