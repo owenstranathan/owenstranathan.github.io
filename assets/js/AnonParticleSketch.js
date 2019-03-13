@@ -4,14 +4,14 @@ let angle = 0;
 
 // formatted screen to fill entire window
 function setup() {
-  var canv = createCanvas(windowWidth, windowHeight * (3.0 / 4.0));
+  var canv = createCanvas(windowWidth, windowHeight);
   canv.parent("sketch-holder");
   // removes scroll bars
   //   canv.style("display", "block");
 
   // at set up make a bunch of particles and add them to an empty array
   var buffer = 20; // some space from edge of window
-  var numberOfParticles = 50; // testing collision detection
+  var numberOfParticles = 30; // testing collision detection
   for (var i = 0; i < numberOfParticles; i++) {
     var randomX = random(buffer, windowWidth);
     var randomY = random(buffer, windowHeight);
@@ -38,12 +38,6 @@ function draw() {
     anonParticles[i].kinematics();
     for (var j = 0; j < anonParticles.length; j++) {
       if (i != j && anonParticles[i].lineDrawIntersects(anonParticles[j])) {
-        // change color
-        // anonParticles[i].changeColor();
-        // impulse
-        // anonParticles[i].applyForce();
-        // anonParticles[j].changeColor();
-        // anonParticles[j].applyForce();
         anonParticles[i].lerpLineDraw(anonParticles[j]);
       }
     }

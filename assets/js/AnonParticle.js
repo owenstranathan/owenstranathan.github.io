@@ -12,7 +12,6 @@ function AnonParticle(xCoord, yCoord, radius, speed) {
 }
 
 AnonParticle.prototype.changeColor = function() {
-  //   this.col = color(random(255), random(255), random(255));
   this.col = color(0, 0, 0);
 };
 
@@ -90,7 +89,6 @@ AnonParticle.prototype.show = function(angle) {
   push();
   translate(this.pos.x, this.pos.y);
   rotate(-angle);
-  // polygon(x,y,radius, n)
   stroke(0, 0, 0, 80);
   fill(this.col);
   polygon(0, 0, this.radius, 7);

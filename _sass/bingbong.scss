@@ -44,7 +44,10 @@ a {
   padding-left: 0;
   padding-right: $side-spacing-unit;
   width: 100%;
+  top: 0px;
+  left: 0px;
   position: absolute;
+  z-index: 10;
 }
 
 .site-title {
@@ -71,6 +74,7 @@ a {
 // }
 
 .site-main {
+  z-index: 20;
   width: 100%;
   margin-bottom: $top-spacing-unit;
   padding-bottom: $top-spacing-unit;
@@ -98,20 +102,6 @@ a {
 
     // @include relative-font-size(1.5);
     // border: solid;
-    #sketch-holder {
-      width: 100%;
-      height: 50%;
-      margin: 0;
-      display: flex;
-      //   display: inline;
-
-      /* This centers our sketch horizontally. */
-      justify-content: center;
-
-      /* This centers our sketch vertically. */
-      align-items: center;
-      z-index: 0;
-    }
   }
   .site-main-right {
     z-index: 10;
@@ -197,4 +187,21 @@ a {
 .fourOfour {
   color: $blue;
   @include relative-font-size(3);
+}
+#sketch-holder {
+  width: 100%;
+  height: 50%;
+  margin: 0;
+  display: flex;
+  //   display: inline;
+
+  /* This centers our sketch horizontally. */
+  justify-content: center;
+
+  /* This centers our sketch vertically. */
+  align-items: center;
+  z-index: 0;
+  position: absolute;
+  top: 0px;
+  left: 0px;
 }
