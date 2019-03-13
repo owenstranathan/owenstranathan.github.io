@@ -1,9 +1,9 @@
 $content-width: 1300px !default;
 
-$top-spacing-unit: 48px !default;
+$top-spacing-unit: 28px !default;
 $side-spacing-unit: 38px !default;
-$base-line-height: 1.5 !default;
-$base-font-size: 20px !default;
+$base-line-height: 2 !default;
+$base-font-size: 1rem !default;
 $base-font-family: "Roboto", "Helvetica Neue", "Open Sans" !default;
 
 // Colors
@@ -90,7 +90,10 @@ a {
     padding: 0;
     width: 50%;
     float: left;
-    @include relative-font-size(3);
+    img {
+      width: 45vw;
+    }
+    // @include relative-font-size(1.5);
     // border: solid;
   }
   .site-main-right {
@@ -102,6 +105,15 @@ a {
     // border: solid;
     :hover {
       background-color: $background-color;
+    }
+    .site-main-right-cont {
+      color: $text-color;
+      a {
+        color: $text-color;
+      }
+      :hover {
+        color: $text-color;
+      }
     }
   }
 }
@@ -124,10 +136,16 @@ a {
   .site-footer-center {
     float: left;
     width: 33%;
+    @media (max-width: 700px) {
+      float: none;
+    }
   }
   .site-footer-right {
     float: right;
     width: 33%;
+    @media (max-width: 700px) {
+      float: none;
+    }
   }
 }
 
@@ -156,4 +174,9 @@ a {
 
 .orange {
   color: $orange;
+}
+
+.fourOfour {
+  color: $blue;
+  @include relative-font-size(3);
 }
