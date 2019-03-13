@@ -9,13 +9,17 @@
 <!-- <span class="site-nav-right">CV</span> -->
     <div class="wrapper">
         <div class="site-main">
+           
             <div class="site-main-inner">
                 <div class="site-main-left">
 
                     <div class="site-main-head">
                         <span><a class="site-title" href="/">{{ site.title }}</a></span>
                     </div>
-                    <img src="assets/img/blue.jpg" />
+                    <div id="sketch-holder">
+                    </div>
+
+                    <!-- <img src="assets/img/blue.jpg" /> -->
                     <!-- Yell at computers. <br/>
                     Sometimes they listen.<br/>
                     Such peace.<br/>
@@ -23,7 +27,52 @@
                     Sad. -->
                 </div>
                 <div class="site-main-right">
-                      {{content}} 
+
+                    <div class="site-main-head">
+                        <span>About</span>
+                    </div>
+                    <p>
+                        Owen is a programmer interested in programming videogames.
+                        He spends his time outside work, working on games in Unity.
+                        Owen graduated in 2016 from the University of Akron in Akron, OH with a B.S. in
+                        Computer Science
+                        Owen likes: Platformers, Pizza, Unix, Nintendo Switch, Maths,
+                        <a href="/assets/img/blue.JPG">My dog</a>, Giantbomb, Bicycles,
+                        Bash, C and it's children, Trees, Coffee, Programming and Pianos. (Not
+                        included but still liked: Most other things)
+                        Owen dislikes: Arbitrary standards (<a href="https://xkcd.com/927/">relevant comic</a>),
+                        unnecessary change, lootboxes.
+                        Owen currently works as a Software Developer at
+                        <a href="https://appfigures.com">appfigures</a>.
+                        Owen just want's to make games with his <a href="http://ianstranathan.com">brother</a>
+                        Owen is available for hire as a freelance programmer.
+
+                        Motto: <em>If you can't do it with bash, C, and make then you just can't do it.</em>
+                    </p>
+                    <div class="site-main-right-cont">
+                        <strong> Projects</strong>
+                        <p>
+                        <a href="https://github.com/wabisoft/one-million-ants">one-million-ants (Work in progress)</a>:
+                        A game about ants, gravity, and rocket ships. Don't let the ants touch your base!
+                        </p>
+
+                        <p><a href="https://github.com/owenstranathan/bash-templater">bash-templater</a>:
+                        I needed a template engine, I needed it to not need other software to run. Started as
+                        a fork, then I mostly rewrote/extended greatly</p>
+
+                        <p><a href="https://github.com/owenstranathan/bashtest">bashtest</a>:
+                        Needed a test runner in bash to run tests on bash-templater. Why can't I 
+                        have unit tests in bash? I can.</p>
+ 
+                        <p><a href="https://github.com/owenstranathan/supertramp">supertramp</a>:
+                        The skeleton of a CI/CD build/deploy service very closely modeled on the one I built
+                        for appfigures. Uses docker in docker, kubectl and... you guessed it MAKE! who needs yaml? Not this guy</p>
+
+                        <p><a href="https://github.com/owenstranathan/NobleShitMusic">NobleShitMusic</a>:
+                        Back in the days when I was still resisting spotify and the whole MaaS (Music as a Service)
+                        trend, I wanted an android media player that didn't suck or have so many features that it 
+                        collapsed under it's own weight. NobleShitMusic was born, the first and last android app I ever made.</p>
+                    </div>
                 </div>
             </div>
         </div>

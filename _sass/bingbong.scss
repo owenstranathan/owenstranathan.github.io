@@ -44,6 +44,7 @@ a {
   padding-left: 0;
   padding-right: $side-spacing-unit;
   width: 100%;
+  position: absolute;
 }
 
 .site-title {
@@ -87,19 +88,36 @@ a {
   }
   .site-main-left {
     margin: 0;
-    padding: 0;
     width: 50%;
     float: left;
+    z-index: 0;
     img {
-      width: 45vw;
+      //   width: 45vw;
+      width: 100%;
     }
+
     // @include relative-font-size(1.5);
     // border: solid;
+    #sketch-holder {
+      width: 100%;
+      height: 50%;
+      margin: 0;
+      display: flex;
+      //   display: inline;
+
+      /* This centers our sketch horizontally. */
+      justify-content: center;
+
+      /* This centers our sketch vertically. */
+      align-items: center;
+      z-index: 0;
+    }
   }
   .site-main-right {
+    z-index: 10;
     color: $blue;
     margin: 0;
-    padding: 0;
+    padding-left: #{$side-spacing-unit * 0.5};
     float: right;
     width: 50%;
     // border: solid;
