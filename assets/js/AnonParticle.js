@@ -1,9 +1,6 @@
-// goal: make hdr colored, polygon
-
-// particle takes an init (x.y)
 function AnonParticle(xCoord, yCoord, radius, speed) {
   this.pos = createVector(xCoord, yCoord);
-  this.vel = p5.Vector.random2D(); // 2D unit vector from a random angle
+  this.vel = p5.Vector.random2D();
   this.vel.mult(speed);
   this.accl = createVector();
   this.radius = radius;
@@ -16,30 +13,24 @@ AnonParticle.prototype.changeColor = function() {
 };
 
 AnonParticle.prototype.collision = function(anotherParticle) {
-  var distance = dist(
-    this.pos.x,
-    this.pos.y,
-    anotherParticle.pos.x,
-    anotherParticle.pos.y
-  );
-
-  if (distance < this.radius + anotherParticle.radius) {
-    return true;
-  } else {
-    return false;
+  var relPos = p5.Vector.sub(this.pos, anotherParticle.pos);
+  var distSq = relPos.magSq();
+  var collisionRadius = (this.radius + anotherParticle.radius) ** 2;
+  if (distSq < collisionRadius) {
+    var relCollisionPoint = p5.Vector.mult(relPos.normalize(), this.radius);
+    var collisionPoint = p5.Vector.add(this.pos, relCollisionPoint);
+    var correctiveForce = p5.Vector.sub(collisionPoint, this.pos).normalize();
+    // correctiveForce = p5.Vector.mult(correctiveForce, -1);
+    correctiveForce = correctiveForce;
+    this.vel.add(correctiveForce);
   }
 };
 
 // boolean to see if a particle is in range of another particle
 AnonParticle.prototype.lineDrawIntersects = function(anotherParticle) {
-  var distance = dist(
-    this.pos.x,
-    this.pos.y,
-    anotherParticle.pos.x,
-    anotherParticle.pos.y
-  );
-
-  if (distance < this.drawDistance) {
+  var relPos = p5.Vector.sub(this.pos, anotherParticle.pos);
+  var distSq = relPos.magSq();
+  if (distSq < this.drawDistance ** 2) {
     return true;
   } else {
     return false;
@@ -49,15 +40,9 @@ AnonParticle.prototype.lineDrawIntersects = function(anotherParticle) {
 // draw line with transparency based on distance
 // should only get called if lineDrawIntersects returns true
 AnonParticle.prototype.lerpLineDraw = function(anotherParticle) {
-  var distance = dist(
-    this.pos.x,
-    this.pos.y,
-    anotherParticle.pos.x,
-    anotherParticle.pos.y
-  );
-  // // lerp the transparency
-  // var strokeTrans = (distance/this.drawDistance) * 255;
-  var mappedDistToTransparency = map(distance, 0, 200, 255, 0);
+  var relPos = p5.Vector.sub(this.pos, anotherParticle.pos);
+  var distSq = relPos.magSq();
+  var mappedDistToTransparency = map(distSq, 0, 200 ** 2, 255, 0);
   stroke(0, 0, 0, mappedDistToTransparency);
   line(this.pos.x, this.pos.y, anotherParticle.pos.x, anotherParticle.pos.y);
 };

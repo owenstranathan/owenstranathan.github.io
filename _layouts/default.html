@@ -4,29 +4,17 @@
 {% include head.html %}
 
 <body>
-
-    <!-- {% include header.html %} -->
-<!-- <span class="site-nav-right">CV</span> -->
     <div id="sketch-holder">
-        </div>
-
-
-    <div class="wrapper">
-    
+    </div>
+    <div class="wrapper" id="content">
         <div class="site-main">
-           
             <div class="site-main-inner">
                 <div class="site-main-left">
 
                     <div class="site-main-head">
                         <span><a class="site-title" href="/">{{ site.title }}</a></span>
                     </div>
-                                        <!-- <img src="assets/img/blue.jpg" /> -->
-                    <!-- Yell at computers. <br/>
-                    Sometimes they listen.<br/>
-                    Such peace.<br/>
-                    Mostly they don't. <br/>
-                    Sad. -->
+                 
                 </div>
                 <div class="site-main-right">
 
@@ -59,21 +47,16 @@
                         </p>
 
                         <p><a href="https://github.com/owenstranathan/bash-templater">bash-templater</a>:
-                        I needed a template engine, I needed it to not need other software to run. Started as
-                        a fork, then I mostly rewrote/extended greatly</p>
+                        Needed a template engine, needed it to not need other software to run. Started as
+                        a fork, then mostly rewrote/extended greatly</p>
 
                         <p><a href="https://github.com/owenstranathan/bashtest">bashtest</a>:
-                        Needed a test runner in bash to run tests on bash-templater. Why can't I 
-                        have unit tests in bash? I can.</p>
+                        Needed a test runner in bash to run tests on bash-templater. 
+                        Made it general enough to use elsewhere.</p>
  
                         <p><a href="https://github.com/owenstranathan/supertramp">supertramp</a>:
-                        The skeleton of a CI/CD build/deploy service very closely modeled on the one I built
+                        The skeleton of a CI/CD build/deploy service very closely modeled on the one built
                         for appfigures. Uses docker in docker, kubectl and... you guessed it MAKE! who needs yaml? Not this guy</p>
-
-                        <p><a href="https://github.com/owenstranathan/NobleShitMusic">NobleShitMusic</a>:
-                        Back in the days when I was still resisting spotify and the whole MaaS (Music as a Service)
-                        trend, I wanted an android media player that didn't suck or have so many features that it 
-                        collapsed under it's own weight. NobleShitMusic was born, the first and last android app I ever made.</p>
                     </div>
                 </div>
             </div>
@@ -85,13 +68,11 @@
                     <div class="site-footer-head">
                         CONTACT
                     </div>
-                    <div class="site-footer-center">
                     owenstranathan@gmail.com<br/>
                     419.341.6408
                 </div>
-                </div>
                 
-                <div >
+                <div class="site-footer-center">
                     <a href="https://github.com/owenstranathan">Github</a><br/>
                     <a href="https://www.linkedin.com/in/owenstranathan/">LinkedIn</a> <br/>
                     <a href="/assets/extra/owenstranathanCV.pdf">CV</a>
@@ -99,8 +80,6 @@
             </div>
         </div>
     </div>
-    <!-- {% include footer.html %} -->
-
 </body>
 
 </html>

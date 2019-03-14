@@ -3,7 +3,7 @@ $content-width: 1300px !default;
 $top-spacing-unit: 28px !default;
 $side-spacing-unit: 38px !default;
 $base-line-height: 2 !default;
-$base-font-size: 1rem !default;
+$base-font-size: 1.5vmax !default;
 $base-font-family: "Roboto", "Helvetica Neue", "Open Sans" !default;
 
 // Colors
@@ -21,6 +21,8 @@ $orange: #ff8800 !default;
   box-sizing: border-box;
   font-family: $base-font-family;
   font-size: $base-font-size;
+  margin: 0;
+  padding: 0;
 }
 
 @mixin relative-font-size($ratio) {
@@ -52,26 +54,8 @@ a {
 
 .site-title {
   display: block;
+  width: 100%;
 }
-// .site-nav {
-//   //   float: right;
-//   width: 100%;
-//   margin-bottom: $top-spacing-unit;
-//   .site-nav-inner {
-//     display: inline-block;
-//     width: 100%;
-//   }
-//   .site-nav-left {
-//     float: left;
-//     width: 50%;
-//   }
-//   .site-nav-center {
-//     float: left;
-//   }
-//   .site-nav-right {
-//     float: right;
-//   }
-// }
 
 .site-main {
   z-index: 20;
@@ -81,40 +65,46 @@ a {
   .site-main-inner {
     width: 100%;
     clear: both;
-    // display: inline-block;
     display: flexbox;
+    @media (max-width: 700px) {
+      display: inline-block;
+    }
   }
   .site-main-head {
     margin-bottom: $top-spacing-unit;
     a {
       text-decoration: none;
     }
+
+    @media (max-width: 700px) {
+      width: 100%;
+      margin-bottom: 10px;
+    }
   }
   .site-main-left {
     margin: 0;
     width: 50%;
     float: left;
-    z-index: 0;
+    z-index: 10;
     img {
-      //   width: 45vw;
       width: 100%;
     }
-
-    // @include relative-font-size(1.5);
-    // border: solid;
+    @media (max-width: 700px) {
+      width: 0%;
+      float: none;
+    }
   }
   .site-main-right {
     z-index: 10;
     color: $blue;
     margin: 0;
-    padding-left: #{$side-spacing-unit * 0.5};
     float: right;
     width: 50%;
-    // border: solid;
     :hover {
       background-color: $background-color;
     }
     .site-main-right-cont {
+      margin-top: $top-spacing-unit;
       color: $text-color;
       a {
         color: $text-color;
@@ -122,6 +112,10 @@ a {
       :hover {
         color: $text-color;
       }
+    }
+    @media (max-width: 700px) {
+      float: none;
+      width: 100%;
     }
   }
 }
@@ -139,7 +133,10 @@ a {
   }
   .site-footer-left {
     float: left;
-    width: 33%;
+    width: 66%;
+    @media (max-width: 700px) {
+      float: none;
+    }
   }
   .site-footer-center {
     float: left;
@@ -187,20 +184,17 @@ a {
 .fourOfour {
   color: $blue;
   @include relative-font-size(3);
-}
-#sketch-holder {
-  width: 100%;
-  height: 50%;
-  margin: 0;
-  display: flex;
-  //   display: inline;
-
-  /* This centers our sketch horizontally. */
   justify-content: center;
+}
 
-  /* This centers our sketch vertically. */
+#sketch-holder {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  z-index: 0;
+  // makes it be in the background
+  z-index: 10;
   position: absolute;
   top: 0px;
   left: 0px;
