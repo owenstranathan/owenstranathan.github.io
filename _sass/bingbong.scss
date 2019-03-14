@@ -124,6 +124,11 @@ a {
   width: 100%;
   margin-top: $top-spacing-unit;
   .site-footer-inner {
+    padding-top: $top-spacing-unit;
+    @media (max-width: 700px) {
+      padding-top: 0;
+    }
+
     width: 100%;
     clear: both;
     display: flexbox;

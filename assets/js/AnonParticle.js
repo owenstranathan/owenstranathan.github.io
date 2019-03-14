@@ -59,13 +59,13 @@ AnonParticle.prototype.kinematics = function() {
   this.pos.add(this.vel);
   this.vel.add(this.accl);
 
-  if (this.pos.x < 0) {
+  if (this.pos.x - this.radius < 0) {
     this.vel.x *= -1;
-  } else if (this.pos.x > windowWidth) {
+  } else if (this.pos.x + this.radius > windowWidth) {
     this.vel.x *= -1;
-  } else if (this.pos.y < 0) {
+  } else if (this.pos.y - this.radius < 0) {
     this.vel.y *= -1;
-  } else if (this.pos.y > windowHeight) {
+  } else if (this.pos.y + this.radius > windowHeight) {
     this.vel.y *= -1;
   }
 };
