@@ -8,8 +8,40 @@ function AnonParticle(xCoord, yCoord, radius, speed) {
   this.drawDistance = 200;
 }
 
+AnonParticle.prototype.area = function() {
+  return Math.PI * this.radius ** 2;
+};
+
+AnonParticle.prototype.circumference = function() {
+  return Math.PI * this.radius * 2;
+};
+
 AnonParticle.prototype.changeColor = function() {
   this.col = color(0, 0, 0);
+};
+
+AnonParticle.prototype.drag = function(mouse) {
+  let rho = 1.2;
+  let dragCoef = 0.001;
+  let dragForceCoef = 0.5 * rho * dragCoef;
+  let dragForce = p5.Vector.mult(this.vel, -dragForceCoef);
+  this.vel.add(dragForce);
+};
+
+AnonParticle.prototype.collideMouse = function(mouse) {
+  var relPos = p5.Vector.sub(this.pos, mouse.pos);
+  var distSq = relPos.magSq();
+  var collisionRadius = (this.radius + mouse.radius) ** 2;
+  if (distSq < collisionRadius) {
+    var relCollisionPoint = p5.Vector.mult(relPos.normalize(), this.radius);
+    var collisionPoint = p5.Vector.add(this.pos, relCollisionPoint);
+    var correctiveForce = p5.Vector.sub(collisionPoint, this.pos).normalize();
+    // correctiveForce = p5.Vector.mult(correctiveForce, -1);
+    // var mouseLinearVel = p5.Vector.sub(mouse.pos, mouse.prevPos);
+    correctiveForce = p5.Vector.mult(correctiveForce);
+    this.vel.add(correctiveForce);
+    // this.vel.add(p5.Vector.mult(mouseLinearVel, mouse.radius));
+  }
 };
 
 AnonParticle.prototype.collision = function(anotherParticle) {
@@ -21,7 +53,7 @@ AnonParticle.prototype.collision = function(anotherParticle) {
     var collisionPoint = p5.Vector.add(this.pos, relCollisionPoint);
     var correctiveForce = p5.Vector.sub(collisionPoint, this.pos).normalize();
     // correctiveForce = p5.Vector.mult(correctiveForce, -1);
-    correctiveForce = correctiveForce;
+    correctiveForce = p5.Vector.mult(correctiveForce, anotherParticle.radius);
     this.vel.add(correctiveForce);
   }
 };
