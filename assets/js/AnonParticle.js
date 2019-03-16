@@ -25,7 +25,7 @@ AnonParticle.prototype.drag = function(mouse) {
   let dragCoef = 0.001;
   let dragForceCoef = 0.5 * rho * dragCoef;
   let dragForce = p5.Vector.mult(this.vel, -dragForceCoef);
-  this.vel.add(dragForce);
+  this.accl.add(dragForce);
 };
 
 AnonParticle.prototype.collideMouse = function(mouse) {
@@ -36,25 +36,25 @@ AnonParticle.prototype.collideMouse = function(mouse) {
     var relCollisionPoint = p5.Vector.mult(relPos.normalize(), this.radius);
     var collisionPoint = p5.Vector.add(this.pos, relCollisionPoint);
     var correctiveForce = p5.Vector.sub(collisionPoint, this.pos).normalize();
-    // correctiveForce = p5.Vector.mult(correctiveForce, -1);
-    // var mouseLinearVel = p5.Vector.sub(mouse.pos, mouse.prevPos);
-    correctiveForce = p5.Vector.mult(correctiveForce);
-    this.vel.add(correctiveForce);
-    // this.vel.add(p5.Vector.mult(mouseLinearVel, mouse.radius));
+    correctiveForce = p5.Vector.mult(correctiveForce, this.radius * this.accl);
+    this.accl.add(correctiveForce);
   }
 };
 
 AnonParticle.prototype.collision = function(anotherParticle) {
   var relPos = p5.Vector.sub(this.pos, anotherParticle.pos);
+  // var relPos = p5.Vector.sub(anotherParticle.pos, this.pos);
   var distSq = relPos.magSq();
   var collisionRadius = (this.radius + anotherParticle.radius) ** 2;
   if (distSq < collisionRadius) {
     var relCollisionPoint = p5.Vector.mult(relPos.normalize(), this.radius);
     var collisionPoint = p5.Vector.add(this.pos, relCollisionPoint);
-    var correctiveForce = p5.Vector.sub(collisionPoint, this.pos).normalize();
-    // correctiveForce = p5.Vector.mult(correctiveForce, -1);
-    correctiveForce = p5.Vector.mult(correctiveForce, anotherParticle.radius);
-    this.vel.add(correctiveForce);
+    var correctiveForce = p5.Vector.sub(this.pos, collisionPoint).normalize();
+    // var radii = this.radius + anotherParticle.radius;
+    // var k = Math.abs(relPos.mag() - radii);
+    // correctiveForce = p5.Vector.mult(correctiveForce,this.accl.mag() * k);
+    // correctiveForce = p5.Vector.mult(correctiveForce, this.radius * this.accl);
+    anotherParticle.vel.add(correctiveForce);
   }
 };
 
@@ -82,7 +82,7 @@ AnonParticle.prototype.lerpLineDraw = function(anotherParticle) {
 // weird overlap bug
 AnonParticle.prototype.applyForce = function() {
   var impusle = createVector(-2 * this.vel.x, -2 * this.vel.y);
-  this.vel.add(impusle);
+  this.accl.add(impusle);
 };
 
 // kinda like ideal gas, perfect rteflections
@@ -90,6 +90,7 @@ AnonParticle.prototype.kinematics = function() {
   // basic kinematics
   this.pos.add(this.vel);
   this.vel.add(this.accl);
+  this.accl = createVector()
 
   if (this.pos.x - this.radius < 0) {
     this.vel.x *= -1;

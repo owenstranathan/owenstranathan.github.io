@@ -3,7 +3,7 @@ let angle = 0;
 let mouseWrapper = {
   pos: null,
   prevPos: null,
-  radius: 5
+  radius: 2
 };
 
 function setup() {
@@ -32,7 +32,6 @@ function setup() {
 // update method
 function draw() {
   background(255, 255, 255);
-
   mouseWrapper.pos = createVector(mouseX, mouseY);
   for (var i = 0; i < anonParticles.length; i++) {
     anonParticles[i].show(angle);
