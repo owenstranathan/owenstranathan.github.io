@@ -3,7 +3,9 @@ $content-width: 1300px !default;
 $top-spacing-unit: 28px !default;
 $side-spacing-unit: 38px !default;
 $base-line-height: 2 !default;
-$base-font-size: 1.5vmax !default;
+$base-font-size: 2.5vh !default;
+$mobile-font-size: 3vh !default;
+
 $base-font-family: "Roboto", "Helvetica Neue", "Open Sans" !default;
 
 // Colors
@@ -21,8 +23,15 @@ $orange: #ff8800 !default;
   box-sizing: border-box;
   font-family: $base-font-family;
   font-size: $base-font-size;
+  @media (max-width: 700px) {
+    font-size: $mobile-font-size;
+  }
   margin: 0;
   padding: 0;
+}
+body {
+
+  background-color: $background-color;
 }
 
 @mixin relative-font-size($ratio) {
@@ -122,6 +131,8 @@ a {
 
 .site-footer {
   width: 100%;
+  // position: absolute;
+  bottom: 0;
   margin-top: $top-spacing-unit;
   .site-footer-inner {
     padding-top: $top-spacing-unit;
@@ -200,7 +211,7 @@ a {
   align-items: center;
   // makes it be in the background
   z-index: 10;
-  position: absolute;
+  position: fixed;
   top: 0px;
   left: 0px;
 }

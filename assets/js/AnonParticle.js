@@ -28,35 +28,25 @@ AnonParticle.prototype.drag = function(mouse) {
   this.accl.add(dragForce);
 };
 
-AnonParticle.prototype.collideMouse = function(mouse) {
-  var relPos = p5.Vector.sub(this.pos, mouse.pos);
-  var distSq = relPos.magSq();
-  var collisionRadius = (this.radius + mouse.radius) ** 2;
-  if (distSq < collisionRadius) {
-    var relCollisionPoint = p5.Vector.mult(relPos.normalize(), this.radius);
-    var collisionPoint = p5.Vector.add(this.pos, relCollisionPoint);
-    var correctiveForce = p5.Vector.sub(collisionPoint, this.pos).normalize();
-    correctiveForce = p5.Vector.mult(correctiveForce, this.radius * this.accl);
-    this.accl.add(correctiveForce);
-  }
-};
-
-AnonParticle.prototype.collision = function(anotherParticle) {
+AnonParticle.prototype.collision = function(anotherParticle, bedone=false) {
   var relPos = p5.Vector.sub(this.pos, anotherParticle.pos);
-  // var relPos = p5.Vector.sub(anotherParticle.pos, this.pos);
   var distSq = relPos.magSq();
   var collisionRadius = (this.radius + anotherParticle.radius) ** 2;
   if (distSq < collisionRadius) {
-    var relCollisionPoint = p5.Vector.mult(relPos.normalize(), this.radius);
-    var collisionPoint = p5.Vector.add(this.pos, relCollisionPoint);
-    var correctiveForce = p5.Vector.sub(this.pos, collisionPoint).normalize();
-    // var radii = this.radius + anotherParticle.radius;
-    // var k = Math.abs(relPos.mag() - radii);
-    // correctiveForce = p5.Vector.mult(correctiveForce,this.accl.mag() * k);
-    // correctiveForce = p5.Vector.mult(correctiveForce, this.radius * this.accl);
-    anotherParticle.vel.add(correctiveForce);
+    return true  
+  }
+  else {
+    return false;
   }
 };
+
+AnonParticle.prototype.collide = function(anotherParticle){
+  var relPos = p5.Vector.sub(this.pos, anotherParticle.pos);
+  var relCollisionPoint = p5.Vector.mult(relPos.normalize(), this.radius);
+  var collisionPoint = p5.Vector.add(this.pos, relCollisionPoint);
+  var correctiveForce = p5.Vector.sub(collisionPoint, anotherParticle.pos).normalize();
+  this.vel.add(correctiveForce);
+}
 
 // boolean to see if a particle is in range of another particle
 AnonParticle.prototype.lineDrawIntersects = function(anotherParticle) {
@@ -92,14 +82,40 @@ AnonParticle.prototype.kinematics = function() {
   this.vel.add(this.accl);
   this.accl = createVector()
 
-  if (this.pos.x - this.radius < 0) {
-    this.vel.x *= -1;
-  } else if (this.pos.x + this.radius > windowWidth) {
-    this.vel.x *= -1;
-  } else if (this.pos.y - this.radius < 0) {
-    this.vel.y *= -1;
-  } else if (this.pos.y + this.radius > windowHeight) {
-    this.vel.y *= -1;
+  var diff = this.pos.x - this.radius
+  if ( diff < 0) {
+    var fakeParticle = {
+      pos: createVector(diff, this.pos.y),
+      radius: Math.abs(diff)
+    }
+    this.collide(fakeParticle);
+  } else{
+    diff = this.pos.x + this.radius;
+    if ( diff > windowWidth) {
+      var fakeParticle = {
+        pos: createVector(diff, this.pos.y),
+        radius: Math.abs(diff - windowWidth)
+      }
+      this.collide(fakeParticle);
+    }
+  }
+  diff = this.pos.y - this.radius;
+  if (diff < 0) {
+    var fakeParticle = {
+      pos: createVector(this.pos.x, diff),
+      radius: Math.abs(diff)
+    }
+    this.collide(fakeParticle);
+  } 
+  else{
+    diff = this.pos.y + this.radius;
+    if ( diff > windowHeight) {
+      var fakeParticle = {
+        pos: createVector(this.pos.x, diff),
+        radius: Math.abs(diff - windowHeight)
+      }
+      this.collide(fakeParticle);
+    }
   }
 };
 
