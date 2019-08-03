@@ -12,6 +12,16 @@ AnonParticle.prototype.area = function() {
   return Math.PI * this.radius ** 2;
 };
 
+AnonParticle.prototype.lower = function () {
+	// bottom left corner of AABB for this particle
+	return p5.Vector(this.pos.x-this.radius, this.pos.y-this.radius);
+}
+
+AnonParticle.prototype.upper = function () {
+	// top right corner of AABB for this particle
+	return p5.Vector(this.pos.x+this.radius, this.pos.y+this.radius);
+}
+
 AnonParticle.prototype.circumference = function() {
   return Math.PI * this.radius * 2;
 };

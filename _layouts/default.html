@@ -4,92 +4,89 @@
 {% include head.html %}
 
 <body>
-    <div id="sketch-holder">
-    </div>
-    <div class="wrapper" id="content">
-        <div class="site-main">
-            <div class="site-main-inner">
-                <div class="site-main-left">
+	<div id="sketch-holder">
+	</div>
+	<div class="wrapper" id="content">
+		<div class="site-main">
+			<div class="site-main-inner">
+				<div class="site-main-left">
 
-                    <div class="site-main-head">
-                        <span><a class="site-title" href="/">{{ site.title }}</a></span>
-                    </div>
-                 
-                </div>
-                <div class="site-main-right">
+					<div class="site-main-head">
+						<span><a class="site-title" href="/">{{ site.title }}</a></span>
+					</div>
+				 
+				</div>
+				<div class="site-main-right">
 
-                    <div class="site-main-head">
-                        <span>About</span>
-                    </div>
-                    <p>
-                        Owen is a programmer interested in programming videogames.
-                        He spends his time outside work, working on games in Unity.
-                        Owen graduated in 2016 from the University of Akron in Akron, OH with a B.S. in
-                        Computer Science.
-                    </p>
-                    <p>
-                        Owen likes: Platformers, Pizza, Unix, Nintendo Switch, Maths,
-                        his <a href="/assets/img/blue.JPG">dog</a>, Giantbomb, Bicycles,
-                        Bash, C and it's children, Trees, Coffee, Programming and Pianos. 
-                    </p>
-                    <p>
-                        Owen dislikes: Arbitrary standards (<a href="https://imgs.xkcd.com/comics/standards.png" >relevant comic</a>),
-                        unnecessary change, lootboxes and subscription services.
-                    </p>
-                    <p>
-                        Owen currently works as a Software Developer at
-                        <a href="https://appfigures.com">appfigures</a>.
-                    </p>
-                    <p>
-                        Owen just want's to make games with his <a href="http://ianstranathan.com">brother</a>.
-                    </p>
-                    <p>
-                        Owen is available for hire as a freelance programmer.
-                    </p>
-                    <p>
-                        Motto: <em>If you can't do it with bash, C, and make then you just can't do it.</em>
-                    </p>
-                    <div class="site-main-right-cont">
-                        <strong> Projects</strong>
-                        <p>
-                        <a href="https://github.com/wabisoft/one-million-ants">one-million-ants (Work in progress)</a>:
-                        A game about ants, gravity, and rocket ships. Don't let the ants touch your base!
-                        </p>
+					<div class="site-main-head">
+						<span>About</span>
+					</div>
+					<p>
+						Hi! My name is Owen and I'm a programmer.<br/>
+						I love to fix things that are broken, not just in code, I'm a genuine tinkerer! <br/>
+						I work as a freelance developer. 
+						Do you have a problem that you think you might need to program a computer to solve? Call me! I can help!<br>
+					</p>
+					<p>
+						I like: Simplicity, Platformers, Pizza, Unix, Nintendo Switch, Maths,
+						my <a href="/assets/img/blue.JPG">dog</a>, Bicycles, Vim
+						Trees, Coffee, Oxford commas, and Pianos. 
+					</p>
+					<p>
+						I dislike: Complexity, Arbitrary standards (<a href="https://imgs.xkcd.com/comics/standards.png" >relevant comic</a>),
+						lootboxes, and subscription services.
+					</p>
+					<p>
+					</p>
+					<p>
+						Motto: <em>If you can't do it with C, then you can't do it.</em>
+					</p>
+					<p>
+						Checkout some of my projects as well as my github and resume below to get a feel for my chops.
+					</p>
+					<div class="site-main-right-cont">
+						<strong> Projects</strong>
+						<p>
+						<a href="https://github.com/owenstranathan/waves">waves (Work in progress)</a>:
+						A game about waves and boats. Ahoy!
+						</p>
 
-                        <p><a href="https://github.com/owenstranathan/bash-templater">bash-templater</a>:
-                        Needed a template engine, needed it to not need other software to run. Started as
-                        a fork, then mostly rewrote/extended greatly</p>
+						<p><a href="https://github.com/owenstranathan/bash-templater">bash-templater</a>:
+						In my last job I needed a template engine to generate deployment artifacts from configuration.
+						All the existing tools were too heavy and had a cultural buy in. I adapted this from a fork, 
+						and rewrote/extended greatly</p>
 
-                        <p><a href="https://github.com/owenstranathan/bashtest">bashtest</a>:
-                        Needed a test runner in bash to run tests on bash-templater. 
-                        Made it general enough to use elsewhere.</p>
+						<p><a href="https://github.com/owenstranathan/bashtest">bashtest</a>:
+						I of course need a test runner in bash to run tests on bash-templater. 
+						I made it general enough to use elsewhere.</p>
  
-                        <p><a href="https://github.com/owenstranathan/supertramp">supertramp</a>:
-                        The skeleton of a CI/CD build/deploy service very closely modeled on the one built
-                        for appfigures. Uses docker in docker, kubectl and... you guessed it MAKE! who needs yaml? Not this guy</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-            <br/>
-        <div class="site-footer">
-            <div class="site-footer-inner">
-                <div class="site-footer-left">
-                    <div class="site-footer-head">
-                        CONTACT
-                    </div>
-                    owenstranathan@gmail.com<br/>
-                    419.341.6408
-                </div>
-                
-                <div class="site-footer-center">
-                    <a href="https://github.com/owenstranathan">Github</a><br/>
-                    <a href="https://www.linkedin.com/in/owenstranathan/">LinkedIn</a> <br/>
-                    <a href="/assets/extra/owenstranathanCV.pdf">CV</a>
-                </div>
-            </div>
-        </div>
-    </div>
+						<p><a href="https://github.com/owenstranathan/supertramp">supertramp</a>:
+						This is the skeleton of a CI/CD build/deploy service very closely modeled on the one I built
+						for appfigures. It Uses docker in docker, kubectl and GNUMake! So that your deploy processes are 
+						written as make files. I should change the name to MakeCI</p>
+					</div>
+				</div>
+			</div>
+		</div>
+			<br/>
+		<div class="site-footer">
+			<div class="site-footer-inner">
+				<div class="site-footer-left">
+					<div class="site-footer-head">
+						CONTACT
+					</div>
+					owenstranathan@gmail.com<br/>
+					419.341.6408
+				</div>
+				
+				<div class="site-footer-center">
+					<a href="https://github.com/owenstranathan">Github</a><br/>
+					<a href="https://www.linkedin.com/in/owenstranathan/">LinkedIn</a> <br/>
+					<a href="/assets/extra/owenstranathanCV.pdf">CV</a>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 
 </html>
