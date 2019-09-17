@@ -20,11 +20,11 @@ Vec2.prototype.cross = function(other) {
 }
 
 Vec2.prototype.add = function(other) {
-	return Vect2(this.x + other.x, this.y + other.y);
+	return new Vec2(this.x + other.x, this.y + other.y);
 }
 
 Vec2.prototype.sub = function(other) {
-	return Vect2(this.x - other.x, this.y - other.y);
+	return new Vec2(this.x - other.x, this.y - other.y);
 }
 
 Vec2.prototype.mult = function(scalar) {

@@ -23,11 +23,11 @@ function collision(r1, r2) {
 			if(intersection != null) {
 				var pen = b.sub(intersection).magnitude();
 				var normal = findNormal(c, d, a).normalized();
-				return Collision(true, intersection, normal, pen);
+				return new Collision(true, intersection, normal, pen);
 			}
 		}
 	}
-	return Collision(false, null, Vec2.zero(), 0);
+	return new Collision(false, null, Vec2.zero(), 0);
 }
 
 function resolveCollisions(game) {

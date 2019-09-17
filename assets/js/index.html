@@ -5,11 +5,28 @@
 	<script src="collision.js"></script>
 	<script src="game.js"></script>
 	<script src="graphics.js"></script>
+	<script id="vertex-shader" type="not-js">
+		attribute vec4 a_position;
+		uniform vec2 u_resolution;
+		void main() {
+			vec2 zero2One = vec2(a_position.x/u_resolution.x, a_position.y/u_resolution.y);
+			vec2 zero2Two = zero2One * 2.0;
+			vec2 clip = zero2Two - 1.0;
+			gl_Position = vec4(clip, 0, 1);
+		}
+	</script>
+
+	<script id="fragment-shader" type="not-js">
+		precision mediump float;
+		uniform vec4 u_color;
+		void main() {
+			gl_FragColor = u_color;
+		}
+	</script>
 </head>
 
 <body style="margin:0">
 	<canvas id="glCanvas" style="width:100vw;height:100vh; display:block"></canvas>
- 	<script src="../gl-matrix.js"></script>
 	<script src="main.js"></script>
 </body>
 </html>
