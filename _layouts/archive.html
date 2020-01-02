@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+
+{% include head.html %}
+
+<body>
+<div class="wrapper" id="content">
+	<div class="site-main">
+<h1> Archive </h1>
+<ul style="list-style:none">
+    {% assign sorted = (site.posts | sort: 'date') | reverse %}
+    {% for post in sorted %}
+	{% capture day %}{{ post.date | date: '%Y-%m-%d' }}{% endcapture %}
+    	<li>
+		<a href=" {{ post.url }} ">{{day}} -- {{ post.title }}</a>
+	</li>
+    {% endfor %}
+</ul>
+	</div>
+</div>
+</body>
+</html>

@@ -1,4 +1,37 @@
-function AnonParticle(xCoord, yCoord, radius, speed) {
+function binarySearch(search, list, prop) {
+	var left = 0;
+	var right = list.length - 1;
+	while (left <= right) {
+		var middle = Math.floor((left + right) / 2);
+		var propRes = prop(list[middle]);
+		if (propRes < search) {
+			left = middle + 1;
+		} else if (propRes > search) {
+			right = middle - 1;
+		} else {
+			return list[middle];
+		}
+	}
+	return null;
+}
+
+function insertionSort(unsortedList, pred) {
+	var len = unsortedList.length;
+	for (var i = 1; i < len; i++) {
+		var tmp = unsortedList[i]; //Copy of the current element.
+		/*Check through the sorted part and compare with the number in tmp. If large, shift the number*/
+		for (var j = i - 1; j >= 0 && pred(unsortedList[j], tmp); j--) {
+			//Shift the number
+			unsortedList[j + 1] = unsortedList[j];
+		}
+		//Insert the copied number at the correct position
+		//in sorted part.
+		unsortedList[j + 1] = tmp;
+	}
+}
+
+function AnonParticle(id, xCoord, yCoord, radius, speed) {
+  this.id = id;
   this.pos = createVector(xCoord, yCoord);
   this.vel = p5.Vector.random2D();
   this.vel.mult(speed);
@@ -6,6 +39,21 @@ function AnonParticle(xCoord, yCoord, radius, speed) {
   this.radius = radius;
   this.col = color(255, 255, 255, 80);
   this.drawDistance = 200;
+  this.extents = createVector(radius, radius);
+}
+
+function AABB(particle) {
+	this.lower = createVector(particle.pos.x - particle.radius, particle.pos.y - particle.radius);
+	this.upper = createVector(particle.pos.x + particle.radius, particle.pos.y + particle.radius);
+	this.id = particle.id;
+}
+
+AnonParticle.prototype.update = function() {
+	console.assert(particle.id == this.id);
+	// this.aabb.lower.x = this.pos.x - this.radius;
+	// this.aabb.lower.y = this.pos.y - this.radius;
+	// this.aabb.upper.x = this.pos.x + this.radius;
+	// this.aabb.upper.y = this.pos.y + this.radius;
 }
 
 AnonParticle.prototype.area = function() {
@@ -14,12 +62,12 @@ AnonParticle.prototype.area = function() {
 
 AnonParticle.prototype.lower = function () {
 	// bottom left corner of AABB for this particle
-	return p5.Vector(this.pos.x-this.radius, this.pos.y-this.radius);
+	return p5.Vector.sub(this.pos, this.extents);
 }
 
 AnonParticle.prototype.upper = function () {
 	// top right corner of AABB for this particle
-	return p5.Vector(this.pos.x+this.radius, this.pos.y+this.radius);
+	return p5.Vector.add(this.pos, this.extents);
 }
 
 AnonParticle.prototype.circumference = function() {
@@ -43,7 +91,7 @@ AnonParticle.prototype.collision = function(anotherParticle, bedone=false) {
   var distSq = relPos.magSq();
   var collisionRadius = (this.radius + anotherParticle.radius) ** 2;
   if (distSq < collisionRadius) {
-    return true  
+    return true
   }
   else {
     return false;
@@ -55,6 +103,9 @@ AnonParticle.prototype.collide = function(anotherParticle){
   var relCollisionPoint = p5.Vector.mult(relPos.normalize(), this.radius);
   var collisionPoint = p5.Vector.add(this.pos, relCollisionPoint);
   var correctiveForce = p5.Vector.sub(collisionPoint, anotherParticle.pos).normalize();
+  if(p5.Vector.dot(this.vel, correctiveForce) == 0) { // the dot is zero on a parting velocity
+	return;
+  }
   this.vel.add(correctiveForce);
 }
 
@@ -116,7 +167,7 @@ AnonParticle.prototype.kinematics = function() {
       radius: Math.abs(diff)
     }
     this.collide(fakeParticle);
-  } 
+  }
   else{
     diff = this.pos.y + this.radius;
     if ( diff > windowHeight) {
@@ -126,6 +177,11 @@ AnonParticle.prototype.kinematics = function() {
       }
       this.collide(fakeParticle);
     }
+  }
+  this.drag();
+  this.vel.limit(5);
+  if (this.vel.magSq() < 1) {
+	 this.vel.setMag(1);
   }
 };
 
