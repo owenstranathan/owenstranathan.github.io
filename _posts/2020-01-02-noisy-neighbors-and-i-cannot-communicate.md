@@ -1,21 +1,15 @@
 ---
+layout: post
 date: 2020-01-02
+categories: [rant, societal-problems, personal]
 ---
-
-# January 2, 2020
 
 It is a beautiful winter day here in California, the sun is shining and its in the low 50s, for a mid westerner like myself you couldn't ask for a nicer day.
 All I wanted from today was to lay on my couch and read a book, I'm currently reading "The Emperor's New Mind"
 by Roger Penrose. It's very different from my usual fare and (for me at least) requires a great deal of concentration.
-Alas this was not to be as the boyfriend of one of the girls who lives in the building next to mine decided that the weather
-was perfect for parking in our shared parking lot opening all the doors on his land rover and playing hip-hop music at an extreme volume.
-I don't want to pass judgement on his taste in music, merely his sense of civility in his behavior with electronic speaker technology.
-Needless to say that the music, designed to excite the listener broke my frail concentration and inhibited my ability to read.
-This angered me, and my first thought was to attack him with food scraps from the garbage can that we keep in the parking lot, or perhaps to
-throw eggs into his open car doors. Thankfully after a few deep breaths, I resolved instead to try and talk it out with him. I walked out to the parking lot
-and was disappointed to find that the man would not react to my attempts to get his attentions, desiding instead to pretend not to hear me (maybe he actually couldn't hear me, the music was very loud after all).
-Luckily his girlfriend emerged from her building and assured me that she would take care of it. Unsatisfied, I asked (I was shouting, but only because the music was so loud) that they not play their music so loud or
-even just keep their car door closes. This started what was an unsatisfying exchange with the man, which has prompted my writing now on a problem I have experience too frequently
+Alas this was not to be as my neighbors decide it was a good day to blast music outside my window.
+
+This started what was an unsatisfying exchange with the man, which has prompted my writing now on a problem I have experience too frequently
 and that I'd like to dwell on here, that of dealing with noisy neighbors.
 
 First I should qualify my opinions with the fact that I was raised in Ohio, in the countryside no less, and where I come from the houses are far enough apart that aside
@@ -46,7 +40,18 @@ conflict has carried us from the savanna to the mountains to the ocean and the m
 is stupid ways. I want to speculate as to why, I don't think I can offer any solutions and I speculate that the solution is likely the sort that can't be generalized and widely applied, but instead is some personal
 resolution that each person must make of their own accord.
 
-Back to my story from which I launched this ramble. When the man who was playing his music loudly decided finally to interact with me, his first statement was a sarcastic defense of his behavior that cited city ordinance.
+## What happened
+Back to my story from which I launched this ramble.
+The boyfriend of one of the girls who lives in the building next to mine decided that the weather
+was perfect for parking in our shared parking lot opening all the doors on his land rover and playing hip-hop music at an extreme volume.
+I don't want to pass judgement on his taste in music, merely his sense of civility in his behavior with electronic speaker technology.
+Needless to say that the music, designed to excite the listener broke my frail concentration and inhibited my ability to read.
+This angered me, and my first thought was to attack him with food scraps from the garbage can that we keep in the parking lot, or perhaps to
+throw eggs into his open car doors. Thankfully after a few deep breaths, such childish thoughts subsided and I resolved instead to try and talk it out with him. I walked out to the parking lot
+and was disappointed to find that the man would not react to my attempts to get his attention, desiding instead to pretend not to hear me (maybe he actually couldn't hear me, the music was very loud after all).
+Luckily his girlfriend emerged from her building and assured me that she would take care of it. Unsatisfied, I asked (I was shouting, but only because the music was so loud) that they not play their music so loud or
+even just keep their car door closed.
+When the man who was playing his music loudly decided finally to interact with me, his first statement was a sarcastic defense of his behavior that cited city ordinance.
 
 "Is it 9 o'clock already?"
 
@@ -60,6 +65,7 @@ To which he replied "I don't have to."
 
 The exchange continued in this way until he started dancing and smirking like a school yard bully.
 
+## Analysis of What happened
 So what happened there? Why couldn't I find common ground to communicate my dissaticfation to him without decending into a litigious "yeah huh, nuh uh".
 Any number of things could be at play here for example:
 * My approach was too aggressive and the man felt threated, relying on the law as his mandate.
@@ -71,7 +77,6 @@ I don't know what happened. Perhaps all of the above and then some, but I know t
 a litigious shouting match. I don't know if there has ever been a time where people could communitcate about such things. I know it is possible, I've had good neighbors that have been reasonable before.
 
 I don't know what that guys problem is, but I know I can't do anything but try and take a different tact next time. I have to not get angry and I have to appeal to some other sense. Clearly we have no common language in civility.
-Something is wrong with my society, and I can't say for sure what it is, but people should be able to speak to each other.
+Something is wrong with me, and my society. I can't say for sure what it is, but this shouldn't be this difficult.
 
-
-
+I don't think this post is very useful. I don't think it adds anything to this conversation, but it's cathartic to write this all down.

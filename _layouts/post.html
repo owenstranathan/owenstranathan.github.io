@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+
+{% include head_two.html %}
+<body>
+	<div class=date>{{ page.date | date: '%B %e, %Y' }} </div>
+	<br/>
+	<div class=categories>
+			categories: 
+			{% for category in page.categories %}
+			<a href="/archive?category={{category}}">{{category}}</a>
+			{% endfor %}
+	</div>
+	{{ content }}
+{%include footer.html %}
+</body>
+</html>

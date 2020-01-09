@@ -1,22 +1,39 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: "en" }}">
 
-{% include head.html %}
+{% include head_two.html %}
 
 <body>
-<div class="wrapper" id="content">
-	<div class="site-main">
-<h1> Archive </h1>
-<ul style="list-style:none">
-    {% assign sorted = (site.posts | sort: 'date') | reverse %}
-    {% for post in sorted %}
-	{% capture day %}{{ post.date | date: '%Y-%m-%d' }}{% endcapture %}
-    	<li>
-		<a href=" {{ post.url }} ">{{day}} -- {{ post.title }}</a>
-	</li>
-    {% endfor %}
-</ul>
+	<h1> Archive </h1>
+	<div id="all" style="display:none">
+		<div class=categories>category: none</div>
+		<ul style="list-style:none">
+		    {% assign sorted = (site.posts | sort: 'date') | reverse %}
+		    {% for post in sorted %}
+			{% capture day %}{{ post.date | date: '%Y-%m-%d' }}{% endcapture %}
+		    	<li>
+				<a href=" {{ post.url }} ">{{day}} -- {{ post.title }}</a>
+			</li>
+		    {% endfor %}
+		</ul>
 	</div>
-</div>
+	{% for category in site.categories %}
+		<div id="{{category[0]}}" style="display:none">
+			<div class=categories>category: {{category[0]}}</div>
+			<ul style="list-style:none">
+				{% assign sorted = (category[1]| sort: 'date') | reverse %}
+			    {% for post in sorted %}
+				{% capture day %}{{ post.date | date: '%Y-%m-%d' }}{% endcapture %}
+			    	<li>
+					<a href=" {{ post.url }} ">{{day}} -- {{ post.title }}</a>
+				</li>
+			    {% endfor %}
+			</ul>
+		</div>
+	{% endfor %}
+
 </body>
+  	<script src="assets/js/checkparams.js"></script>
+
+{% include footer.html %}
 </html>
