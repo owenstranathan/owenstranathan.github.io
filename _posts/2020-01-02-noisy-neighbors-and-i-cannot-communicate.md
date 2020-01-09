@@ -1,7 +1,7 @@
 ---
 layout: post
 date: 2020-01-02
-categories: [rant, societal-problems, personal]
+categories: [journal, rant, societal-problems, personal]
 ---
 
 It is a beautiful winter day here in California, the sun is shining and its in the low 50s, for a mid westerner like myself you couldn't ask for a nicer day.
