@@ -4,7 +4,8 @@ date: 2020-01-02
 categories: [journal, rant, societal, personal]
 ---
 
-It is a beautiful winter day here in California, the sun is shining and its in the low 50s, for a mid westerner like myself you couldn't ask for a nicer day.
+It is a beautiful winter day here in California, the sun is shining and its in the low 50s, 
+for a mid westerner like myself you couldn't ask for a nicer day.
 All I wanted from today was to lay on my couch and read a book, I'm currently reading "The Emperor's New Mind"
 by Roger Penrose. It's very different from my usual fare and (for me at least) requires a great deal of concentration.
 Alas this was not to be as my neighbors decide it was a good day to blast music outside my window.
