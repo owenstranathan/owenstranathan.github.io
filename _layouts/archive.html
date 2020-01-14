@@ -10,10 +10,13 @@
 		<ul style="list-style:none">
 		    {% assign sorted = (site.posts | sort: 'date') | reverse %}
 		    {% for post in sorted %}
-			{% capture day %}{{ post.date | date: '%Y-%m-%d' }}{% endcapture %}
-		    	<li>
-				<a href=" {{ post.url }} ">{{day}} -- {{ post.title }}</a>
-			</li>
+				{% if post.path contains 'code' %}
+				{% else %}
+					{% capture day %}{{ post.date | date: '%Y-%m-%d' }}{% endcapture %}
+			    		<li>
+						<a href=" {{ post.url }} ">{{day}} -- {{ post.title }}</a>
+					</li>
+				{% endif %}
 		    {% endfor %}
 		</ul>
 	</div>
@@ -23,10 +26,13 @@
 			<ul style="list-style:none">
 				{% assign sorted = (category[1]| sort: 'date') | reverse %}
 			    {% for post in sorted %}
-				{% capture day %}{{ post.date | date: '%Y-%m-%d' }}{% endcapture %}
-			    	<li>
-					<a href=" {{ post.url }} ">{{day}} -- {{ post.title }}</a>
-				</li>
+					{% if post.path contains 'code' %}
+					{% else %}
+						{% capture day %}{{ post.date | date: '%Y-%m-%d' }}{% endcapture %}
+			    			<li>
+							<a href=" {{ post.url }} ">{{day}} -- {{ post.title }}</a>
+						</li>
+					{% endif %}
 			    {% endfor %}
 			</ul>
 		</div>

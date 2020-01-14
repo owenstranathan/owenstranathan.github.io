@@ -7,7 +7,7 @@ categories: [journal, personal, problems]
 I have a hard time keeping in touch. I know why, but I don't understand.
 
 I have lived in a lot of places, and for what feels like forever I've kind of been living
-an iternarant lifestyle. In the last (let's call it) 5 years, the longest I've stayed in one place is 21 months, (that was NYC and
+an itinerant lifestyle. In the last (let's call it) 5 years, the longest I've stayed in one place is 21 months, (that was NYC and
 of all the other places I went, is far and away the longest) and have moved 12 times. I have met a lot of people
 in those 12 moves and 5 years, and I've not kept in touch.
 
