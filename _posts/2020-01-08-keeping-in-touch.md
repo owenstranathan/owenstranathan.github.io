@@ -1,7 +1,7 @@
 ---
 layout: post
 date: 2020-01-08
-categories: [journal, personal, problems]
+categories: [personal]
 ---
 
 I have a hard time keeping in touch. I know why, but I don't understand.
@@ -21,6 +21,5 @@ piece of shit. In fact I only wrote third because the first 2 made me realize ju
 I want to have life long friends that I keep in close touch with. I want to call my buddy and just ask how they're doing (and actually care)
 but I don't (call or care). Of course when I stop and think about it I do care, and I do call, and I try to be a good friend and have good friends.
 The problem is that most of the time I don't think about it. I'm not sure how to be better. At least I know I should be, and that's a start I guess.
-
 
 I think I'll go write a fourth email now. I know just who to send it to.

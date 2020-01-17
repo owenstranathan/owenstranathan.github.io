@@ -1,7 +1,7 @@
 ---
 layout: post
 date: 2020-01-12
-categories: [programming, interviewing, code-challenge, long]
+categories: [programming]
 ---
 
 #### [skip my rambling introduction and just see some code](#code)
@@ -14,7 +14,7 @@ This made me feel at least a little acomplished (I could at least say, if nothin
 and I finished in the early afternoon went back to working on my game.
 
 About 30 minutes later, I recieved an email from one of the studios that I had applied to,
-lets call them ***AAA Productions***.
+lets call them **_AAA Productions_**.
 The email was an average HR/Recruiting auto response, it thanked me for applying and asked that I complete a programming challenge
 and return it along with an explaination of my solution and a signed NDA(Non-Disclosure Agreement).
 
@@ -24,29 +24,30 @@ a few restarts I was not only enjoying myself but also humbled by the fact that 
 I thought this challenge was interesting and fun enough to go over here in a full on, legit blog post.
 So without further ado...
 
-
 ## The Prompt
 
 As a pre-interview, we're asking all development candidates to send in a solution  
 to a programming problem. Details on the programming problem are given below. We apologize for  
 the imposition—if you've ever tried to fill a programming position, you know that resumes are  
-not an ideal way to evaluate programming ability.  
+not an ideal way to evaluate programming ability.
 
 We're not expecting you to spend more than a couple of hours on your solution. If you would  
-like clarifications on the problem, feel free to send mail to recruiting@AAAProductions.com.  
+like clarifications on the problem, feel free to send mail to recruiting@AAAProductions.com.
 
 What to send us:
-  * An up-to-date copy of your resume.
-  * A short discussion (a paragraph or two) about the possible solutions you see to the
-	  problem, and why you chose the approach you did.
-  * Implementation of your solution in C/C++, preferably in a single source file.
+
+- An up-to-date copy of your resume.
+- A short discussion (a paragraph or two) about the possible solutions you see to the
+  problem, and why you chose the approach you did.
+- Implementation of your solution in C/C++, preferably in a single source file.
 
 #### Problem Statement
 
 The problem is to write a set of functions to manage a variable number of byte queues, each with  
-variable length, in a small, fixed amount of memory.  
+variable length, in a small, fixed amount of memory.
 
-You should provide implementations of the following four functions:  
+You should provide implementations of the following four functions:
+
 ```cpp
 
  // Creates a FIFO byte queue, returning a handle to it.
@@ -59,6 +60,7 @@ You should provide implementations of the following four functions:
  unsigned char dequeue_byte(Q * q);
 
 ```
+
 So, the output from the following set of calls:
 
 ```cpp
@@ -70,7 +72,7 @@ So, the output from the following set of calls:
   enqueue_byte(q1, 3);
   enqueue_byte(q0, 2);
   enqueue_byte(q1, 4);
- 
+
   printf("%d ", dequeue_byte(q0));
   printf("%d\n", dequeue_byte(q0));
   enqueue_byte(q0, 5);
@@ -83,7 +85,7 @@ So, the output from the following set of calls:
   printf("%d\n", dequeue_byte(q1));
   destroy_queue(q1);
 
- ```
+```
 
 should be:
 
@@ -97,7 +99,8 @@ should be:
 
 You can define the type Q to be whatever you want.  
 Your code is not allowed to call malloc() or other heap management routines. Instead, all storage  
-(other than local variables in your functions) must be within a provided array:  
+(other than local variables in your functions) must be within a provided array:
+
 ```cpp
 
  unsigned char data[2048];
@@ -107,13 +110,14 @@ Your code is not allowed to call malloc() or other heap management routines. Ins
 Memory efficiency is important. On average while your system is running, there will be about 15  
 queues with an average of 80 or so bytes in each queue. Your functions may be asked to create a  
 larger number of queues with less bytes in each. Your functions may be asked to create a smaller  
-number of queues with more bytes in each.  
+number of queues with more bytes in each.
 
 Execution speed is important. Worst-case performance when adding and removing bytes is more  
-important than average-case performance.  
+important than average-case performance.
 
 If you are unable to satisfy a request due to lack of memory, your code should call a provided  
-failure function, which will not return:  
+failure function, which will not return:
+
 ```cpp
 
  void on_out_of_memory();
@@ -121,7 +125,7 @@ failure function, which will not return:
 ```
 
 If the caller makes an illegal request, like attempting to dequeue a byte from an empty queue,  
-your code should call a provided failure function, which will not return:  
+your code should call a provided failure function, which will not return:
 
 ```cpp
 
@@ -132,9 +136,9 @@ your code should call a provided failure function, which will not return:
 There may be spikes in the number of queues allocated, or in the size of an individual queue.  
 Your code should not assume a maximum number of bytes in a queue (other than that imposed  
 by the total amount of memory available, of course!) You can assume that no more than 64  
-queues will be created at once.  
+queues will be created at once.
 
-### Code 
+### Code
 
 I'll show you all the code first, then I'll talk about it.
 
@@ -195,14 +199,14 @@ To arrive at the right number I started by making my structure as small a possib
 
 The structure would need a few things to work as a queue chunk/linked list:
 
-  * A pointer to the first byte in the queue chunk
-  * A pointer to the last element in the queue chunk
-  * A piece of contiguous storage of known or knowable size to store the bytes of the queue
+- A pointer to the first byte in the queue chunk
+- A pointer to the last element in the queue chunk
+- A piece of contiguous storage of known or knowable size to store the bytes of the queue
 
 As well as a few things to work as a "linked-list" of queue segments/chunks:
 
-  * A pointer to the next chunk in the list
-  * A flag indicating whether or not this chunk is free
+- A pointer to the next chunk in the list
+- A flag indicating whether or not this chunk is free
 
 Sounds like a pretty simple data structure, and it is, the trick is in fitting it into just a few bytes.
 Let's do a quick naive implementation to see how big our struct will be if we just define it as simply as possible.
@@ -216,7 +220,7 @@ struct Q {
 	byte* last;
 	Q* next;
 	bool free;
-	// ... leave out the contiguous storage for now, 
+	// ... leave out the contiguous storage for now,
 	// because it's dependent on how small we make our struct ...
 };
 
@@ -224,15 +228,14 @@ struct Q {
 
 This struct satisfies all our criteria (minus the storage) for tracking a queue. Great, I guess we're done.
 But wait... hows but is it? This bad boy weighs in at whopping 32 bytes!
-(Thats 8 bytes per pointer [^1] (3*8=24) and 8 bytes for the boolean.)
+(Thats 8 bytes per pointer [^1](3*8=24) and 8 bytes for the boolean.)
 
 The reason that pointers are 8 bytes (not always true [^1])
-is that pointers need to be able to address the entire virtual address space.  
+is that pointers need to be able to address the entire virtual address space.
 
-We, however, don't need the entire virutal address space. 
+We, however, don't need the entire virutal address space.
 We just need the 2048 addresses between `data` and `data+MAX_BYTES`.  
-Furthermore, an entire byte for a boolean is a terrible waste. We can do better.  
-
+Furthermore, an entire byte for a boolean is a terrible waste. We can do better.
 
 #### Packed Struct
 
@@ -262,16 +265,15 @@ a lot of bitwise math operations to extract your values. This feature extracts t
 
 So in our new smallest possible struct, we store the index of our first byte in our queue and the index of our last byte
 using just 3 **bits** each.
-(this means that we can't have more than 8 bytes per queue chunk).  
+(this means that we can't have more than 8 bytes per queue chunk).
 
 Also instead of a pointer `Q*` we can store the index to the next `Q` in our 8 bit (1 byte) `next_idx` field
-(this means we can't have more that 256 queues).  
+(this means we can't have more that 256 queues).
 
 When using but fields it's important to remember that a struct **must** occupy integer numbers of bytes.
 This means you can't not use only part of a byte.
 So if you have a struct that uses 12 bits, it will occupy 16 bits (2 bytes) of space.
 The remaining 6 bits will become padding to the next byte.
-
 
 The only thing unaccounted for is our boolean `free` flag. So far we've used 8 + 3 + 3 = 14 bits, and so we have
 2 bits left to the next byte. We can use one for the bool to indicate weather or not our chunk is free
@@ -285,7 +287,7 @@ So if we divide for the bytes per queue we get:
 
 **2048/15 = 136.533333...**
 
-We can't have any fractional bytes so let's bump it to **16** so we can have an even split:  
+We can't have any fractional bytes so let's bump it to **16** so we can have an even split:
 
 **2048 / 16 = 128**
 
@@ -293,7 +295,7 @@ this means that if we have **16** queues they can at maximum occupy 128 bytes.
 We still need to account for the size of the struct that is not storage so we multiply
 the current size of our `Q`(2 bytes) by our number of queues(16):
 
-**2 * 16 = 32**
+**2 \* 16 = 32**
 
 then we subtract:
 
@@ -303,11 +305,11 @@ and we divide again:
 
 **96 / 16 = 6**
 
-And that gives us our *6* bytes as the maximum we can have in a single queue chunk if we want to allow for **16** queues
+And that gives us our _6_ bytes as the maximum we can have in a single queue chunk if we want to allow for **16** queues
 that each have **96** bytes. Which is well within the problem constraints
 
 We also could have justified our **6** by recognizing that `next_idx` has a maximum value of **255**
-and so we can't divide our **2048** bytes into more than 256 chunks without loosing the ability to 
+and so we can't divide our **2048** bytes into more than 256 chunks without loosing the ability to
 address a portion of our data[^4]
 
 So now that we have our structure defined and justified
@@ -317,7 +319,7 @@ asked for in the prompt.
 
 #### Helpers and misc.
 
-``` cpp
+```cpp
 
 Q* const queues = (Q*)(data);
 constexpr int MAX_QUEUES = MAX_BYTES / SIZE_OF_QUEUE;
@@ -326,7 +328,7 @@ Q* next(Q* q) {
 	if(q->next_idx){
 		Q& next_ = queues[q->next_idx];
 		// (this works because pointer math automatically accounts for sizeof(Q))
-		int idx = &next_ - queues; 
+		int idx = &next_ - queues;
 		assert(idx > 0 && idx < MAX_QUEUES);
 		return &next_;
 	} else {
@@ -412,7 +414,6 @@ I used them for testing and just left them. And the function
 
 With that all out of the way we can finally start working on the functions asked for by the prompt!
 
-
 ##### Creating a queue
 
 The first function the prompt wanted us to write was `Q* create_queue()`, let's look at that next.
@@ -492,14 +493,15 @@ void enqueue_byte(Q*q, byte b) {
 This function has a little more going on than the others.
 
 There are 3 situations that arise when we try to enqueue a byte:
-1. The current chunk is not full and can take another byte. 
-  This is the case in the first if, where we just add the byte to the `q->data` array and increment the `q->last` index.
+
+1. The current chunk is not full and can take another byte.
+   This is the case in the first if, where we just add the byte to the `q->data` array and increment the `q->last` index.
 2. The current chunk is full and is **pro**ceeded by an existing chunk (`next(q) != nullptr`).
-  This is the case in the if after the first else, where we just recursively call `enqueue_byte` with the next `Q` queue chunk.
+   This is the case in the if after the first else, where we just recursively call `enqueue_byte` with the next `Q` queue chunk.
 3. The current chunk is full and has has no next chunk (`next(q) == nullptr`).
-  this is the case in the second else, where we create a new queue chunk (if it failed to create the program should call
-  `on_out_of_memory` and hang), set the new queue to be the next queue in the list,
-  and recursively call `enqueue_byte` with this new next queue chunk
+   this is the case in the second else, where we create a new queue chunk (if it failed to create the program should call
+   `on_out_of_memory` and hang), set the new queue to be the next queue in the list,
+   and recursively call `enqueue_byte` with this new next queue chunk
 
 Similar to destroy queue this function has linear time, as it potentially chases the tail of the queue list. So it's complexity is **O(n)** again with **n** being the length of the queue list.
 
@@ -544,9 +546,8 @@ byte dequeue_byte(Q*& q) {
 
 ```
 
-An important modification I made it that my `dequeue_byte` takes a reference to a pointer to `Q` (`Q*&`). Which let's us change 
+An important modification I made it that my `dequeue_byte` takes a reference to a pointer to `Q` (`Q*&`). Which let's us change
 where the input pointer, points.
-
 
 This function is probably the most complex, conceptually but, ironically has the smallest time complexity.
 
@@ -561,11 +562,9 @@ to the next chunk in the list. Otherwise we reset `q->first` and `q->last`.
 
 Finally we return the stored byte from the beginning of the function.
 
-
 ##### The rest of it
 
 The final few functions are test functions I wrote to test the behavior of my queue structure. I won't go over them here.
-
 
 ### Conclusion
 
@@ -576,13 +575,9 @@ list this one are a great exercise to get us thinking about what is actually hap
 I probably spent too much time on this little challenge. But I really enjoyed myself, and I wanted to write this blog
 to help cement the experience.
 
-___
+---
 
 [^1]: this will vary by the system as the size of a pointer is not guaranteed. On my 64-bit mac book and windows machines my pointers are 8 bytes(most of the time) but were I on a 32 bit system they would be 4 bytes, or 2 bytes if I'm on a 16 bit embedded system of somekind.
 [^2]: This feature is also in C (I don't know when it came about, but I think C had it first)
 [^3]: We could do away with the free flag if we were to use a [free list](https://en.wikipedia.org/wiki/Free_list) to track free chunks (we won't do this because it adds an extra layer of complication). And for the sake of memory efficiency it's irrelevant since our first and last index only occupy 6 bits we have 2 extra bits that would be padded out, so it doesn't hurt to use them. Using a free list would improve the performance of some of our functions but for our purposes it's not worth the effort.
 [^4]: You might be thinking that we could double our addressable space if we use our last bit for our index and make the `next_idx` definition 9-bits long.This would grow our address space to 512. But importantly this would force our maximum chunk size to only 4 bytes long, giving a storage bytes per chunk of just 2! The resulting scheme could not accomidate our 15 queues of 80 bytes long requirement. Because each chunk would be 2 bytes then an 80 byte queue list would need `80 / 2 = 40` chunks which would occupy 4 bytes each for a total of `40 * 4 = 160` bytes per list! If we were create 15 of these we would need `160 * 15 = 2400` bytes which is **352** bytes more than we have available. So really our scheme of 6 bytes per queue chunk is the best we can do in this scenario.
-
-
-
-

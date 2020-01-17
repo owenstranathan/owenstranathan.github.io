@@ -1,10 +1,10 @@
 ---
 layout: post
 date: 2020-01-02
-categories: [journal, rant, societal, personal]
+categories: [personal]
 ---
 
-It is a beautiful winter day here in California, the sun is shining and its in the low 50s, 
+It is a beautiful winter day here in California, the sun is shining and its in the low 50s,
 for a mid westerner like myself you couldn't ask for a nicer day.
 All I wanted from today was to lay on my couch and read a book, I'm currently reading "The Emperor's New Mind"
 by Roger Penrose. It's very different from my usual fare and (for me at least) requires a great deal of concentration.
@@ -42,6 +42,7 @@ is stupid ways. I want to speculate as to why, I don't think I can offer any sol
 resolution that each person must make of their own accord.
 
 ## What happened
+
 Back to my story from which I launched this ramble.
 The boyfriend of one of the girls who lives in the building next to mine decided that the weather
 was perfect for parking in our shared parking lot opening all the doors on his land rover and playing hip-hop music at an extreme volume.
@@ -67,12 +68,14 @@ To which he replied "I don't have to."
 The exchange continued in this way until he started dancing and smirking like a school yard bully.
 
 ## Analysis of What happened
+
 So what happened there? Why couldn't I find common ground to communicate my dissaticfation to him without decending into a litigious "yeah huh, nuh uh".
 Any number of things could be at play here for example:
-* My approach was too aggressive and the man felt threated, relying on the law as his mandate.
-* The man was a sorry son of a bitch and there was never going to be any reasoning with him.
-* My pleas, while seemingly reasonable to me, made no sense to the man who's culture and background are so different from mine that basic matters of civility have no commonality between us.
-* The man made a simple second row mistake but upon being confronted did not have the faculties to accept that he made a mistake and change his behavior, instead doubling down and elevating the situation into a third row incident.
+
+- My approach was too aggressive and the man felt threated, relying on the law as his mandate.
+- The man was a sorry son of a bitch and there was never going to be any reasoning with him.
+- My pleas, while seemingly reasonable to me, made no sense to the man who's culture and background are so different from mine that basic matters of civility have no commonality between us.
+- The man made a simple second row mistake but upon being confronted did not have the faculties to accept that he made a mistake and change his behavior, instead doubling down and elevating the situation into a third row incident.
 
 I don't know what happened. Perhaps all of the above and then some, but I know this is a problem. I feel that I cannot communicate with my neighbors and my community about very simple things like this, without getting into
 a litigious shouting match. I don't know if there has ever been a time where people could communitcate about such things. I know it is possible, I've had good neighbors that have been reasonable before.
