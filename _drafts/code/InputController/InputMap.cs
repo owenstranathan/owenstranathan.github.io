@@ -34,9 +34,9 @@ public class ControlStick {
 
 [System.Serializable]
 public class DPadAxes {
-    public InputAxis Horizontal = InputAxis.NONE; // assuming 1 for right and -1 for left
-    public InputAxis Vertical = InputAxis.NONE; // assuming 1 for up and -1 for down
-    public AxisInversion Inversion; // flip assumption
+    public InputAxis Horizontal = InputAxis.NONE; // 1 for right and -1 for left
+    public InputAxis Vertical = InputAxis.NONE; // 1 for up and -1 for down
+    public AxisInversion Inversion; // flip above assumptions
 }
 
 [System.Serializable]

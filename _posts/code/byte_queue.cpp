@@ -204,7 +204,7 @@ void test_1() {
 	for(int i = 0; i < BYTES_PER_QUEUE/2; ++i) {
 		dequeue_byte(q0);
 	}
-	assert(num_free_queues() == 1);	
+	assert(num_free_queues() == 1);
 	destroy_queue(q0);
 }
 

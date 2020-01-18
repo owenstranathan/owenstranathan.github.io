@@ -11,7 +11,8 @@ public class InputConfiguration : MonoBehaviour
 {
     public string Name;
     public InputType Type;
-    public InputMap InputMap {
+    public InputMap InputMap
+    {
         get {
             Debug.Assert(AvailableInputMaps.Length > 0);
             return AvailableInputMaps[(int)Type];
@@ -27,9 +28,11 @@ public class InputConfiguration : MonoBehaviour
         Debug.Assert(inputController != null);
         updateName();
         AvailableInputMaps = new List<InputMap>(Resources.FindObjectsOfTypeAll<InputMap>()).OrderBy(x => x.Type).ToArray();
-        if(AvailableInputMaps.Length == 0)
+        if (AvailableInputMaps.Length == 0)
         {
-            Debug.LogError("There are no input maps in the project. Use Assets > Create > ScriptableObjects > InputMap to create a mapping for your input");
+            Debug.LogError(
+                "There are no input maps in the project.\n" +
+                "Use Assets > Create > ScriptableObjects > InputMap to create a mapping for your input");
         }
     }
 
@@ -42,7 +45,7 @@ public class InputConfiguration : MonoBehaviour
     {
         var joyStickNames = Input.GetJoystickNames();
         var cnum = (int)inputController.Number;
-        if(cnum <= joyStickNames.Length)
+        if (cnum <= joyStickNames.Length)
         {
             Name = joyStickNames[cnum - 1];
         }

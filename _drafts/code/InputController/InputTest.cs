@@ -14,14 +14,12 @@ public class InputTest : MonoBehaviour
     public bool[] Buttons = new bool[numButtons];
     private InputController inputController;
 
-    // Start is called before the first frame update
     void Start()
     {
         inputController = inputController ?? GetComponent<InputController>();
         Debug.Assert(inputController != null);
     }
 
-    // Update is called once per frame
     void Update()
     {
         var name = inputController.Number.ToString();
