@@ -3,6 +3,7 @@
 
 {% include head_two.html %}
 <body>
+    {% include menu.html class="header" %}
 	<div class=date>{{ page.date | date: '%A, %B %e, %Y' }} </div>
 	<br/>
 	<div class=categories>
@@ -12,6 +13,6 @@
 			{% endfor %}
 	</div>
 	{{ content }}
-{%include footer.html %}
+{% include menu.html class="footer" %}
 </body>
 </html>

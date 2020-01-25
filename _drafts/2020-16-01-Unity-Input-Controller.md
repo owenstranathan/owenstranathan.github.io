@@ -7,14 +7,18 @@ categories: [game-programming]
 
 ### Backstory
 
-[just get to the code bud.](#succinct-description-of-goals).
+[Just get to the code bud.](#succinct-description-of-goals)
 
 
 
 I'm 26 years old. That places me firmly in the console only generation. What that means is that I started gaming well after the proliferation and success of game consoles.  
-My fist console was the Super Nintendo and then a PlayStation, and then a Nintendo GameCube and an Xbox, then an Xbox 360, Wii, PlayStation 3 and most recently a Switch and PlayStation 4.  
-It wasn't until after the Wii/Xbox 360/PlayStation 3 generation of consoles that I built my first gaming PC when I was about 17 years old (way back in 2010).  
-So what does all this have to do with anything? My history with consoles separates me (and others like me) from the people that have played PC games their whole lives,  
+My fist console was the Super Nintendo (actually it was my brother Ian's), followed by a PlayStation(also Ian's),
+and then a Nintendo GameCube(you guessed it... Ian's) and an Xbox(Ian and I both had one), then an Xbox 360(Mine!), Wii(Ian's, but was a gift from me),
+PlayStation 3(Mine!) and most recently a Switch and PlayStation 4(Mine, but was a gift from Ian).  
+It wasn't until after the Wii/Xbox 360/PlayStation 3 generation of consoles that I built my first gaming PC when I was about 17 years old 
+(way back in 2010).  
+So what does all this have to do with anything? Well besides illustraiting the growth, friendship and love of a beautiful brotherhood.
+My history with consoles separates me (and others like me) from the people that have played PC games their whole lives,  
 in that I am most comfortable playing video games using a game controller.  
 
 This has been a persistent problem for me with prototyping games. When you're prototyping games you want to move as quickly as possible,  
@@ -28,12 +32,12 @@ So to fix this I decided to take a moderately deep dive into the unity input sys
 
 ### Succinct Description of Goals:
 
-1. I want gamepad input in my unity prototype.
+1. I want game controller input in my unity prototype.
 2. I want it to be easily and sensibly configurable (which by default in Unity it is not).
 3. I want to be able to swap what kind of controller(PlayStation 4, Xbox 360, Switch Pro, etc.) I'm using with very little fuss and reconfiguration.
 4. If possible I would like it to be possible for my behaviors plug into an input event system to allow them to detect input without lot's of `if(Input.GetButtonDown(....))` type code all over the place.
 
-So without further ado, let's get started. But first the code.
+So without further ado, let's get started... Haha just kidding, here's the code first.
 
 # Code
 
@@ -74,21 +78,334 @@ There are 4 primary source files and 1 `.asset` file of interest in this system 
 
 ```
 
-### `UnityEngine.Input` [^1]
+### `UnityEngine.Input` and InputManager.asset [^1]
 
 First let's talk about the unity input system as it exists today. [unity documentation about "Convential Game Input"](https://docs.unity3d.com/Manual/ConventionalGameInput.html).
 
-The way it works is that unity under the hood interfaces with the
-OS to detected input events from connected game pads, keyboards, and mice. It then abstracts these system level events into "virtual" 
-input events in the form of a virtual axis. (Buttons are and keys are just axes that go from 0 to 1, if an "Alt Negative Button" is configured
-then that button puts the axis from 0 to -1.)
-The long and short of it is you need to configure your axes to name 1 of 20 "joystick buttons", 1 of 28 axes or any of the keys found on
-a keyboard or mouse buttons.
-You can also set other properties of these inputs like `gravity`, `sensitivity`, `dead`(threshhold for detection), `snap` and `inversion`.
-The specifics of these properties are in a handy little chart [here](https://docs.unity3d.com/Manual/ConventionalGameInput.html)
+Super high level, the way that it works is, Unity interfaces with the OS to detect events coming from Input devices.
+It translates those system level input events into Unity input values accessable through the `Input` class.
+All input at the unity level can be thought of as a "Virtual Axis" what that means is every input can take a value between 1 and -1 with 0 meaning
+no input. This makes lots of sense for say a joystick, but it's a little less intuitive for almost all the other buttons on a controller.
+The reason that the inputs are configured as virtual axes is so you can define your own -1 to 1 interval using any buttons you like. This is
+done by setting a "positive" and "negative" button for a given named input.
+Lets take quick look at the default input set up.
+
+![Default Input Settings](/assets/img/InputController/InputSettingsDefault.png)
+
+You can see that the unity input settings are preconfigured with 18 inputs (i.e. it's an array of 18 virtual axis configurations)
+I wont go to in detail about what all the settings do, because I don't know. Just know that this is where you're going to configure your input.
+I've you've never done that then I highly recommend deleting all the preconfigured inputs and adding all your own to get a feel for how it works.
+
+If you just want to copy me then you still need to delete all the existing inputs, do this by setting the size of the settings array to 0.
+
+![Empty InputSettings](/assets/img/InputController/InputSettingsEmpty.png)
+
+Once we've done this let's replace those old default settings with something a little more uniform.  
+
+It's important remember that the inputs are accessed by **name** at runtime with something like `Input.GetAxis("MyStupidInputSettingName")`
+Our system is going to aim to abstract that away so we need a uniform naming scheme, it doesn't need to be complex or clever, just automatable and
+understandable to someone reading the code. The simplest one I came up with was `J%nA%a` and `J%nB%b` where `%n` is the 
+joystick number, `%a` is the axis number, and `%b` is the button number [^2].
+
+So for each controller we'll have 28 axes numbered 0-27 (`J%nA0`-`J%nA27`) and 20 buttons numbered 0-19 (`J%nB0`-`J%nB19`).
+We'll have 1 additional input for each controller called `J%nNONE` We'll use this to map axes and buttons not used but 
+a given controller scheme. This is kind of a chore to set up with the unity serialization ui window for input settings. So I 
+recommend using a power editor of your choice (***&#42;cough&#42;*** vim ***&#42;cough&#42;***) to make a macro for each input type and just blow through
+writing the yaml that way, the settings are serialized as YAML in `/ProjectSettings/InputManager.asset`.
+
+Each axis will define an entry in a yaml list (which is how the settings array gets serialized).
+each item in that list will set the `n_Name` following scheme described above. It will also set
+`joyNum` to the joyStick number, `axis` to the axis number as well as `dead` and `sensitivity`(these should be set
+according to preference). This is done for once for each axis for each controller, so there will be 28 * N axis inputs
+(where N=number of configured controllers). If you want to you can just set up all 16, but I doubt your game will support local
+16 player, so you should probably limit it to the number of controllers you mean to support.
 
 
+```yaml
+  - serializedVersion: 3
+    m_Name: J1A0
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.19
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 0
+    joyNum: 1
 
-___
+```
 
-[^2]: While I was fact checking some stuff to write this post, I learned about a new unity package the ["Input System"](https://docs.unity3d.com/Packages/com.unity.inputsystem@1.0/manual/index.html) that is supposed to serve as a replacement for the "old" style `UnityEngine.Input` class... I did not know about this before I wrote all this code... (learning!)
+Each button will set `joyNum` in the same way that we did for axes as well as `m_Name` using the scheme for buttons,
+but will only need to set `positiveButton` to `joystick button %n` where again `%n` is the button number.
+Just like the axes there needs to be one for each button for each controller.
+
+```yaml
+  - serializedVersion: 3
+    m_Name: J1B0
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick button 0
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0
+    sensitivity: 0
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 1
+
+```
+
+Finally we set the null input `J%nNONE` like an axis with no sensitivity
+
+```yaml
+  - serializedVersion: 3
+    m_Name: J1NONE
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0
+    sensitivity: 0
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 1 
+
+```
+
+With that done we can detect input on any of our controller through 
+
+```cs 
+
+Input.GetAxis($"J{joyNum}A{axis}");
+Input.GetButtonDown($"J{joyNum}B{button}");
+
+```
+
+Which is great but it's still not very useful. Different controllers will have different configurations of this
+scheme. So for example a Dual Shock 4(Playstation 4) might have it's left stick horizontal and vertical axis on `A0` and `A2` respectively.
+Whereas an Xbox 360 controller might have it on `A0` and `A1`.
+In fact I've even witnessed input mappings varying for a single controller just between wireless mode and wired.
+So we need a way to define which inputs map to what buttons for a given controller. This sounds like a job for scriptable objects.
+
+
+### InputMap.cs
+
+This brings us to the first piece of source we're gonna look at the `InputMap`.
+The `InputMap` class is a Unity `ScriptableObject` that serves to map between our input scheme and an interface that we can understand
+and that makes sense. The goal here is be able to get a controllers input state with something like this:
+
+```cs
+
+var leftStickVertical = Input.GetAxis(inputMap.LeftStick.Vertical);
+
+```
+
+That looks a lot more manageable. Let's talk about how to do that.
+My initial implementation just had a string from each highlevel input name I wanted
+(LeftStick[Vertical|Horizontal, RightStick[...], L1, R1, ButtonTop, ButtonBottom, etc..) which would return the axis or button it maps to.
+However I decided that its a little bit safer to define enumerations for each possible button and axis and define the `InputMap` scriptable object to
+take those enumeration types as it's members. Let's take a look at those enums.
+
+
+```cs
+
+public enum InputAxis
+{ 
+    A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25, A26, A27, NONE
+}
+
+public enum InputButton
+{
+    B0, B1, B2, B3, B4, B5, B6, B7, B8, B9, B10, B11, B12, B13, B14, B15, B16, B17, B18, B19, NONE
+}
+
+```
+
+It's not too complicated. There are 2 different enums and each one has a value for each of the possible axes or buttons respectively.
+
+I also made a few convenience classes to help model the structure of a controller.
+
+```cs
+
+[System.Serializable]
+public class AxisInversion {
+    public bool Horizontal = false;
+    public bool Vertical = false;
+}
+
+[System.Serializable]
+public class ControlStick {
+    public InputAxis Horizontal = InputAxis.NONE;
+    public InputAxis Vertical = InputAxis.NONE;
+    public InputButton Press = InputButton.NONE;
+    public AxisInversion Inversion;
+}
+
+[System.Serializable]
+public class DPadAxes {
+    public InputAxis Horizontal = InputAxis.NONE; // 1 for right and -1 for left
+    public InputAxis Vertical = InputAxis.NONE; // 1 for up and -1 for down
+    public AxisInversion Inversion; // flip above assumptions
+}
+
+[System.Serializable]
+public class DPadButtons {
+    public InputButton Left = InputButton.NONE;
+    public InputButton Down = InputButton.NONE;
+    public InputButton Right = InputButton.NONE;
+    public InputButton Up = InputButton.NONE;
+}
+
+```
+
+These classes just wrap up the data that constitutes a single joy stick for a controller. As well as a DPad configured as either axes or 
+buttons.
+
+Finally we have the actual `InputMap` class.
+
+```cs
+
+[CreateAssetMenu(fileName = "InputMap", menuName = "ScriptableObjects/InputMap", order = 1)]
+public class InputMap : ScriptableObject
+{
+    public InputType Type;
+    public ControlStick LeftStick;
+    public ControlStick RightStick;
+    public DPadAxes DPadAxes;
+    public DPadButtons DPadButtons;
+    public InputAxis L2Analog = InputAxis.NONE;
+    public InputAxis R2Analog = InputAxis.NONE;
+    public InputButton L1 = InputButton.NONE;
+    public InputButton R1 = InputButton.NONE;
+    public InputButton L2 = InputButton.NONE;
+    public InputButton R2 = InputButton.NONE;
+    public InputButton ButtonLeft = InputButton.NONE;
+    public InputButton ButtonBottom = InputButton.NONE;
+    public InputButton ButtonRight = InputButton.NONE;
+    public InputButton ButtonTop = InputButton.NONE;
+    public InputButton Start = InputButton.NONE;
+    public InputButton Select = InputButton.NONE;
+    public InputButton Extra1 = InputButton.NONE;
+    public InputButton Extra2 = InputButton.NONE;
+    public InputButton Extra3 = InputButton.NONE;
+    public InputButton Extra4 = InputButton.NONE;
+    public InputButton Extra5 = InputButton.NONE;
+    public InputButton Extra6 = InputButton.NONE;
+    public InputButton Extra7 = InputButton.NONE;
+    public InputButton Extra8 = InputButton.NONE;
+    public InputButton Extra9 = InputButton.NONE;
+    public InputButton Extra10 = InputButton.NONE;
+    public InputButton Extra11 = InputButton.NONE;
+}
+
+```
+
+As you can see it has all the buttons and joysticks you would expect a controller to have and then some. It also makes use of a
+unity engine c# attribute `CreateAssetMenu` which will make a menu item for creating a new scriptable object asset of type `InputMap`.
+
+![Create Asset Menu](/assets/img/InputController/CreateAssetMenu.png)
+
+### InputTest.cs
+
+Cool. So now that we have an `InputMap` Scriptable Object class we can configure a new `InputMap` asset for our controller.
+The best way to figure out how a given controller maps to unity's input system is to just plug it in and
+see which inputs it's triggering. Luckily we've already done all the work of wiring up every single possible input to a 
+named and configured input setting so all we need is a little test script to check every single input setting and 
+log which input is firing.
+
+Let's see what that looks like.
+
+```cs
+
+[ExecuteInEditMode]
+public class InputTest : MonoBehaviour
+{
+    public const int numAxes = 28;
+    public const int numButtons = 21;
+    public bool testAxes = true;
+    public bool testButtons = true;
+    public bool[] Axes = new bool[numAxes];
+    public bool[] Buttons = new bool[numButtons];
+
+    void Update()
+    {
+        var name = "J1";
+        if (testAxes)
+        {
+            for (int i = 0; i < numAxes; ++i)
+            {
+                if (Axes[i])
+                {
+                    var axisName = $"{name}A{i}";
+                    var axis = Input.GetAxis(axisName);
+                    if (axis != 0)
+                    {
+                        Debug.Log($"A{i}: {axis}");
+                    }
+                }
+            }
+        }
+        if (testButtons)
+        {
+            for (int i = 0; i < numButtons; ++i)
+            {
+                if (Buttons[i])
+                {
+                    var buttonName = $"{name}B{i}";
+                    if (Input.GetButtonDown(buttonName))
+                    {
+                        Debug.Log(buttonName);
+                    }
+                }
+            }
+        }
+    }
+}
+
+```
+
+As you can see this script just checks every single input possible and outputs it's name (using the scheme we devised) when it's triggered.
+Using this script it's easy to figure out the layout of any controller, all we have to do is attach the script to an empty game object in our scene,
+plug in our controller and start pressing buttons. The names of the input should appear in the console window when the corresponding
+button is pressed [^3].
+
+In the picture below you can see that I've named the Game Object that our script `InputTest.cs` is attached to "controller" and if you look at the
+inspector you can see the array of axis inputs as well as our booleans for testing buttons and axis
+(not pictured but further down the inspector's scroll area is the array of button inputs, axis 4 and 5 are disabled because they are the
+L2 and R2 analog inputs on the wireless Dual Shock 4 controller that I'm using.
+
+![Input Test Example](/assets/img/InputController/InputTest.png)
+
+### Configuring an InputMap asset
+
+Now we can piece together our input mapping for our controller using the procedure we outlined above. These are the steps:
+
+1. Use the Asset menu to create a new input map asset. ( Assets > Create > Scriptable Objects > Input Map)
+2. Name your input map accordingly (I'm using a wireless Dual Shock 4 controller so I'm naming mine `DualShock4Wireless.asset`
+I'm differentiating wired and wireless because I know that the mapping different depending on the mode.
+(I know it's stupid, that's why we're doing all this))
+3. Click on the new asset to view it in the inspector and set the inputs to the observed name.
+
+![Input Map Configuration Example](/assets/img/InputController/InputMapConfiguration.png)
+
+---
+
+[^1]: While I was fact checking some stuff to write this post, I learned about a new unity package the ["Input System"](https://docs.unity3d.com/Packages/com.unity.inputsystem@1.0/manual/index.html) that is supposed to serve as a replacement for the "old" style `UnityEngine.Input` class... I did not know about this before I wrote all this code... (learning!)
+[^2]: The Joysticks are numbered 1-16, this means you can have maximum 16 joysticks on one system. Similarly the the axes are numbered 0-27 (for whatever reason the UI for the input settings has them X-Axis, Y-Axis, 1, 2, ... 28. But if you look at the underlying serialization file (`InputManager.asset`) the axes are 0 indexed (they start at 0 and go to N-1).). Lastly unity has cryptically set the maximum number of joystick(controller) buttons to 20, starting 0 and accessed by setting the "Positive Button" setting to "joystick button %b" where again %b is the joystick number in zero indexed fashion.
+[^3]: You will probably have 2 axes that output `-1` every single frame, this is almost certainly L2 and R2. Most controllers have their L2 and R2 configured on 2 inputs, one emitting an analog signal which varies by the amount the button is depressed, the other a digital signal that is active only when the button is completely depressed (bottomed out).
+

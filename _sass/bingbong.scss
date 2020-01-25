@@ -225,3 +225,12 @@ a {
   left: 0px;
 }
 
+.header {
+    padding-top:1%;
+    padding-left:10%;
+    background-color: $background-color;
+    top:0;
+    // position: absolute;
+    position: fixed;
+    width: 100%;
+}
