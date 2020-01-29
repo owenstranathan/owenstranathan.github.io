@@ -11,7 +11,7 @@ I have a pet [dog](/assets/img/blue.JPG). She's a good girl.
 
 
 This site exists to host my [CV](/assets/extra/owenstranathanCV.pdf),
-a [blog](/archive[) I don't use much,
+a [blog](/archive) I don't use much,
 as well as links to my [github](https://github.com/owenstranathan) and
 [linkedin](https://www.linkedin.com/in/owenstranathan)
 
