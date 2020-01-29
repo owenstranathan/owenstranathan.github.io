@@ -412,8 +412,8 @@ I personally have split the code that achieves this into 2 source files one call
 an input controller, and one actually called `InputController.cs` that does the actual event disbatch. I do this because I like my configuration
 to be in an `ExecuteInEditMode` MonoBehavior.
 
-Before I get into that there's something in the input map that I sort of skipped. That is the `InputType` enum. This enum is incomplete. 
-When you make 
+Before I get into that there's something in the input map that I sort of skipped. That is the `InputType` enum, which is defined
+at the top of the `InputMap.cs` file. This enum is incomplete. When you make a new InputMap you'll need
 
 ---
 
