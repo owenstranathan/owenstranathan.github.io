@@ -10,7 +10,6 @@ categories: [game-programming]
 [Just get to the code bud.](#succinct-description-of-goals)
 
 
-
 I'm 26 years old. That places me firmly in the console only generation. What that means is that I started gaming well after the proliferation and success of game consoles.  
 My fist console was the Super Nintendo (actually it was my brother Ian's), followed by a PlayStation(also Ian's),
 and then a Nintendo GameCube(you guessed it... Ian's) and an Xbox(Ian and I both had one), then an Xbox 360(Mine!), Wii(Ian's, but was a gift from me),
@@ -401,11 +400,24 @@ I'm differentiating wired and wireless because I know that the mapping different
 (I know it's stupid, that's why we're doing all this))
 3. Click on the new asset to view it in the inspector and set the inputs to the observed name.
 
+Mine looks like this [^4]:  
 ![Input Map Configuration Example](/assets/img/InputController/InputMapConfiguration.png)
+
+
+### InputConfiguration.cs & InputController.cs
+
+Next we are gonna build out the system that will allow our behaviors to receive events from our input system
+but writing functions like `OnLeftStick` or `OnButtonDown`. To do this we're going to be making use of the C# event/delegate system.
+I personally have split the code that achieves this into 2 source files one called `InputConfiguration.cs` that holds all the variables and state for
+an input controller, and one actually called `InputController.cs` that does the actual event disbatch. I do this because I like my configuration
+to be in an `ExecuteInEditMode` MonoBehavior.
+
+Before I get into that there's something in the input map that I sort of skipped. That is the `InputType` enum. This enum is incomplete. 
+When you make 
 
 ---
 
 [^1]: While I was fact checking some stuff to write this post, I learned about a new unity package the ["Input System"](https://docs.unity3d.com/Packages/com.unity.inputsystem@1.0/manual/index.html) that is supposed to serve as a replacement for the "old" style `UnityEngine.Input` class... I did not know about this before I wrote all this code... (learning!)
 [^2]: The Joysticks are numbered 1-16, this means you can have maximum 16 joysticks on one system. Similarly the the axes are numbered 0-27 (for whatever reason the UI for the input settings has them X-Axis, Y-Axis, 1, 2, ... 28. But if you look at the underlying serialization file (`InputManager.asset`) the axes are 0 indexed (they start at 0 and go to N-1).). Lastly unity has cryptically set the maximum number of joystick(controller) buttons to 20, starting 0 and accessed by setting the "Positive Button" setting to "joystick button %b" where again %b is the joystick number in zero indexed fashion.
 [^3]: You will probably have 2 axes that output `-1` every single frame, this is almost certainly L2 and R2. Most controllers have their L2 and R2 configured on 2 inputs, one emitting an analog signal which varies by the amount the button is depressed, the other a digital signal that is active only when the button is completely depressed (bottomed out).
-
+[^4]: I've mentioned this a couple of times now, but these configurations vary a lot. For example my Dual Shock 4 needs to be configured differently for wireless mode and wired mode, it also need to be configured differently for different operating systems. I use a windows machine for most of my development purposes, but I often use my mac for these write ups so I have to have different configurations for each OS and wireless and wired mode. It's crazy.

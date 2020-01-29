@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: "en" }}">
 
-{% include head_two.html %}
+{% include head.html %}
 <body>
     {% include menu.html class="header" %}
-	<div class=date>{{ page.date | date: '%A, %B %e, %Y' }} </div>
-	<br/>
-	<div class=categories>
-			categories: 
-			{% for category in page.categories %}
-			<a href="/archive?category={{category}}">{{category}}</a>
-			{% endfor %}
-	</div>
-	{{ content }}
-{% include menu.html class="footer" %}
+    <div class="main">
+        {% include mobile-warning.html %}
+	    <div class=date>{{ page.date | date: '%A, %B %e, %Y' }} </div>
+	    <br/>
+	    <div class=categories>
+	    		categories: 
+	    		{% for category in page.categories %}
+	    		<a href="/archive?category={{category}}">{{category}}</a>
+	    		{% endfor %}
+	    </div>
+	    {{ content }}
+    </div>
 </body>
 </html>

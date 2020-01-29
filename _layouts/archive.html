@@ -1,44 +1,47 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: "en" }}">
 
-{% include head_two.html %}
+{% include head.html %}
 
 <body>
     {% include menu.html class="header" %}
-	<h1> Archive </h1>
-	<div id="all" style="display:none">
-		<div class=categories>category: none</div>
-		<ul style="list-style:none">
-		    {% assign sorted = (site.posts | sort: 'date') | reverse %}
-		    {% for post in sorted %}
-				{% if post.path contains 'code' %}
-				{% else %}
-					{% capture day %}{{ post.date | date: '%Y-%m-%d' }}{% endcapture %}
-			    		<li>
-						<a href=" {{ post.url }} ">{{day}} -- {{ post.title }}</a>
-					</li>
-				{% endif %}
-		    {% endfor %}
-		</ul>
-	</div>
-	{% for category in site.categories %}
-		<div id="{{category[0]}}" style="display:none">
-			<div class=categories>category: {{category[0]}}</div>
-			<ul style="list-style:none">
-				{% assign sorted = (category[1]| sort: 'date') | reverse %}
-			    {% for post in sorted %}
-					{% if post.path contains 'code' %}
-					{% else %}
-						{% capture day %}{{ post.date | date: '%Y-%m-%d' }}{% endcapture %}
-			    			<li>
-							<a href=" {{ post.url }} ">{{day}} -- {{ post.title }}</a>
-						</li>
-					{% endif %}
-			    {% endfor %}
-			</ul>
-		</div>
-	{% endfor %}
-
+    <div class="main">
+	    <h1> Archive </h1>
+	    <div id="all" style="display:none">
+	    	<div class=categories>category: none</div>
+	    	<ul style="list-style:none">
+	    	    {% assign sorted = (site.posts | sort: 'date') | reverse %}
+	    	    {% for post in sorted %}
+	    			{% if post.path contains 'code' %}
+	    			{% else %}
+	    				{% capture day %}{{ post.date | date: '%Y-%m-%d' }}{% endcapture %}
+	    		    		<li>
+	    					<a href=" {{ post.url }} ">{{day}} -- {{ post.title }}</a>
+                            <br/>
+	    				</li>
+	    			{% endif %}
+	    	    {% endfor %}
+	    	</ul>
+	    </div>
+	    {% for category in site.categories %}
+	    	<div id="{{category[0]}}" style="display:none">
+	    		<div class=categories>category: {{category[0]}}</div>
+	    		<ul style="list-style:none">
+	    			{% assign sorted = (category[1]| sort: 'date') | reverse %}
+	    		    {% for post in sorted %}
+	    				{% if post.path contains 'code' %}
+	    				{% else %}
+	    					{% capture day %}{{ post.date | date: '%Y-%m-%d' }}{% endcapture %}
+	    		    			<li>
+	    						<a href=" {{ post.url }} ">{{day}} -- {{ post.title }}</a>
+                                <br/>
+	    					</li>
+	    				{% endif %}
+	    		    {% endfor %}
+	    		</ul>
+	    	</div>
+	    {% endfor %}
+    </div>
 </body>
   	<script src="assets/js/checkparams.js"></script>
 
