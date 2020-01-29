@@ -10,23 +10,27 @@ categories: [game-programming]
 [Just get to the code bud.](#succinct-description-of-goals)
 
 
-I'm 26 years old. That places me firmly in the console only generation. What that means is that I started gaming well after the proliferation and success of game consoles.  
-My fist console was the Super Nintendo (actually it was my brother Ian's), followed by a PlayStation(also Ian's),
-and then a Nintendo GameCube(you guessed it... Ian's) and an Xbox(Ian and I both had one), then an Xbox 360(Mine!), Wii(Ian's, but was a gift from me),
-PlayStation 3(Mine!) and most recently a Switch and PlayStation 4(Mine, but was a gift from Ian).  
-It wasn't until after the Wii/Xbox 360/PlayStation 3 generation of consoles that I built my first gaming PC when I was about 17 years old 
-(way back in 2010).  
-So what does all this have to do with anything? Well besides illustraiting the growth, friendship and love of a beautiful brotherhood.
-My history with consoles separates me (and others like me) from the people that have played PC games their whole lives,  
-in that I am most comfortable playing video games using a game controller.  
+I'm 26 years old. That places me firmly in the console only generation. What that means is that I started gaming well after the
+proliferation and success of game consoles. My fist console was the Super Nintendo (actually it was my brother Ian's),
+followed by a PlayStation(also Ian's), and then a Nintendo GameCube(you guessed it... Ian's) and an Xbox(Ian and I both had one),
+then an Xbox 360(Mine!), Wii(Ian's, but was a gift from me), PlayStation 3(Mine!) and most recently a 
+Switch and PlayStation 4(Mine, but was a gift from Ian). It wasn't until after the Wii/Xbox 360/PlayStation 3 generation of consoles that 
+I built my first gaming PC when I was about 17 years old (way back in 2010).
 
-This has been a persistent problem for me with prototyping games. When you're prototyping games you want to move as quickly as possible,  
-just implementing the bare minimum to actualize an idea to see if it's worth exploring more.  
-However in my experience the unity input system does not make it easy to configure controllers quickly and efficiently.  
-This makes it hard for me while I'm prototyping because I think about games with controller input in mind, and I actually have to make extra mental effort to think about how to sensibly  
-map controls to mouse and keyboard input. This is a problem because if my prototype feels weird because the control scheme is comfortable or intuitive (mouse and keyboard)  
-then its distracting me from the good parts of the idea that I want to explore further.  
-So to fix this I decided to take a moderately deep dive into the unity input system and I've worked out a fairly simple yet powerful input management scheme.
+So what does all this have to do with anything? Well besides illustraiting the growth, friendship and love of a beautiful brotherhood.
+My history with consoles separates me (and others like me) from the people that have played PC games their whole lives,
+in that I am most comfortable playing video games using a game controller.
+
+This has been a persistent problem for me with prototyping games. When you're prototyping games you want to move as quickly as possible,
+just implementing the bare minimum to actualize an idea to see if it's worth exploring more.
+However in my experience the unity input system does not make it easy to configure controllers quickly and efficiently.
+This makes it hard for me while I'm prototyping because I think about games with controller input in mind,
+and I actually have to make extra mental effort to think about how to sensibly
+map controls to mouse and keyboard input. This is a problem because if my prototype feels weird because the control scheme **is not**
+comfortable or intuitive (mouse and keyboard) then its distracting me from the good parts of the idea that I want focus on and develop.
+
+My most recent encounter with this problem took my on a moderately deep dive into the unity input system.
+The result of which has turned out to be a fairly simple yet powerful input management scheme.
 
 
 ### Succinct Description of Goals:
@@ -77,12 +81,12 @@ There are 4 primary source files and 1 `.asset` file of interest in this system 
 
 ```
 
-### `UnityEngine.Input` and InputManager.asset [^1]
+### `UnityEngine.Input` and the InputManager Asset [^1]
 
-First let's talk about the unity input system as it exists today. [unity documentation about "Convential Game Input"](https://docs.unity3d.com/Manual/ConventionalGameInput.html).
+First let's talk about the unity input system as it exists today. [Relevant unity documentation about "Conventional Game Input"](https://docs.unity3d.com/Manual/ConventionalGameInput.html).
 
 Super high level, the way that it works is, Unity interfaces with the OS to detect events coming from Input devices.
-It translates those system level input events into Unity input values accessable through the `Input` class.
+It translates those system level input events into Unity input values accessible through the `Input` class.
 All input at the unity level can be thought of as a "Virtual Axis" what that means is every input can take a value between 1 and -1 with 0 meaning
 no input. This makes lots of sense for say a joystick, but it's a little less intuitive for almost all the other buttons on a controller.
 The reason that the inputs are configured as virtual axes is so you can define your own -1 to 1 interval using any buttons you like. This is
