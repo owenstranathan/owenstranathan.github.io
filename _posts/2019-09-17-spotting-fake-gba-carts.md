@@ -1,6 +1,6 @@
 ---
 layout: post
-date: 2020-01-02
+date: 2019-09-17
 categories: [personal]
 images:
   - "https://i.imgur.com/3RIp0ap.jpg"
