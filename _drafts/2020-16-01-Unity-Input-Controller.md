@@ -125,6 +125,7 @@ according to preference). This is done for once for each axis for each controlle
 
 
 ```yaml
+
   - serializedVersion: 3
     m_Name: J1A0
     descriptiveName: 
@@ -149,6 +150,7 @@ but will only need to set `positiveButton` to `joystick button %n` where again `
 Just like the axes there needs to be one for each button for each controller.
 
 ```yaml
+
   - serializedVersion: 3
     m_Name: J1B0
     descriptiveName: 
@@ -220,7 +222,7 @@ var leftStickVertical = Input.GetAxis(inputMap.LeftStick.Vertical);
 
 That looks a lot more manageable. Let's talk about how to do that.
 My initial implementation just had a string from each highlevel input name I wanted
-(LeftStick[Vertical|Horizontal, RightStick[...], L1, R1, ButtonTop, ButtonBottom, etc..) which would return the axis or button it maps to.
+(LeftStick[Vertical|Horizontal], RightStick[...], L1, R1, ButtonTop, ButtonBottom, etc..) which would return the axis or button it maps to.
 However I decided that its a little bit safer to define enumerations for each possible button and axis and define the `InputMap` scriptable object to
 take those enumeration types as it's members. Let's take a look at those enums.
 
@@ -390,7 +392,7 @@ button is pressed [^3].
 In the picture below you can see that I've named the Game Object that our script `InputTest.cs` is attached to "controller" and if you look at the
 inspector you can see the array of axis inputs as well as our booleans for testing buttons and axis
 (not pictured but further down the inspector's scroll area is the array of button inputs, axis 4 and 5 are disabled because they are the
-L2 and R2 analog inputs on the wireless Dual Shock 4 controller that I'm using.
+L2 and R2 analog inputs on the wireless Dual Shock 4 controller that I'm using.[^3]
 
 ![Input Test Example](/assets/img/InputController/InputTest.png)
 
@@ -400,28 +402,170 @@ Now we can piece together our input mapping for our controller using the procedu
 
 1. Use the Asset menu to create a new input map asset. ( Assets > Create > Scriptable Objects > Input Map)
 2. Name your input map accordingly (I'm using a wireless Dual Shock 4 controller so I'm naming mine `DualShock4Wireless.asset`
-I'm differentiating wired and wireless because I know that the mapping different depending on the mode.
+I'm differentiating wired and wireless because I happen to know that the mapping will be different depending on the mode.
 (I know it's stupid, that's why we're doing all this))
-3. Click on the new asset to view it in the inspector and set the inputs to the observed name.
+3. Click on the new asset to view it in the inspector.
+4. Play your project and press buttons to observe which name they have.
+5. Record those names accordingly in your InputMap asset.
 
-Mine looks like this [^4]:  
+Mine looks like this [^4]:
+
 ![Input Map Configuration Example](/assets/img/InputController/InputMapConfiguration.png)
 
 
-### InputConfiguration.cs & InputController.cs
+### InputController.cs
 
 Next we are gonna build out the system that will allow our behaviors to receive events from our input system
-but writing functions like `OnLeftStick` or `OnButtonDown`. To do this we're going to be making use of the C# event/delegate system.
-I personally have split the code that achieves this into 2 source files one called `InputConfiguration.cs` that holds all the variables and state for
-an input controller, and one actually called `InputController.cs` that does the actual event disbatch. I do this because I like my configuration
-to be in an `ExecuteInEditMode` MonoBehavior.
+but writing functions like `OnLeftStick` or `OnButtonDown`. To do this we're going to be making use of the C# event/delegate system (pattern?).
 
-Before I get into that there's something in the input map that I sort of skipped. That is the `InputType` enum, which is defined
-at the top of the `InputMap.cs` file. This enum is incomplete. When you make a new InputMap you'll need
+This is were the real magic of our system is going to take place.
+
+To kick things off let's take a gander at those 2 enums at the top of the file.
+
+```cs
+
+public enum ControllerNumber
+{
+	J1 = 1,
+	J2 = 2
+}
+
+public enum Button
+{
+	DPadLeft,
+	DPadDown,
+	DPadRight,
+	DPadUp,
+	ButtonLeft, // X on Xbox, Square on PS4, Y on Switch, etc.
+	ButtonBottom, // A on Xbox, X on PS4, B on Switch, etc.
+	ButtonRight, // B on Xbox, Circle on PS4, A on Switch, etc.
+	ButtonTop, // Y on Xbox, Triangle on PS4, X on Switch, etc.
+	L1, // Left Bumper
+	R1, // Right Bumper
+	L2, // Left Trigger (digital, use OnLeftTrigger for analog)
+	R2, // Right Trigger (digital, use OnRightTrigger for analog)
+	L3, // Left stick
+	R3, // Right stick
+	Start, // What was classically start (Right center button)
+	Select, //  What was classically select (Left center button)
+			// All Extras are for home button or other system specific weirdness
+	Extra1, Extra2, Extra3, Extra4, Extra5, Extra6, Extra7, Extra8, Extra9, Extra10
+}
+
+```
+
+I think these are fairly self explanitory, but let's talk about it.
+
+Fhe first enum `ControllerNumber` is just what is sounds like the number of a controller so if your on joystick 1 (`J1` in our naming scheme) then you're
+`J1` in the enum. Technically you can have more than 2 joysticks on a system but I don't need more than 2 and I don't feel like copy pastaing all that 
+configuration for 16 controllers or whatever it is.
+
+Next is the `Button` enum, this will give us an identifier to use later to pass to our `ButtonDown` event delegate.
+Since buttons don't have any analog input data (there's only 2 states for a button, pressed or not pressed) we only need to
+attribute a name/id to a button, hence this enum.
+
+```cs
+
+
+public class InputController : MonoBehaviour
+{
+	public ControllerNumber Number;
+    public InputMap InputMap;
+
+	// Delegates
+	public delegate void Stick(float horizontal, float vertical);
+	public delegate void DPad(float horizontal, float vertical);
+	public delegate void AnalogTrigger(float activation);
+	public delegate void ButtonDown(Button button);
+
+	// Events
+	public event Stick OnLeftStick;
+	public event Stick OnRightStick;
+	public event AnalogTrigger OnLeftTrigger;
+	public event AnalogTrigger OnRightTrigger;
+	public event DPad OnDPad;
+	public event ButtonDown OnButtonDown;
+
+	// ...see below...
+
+}
+
+```
+
+To start off we give each controller a number and an InputMap.
+What comes next a very simple event listener pattern using builtin c# events and delegates.[^5]
+What I have done is for each distinct event I feel a controller might have I've defined a delegate, which is
+like the signature (function type) of a function.
+
+I then define the event as being one of these delegates. So in the example I have defined a `Stick` delegate taking 2 floats and returning void,
+which both the `OnLeftStick` and `OnRightStick` events use, this means any function with the same signature(type) as
+the `Stick` delegate definition can listen to the events `OnLeftStick` or `OnRightStick`. What this means is **any** function that
+takes 2 floats and returns void can listen on the `OnLeftStick` or `OnRightStick` event. This will make more sense hopefully
+when we look at the InputListener behavior a little later on.
+
+```cs
+
+public class InputController : MonoBehaviour
+{
+	// ...see above...
+
+	void Start()
+	{
+        if(InputMap == null) {
+            Debug.LogError("You must set the InputMap attribute!");
+        }
+	}
+
+	void Update()
+	{
+		var name = Number.ToString();
+
+		var LeftStickH = (
+			(InputMap.LeftStick.Inversion.Horizontal ? -1 : 1)
+			*
+			Input.GetAxis($"{name}{InputMap.LeftStick.Horizontal}")
+		);
+		var LeftStickV = (
+			(InputMap.LeftStick.Inversion.Vertical ? -1 : 1)
+			*
+			Input.GetAxis($"{name}{InputMap.LeftStick.Vertical}")
+		);
+		if (LeftStickH != 0 || LeftStickV != 0)
+		{
+			OnLeftStick?.Invoke(LeftStickH, LeftStickV);
+		}
+		// ... repeated for right stick, and depad axis ...
+		var L2Analog = Input.GetAxis($"{name}{InputMap.L2Analog}");
+		if (L2Analog != 0) { OnLeftTrigger?.Invoke(L2Analog); }
+		var R2Analog = Input.GetAxis($"{name}{InputMap.R2Analog}");
+		if (R2Analog != 0) { OnRightTrigger?.Invoke(R2Analog); }
+
+		if (Input.GetButtonDown($"{name}{InputMap.ButtonLeft}")) {
+			OnButtonDown?.Invoke(Button.ButtonLeft);
+		}
+		if (Input.GetButtonDown($"{name}{InputMap.ButtonBottom}")) {
+			OnButtonDown?.Invoke(Button.ButtonBottom);
+		}
+		if (Input.GetButtonDown($"{name}{InputMap.ButtonRight}")) {
+			OnButtonDown?.Invoke(Button.ButtonRight);
+		}
+		// ... repeat for every single button ...
+	}
+}
+
+```
+
+Sorry about that split line multiplication but I'm trying to be kind to people with small screens (me on a 13" MBP).
+
+So here you see we just go and check every input using our cool new scheme and invoke a corresponding event, any delegates listening
+to that event will be called. Pretty sweet! But wait we still need our delegates in our behavior.
+
+
 
 ---
 
 [^1]: While I was fact checking some stuff to write this post, I learned about a new unity package the ["Input System"](https://docs.unity3d.com/Packages/com.unity.inputsystem@1.0/manual/index.html) that is supposed to serve as a replacement for the "old" style `UnityEngine.Input` class... I did not know about this before I wrote all this code... (learning!)
 [^2]: The Joysticks are numbered 1-16, this means you can have maximum 16 joysticks on one system. Similarly the the axes are numbered 0-27 (for whatever reason the UI for the input settings has them X-Axis, Y-Axis, 1, 2, ... 28. But if you look at the underlying serialization file (`InputManager.asset`) the axes are 0 indexed (they start at 0 and go to N-1).). Lastly unity has cryptically set the maximum number of joystick(controller) buttons to 20, starting 0 and accessed by setting the "Positive Button" setting to "joystick button %b" where again %b is the joystick number in zero indexed fashion.
 [^3]: You will probably have 2 axes that output `-1` every single frame, this is almost certainly L2 and R2. Most controllers have their L2 and R2 configured on 2 inputs, one emitting an analog signal which varies by the amount the button is depressed, the other a digital signal that is active only when the button is completely depressed (bottomed out).
-[^4]: I've mentioned this a couple of times now, but these configurations vary a lot. For example my Dual Shock 4 needs to be configured differently for wireless mode and wired mode, it also need to be configured differently for different operating systems. I use a windows machine for most of my development purposes, but I often use my mac for these write ups so I have to have different configurations for each OS and wireless and wired mode. It's crazy.
+[^4]: I've mentioned this a couple of times now, but these configurations vary a lot. For example my Dual Shock 4 needs to be configured differently for wireless mode and wired mode, it also needs to be configured differently for different operating systems. I use a windows machine for most of my development purposes, but I often use my macbook for these write ups so I have to have different configurations for each OS and wireless and wired mode. It's crazy.
+[^5]: I've never read **one** article or blog that I thought "Wow, what a succinct description of delegates and events in C#". So I'm not going to link anything like that unfortunately. However I find that when trying to understand something about C# the best place to start is on the microsoft developer docs.[here is the developer docs for delegates&events](https://docs.microsoft.com/en-us/dotnet/csharp/delegates-overview)
