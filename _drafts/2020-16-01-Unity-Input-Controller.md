@@ -558,9 +558,20 @@ public class InputController : MonoBehaviour
 Sorry about that split line multiplication but I'm trying to be kind to people with small screens (me on a 13" MBP).
 
 So here you see we just go and check every input using our cool new scheme and invoke a corresponding event, any delegates listening
-to that event will be called. Pretty sweet! But wait we still need our delegates in our behavior.
+to that event will be called. Pretty sweet! But wait we still need our delegates that will listen to these events in our behavior.
+
+Let's see what that looks like right now.
 
 
+### InputListener.cs
+
+Before I show you, I want to emphasize that you don't **need** this class, as long as you understand events in .NET you can just subscript to the 
+events in our controller behavior on your own time and at your own discretion. That said this base class provides a nice illustration of how
+this can be done.
+
+```cs
+
+```
 
 ---
 
