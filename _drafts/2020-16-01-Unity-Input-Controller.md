@@ -565,13 +565,48 @@ Let's see what that looks like right now.
 
 ### InputListener.cs
 
-Before I show you, I want to emphasize that you don't **need** this class, as long as you understand events in .NET you can just subscript to the 
-events in our controller behavior on your own time and at your own discretion. That said this base class provides a nice illustration of how
+Before I show you, I want to emphasize that you don't **need** this class, as long as you understand events in .NET you can just subscribe to the 
+events in InputController behavior on your own time and at your own discretion. That said this base class provides a nice illustration of how
 this can be done.
 
 ```cs
 
+public class InputListener : MonoBehaviour
+{
+    public InputController InputController;
+
+    public virtual void Subscribe(InputController inputController)
+    {
+        inputController.OnLeftStick += OnLeftStick;
+        inputController.OnRightStick += OnRightStick;
+        inputController.OnLeftTrigger += OnLeftTrigger;
+        inputController.OnRightTrigger += OnLeftTrigger;
+        inputController.OnDPad += OnDPad;
+        inputController.OnButtonDown += OnButtonDown;
+
+    }
+
+    public virtual void Unsubscribe(InputController inputController)
+    {
+        inputController.OnLeftStick -= OnLeftStick;
+        inputController.OnRightStick -= OnRightStick;
+        inputController.OnLeftTrigger -= OnLeftTrigger;
+        inputController.OnRightTrigger -= OnLeftTrigger;
+        inputController.OnDPad -= OnDPad;
+        inputController.OnButtonDown -= OnButtonDown;
+    }
+
+    public virtual void OnLeftStick(float horizontal, float vertical) { }
+    public virtual void OnRightStick(float horizontal, float vertical) { }
+    public virtual void OnLeftTrigger(float activation) { }
+    public virtual void OnRightTrigger(float activation) { }
+    public virtual void OnDPad(float horizontal, float vertical) { }
+    public virtual void OnButtonDown(Button button) { }
+
+}
+
 ```
+
 
 ---
 
