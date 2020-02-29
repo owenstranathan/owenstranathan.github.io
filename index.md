@@ -1,6 +1,6 @@
 ---
 layout: about
-image: /assets/img/owieowie.jpg
+image: /assets/img/owiepokemyeye.jpg
 ---
 
 My name is Owen and I'm a programmer.
@@ -8,7 +8,6 @@ My name is Owen and I'm a programmer.
 I spend my time exploring my interests. I enjoy programming, making music, riding and repairing bicycles, writing in almost all forms, and game development.
 
 I have a pet [dog](/assets/img/blue.JPG). Her name is Blue and she's a good dog.
-
 
 This site exists to host my [CV](/assets/extra/owenstranathanCV.pdf),
 a [blog](/archive),
