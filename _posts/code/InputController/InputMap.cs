@@ -2,14 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum InputType
-{
-    PlayStation4Wired,
-    PlayStation4Wireless,
-}
-
 public enum InputAxis
-{ 
+{
     A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25, A26, A27, NONE
 }
 
@@ -34,9 +28,9 @@ public class ControlStick {
 
 [System.Serializable]
 public class DPadAxes {
-    public InputAxis Horizontal = InputAxis.NONE; // 1 for right and -1 for left
-    public InputAxis Vertical = InputAxis.NONE; // 1 for up and -1 for down
-    public AxisInversion Inversion; // flip above assumptions
+    public InputAxis Horizontal = InputAxis.NONE; // assuming 1 for right and -1 for left
+    public InputAxis Vertical = InputAxis.NONE; // assuming 1 for up and -1 for down
+    public AxisInversion Inversion; // flip assumption
 }
 
 [System.Serializable]
@@ -48,16 +42,17 @@ public class DPadButtons {
 }
 
 
-[CreateAssetMenu(fileName = "InputMap", menuName = "ScriptableObjects/InputMap", order = 1)]
+[CreateAssetMenu(fileName = "InputMap", menuName = "ScriptableObjects/Input Map", order = 1)]
 public class InputMap : ScriptableObject
 {
-    public InputType Type;
+    public string Name;
     public ControlStick LeftStick;
     public ControlStick RightStick;
     public DPadAxes DPadAxes;
-    public DPadButtons DPadButtons;
     public InputAxis L2Analog = InputAxis.NONE;
     public InputAxis R2Analog = InputAxis.NONE;
+
+    public DPadButtons DPadButtons;
     public InputButton L1 = InputButton.NONE;
     public InputButton R1 = InputButton.NONE;
     public InputButton L2 = InputButton.NONE;

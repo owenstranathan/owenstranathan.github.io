@@ -2,7 +2,7 @@
   <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1" name="viewport" />
   <!--SEO -->
-  <title>owenstranathan.com: {{page.title}}</title>
+  <title>{% if page.title == blank or page.title == nil %} owenstranathan.com {% else %} {{page.title}} {% endif %}</title>
   <meta property="og:title" content="owenstranathan" />
   <meta property="og:locale" content="en_US" />
   <meta name="description" content="" />

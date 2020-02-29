@@ -13,13 +13,15 @@ categories: [game-programming]
 I'm 26 years old. That places me firmly in the console only generation. What that means is that I started gaming well after the
 proliferation and success of game consoles. My fist console was the Super Nintendo (actually it was my brother Ian's),
 followed by a PlayStation(also Ian's), and then a Nintendo GameCube(you guessed it... Ian's) and an Xbox(Ian and I both had one),
-then an Xbox 360(Mine!), Wii(Ian's, but was a gift from me), PlayStation 3(Mine!) and most recently a 
-Switch and PlayStation 4(Mine, but was a gift from Ian). It wasn't until after the Wii/Xbox 360/PlayStation 3 generation of consoles that 
-I built my first gaming PC when I was about 17 years old (way back in 2010).
+then an Xbox 360(Mine!), Wii(Ian's, but it was a gift from me), PlayStation 3(Mine!) and most recently a 
+Nintento Switch and PlayStation 4(Mine, but it was a gift from Ian & my wife). As you can see I didn't play any PC games growing up
+(other than Diablo and Starcraft). 
 
 So what does all this have to do with anything? Well besides illustraiting the growth, friendship and love of a beautiful brotherhood.
 My history with consoles separates me (and others like me) from the people that have played PC games their whole lives,
-in that I am most comfortable playing video games using a game controller.
+in that I am most comfortable playing video games using a game controller. In fact it wasn't until after the Wii/Xbox 360/PlayStation 3 generation of consoles that 
+I built my first gaming PC, I was 16 years old. So my gaming brain was already mostly developed and it understood joysticks and buttons and analog triggers
+a lot better than mice and keyboards. And this has not changed in the interveneing 10 years since I build that first PC and started to get into PC gaming.
 
 This has been a persistent problem for me with prototyping games. When you're prototyping games you want to move as quickly as possible,
 just implementing the bare minimum to actualize an idea to see if it's worth exploring more.
@@ -29,18 +31,19 @@ and I actually have to make extra mental effort to think about how to sensibly
 map controls to mouse and keyboard input. This is a problem because if my prototype feels weird because the control scheme **is not**
 comfortable or intuitive (mouse and keyboard) then its distracting me from the good parts of the idea that I want focus on and develop.
 
-My most recent encounter with this problem took my on a moderately deep dive into the unity input system.
+My most recent encounter with this problem took me on a moderately deep dive into the unity input system.
 The result of which has turned out to be a fairly simple yet powerful input management scheme.
 
 
 ### Succinct Description of Goals:
+I want:
 
-1. I want game controller input in my unity prototype.
-2. I want it to be easily and sensibly configurable (which by default in Unity it is not).
-3. I want to be able to swap what kind of controller(PlayStation 4, Xbox 360, Switch Pro, etc.) I'm using with very little fuss and reconfiguration.
-4. If possible I would like it to be possible for my behaviors plug into an input event system to allow them to detect input without lot's of `if(Input.GetButtonDown(....))` type code all over the place.
+1. game controller input in my unity prototype.
+2. controller input to be easily and sensibly configurable (which by default in Unity it is not).
+3. to be able to swap what kind of controller(PlayStation 4, Xbox 360, Switch Pro, etc.) I'm using with very little fuss and reconfiguration.
+4. my behaviors to plug into an input event system to allow them to detect input without lot's of `if(Input.GetButtonDown(....))` type code all over the place.
 
-So without further ado, let's get started... Haha just kidding, here's the code first.
+Before I go rambling more, have a look at the code.
 
 # Code
 
@@ -53,17 +56,15 @@ There are 4 primary source files and 1 `.asset` file of interest in this system 
 
 ```
 
+**InputTest.cs**
+```cs
+{% include_relative code/InputController/InputTest.cs %}
+```
+
 **InputController.cs**
 ```cs
 
 {% include_relative code/InputController/InputController.cs %}
-
-```
-
-**InputConfiguration.cs**
-```cs
-
-{% include_relative code/InputController/InputConfiguration.cs %}
 
 ```
 
@@ -426,30 +427,30 @@ To kick things off let's take a gander at those 2 enums at the top of the file.
 
 public enum ControllerNumber
 {
-	J1 = 1,
-	J2 = 2
+    J1 = 1,
+    J2 = 2
 }
 
 public enum Button
 {
-	DPadLeft,
-	DPadDown,
-	DPadRight,
-	DPadUp,
-	ButtonLeft, // X on Xbox, Square on PS4, Y on Switch, etc.
-	ButtonBottom, // A on Xbox, X on PS4, B on Switch, etc.
-	ButtonRight, // B on Xbox, Circle on PS4, A on Switch, etc.
-	ButtonTop, // Y on Xbox, Triangle on PS4, X on Switch, etc.
-	L1, // Left Bumper
-	R1, // Right Bumper
-	L2, // Left Trigger (digital, use OnLeftTrigger for analog)
-	R2, // Right Trigger (digital, use OnRightTrigger for analog)
-	L3, // Left stick
-	R3, // Right stick
-	Start, // What was classically start (Right center button)
-	Select, //  What was classically select (Left center button)
-			// All Extras are for home button or other system specific weirdness
-	Extra1, Extra2, Extra3, Extra4, Extra5, Extra6, Extra7, Extra8, Extra9, Extra10
+    DPadLeft,
+    DPadDown,
+    DPadRight,
+    DPadUp,
+    ButtonLeft, // X on Xbox, Square on PS4, Y on Switch, etc.
+    ButtonBottom, // A on Xbox, X on PS4, B on Switch, etc.
+    ButtonRight, // B on Xbox, Circle on PS4, A on Switch, etc.
+    ButtonTop, // Y on Xbox, Triangle on PS4, X on Switch, etc.
+    L1, // Left Bumper
+    R1, // Right Bumper
+    L2, // Left Trigger (digital, use OnLeftTrigger for analog)
+    R2, // Right Trigger (digital, use OnRightTrigger for analog)
+    L3, // Left stick
+    R3, // Right stick
+    Start, // What was classically start (Right center button)
+    Select, //  What was classically select (Left center button)
+            // All Extras are for home button or other system specific weirdness
+    Extra1, Extra2, Extra3, Extra4, Extra5, Extra6, Extra7, Extra8, Extra9, Extra10
 }
 
 ```
@@ -469,24 +470,24 @@ attribute a name/id to a button, hence this enum.
 
 public class InputController : MonoBehaviour
 {
-	public ControllerNumber Number;
+    public ControllerNumber Number;
     public InputMap InputMap;
 
-	// Delegates
-	public delegate void Stick(float horizontal, float vertical);
-	public delegate void DPad(float horizontal, float vertical);
-	public delegate void AnalogTrigger(float activation);
-	public delegate void ButtonDown(Button button);
+    // Delegates
+    public delegate void Stick(float horizontal, float vertical);
+    public delegate void DPad(float horizontal, float vertical);
+    public delegate void AnalogTrigger(float activation);
+    public delegate void ButtonDown(Button button);
 
-	// Events
-	public event Stick OnLeftStick;
-	public event Stick OnRightStick;
-	public event AnalogTrigger OnLeftTrigger;
-	public event AnalogTrigger OnRightTrigger;
-	public event DPad OnDPad;
-	public event ButtonDown OnButtonDown;
+    // Events
+    public event Stick OnLeftStick;
+    public event Stick OnRightStick;
+    public event AnalogTrigger OnLeftTrigger;
+    public event AnalogTrigger OnRightTrigger;
+    public event DPad OnDPad;
+    public event ButtonDown OnButtonDown;
 
-	// ...see below...
+    // ...see below...
 
 }
 
@@ -507,50 +508,50 @@ when we look at the InputListener behavior a little later on.
 
 public class InputController : MonoBehaviour
 {
-	// ...see above...
+    // ...see above...
 
-	void Start()
-	{
+    void Start()
+    {
         if(InputMap == null) {
             Debug.LogError("You must set the InputMap attribute!");
         }
-	}
+    }
 
-	void Update()
-	{
-		var name = Number.ToString();
+    void Update()
+    {
+        var name = Number.ToString();
 
-		var LeftStickH = (
-			(InputMap.LeftStick.Inversion.Horizontal ? -1 : 1)
-			*
-			Input.GetAxis($"{name}{InputMap.LeftStick.Horizontal}")
-		);
-		var LeftStickV = (
-			(InputMap.LeftStick.Inversion.Vertical ? -1 : 1)
-			*
-			Input.GetAxis($"{name}{InputMap.LeftStick.Vertical}")
-		);
-		if (LeftStickH != 0 || LeftStickV != 0)
-		{
-			OnLeftStick?.Invoke(LeftStickH, LeftStickV);
-		}
-		// ... repeated for right stick, and depad axis ...
-		var L2Analog = Input.GetAxis($"{name}{InputMap.L2Analog}");
-		if (L2Analog != 0) { OnLeftTrigger?.Invoke(L2Analog); }
-		var R2Analog = Input.GetAxis($"{name}{InputMap.R2Analog}");
-		if (R2Analog != 0) { OnRightTrigger?.Invoke(R2Analog); }
+        var LeftStickH = (
+            (InputMap.LeftStick.Inversion.Horizontal ? -1 : 1)
+            *
+            Input.GetAxis($"{name}{InputMap.LeftStick.Horizontal}")
+        );
+        var LeftStickV = (
+            (InputMap.LeftStick.Inversion.Vertical ? -1 : 1)
+            *
+            Input.GetAxis($"{name}{InputMap.LeftStick.Vertical}")
+        );
+        if (LeftStickH != 0 || LeftStickV != 0)
+        {
+            OnLeftStick?.Invoke(LeftStickH, LeftStickV);
+        }
+        // ... repeated for right stick, and depad axis ...
+        var L2Analog = Input.GetAxis($"{name}{InputMap.L2Analog}");
+        if (L2Analog != 0) { OnLeftTrigger?.Invoke(L2Analog); }
+        var R2Analog = Input.GetAxis($"{name}{InputMap.R2Analog}");
+        if (R2Analog != 0) { OnRightTrigger?.Invoke(R2Analog); }
 
-		if (Input.GetButtonDown($"{name}{InputMap.ButtonLeft}")) {
-			OnButtonDown?.Invoke(Button.ButtonLeft);
-		}
-		if (Input.GetButtonDown($"{name}{InputMap.ButtonBottom}")) {
-			OnButtonDown?.Invoke(Button.ButtonBottom);
-		}
-		if (Input.GetButtonDown($"{name}{InputMap.ButtonRight}")) {
-			OnButtonDown?.Invoke(Button.ButtonRight);
-		}
-		// ... repeat for every single button ...
-	}
+        if (Input.GetButtonDown($"{name}{InputMap.ButtonLeft}")) {
+            OnButtonDown?.Invoke(Button.ButtonLeft);
+        }
+        if (Input.GetButtonDown($"{name}{InputMap.ButtonBottom}")) {
+            OnButtonDown?.Invoke(Button.ButtonBottom);
+        }
+        if (Input.GetButtonDown($"{name}{InputMap.ButtonRight}")) {
+            OnButtonDown?.Invoke(Button.ButtonRight);
+        }
+        // ... repeat for every single button ...
+    }
 }
 
 ```
@@ -607,6 +608,119 @@ public class InputListener : MonoBehaviour
 
 ```
 
+As you can see all this class does is define empty virtual functions for all the InputController events and provides a convenience member attribute
+for an InputController and a function to subscribe to it. It's nothing to complicated and you can totally forgo using this class if you understand .NET events.
+
+### ExampleBehavior: CameraController
+
+Lastly before we finish up let's take a quick look at an example behavior that uses the `InputListener` class to implement a player controller.
+
+``` cs
+
+// simple sphereical coordinate vector to make going back
+// and forth between sphereical and cartesian coordinates easier
+[System.Serializable]
+public class SVector3 {
+    public float radius;
+    public float theta; 
+    public float phi;
+    public float r { get { return radius; } set { radius = value; } }
+    public float t { get { return theta; } set { theta = value; } }
+    public float p { get { return phi; } set { phi = value; } }
+
+    public SVector3(float r, float t, float p) { this.radius = r; this.theta = t; this.phi = p;}
+
+    public Vector3 ToVector3(Vector3? center = null) {
+        var c = center.HasValue ? center.Value : Vector3.zero;
+        var x = c.x + radius * Mathf.Sin(theta) * Mathf.Sin(phi);
+        var y = c.y + radius * Mathf.Cos(theta);
+        var z = c.z + radius * Mathf.Sin(theta) * Mathf.Cos(phi);
+        return new Vector3(x, y, z);
+    }
+
+    public static SVector3 FromVector3(Vector3 input, Vector3? center = null) {
+        var c = center.HasValue ? center.Value : Vector3.zero;
+        var r = (input - c).magnitude;
+        var t = Mathf.Acos((input.y - c.y) / r);
+        var p = Mathf.Acos((input.z - c.z)/(r * Mathf.Sin(t)));
+        return new SVector3(r, t, p);
+    }
+}
+
+
+// rotates the camera around a Target gameobject using the Right Joystick
+public class CameraController : InputListener
+{
+    [Range(0.5f, 5)]
+    public float RotationSpeed = 2;
+    [Range(0.1f, 1)]
+    public float ZoomSpeed = 0.1f;
+    [Range(0.1f, 1)]
+    public GameObject Target;
+    public SVector3 Offset;
+    public float MinOffsetRadius = 10;
+    public float MaxOffsetRadius = 10;
+
+    private Vector3 smoothingVelocity;
+    private const float halfPI = Mathf.PI / 2; // cached fractions of pi
+    private const float twoPI = Mathf.PI * 2;  // cached fractions of pi
+
+    void Start ()
+    {
+        // assert that the InputController has been set with inspector
+        Debug.Assert(InputController != null);
+        // subscribe to the InputController
+        Subscribe(InputController);
+    }
+
+    public override void OnRightStick(float horizontal, float vertical)
+    {
+        // Do a little math to rotate around the target
+        var moveTheta = -vertical * RotationSpeed * Time.deltaTime;
+        var movePhi = -horizontal * RotationSpeed * Time.deltaTime;
+        var offset = Offset;
+        var newTheta = offset.t + moveTheta;
+        if(offset.t > 0 && newTheta < 0) {
+            Offset.t = Mathf.Clamp(newTheta, 0, halfPI);
+        } else {
+            Offset.t = Mathf.Clamp(newTheta, -halfPI, 0);
+        }
+        var newPhi = offset.p + movePhi;
+        if(Mathf.Abs(newPhi) > twoPI){
+            newPhi = newPhi - Mathf.Sign(newPhi) * twoPI;
+        }
+        Offset.p = newPhi;
+    }
+
+    void LateUpdate() {
+        // look at the target
+        var targetPosition = Offset.ToVector3(Target.transform.position);
+        transform.position = targetPosition;
+        transform.LookAt(Target.transform.position);
+    }
+}
+
+```
+
+I wouldn't read the code to closely as I lazily cobbled it together from my real code and didn't bother to make sure I didn't make any glaring errors.
+But you should be able to tell from the code that it makes use of the input controller event system to spin the camera when a `OnRightStick` event occurs.
+Pretty sweet!
+
+
+### Wrap up and thoughts
+
+So that's it. If you followed along and I didn't miss anything then you should have something very similar to what I am currently using
+for input configuration in Unity. It's not a bad scheme and I think it's pretty darn simple.
+
+That said, I started this post over a month ago and then basically abandoned it in my `_drafts` directory because I go busy with moving.
+I'm just now coming back and finishing it. So there are probably some continuity issues in here.
+At the time that I started I was excited to have quickly and relativily easily written such a decent and simple input configuration scheme.
+Now that I come back to it, I'd like it be a separate package, and I can forsee some headaches and limitations. For example I already know it's
+going to be annoying have to make an `InputMap` SO for every platform and controller and it's totally cumbersome to have to switch the configuration manually.
+But it's also probably a good thing that my simple system doesn't make an assumptions and just breaks if the set up is wrong. Trade offs I guess...
+
+
+I hope you enjoyed the write up. I hope it made sense and that you got something out of it. Happy hacking homes!
 
 ---
 
