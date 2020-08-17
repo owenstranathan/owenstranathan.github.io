@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+
+
+<head>
+  <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <!--SEO -->
+  <title>owen has thoughts</title>
+  <meta property="og:title" content="owen's thoughts" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="description" content="" />
+  <meta property="og:description" content="" />
+  <link rel="canonical" href="http://localhost:4000/" />
+  <meta property="og:url" content="http://localhost:4000/" />
+  <meta property="og:site_name" content="{{ site.title }}" />
+  <script type="application/ld+json">
+    {
+      "name": "owenstranathan",
+      "description": "owenstranathan.com",
+      "@type": "WebSite",
+      "url": "owenstranathan.com",
+      "headline": "Yay!",
+      "@context": "http://schema.org"
+    }
+  </script>
+
+  <!-- styles -->
+  <link rel="stylesheet" href="/assets/css/main.css" />
+</head>
+
+<body>
+    <div class="main">
+	    <h1> Archive </h1>
+	    <div id="all" style="display:none">
+	    	<div class=categories>category: none</div>
+	    	<ul style="list-style:none">
+	    	    {% assign sorted = (site.posts | sort: 'date') | reverse %}
+	    	    {% for post in sorted %}
+	    			{% if post.path contains 'code' %}
+	    			{% else %}
+	    				{% capture day %}{{ post.date | date: '%Y-%m-%d' }}{% endcapture %}
+	    		    		<li>
+	    					<a href=" {{ post.url }} ">{{day}} -- {{ post.title }}</a>
+                            <br/>
+	    				</li>
+	    			{% endif %}
+	    	    {% endfor %}
+	    	</ul>
+	    </div>
+	    {% for category in site.categories %}
+	    	<div id="{{category[0]}}" style="display:none">
+	    		<div class=categories>category: {{category[0]}}</div>
+	    		<ul style="list-style:none">
+	    			{% assign sorted = (category[1]| sort: 'date') | reverse %}
+	    		    {% for post in sorted %}
+	    				{% if post.path contains 'code' %}
+	    				{% else %}
+	    					{% capture day %}{{ post.date | date: '%Y-%m-%d' }}{% endcapture %}
+	    		    			<li>
+	    						<a href=" {{ post.url }} ">{{day}} -- {{ post.title }}</a>
+                                <br/>
+	    					</li>
+	    				{% endif %}
+	    		    {% endfor %}
+	    		</ul>
+	    	</div>
+	    {% endfor %}
+    </div>
+</body>
+  	<script src="assets/js/checkparams.js"></script>
+
+{% include menu.html class="header" %}
+</html>

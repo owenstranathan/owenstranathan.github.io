@@ -1,0 +1,14 @@
+
+@font-face {
+    font-family: Roboto;
+    src: url(/assets/fonts/Roboto-Regular.ttf);
+}
+
+@font-face {
+    font-family: PlexMono;
+    src: url(/assets/fonts/IBMPlexMono-Regular.ttf);
+}
+
+* {
+    font-family: Roboto, Helvetica Neue, "Open Sans";
+}
