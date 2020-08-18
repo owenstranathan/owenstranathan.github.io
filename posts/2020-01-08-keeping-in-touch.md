@@ -16,7 +16,7 @@ the boredom of staying. When I leave usually I'm so focused on escape I don't ev
 straight in front, on the next (mis)adventure. And this kind of makes me a piece of shit. But I don't mean to be.
 
 Today I wrote 3 emails to people I've not spoken to in a while. Of the 3, 2 were because I needed something from these people. That really makes me a
-piece of shit. In fact I only wrote third because the first 2 made me realize just how bad at staying in touch I am. Piece of shit.
+piece of shit. In fact I only wrote the third because the first 2 made me realize just how bad at staying in touch I am. Piece of shit.
 
 I want to have life long friends that I keep in close touch with. I want to call my buddy and just ask how they're doing (and actually care)
 but I don't (call or care). Of course when I stop and think about it I do care, and I do call, and I try to be a good friend and have good friends.

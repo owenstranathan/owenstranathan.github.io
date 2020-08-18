@@ -5,6 +5,7 @@ from collections import namedtuple
 from pathlib import Path
 
 from yaml import load, dump, load_all
+
 try:
     from yaml import CLoader as Loader, CDumper as Dumper
 except ImportError:
@@ -44,7 +45,7 @@ def main(path):
 
     if site_conf.exists():
         with site_conf.open() as infstream:
-            data = load(infstream, Loader=Loader)
+            site_data = load(infstream, Loader=Loader)
     assert(templates.exists() and templates.is_dir())
     assert(posts.exists() and posts.is_dir())
     templates_dict = {}
@@ -65,9 +66,13 @@ def main(path):
     read_dir(posts, posts_dict, file_ext=".md", serializer=serialize_post)
     # TODO for each post compile it with the global data from site.yaml and it's front matter
     # then compile all the templates and output their corresponding pages
-    # NOTE: we're using mako so you'll need to update the template lang in the templates and post, which a bummer for sure
-    for x in posts_dict.values():
-        print(x.meta)
+    # TODO: Mako has too much special syntax that directly conflicts with markdown. So let's do jinja
+    for key, value in posts_dict.items():
+        print(key)
+        breakpoint()
+        post_data = value.meta
+        post_data["site"] = site_data
+        # TODO: render the post with the post_data
 
 
 if __name__ == "__main__":

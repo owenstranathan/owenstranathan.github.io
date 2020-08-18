@@ -17,7 +17,7 @@ I'm putting them up here as well, because I can and I want to.
 
 # How to spot a fake GBA cartrige!
 
-{% for image in page.images %}
+{% for image in images %}
 ![]({{image}}){: width="100%"}
 {% endfor %}
 
