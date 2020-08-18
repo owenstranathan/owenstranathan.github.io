@@ -11,6 +11,8 @@ try:
 except ImportError:
     from yaml import Loader, Dumper
 
+from jinja2 import Template
+
 Post = namedtuple("Post", ["source", "front", "body", "meta", "compiled"])
 
 def serialize_post(post_data):
@@ -72,7 +74,10 @@ def main(path):
         breakpoint()
         post_data = value.meta
         post_data["site"] = site_data
-        # TODO: render the post with the post_data
+        render = Template(value.body).render(**post_data)
+        print("asjfkl")
+    for x in posts_dict.values():
+        print(x.meta)
 
 
 if __name__ == "__main__":
