@@ -1,5 +1,4 @@
 ---
-layout: post
 date: 2020-02-28
 categories: [game-programming]
 ---
@@ -52,33 +51,33 @@ There are 4 primary source files and 1 `.asset` file of interest in this system 
 **InputMap.cs**
 ```cs
 
-{% include_relative code/InputController/InputMap.cs %}
+{% include "code/InputController/InputMap.cs" %}
 
 ```
 
 **InputTest.cs**
 ```cs
-{% include_relative code/InputController/InputTest.cs %}
+{% include "code/InputController/InputTest.cs" %}
 ```
 
 **InputController.cs**
 ```cs
 
-{% include_relative code/InputController/InputController.cs %}
+{% include "code/InputController/InputController.cs" %}
 
 ```
 
 **InputListener.cs**
 ```cs
 
-{% include_relative code/InputController/InputListener.cs %}
+{% include "code/InputController/InputListener.cs" %}
 
 ```
 
 **InputManager.asset**
 ```yaml
 
-{% include_relative code/InputController/InputManager.asset %}
+{% include "code/InputController/InputManager.asset" %}
 
 ```
 

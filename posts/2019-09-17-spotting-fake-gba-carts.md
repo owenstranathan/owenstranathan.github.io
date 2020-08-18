@@ -1,5 +1,4 @@
 ---
-layout: post
 date: 2019-09-17
 categories: [personal]
 images:

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+<html lang="en">
 
 
 <head>
@@ -30,45 +30,11 @@
 </head>
 
 <body>
-    <div class="main">
-	    <h1> Archive </h1>
-	    <div id="all" style="display:none">
-	    	<div class=categories>category: none</div>
-	    	<ul style="list-style:none">
-	    	    {% assign sorted = (site.posts | sort: 'date') | reverse %}
-	    	    {% for post in sorted %}
-	    			{% if post.path contains 'code' %}
-	    			{% else %}
-	    				{% capture day %}{{ post.date | date: '%Y-%m-%d' }}{% endcapture %}
-	    		    		<li>
-	    					<a href=" {{ post.url }} ">{{day}} -- {{ post.title }}</a>
-                            <br/>
-	    				</li>
-	    			{% endif %}
-	    	    {% endfor %}
-	    	</ul>
-	    </div>
-	    {% for category in site.categories %}
-	    	<div id="{{category[0]}}" style="display:none">
-	    		<div class=categories>category: {{category[0]}}</div>
-	    		<ul style="list-style:none">
-	    			{% assign sorted = (category[1]| sort: 'date') | reverse %}
-	    		    {% for post in sorted %}
-	    				{% if post.path contains 'code' %}
-	    				{% else %}
-	    					{% capture day %}{{ post.date | date: '%Y-%m-%d' }}{% endcapture %}
-	    		    			<li>
-	    						<a href=" {{ post.url }} ">{{day}} -- {{ post.title }}</a>
-                                <br/>
-	    					</li>
-	    				{% endif %}
-	    		    {% endfor %}
-	    		</ul>
-	    	</div>
-	    {% endfor %}
-    </div>
+    <!-- TODO: put each post in the page date, title full text, and add a break between posts -->
+    {% for post in posts %}
+        <div class="post">
+        </div>
+        <hr/>
+    {% endfor %}
 </body>
-  	<script src="assets/js/checkparams.js"></script>
-
-{% include menu.html class="header" %}
 </html>
