@@ -9,7 +9,7 @@
 	    <div class=date>{{ page.date | date: '%A, %B %e, %Y' }} </div>
 	    <br/>
 	    <div class=categories>
-	    		categories: 
+	    		categories:
 	    		{% for category in page.categories %}
 	    		<a href="/archive?category={{category}}">{{category}}</a>
 	    		{% endfor %}
