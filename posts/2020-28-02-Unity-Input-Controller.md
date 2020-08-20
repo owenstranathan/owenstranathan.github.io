@@ -94,7 +94,7 @@ The reason that the inputs are configured as virtual axes is so you can define y
 done by setting a "positive" and "negative" button for a given named input.
 Lets take quick look at the default input set up.
 
-![Default Input Settings](/assets/img/InputController/InputSettingsDefault.png)
+![Default Input Settings](img/InputController/InputSettingsDefault.png)
 
 You can see that the unity input settings are preconfigured with 18 inputs (i.e. it's an array of 18 virtual axis configurations)
 I wont go to in detail about what all the settings do, because I don't know. Just know that this is where you're going to configure your input.
@@ -102,7 +102,7 @@ I've you've never done that then I highly recommend deleting all the preconfigur
 
 If you just want to copy me then you still need to delete all the existing inputs, do this by setting the size of the settings array to 0.
 
-![Empty InputSettings](/assets/img/InputController/InputSettingsEmpty.png)
+![Empty InputSettings](img/InputController/InputSettingsEmpty.png)
 
 Once we've done this let's replace those old default settings with something a little more uniform.  
 
@@ -324,7 +324,7 @@ public class InputMap : ScriptableObject
 As you can see it has all the buttons and joysticks you would expect a controller to have and then some. It also makes use of a
 unity engine c# attribute `CreateAssetMenu` which will make a menu item for creating a new scriptable object asset of type `InputMap`.
 
-![Create Asset Menu](/assets/img/InputController/CreateAssetMenu.png)
+![Create Asset Menu](img/InputController/CreateAssetMenu.png)
 
 ### InputTest.cs
 
@@ -395,7 +395,7 @@ inspector you can see the array of axis inputs as well as our booleans for testi
 (not pictured but further down the inspector's scroll area is the array of button inputs, axis 4 and 5 are disabled because they are the
 L2 and R2 analog inputs on the wireless Dual Shock 4 controller that I'm using.[^3]
 
-![Input Test Example](/assets/img/InputController/InputTest.png)
+![Input Test Example](img/InputController/InputTest.png)
 
 ### Configuring an InputMap asset
 
@@ -411,7 +411,7 @@ I'm differentiating wired and wireless because I happen to know that the mapping
 
 Mine looks like this [^4]:
 
-![Input Map Configuration Example](/assets/img/InputController/InputMapConfiguration.png)
+![Input Map Configuration Example](img/InputController/InputMapConfiguration.png)
 
 
 ### InputController.cs

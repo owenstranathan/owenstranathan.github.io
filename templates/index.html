@@ -47,7 +47,15 @@
     <hr/>
     <!-- TODO: put each post in the page date, title full text, and add a break between posts -->
     {% for post in posts|sort(reverse=True, attribute='date') %}
-            <div class="title"><h1>{{ post.title }}</h1></div>
+            <div class="title">
+                <h1>
+                {% if post.title %}
+                    {{ post.title }}
+                {% else %}
+                    No title
+                {% endif %}
+                </h1>
+            </div>
 	        <div class="date"><p>{{ post.metadata['date'].strftime('%A, %B %e, %Y') }}<p></div>
 	        <div class="categories">
             <p>

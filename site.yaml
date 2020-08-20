@@ -6,3 +6,8 @@ github: https://github.com/owenstranathan/
 email: owenstranathan@gmail.com
 markdown-extensions: # this can be used to enable markdown extensions site wide. See https://python-markdown.github.io/extensions/ for list of available extensions
  - "extra"
+copy-paths:
+ - "css/"
+ - "extra/"
+ - "fonts/"
+ - "img/"
