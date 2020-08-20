@@ -1,6 +1,9 @@
 ---
 date: 2020-02-28
 categories: [game-programming]
+markdown-extensions:
+ - "footnotes"
+ - "fenced_code"
 ---
 
 
@@ -49,33 +52,30 @@ Before I go rambling more, have a look at the code.
 There are 4 primary source files and 1 `.asset` file of interest in this system of capturing input.
 
 **InputMap.cs**
-```cs
 
+```
 {% include "code/InputController/InputMap.cs" %}
-
 ```
 
 **InputTest.cs**
-```cs
+```
 {% include "code/InputController/InputTest.cs" %}
 ```
 
 **InputController.cs**
-```cs
-
+```
 {% include "code/InputController/InputController.cs" %}
-
 ```
 
 **InputListener.cs**
-```cs
+```
 
 {% include "code/InputController/InputListener.cs" %}
 
 ```
 
 **InputManager.asset**
-```yaml
+```
 
 {% include "code/InputController/InputManager.asset" %}
 

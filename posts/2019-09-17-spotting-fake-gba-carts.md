@@ -1,5 +1,6 @@
 ---
 date: 2019-09-17
+title: "Spotting Fake GBA Carts"
 categories: [personal]
 images:
   - "https://i.imgur.com/3RIp0ap.jpg"
@@ -17,7 +18,8 @@ I'm putting them up here as well, because I can and I want to.
 # How to spot a fake GBA cartrige!
 
 {% for image in images %}
-![]({{image}}){: width="100%"}
+
+![]({{image}})
 {% endfor %}
 
 
