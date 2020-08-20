@@ -30,6 +30,21 @@
 </head>
 
 <body>
+    <h1>{{site.title}}</h1>
+    <hr/>
+    <p>
+    My name is Owen. I'm a programmer and freelance copy writer.
+    I have a <a href="{{site.github}}">github</a>.
+    I have a <a href="{{site.linkedin}}">linkedin</a>.
+    You can hire me to write code or copy. <a href="mailto:{{site.email}}">{{site.email}}</a>
+    </p>
+    <hr/>
+    <p>
+    Thoughs below...
+    </p>
+    <hr/>
+    <hr/>
+    <hr/>
     <!-- TODO: put each post in the page date, title full text, and add a break between posts -->
     {% for post in posts|sort(reverse=True, attribute='date') %}
             <div class="title"><h1>{{ post.title }}</h1></div>
@@ -51,5 +66,9 @@
         <hr/>
 
     {% endfor %}
+<p>
+&copy;Owen Stranathan 2020. Made quickly with some python, copy it <a href="{{site.github}}/static-markdown-site-compiler">here</a> you mongrel 
+</p>
 </body>
 </html>
+

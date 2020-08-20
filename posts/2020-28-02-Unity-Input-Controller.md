@@ -1,4 +1,5 @@
 ---
+title: Unity Input Controller
 date: 2020-02-28
 categories: [game-programming]
 markdown-extensions:
