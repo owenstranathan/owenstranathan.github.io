@@ -1,0 +1,22 @@
+* {
+    width: 100%;
+}
+
+ul {
+    list-style-type:none;
+}
+
+.hr {
+    width: 97%;
+    margin-right: 3%;
+    height: 3px;
+    /*padding-top: 2px;*/
+    border-bottom: 2px solid grey;
+}
+
+.post{
+    width: 95%;
+    margin-left: 2%;
+    margin-right: 3%;
+}
+
