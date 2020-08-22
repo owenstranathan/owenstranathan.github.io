@@ -70,9 +70,24 @@
             <p>
 	        		categories:
 	        		{% for category in post.categories %}
-	        		{{category}}
+                    {% if not loop.last %}
+	        		<span>{{category}}, </span>
+                    {% else %}
+	        		<span>{{category}} </span>
+                    {% endif %}
 	        		{% endfor %}
             <p>
+            {% if post | attr("links") %}
+                <p> Related reading:
+                {% for key, value in post.links.items() %}
+                    {% if not loop.last %}
+                    <span><a href="{{value}}">{{key}}</a>, </span>
+                    {% else %}
+                    <span><a href="{{value}}">{{key}}</a> </span>
+                    {% endif %}
+                {% endfor %}
+                </p>
+            {% endif %}
 	        </div>
             <div class="content">
                 {{post.html}}

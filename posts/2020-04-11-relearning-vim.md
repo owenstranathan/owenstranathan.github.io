@@ -1,7 +1,12 @@
 ---
+title: "Beginner's Mind: Relearning Vim"
 layout: post
 date: 2020-04-11
-categories: [programming]
+categories:
+ - programming
+ - shoshin
+links:
+ "Shoshin(Beginner's Mind)": https://en.wikipedia.org/wiki/Shoshin
 ---
 
 [Get to the point](#the-point)
