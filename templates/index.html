@@ -26,36 +26,45 @@
   </script>
 
   <!-- styles -->
-  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/css/main.css" />
 </head>
 
 <body>
     <h1>{{site.title}}</h1>
-    <hr/>
+    <div class="hr">&nbsp;</div>
     <p>
     My name is Owen. I'm a programmer and freelance copy writer.
     I have a <a href="{{site.github}}">github</a>.
     I have a <a href="{{site.linkedin}}">linkedin</a>.
     You can hire me to write code or copy. <a href="mailto:{{site.email}}">{{site.email}}</a>
     </p>
-    <hr/>
+    <div class="hr"></div>
+    <h3>Contents:</h3>
+    {% set sorted_posts = posts | sort(reverse=True, attribute='date') %}
+    <ul>
+    {% for post in sorted_posts %}
+        {% if post | attr("title")%}
+            <li>{{ post.metadata['date'].strftime('%Y-%m-%d') }} <a href="#{{post.toc}}">{{post.title}}</a></li>
+        {% elif post | attr("name") %}
+            <li>{{ post.metadata['date'].strftime('%Y-%m-%d') }} <a href="#{{post.toc}}">{{post.name}}</a></li>
+        {% endif %}
+    {% endfor %}
+    </ul>
     <p>
     Thoughs below...
     </p>
-    <hr/>
-    <hr/>
-    <hr/>
     <!-- TODO: put each post in the page date, title full text, and add a break between posts -->
     {% for post in posts|sort(reverse=True, attribute='date') %}
-            <div class="title">
-                <h1>
-                {% if post.title %}
-                    {{ post.title }}
-                {% else %}
-                    No title
-                {% endif %}
-                </h1>
-            </div>
+    <div class="hr">&nbsp;</div>
+    <div class="hr">&nbsp;</div>
+    <div class="hr">&nbsp;</div>
+    <div class="post">
+            {% set title = post | attr("title") %}
+            {% if post | attr("title")%}
+                <h1 id="{{post.toc}}"> {{post.title}}</h1>
+            {% elif post | attr("name") %}
+                <h1 id="{{post.toc}}">{{post.name}}</h1>
+            {% endif %}
 	        <div class="date"><p>{{ post.metadata['date'].strftime('%A, %B %e, %Y') }}<p></div>
 	        <div class="categories">
             <p>
@@ -68,12 +77,12 @@
             <div class="content">
                 {{post.html}}
 	        </div>
-        <hr/>
-        <hr/>
-        <hr/>
-        <hr/>
 
+    </div>
     {% endfor %}
+    <div class="hr">&nbsp;</div>
+    <div class="hr">&nbsp;</div>
+    <div class="hr">&nbsp;</div>
 <p>
 &copy;Owen Stranathan 2020. Made quickly with some python, copy it <a href="{{site.github}}/static-markdown-site-compiler">here</a> you mongrel 
 </p>

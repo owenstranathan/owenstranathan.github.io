@@ -7,7 +7,6 @@ markdown-extensions:
  - "fenced_code"
 ---
 
-
 ### Backstory
 
 [Just get to the code bud.](#succinct-description-of-goals)

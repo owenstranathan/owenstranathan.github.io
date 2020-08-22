@@ -19,7 +19,7 @@ I'm putting them up here as well, because I can and I want to.
 
 {% for image in images %}
 
-![]({{image}})
+![]({{image}}){: width=100% }
 {% endfor %}
 
 
