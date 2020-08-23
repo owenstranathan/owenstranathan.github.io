@@ -6,7 +6,7 @@
   <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1" name="viewport" />
   <!--SEO -->
-  <title>owen has thoughts</title>
+  <title>{{site.title}}</title>
   <meta property="og:title" content="owen's thoughts" />
   <meta property="og:locale" content="en_US" />
   <meta name="description" content="" />
@@ -25,74 +25,83 @@
     }
   </script>
 
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;300&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;300&family=Roboto&display=swap" rel="stylesheet"> 
   <!-- styles -->
   <link rel="stylesheet" href="/css/main.css" />
 </head>
 
 <body>
-    <h1>{{site.title}}</h1>
-    <div class="hr">&nbsp;</div>
-    <p>
-    My name is Owen. I'm a programmer and freelance copy writer.
-    I have a <a href="{{site.github}}">github</a>.
-    I have a <a href="{{site.linkedin}}">linkedin</a>.
-    You can hire me to write code or copy. <a href="mailto:{{site.email}}">{{site.email}}</a>
-    </p>
+    <div class="full-pager">
+        <div class="about">
+            <p>
+            My name is Owen. I'm a programmer and freelance copy writer.
+            I have a <a href="{{site.github}}">github</a>.
+            I have a <a href="{{site.linkedin}}">linkedin</a>.
+            You can hire me to write code or copy. <a href="mailto:{{site.email}}">{{site.email}}</a>
+            </p>
+            <p id="thoughts">
+            Thoughs below...
+            </p>
+        </div>
+    </div>
     <div class="hr"></div>
-    <h3>Contents:</h3>
-    {% set sorted_posts = posts | sort(reverse=True, attribute='date') %}
-    <ul>
-    {% for post in sorted_posts %}
-        {% if post | attr("title")%}
-            <li>{{ post.metadata['date'].strftime('%Y-%m-%d') }} <a href="#{{post.toc}}">{{post.title}}</a></li>
-        {% elif post | attr("name") %}
-            <li>{{ post.metadata['date'].strftime('%Y-%m-%d') }} <a href="#{{post.toc}}">{{post.name}}</a></li>
-        {% endif %}
-    {% endfor %}
-    </ul>
-    <p>
-    Thoughs below...
-    </p>
+    <div class="full-pager">
+        <div class="table-of-contents">
+            <h3>Table of Contents:</h3>
+            {% set sorted_posts = posts | sort(reverse=True, attribute='date') %}
+            <ul>
+            {% for post in sorted_posts %}
+                {% if post | attr("title")%}
+                    <li>{{ post.metadata['date'].strftime('%Y-%m-%d') }} <a href="#{{post.toc}}">{{post.title}}</a></li>
+                {% elif post | attr("name") %}
+                    <li>{{ post.metadata['date'].strftime('%Y-%m-%d') }} <a href="#{{post.toc}}">{{post.name}}</a></li>
+                {% endif %}
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
     <!-- TODO: put each post in the page date, title full text, and add a break between posts -->
     {% for post in posts|sort(reverse=True, attribute='date') %}
     <div class="hr">&nbsp;</div>
     <div class="hr">&nbsp;</div>
     <div class="hr">&nbsp;</div>
-    <div class="post">
-            {% set title = post | attr("title") %}
-            {% if post | attr("title")%}
-                <h1 id="{{post.toc}}"> {{post.title}}</h1>
-            {% elif post | attr("name") %}
-                <h1 id="{{post.toc}}">{{post.name}}</h1>
-            {% endif %}
-	        <div class="date"><p>{{ post.metadata['date'].strftime('%A, %B %e, %Y') }}<p></div>
-	        <div class="categories">
+    <div class="full-pager">
+        {% set title = post | attr("title") %}
+        {% if post | attr("title")%}
+        <h1 id="{{post.toc}}"> {{post.title}}</h1>
+        {% elif post | attr("name") %}
+        <h1 id="{{post.toc}}">{{post.name}}</h1>
+        {% endif %}
+        <div class="date">
+            <p>{{ post.metadata['date'].strftime('%A, %B %e, %Y') }}<p>
+        </div>
+        <div class="categories">
             <p>
-	        		categories:
-	        		{% for category in post.categories %}
-                    {% if not loop.last %}
-	        		<span>{{category}}, </span>
-                    {% else %}
-	        		<span>{{category}} </span>
-                    {% endif %}
-	        		{% endfor %}
+                categories:
+                {% for category in post.categories %}
+                {% if not loop.last %}
+                <span>{{category}}, </span>
+                {% else %}
+                <span>{{category}} </span>
+                {% endif %}
+                {% endfor %}
             <p>
             {% if post | attr("links") %}
-                <p> Related reading:
-                {% for key, value in post.links.items() %}
-                    {% if not loop.last %}
-                    <span><a href="{{value}}">{{key}}</a>, </span>
-                    {% else %}
-                    <span><a href="{{value}}">{{key}}</a> </span>
-                    {% endif %}
-                {% endfor %}
-                </p>
+            <p> Related reading:
+            {% for key, value in post.links.items() %}
+                {% if not loop.last %}
+                <span><a href="{{value}}">{{key}}</a>, </span>
+                {% else %}
+                <span><a href="{{value}}">{{key}}</a> </span>
+                {% endif %}
+            {% endfor %}
+            </p>
             {% endif %}
-	        </div>
-            <div class="content">
-                {{post.html}}
-	        </div>
-
+        </div>
+        <div class="post-content">
+            {{post.html}}
+        </div>
     </div>
     {% endfor %}
     <div class="hr">&nbsp;</div>

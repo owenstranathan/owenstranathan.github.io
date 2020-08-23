@@ -1,7 +1,8 @@
 ---
 date: 2019-09-17
 title: "Spotting Fake GBA Carts"
-categories: [personal]
+categories:
+ - personal
 images:
   - "https://i.imgur.com/3RIp0ap.jpg"
   - "https://i.imgur.com/seUU09g.jpg"

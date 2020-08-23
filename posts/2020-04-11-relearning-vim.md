@@ -1,6 +1,5 @@
 ---
 title: "Beginner's Mind: Relearning Vim"
-layout: post
 date: 2020-04-11
 categories:
  - programming
