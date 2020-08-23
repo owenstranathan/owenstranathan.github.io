@@ -3,110 +3,124 @@
 
 
 <head>
-  <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1" name="viewport" />
-  <!--SEO -->
-  <title>{{site.title}}</title>
-  <meta property="og:title" content="owen's thoughts" />
-  <meta property="og:locale" content="en_US" />
-  <meta name="description" content="" />
-  <meta property="og:description" content="" />
-  <link rel="canonical" href="http://localhost:4000/" />
-  <meta property="og:url" content="http://localhost:4000/" />
-  <meta property="og:site_name" content="{{ site.title }}" />
-  <script type="application/ld+json">
-    {
-      "name": "owenstranathan",
-      "description": "owenstranathan.com",
-      "@type": "WebSite",
-      "url": "owenstranathan.com",
-      "headline": "Yay!",
-      "@context": "http://schema.org"
+    <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <!--SEO -->
+    <title>{{site.title}}</title>
+    <meta property="og:title" content="owen's thoughts" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="description" content="" />
+    <meta property="og:description" content="" />
+    <link rel="canonical" href="http://localhost:4000/" />
+    <meta property="og:url" content="http://localhost:4000/" />
+    <meta property="og:site_name" content="{{ site.title }}" />
+    <script type="application/ld+json">
+        {
+            "name": "owenstranathan",
+            "description": "owenstranathan.com",
+            "@type": "WebSite",
+            "url": "owenstranathan.com",
+            "headline": "Yay!",
+            "@context": "http://schema.org"
+        }
+    </script>
+    <script>
+    function toggleDark() {
+        var body = document.body;
+        body.classList.toggle("dark");
+        var button = document.getElementById("toggle-button")
+        button.classList.toggle("toggle-light")
+        button.classList.toggle("toggle-dark")
     }
-  </script>
+    </script>
 
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;300&display=swap" rel="stylesheet"> 
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;300&family=Roboto&display=swap" rel="stylesheet"> 
-  <!-- styles -->
-  <link rel="stylesheet" href="/css/main.css" />
+
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;300&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;300&family=Roboto&display=swap" rel="stylesheet"> 
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/main.css" />
 </head>
 
 <body>
-    <div class="full-pager">
-        <div class="about">
-            <p>
-            My name is Owen. I'm a programmer and freelance copy writer.
-            I have a <a href="{{site.github}}">github</a>.
-            I have a <a href="{{site.linkedin}}">linkedin</a>.
-            You can hire me to write code or copy. <a href="mailto:{{site.email}}">{{site.email}}</a>
-            </p>
-            <p id="thoughts">
-            Thoughs below...
-            </p>
-        </div>
+    <div class="bottom-right">
+        <button id="toggle-button" class="toggle-light" onclick="toggleDark()">Lights</button>
     </div>
-    <div class="hr"></div>
+
     <div class="full-pager">
-        <div class="table-of-contents">
+            <div class="about">
+                    <p>
+                    My name is Owen. I'm a programmer and freelance copy writer.
+                    I have a <a href="{{site.github}}">github</a>.
+                    I have a <a href="{{site.linkedin}}">linkedin</a>.
+                    You can hire me to write code or copy. <a href="mailto:{{site.email}}">{{site.email}}</a>
+                    </p>
+                    <p class="bottom">
+                    Thoughts below...
+                    </p>
+            </div>
+    </div>
+    <hr/>
+    <hr/>
+    <hr/>
+    <div class="table-of-contents">
             <h3>Table of Contents:</h3>
             {% set sorted_posts = posts | sort(reverse=True, attribute='date') %}
             <ul>
             {% for post in sorted_posts %}
-                {% if post | attr("title")%}
-                    <li>{{ post.metadata['date'].strftime('%Y-%m-%d') }} <a href="#{{post.toc}}">{{post.title}}</a></li>
-                {% elif post | attr("name") %}
-                    <li>{{ post.metadata['date'].strftime('%Y-%m-%d') }} <a href="#{{post.toc}}">{{post.name}}</a></li>
-                {% endif %}
+                    {% if post | attr("title")%}
+                            <li>{{ post.metadata['date'].strftime('%Y-%m-%d') }} <a href="#{{post.toc}}">{{post.title}}</a></li>
+                    {% elif post | attr("name") %}
+                            <li>{{ post.metadata['date'].strftime('%Y-%m-%d') }} <a href="#{{post.toc}}">{{post.name}}</a></li>
+                    {% endif %}
             {% endfor %}
             </ul>
-        </div>
     </div>
     <!-- TODO: put each post in the page date, title full text, and add a break between posts -->
     {% for post in posts|sort(reverse=True, attribute='date') %}
-    <div class="hr">&nbsp;</div>
-    <div class="hr">&nbsp;</div>
-    <div class="hr">&nbsp;</div>
-    <div class="full-pager">
-        {% set title = post | attr("title") %}
-        {% if post | attr("title")%}
-        <h1 id="{{post.toc}}"> {{post.title}}</h1>
-        {% elif post | attr("name") %}
-        <h1 id="{{post.toc}}">{{post.name}}</h1>
-        {% endif %}
-        <div class="date">
-            <p>{{ post.metadata['date'].strftime('%A, %B %e, %Y') }}<p>
-        </div>
-        <div class="categories">
-            <p>
-                categories:
-                {% for category in post.categories %}
-                {% if not loop.last %}
-                <span>{{category}}, </span>
-                {% else %}
-                <span>{{category}} </span>
-                {% endif %}
-                {% endfor %}
-            <p>
-            {% if post | attr("links") %}
-            <p> Related reading:
-            {% for key, value in post.links.items() %}
-                {% if not loop.last %}
-                <span><a href="{{value}}">{{key}}</a>, </span>
-                {% else %}
-                <span><a href="{{value}}">{{key}}</a> </span>
-                {% endif %}
-            {% endfor %}
-            </p>
+    <hr/>
+    <hr/>
+    <hr/>
+    <div class="post">
+            {% set title = post | attr("title") %}
+            {% if post | attr("title")%}
+            <h1 id="{{post.toc}}"> {{post.title}}</h1>
+            {% elif post | attr("name") %}
+            <h1 id="{{post.toc}}">{{post.name}}</h1>
             {% endif %}
-        </div>
-        <div class="post-content">
-            {{post.html}}
-        </div>
+            <div class="date">
+                    <p>{{ post.metadata['date'].strftime('%A, %B %e, %Y') }}<p>
+            </div>
+            <div class="categories">
+                    <p>
+                            categories:
+                            {% for category in post.categories %}
+                            {% if not loop.last %}
+                            <span>{{category}}, </span>
+                            {% else %}
+                            <span>{{category}} </span>
+                            {% endif %}
+                            {% endfor %}
+                    <p>
+                    {% if post | attr("links") %}
+                    <p> Related reading:
+                    {% for key, value in post.links.items() %}
+                            {% if not loop.last %}
+                            <span><a href="{{value}}">{{key}}</a>, </span>
+                            {% else %}
+                            <span><a href="{{value}}">{{key}}</a> </span>
+                            {% endif %}
+                    {% endfor %}
+                    </p>
+                    {% endif %}
+            </div>
+            <div class="post-content">
+                    {{post.html}}
+            </div>
     </div>
     {% endfor %}
-    <div class="hr">&nbsp;</div>
-    <div class="hr">&nbsp;</div>
-    <div class="hr">&nbsp;</div>
+    <hr/>
+    <hr/>
+    <hr/>
 <p>
 &copy;Owen Stranathan 2020. Made quickly with some python, copy it <a href="{{site.github}}/static-markdown-site-compiler">here</a> you mongrel 
 </p>
