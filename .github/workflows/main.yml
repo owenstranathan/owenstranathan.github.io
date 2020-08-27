@@ -41,8 +41,8 @@ jobs:
       run: |
          cd site-compiler && pip install -r requirements.txt
 
-     - name: Run site-compiler
-       run: |
-         python ${GITHUB_WORKSPACE}/site-compiler/site-compiler.py ${GITHUB_WORKSPACE} -o deploy
+    - name: Run site-compiler
+      run: |
+        python ${GITHUB_WORKSPACE}/site-compiler/site-compiler.py ${GITHUB_WORKSPACE} -o deploy
 
 
