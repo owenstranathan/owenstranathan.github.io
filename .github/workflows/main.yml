@@ -37,12 +37,17 @@ jobs:
         repository: owenstranathan/static-markdown-site-compiler
         path: site-compiler
 
-    - name: Checkout site-compiler
+    - name: Install site-compiler requirements
       run: |
          cd site-compiler && pip install -r requirements.txt
 
     - name: Run site-compiler
       run: |
-        python ${GITHUB_WORKSPACE}/site-compiler/site-compiler.py ${GITHUB_WORKSPACE} -o deploy
+        python ${GITHUB_WORKSPACE}/site-compiler/site-compiler.py ${GITHUB_WORKSPACE} -o build
 
-
+    - name: Deploy to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@3.5.9
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH: gh-pages # The branch the action should deploy to.
+        FOLDER: build # The folder the action should deploy.
