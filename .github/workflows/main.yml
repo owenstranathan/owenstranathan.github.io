@@ -13,7 +13,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build:
+  pre-build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -41,8 +41,10 @@ jobs:
       run: |
          cd site-compiler && pip install -r requirements.txt
 
-    - name: Run a multi-line script
-      run: |
-        site-compiler ${GITHUB_WORKSPACE} -o deploy
+  build:
+
+     - name: Run site-compiler
+       run: |
+         python ${GITHUB_WORKSPACE}/site-compiler/site-compiler.py ${GITHUB_WORKSPACE} -o deploy
 
 
