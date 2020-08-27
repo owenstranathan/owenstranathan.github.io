@@ -37,7 +37,7 @@ jobs:
 
     - uses: actions/checkout@master
       with:
-        name: owenstranathan/static-markdown-site-compiler
+        repository: owenstranathan/static-markdown-site-compiler
 
 #     - name: Checkout site-compiler
 #       run: |
