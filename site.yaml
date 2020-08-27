@@ -12,3 +12,4 @@ copy-paths:
  - "extra/"
  - "fonts/"
  - "img/"
+ - "CNAME"
