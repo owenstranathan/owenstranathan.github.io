@@ -26,10 +26,10 @@ jobs:
    # - with:
     #    ref: gh-pages
 
-#     - name: Set up Python 3.7
-#       uses: actions/setup-python@v2
-#       with:
-#         python-version: 3.7
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.7
 # 
 #     - name: update pip
 #       run: |
