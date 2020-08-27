@@ -35,6 +35,10 @@ jobs:
       run: |
         python -m pip install --upgrade pip
 
+    - uses: actions/checkout@master
+      with:
+        name: owenstranathan/static-markdown-site-compiler
+
 #     - name: Checkout site-compiler
 #       run: |
 #         git clone https://github.com/owenstranathan/static-markdown-site-compiler site-compiler
