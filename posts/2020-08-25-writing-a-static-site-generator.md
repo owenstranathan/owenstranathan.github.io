@@ -1,6 +1,6 @@
 ---
 title: "DIY Life: Making a static site compiler"
-date: 2020-08-23
+date: 2020-08-25
 categories:
  - programming
  - DIY
