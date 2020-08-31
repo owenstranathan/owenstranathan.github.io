@@ -54,29 +54,29 @@ There are 4 primary source files and 1 `.asset` file of interest in this system 
 
 **InputMap.cs**
 
-```
+``` csharp
 {% include "code/InputController/InputMap.cs" %}
 ```
 
 **InputTest.cs**
-```
+```cs
 {% include "code/InputController/InputTest.cs" %}
 ```
 
 **InputController.cs**
-```
+```cs
 {% include "code/InputController/InputController.cs" %}
 ```
 
 **InputListener.cs**
-```
+```cs
 
 {% include "code/InputController/InputListener.cs" %}
 
 ```
 
 **InputManager.asset**
-```
+```yaml
 
 {% include "code/InputController/InputManager.asset" %}
 

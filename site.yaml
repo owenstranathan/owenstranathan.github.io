@@ -7,9 +7,16 @@ email: owenstranathan@gmail.com
 markdown-extensions: # this can be used to enable markdown extensions site wide. See https://python-markdown.github.io/extensions/ for list of available extensions
  - "extra"
  - "toc"
+#  - "codehilite"
+markdown-extensions-configurations:
+  codehilite:
+    linenums: true
+    css_class: highlight
 copy-paths:
  - "css/"
  - "extra/"
  - "fonts/"
  - "img/"
  - "CNAME"
+ignore-patterns:
+ - "*.swp"
