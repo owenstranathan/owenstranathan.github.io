@@ -39,6 +39,7 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;300&family=Roboto&display=swap" rel="stylesheet"> 
     <!-- styles -->
     <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/owiewestside.css" />
 </head>
 
 <body>
@@ -50,8 +51,8 @@
             <div class="about">
                     <p>
                     My name is Owen. I'm a programmer and freelance copy writer.
-                    I have a <a href="https://github.com/owenstranathan/">github</a>.
-                    I have a <a href="https://www.linkedin.com/in/owenstranathan/">linkedin</a>.
+                    I have a <a href="https://github.com/owenstranathan/">github</a> and a
+                    <a href="https://www.linkedin.com/in/owenstranathan/">linkedin</a>.
                     You can hire me to write code or copy. <a href="mailto:owenstranathan@gmail.com">owenstranathan@gmail.com</a>
                     </p>
                     <p class="bottom">
@@ -324,7 +325,7 @@ The result of which has turned out to be a fairly simple yet powerful input mana
 <h1 id="code">Code</h1>
 <p>There are 4 primary source files and 1 <code>.asset</code> file of interest in this system of capturing input.</p>
 <p><strong>InputMap.cs</strong></p>
-<pre><code>﻿using System.Collections;
+<pre><code class="csharp">﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -405,7 +406,7 @@ public class InputMap : ScriptableObject
 </code></pre>
 
 <p><strong>InputTest.cs</strong></p>
-<pre><code>﻿using System.Collections;
+<pre><code class="cs">﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -454,7 +455,7 @@ public class InputTest : MonoBehaviour
 </code></pre>
 
 <p><strong>InputController.cs</strong></p>
-<pre><code>﻿using System.Collections;
+<pre><code class="cs">﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -570,7 +571,7 @@ public class InputController : MonoBehaviour
 </code></pre>
 
 <p><strong>InputListener.cs</strong></p>
-<pre><code>
+<pre><code class="cs">
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -610,7 +611,7 @@ public class InputListener : MonoBehaviour
 </code></pre>
 
 <p><strong>InputManager.asset</strong></p>
-<pre><code>
+<pre><code class="yaml">
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 --- !u!13 &amp;1
@@ -1379,8 +1380,10 @@ I was really ticked about it, so I made some PSA graphics to post in imgur and r
     <hr/>
     <hr/>
     <hr/>
-<p>
-&copy;Owen Stranathan 2020. Made quickly with some python, copy it <a href="https://github.com/owenstranathan//static-markdown-site-compiler">here</a> you mongrel 
-</p>
+    <div class="footer">
+        <p>
+        &copy;Owen Stranathan 2020. Made quickly with some python, copy it <a href="https://github.com/owenstranathan//static-markdown-site-compiler">here</a> you mongrel 
+        </p>
+    </div>
 </body>
 </html>
