@@ -1,9 +1,9 @@
-name: Owen Has Thoughts
-title: Owen Has Thoughts
+name: Owen's Blog
+title: Owen's Blog
 url: owenstranathan.com
 linkedin: https://www.linkedin.com/in/owenstranathan/
 github: https://github.com/owenstranathan/
-email: owenstranathan@gmail.com
+email: owen@studiosodesign.com
 markdown-extensions: # this can be used to enable markdown extensions site wide. See https://python-markdown.github.io/extensions/ for list of available extensions
  - "extra"
  - "toc"
