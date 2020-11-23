@@ -12,7 +12,7 @@ html, body
 }
 body {
     width: 100%;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Times New Roman', serif;
     font-size: 18px;
     /*padding: 2em 4em;*/
     letter-spacing: normal;
@@ -125,4 +125,23 @@ hr
 .dark a:visited
 {
     color: #ab6cff;
+}
+
+blockquote {
+  background: #f9f9f9;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+  font-style: italic;
+  font-family: "Times New Roman";
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+blockquote p {
 }
