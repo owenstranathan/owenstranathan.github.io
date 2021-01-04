@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Owen Stranathan's Blog</title><link>https://owenstranathan.com/feed</link><description>Blog for my thoughts, observations, opinions, project, curiosities and anything and everything in between</description><atom:link href="https://owenstranathan.com/feed" rel="self"/><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><language>en</language><lastBuildDate>Mon, 04 Jan 2021 01:54:54 +0000</lastBuildDate><item><title>Unity Input Controller</title><description>&lt;h3 id="backstory"&gt;Backstory&lt;/h3&gt;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Owen Stranathan's Blog</title><link>https://owenstranathan.com/feed</link><description>Blog for my thoughts, observations, opinions, project, curiosities and anything and everything in between</description><atom:link href="https://owenstranathan.com/feed" rel="self"/><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><language>en</language><lastBuildDate>Mon, 04 Jan 2021 02:07:16 +0000</lastBuildDate><item><title>Unity Input Controller</title><description>&lt;h3 id="backstory"&gt;Backstory&lt;/h3&gt;
 &lt;p&gt;&lt;a href="#succinct-description-of-goals"&gt;Just get to the code bud.&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;I'm 26 years old. That places me firmly in the console only generation. What that means is that I started gaming well after the
 proliferation and success of game consoles. My fist console was the Super Nintendo (actually it was my brother Ian's),
@@ -1028,7 +1028,7 @@ But it's also probably a good thing that my simple system doesn't make an assump
 &lt;p&gt;I've never read &lt;strong&gt;one&lt;/strong&gt; article or blog that I thought "Wow, what a succinct description of delegates and events in C#". So I'm not going to link anything like that unfortunately. However I find that when trying to understand something about C# the best place to start is on the microsoft developer docs.&lt;a href="https://docs.microsoft.com/en-us/dotnet/csharp/delegates-overview"&gt;here is the developer docs for delegates&amp;amp;events&lt;/a&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;/div&gt;</description><author>owen@studiosodesign.com (Owen Stranathan)</author></item><item><title>Beginner's Mind: Relearning Vim</title><description>&lt;p&gt;&lt;a href="#the-point"&gt;Get to the point&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;</description><author>owen@studiosodesign.com (Owen Stranathan)</author><pubDate>Fri, 28 Feb 2020 00:00:00 +0000</pubDate></item><item><title>Beginner's Mind: Relearning Vim</title><description>&lt;p&gt;&lt;a href="#the-point"&gt;Get to the point&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id="vim-is-great"&gt;Vim is great&lt;/h1&gt;
 &lt;p&gt;I use Vim every single day. It's my daily driver text editor, and I definitely have Vim "in my fingers".
 So much do I prefer the ergonomic interface of Vim that I even built a custom keyboard to allow me to remap
@@ -1095,7 +1095,7 @@ is a lot to learn. If you've never done the Vimtutor, I highly recommend that yo
 &lt;p&gt;This is replace mode. I knew about this, but I haven't internalized it.&amp;#160;&lt;a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;/div&gt;</description><author>owen@studiosodesign.com (Owen Stranathan)</author></item><item><title>DIY Life: Making a static site compiler</title><description>&lt;p&gt;I used to use Jekyll. I didn't choose Jekyll, Jekyll just happened to be the software available
+&lt;/div&gt;</description><author>owen@studiosodesign.com (Owen Stranathan)</author><pubDate>Sat, 11 Apr 2020 00:00:00 +0000</pubDate></item><item><title>DIY Life: Making a static site compiler</title><description>&lt;p&gt;I used to use Jekyll. I didn't choose Jekyll, Jekyll just happened to be the software available
 with support from github pages, which is where I host my website. I have some gripes about Jekyll,
 I won't enumerate them, but they are the same gripes I have about a lot of general purpose software.
 This is just what using software is like. That said, it's nice when software sucks in some way and rather
@@ -1130,14 +1130,14 @@ I can totally implement them because python has built in http dev server, and I 
 &lt;p&gt;Technically I didn't author bash-templater. But if you diff my fork from the parent you'll see that I've made enough changes that I feel justified in saying that I've "written" a bash template engine.&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;/div&gt;</description><author>owen@studiosodesign.com (Owen Stranathan)</author></item><item><title>Spotting Fake GBA Carts</title><description>&lt;p&gt;A few months back I bought an &lt;a href=""&gt;Advanced Wars&lt;/a&gt; cartridge for my wicked sweet modded GameBoy Advanced on ebay,
+&lt;/div&gt;</description><author>owen@studiosodesign.com (Owen Stranathan)</author><pubDate>Tue, 25 Aug 2020 00:00:00 +0000</pubDate></item><item><title>Spotting Fake GBA Carts</title><description>&lt;p&gt;A few months back I bought an &lt;a href=""&gt;Advanced Wars&lt;/a&gt; cartridge for my wicked sweet modded GameBoy Advanced on ebay,
 but when I got it turned out to be a fake!
 I was really ticked about it, so I made some PSA graphics to post in imgur and reddit.&lt;/p&gt;
 &lt;p&gt;I'm putting them up here as well, because I can and I want to.&lt;/p&gt;
 &lt;h1 id="how-to-spot-a-fake-gba-cartrige"&gt;How to spot a fake GBA cartrige!&lt;/h1&gt;
 &lt;p&gt;&lt;img alt="" src="https://i.imgur.com/3RIp0ap.jpg" width="100%" /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img alt="" src="https://i.imgur.com/seUU09g.jpg" width="100%" /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="https://i.imgur.com/73K3sV8.jpg" width="100%" /&gt;&lt;/p&gt;</description><author>owen@studiosodesign.com (Owen Stranathan)</author></item><item><title>Practice</title><description>&lt;p&gt;Lately I've been waking up at 5:30 am. I really love the practice of waking up early. But it's a difficult practice and it's taken me a long time to become consistent with it.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="https://i.imgur.com/73K3sV8.jpg" width="100%" /&gt;&lt;/p&gt;</description><author>owen@studiosodesign.com (Owen Stranathan)</author><pubDate>Tue, 17 Sep 2019 00:00:00 +0000</pubDate></item><item><title>Practice</title><description>&lt;p&gt;Lately I've been waking up at 5:30 am. I really love the practice of waking up early. But it's a difficult practice and it's taken me a long time to become consistent with it.&lt;/p&gt;
 &lt;p&gt;Here are some of my tips for successfully waking up early everyday:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Go to bed early.&lt;/li&gt;
@@ -1296,4 +1296,4 @@ I hope this helps you in some way.&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Sleep_cycle#Length"&gt;Wikipedia: Sleep Cycles -- Length&lt;/a&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;/div&gt;</description><author>owen@studiosodesign.com (Owen Stranathan)</author></item></channel></rss>
+&lt;/div&gt;</description><author>owen@studiosodesign.com (Owen Stranathan)</author><pubDate>Mon, 23 Nov 2020 00:00:00 +0000</pubDate></item></channel></rss>
