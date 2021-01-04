@@ -1,5 +1,5 @@
 
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from __main__ import UserExtension, initializer
 from feedgen.feed import FeedGenerator
 
@@ -23,7 +23,14 @@ class FeedGeneratorExtension(UserExtension):
         fe.title(post.metadata["title"])
         fe.author(self.author)
         fe.content(post.html)
-        # fe.published(post.metadata["date"])
+        if isinstance(post.metadata["date"], str):
+            publish_date = datetime.strptime(post.metadata["date"], "%Y-%m-%d")
+        elif isinstance(post.metadata["date"], date):
+            publish_date = datetime.combine(post.metadata["date"], datetime.min.time())
+        else:
+            publish_date = post.metadata["date"]
+        publish_date = publish_date.replace(tzinfo=timezone.utc)
+        fe.published(publish_date)
         post_categories = []
         if categories:= post.metadata.get("categories", None):
             for category in categories:
