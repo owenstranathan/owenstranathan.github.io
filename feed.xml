@@ -1,0 +1,1299 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Owen Stranathan's Blog</title><link>https://owenstranathan.com/feed</link><description>Blog for my thoughts, observations, opinions, project, curiosities and anything and everything in between</description><atom:link href="https://owenstranathan.com/feed" rel="self"/><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><language>en</language><lastBuildDate>Mon, 04 Jan 2021 01:54:54 +0000</lastBuildDate><item><title>Unity Input Controller</title><description>&lt;h3 id="backstory"&gt;Backstory&lt;/h3&gt;
+&lt;p&gt;&lt;a href="#succinct-description-of-goals"&gt;Just get to the code bud.&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I'm 26 years old. That places me firmly in the console only generation. What that means is that I started gaming well after the
+proliferation and success of game consoles. My fist console was the Super Nintendo (actually it was my brother Ian's),
+followed by a PlayStation(also Ian's), and then a Nintendo GameCube(you guessed it... Ian's) and an Xbox(Ian and I both had one),
+then an Xbox 360(Mine!), Wii(Ian's, but it was a gift from me), PlayStation 3(Mine!) and most recently a 
+Nintento Switch and PlayStation 4(Mine, but it was a gift from Ian &amp;amp; my wife). As you can see I didn't play any PC games growing up
+(other than Diablo and Starcraft). &lt;/p&gt;
+&lt;p&gt;So what does all this have to do with anything? Well besides illustraiting the growth, friendship and love of a beautiful brotherhood.
+My history with consoles separates me (and others like me) from the people that have played PC games their whole lives,
+in that I am most comfortable playing video games using a game controller. In fact it wasn't until after the Wii/Xbox 360/PlayStation 3 generation of consoles that 
+I built my first gaming PC, I was 16 years old. So my gaming brain was already mostly developed and it understood joysticks and buttons and analog triggers
+a lot better than mice and keyboards. And this has not changed in the interveneing 10 years since I build that first PC and started to get into PC gaming.&lt;/p&gt;
+&lt;p&gt;This has been a persistent problem for me with prototyping games. When you're prototyping games you want to move as quickly as possible,
+just implementing the bare minimum to actualize an idea to see if it's worth exploring more.
+However in my experience the unity input system does not make it easy to configure controllers quickly and efficiently.
+This makes it hard for me while I'm prototyping because I think about games with controller input in mind,
+and I actually have to make extra mental effort to think about how to sensibly
+map controls to mouse and keyboard input. This is a problem because if my prototype feels weird because the control scheme &lt;strong&gt;is not&lt;/strong&gt;
+comfortable or intuitive (mouse and keyboard) then its distracting me from the good parts of the idea that I want focus on and develop.&lt;/p&gt;
+&lt;p&gt;My most recent encounter with this problem took me on a moderately deep dive into the unity input system.
+The result of which has turned out to be a fairly simple yet powerful input management scheme.&lt;/p&gt;
+&lt;h3 id="succinct-description-of-goals"&gt;Succinct Description of Goals:&lt;/h3&gt;
+&lt;p&gt;I want:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;game controller input in my unity prototype.&lt;/li&gt;
+&lt;li&gt;controller input to be easily and sensibly configurable (which by default in Unity it is not).&lt;/li&gt;
+&lt;li&gt;to be able to swap what kind of controller(PlayStation 4, Xbox 360, Switch Pro, etc.) I'm using with very little fuss and reconfiguration.&lt;/li&gt;
+&lt;li&gt;my behaviors to plug into an input event system to allow them to detect input without lot's of &lt;code&gt;if(Input.GetButtonDown(....))&lt;/code&gt; type code all over the place.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Before I go rambling more, have a look at the code.&lt;/p&gt;
+&lt;h1 id="code"&gt;Code&lt;/h1&gt;
+&lt;p&gt;There are 4 primary source files and 1 &lt;code&gt;.asset&lt;/code&gt; file of interest in this system of capturing input.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;InputMap.cs&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public enum InputAxis
+{
+    A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25, A26, A27, NONE
+}
+
+public enum InputButton
+{
+    B0, B1, B2, B3, B4, B5, B6, B7, B8, B9, B10, B11, B12, B13, B14, B15, B16, B17, B18, B19, NONE
+}
+
+[System.Serializable]
+public class AxisInversion {
+    public bool Horizontal = false;
+    public bool Vertical = false;
+}
+
+[System.Serializable]
+public class ControlStick {
+    public InputAxis Horizontal = InputAxis.NONE;
+    public InputAxis Vertical = InputAxis.NONE;
+    public InputButton Press = InputButton.NONE;
+    public AxisInversion Inversion;
+}
+
+[System.Serializable]
+public class DPadAxes {
+    public InputAxis Horizontal = InputAxis.NONE; // assuming 1 for right and -1 for left
+    public InputAxis Vertical = InputAxis.NONE; // assuming 1 for up and -1 for down
+    public AxisInversion Inversion; // flip assumption
+}
+
+[System.Serializable]
+public class DPadButtons {
+    public InputButton Left = InputButton.NONE;
+    public InputButton Down = InputButton.NONE;
+    public InputButton Right = InputButton.NONE;
+    public InputButton Up = InputButton.NONE;
+}
+
+
+[CreateAssetMenu(fileName = &amp;quot;InputMap&amp;quot;, menuName = &amp;quot;ScriptableObjects/Input Map&amp;quot;, order = 1)]
+public class InputMap : ScriptableObject
+{
+    public string Name;
+    public ControlStick LeftStick;
+    public ControlStick RightStick;
+    public DPadAxes DPadAxes;
+    public InputAxis L2Analog = InputAxis.NONE;
+    public InputAxis R2Analog = InputAxis.NONE;
+
+    public DPadButtons DPadButtons;
+    public InputButton L1 = InputButton.NONE;
+    public InputButton R1 = InputButton.NONE;
+    public InputButton L2 = InputButton.NONE;
+    public InputButton R2 = InputButton.NONE;
+    public InputButton ButtonLeft = InputButton.NONE;
+    public InputButton ButtonBottom = InputButton.NONE;
+    public InputButton ButtonRight = InputButton.NONE;
+    public InputButton ButtonTop = InputButton.NONE;
+    public InputButton Start = InputButton.NONE;
+    public InputButton Select = InputButton.NONE;
+    public InputButton Extra1 = InputButton.NONE;
+    public InputButton Extra2 = InputButton.NONE;
+    public InputButton Extra3 = InputButton.NONE;
+    public InputButton Extra4 = InputButton.NONE;
+    public InputButton Extra5 = InputButton.NONE;
+    public InputButton Extra6 = InputButton.NONE;
+    public InputButton Extra7 = InputButton.NONE;
+    public InputButton Extra8 = InputButton.NONE;
+    public InputButton Extra9 = InputButton.NONE;
+    public InputButton Extra10 = InputButton.NONE;
+    public InputButton Extra11 = InputButton.NONE;
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;InputTest.cs&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-cs"&gt;﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[RequireComponent(typeof(InputController))]
+[ExecuteInEditMode]
+public class InputTest : MonoBehaviour
+{
+    public const int numAxes = 28;
+    public const int numButtons = 20;
+    public bool testAxes = true;
+    public bool testButtons = true;
+    public bool[] Axes = new bool[numAxes];
+    public bool[] Buttons = new bool[numButtons];
+    private InputController inputController;
+
+    void Start() {
+        inputController = inputController ?? GetComponent&amp;lt;InputController&amp;gt;();
+        Debug.Assert(inputController != null);
+    }
+
+    void Update() {
+        var name = inputController.Number.ToString();
+        if (testAxes) {
+            for (int i = 0; i &amp;lt; numAxes; ++i) {
+                if (Axes[i]) {
+                    var axisName = $&amp;quot;{name}A{i}&amp;quot;;
+                    var axis = Input.GetAxis(axisName);
+                    if (axis != 0) {
+                        Debug.Log($&amp;quot;A{i}: {axis}&amp;quot;);
+                    }
+                }
+            }
+        }
+        if (testButtons) {
+            for (int i = 0; i &amp;lt; numButtons; ++i) {
+                if (Buttons[i]) {
+                    var buttonName = $&amp;quot;{name}B{i}&amp;quot;;
+                    if (Input.GetButtonDown(buttonName)) {
+                        Debug.Log(buttonName);
+                    }
+                }
+            }
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;InputController.cs&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-cs"&gt;﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public enum ControllerNumber
+{
+    J1 = 1,
+    J2 = 2
+}
+
+public enum Button
+{
+    DPadLeft,
+    DPadDown,
+    DPadRight,
+    DPadUp,
+    ButtonLeft, // X on Xbox, Square on PS4, Y on Switch, etc.
+    ButtonBottom, // A on Xbox, X on PS4, B on Switch, etc.
+    ButtonRight, // B on Xbox, Circle on PS4, A on Switch, etc.
+    ButtonTop, // Y on Xbox, Triangle on PS4, X on Switch, etc.
+    L1, // Left Bumper
+    R1, // Right Bumper
+    L2, // Left Trigger (digital, use OnLeftTrigger for analog)
+    R2, // Right Trigger (digital, use OnRightTrigger for analog)
+    L3, // Left stick
+    R3, // Right stick
+    Start, // What was classically start (Right center button)
+    Select, //  What was classically select (Left center button)
+            // All Extras are for home button or other system specific weirdness
+    Extra1, Extra2, Extra3, Extra4, Extra5, Extra6, Extra7, Extra8, Extra9, Extra10
+}
+
+public class InputController : MonoBehaviour
+{
+    public ControllerNumber Number;
+    public InputMap InputMap;
+
+    // Delegates
+    public delegate void Stick(float horizontal, float vertical);
+    public delegate void DPad(float horizontal, float vertical);
+    public delegate void AnalogTrigger(float activation);
+    public delegate void ButtonDown(Button button);
+
+    // Events
+    public event Stick OnLeftStick;
+    public event Stick OnRightStick;
+    public event AnalogTrigger OnLeftTrigger;
+    public event AnalogTrigger OnRightTrigger;
+    public event DPad OnDPad;
+    public event ButtonDown OnButtonDown;
+
+
+    void Start() {
+        if (InputMap == null)
+        {
+            Debug.LogError(&amp;quot;You must set the InputMap attribute!&amp;quot;);
+        }
+    }
+
+    void Update() {
+        var name = Number.ToString();
+
+        var LeftStickH = (InputMap.LeftStick.Inversion.Horizontal ? -1 : 1) * Input.GetAxis($&amp;quot;{name}{InputMap.LeftStick.Horizontal}&amp;quot;);
+        var LeftStickV = (InputMap.LeftStick.Inversion.Vertical ? -1 : 1) * Input.GetAxis($&amp;quot;{name}{InputMap.LeftStick.Vertical}&amp;quot;);
+        if (LeftStickH != 0 || LeftStickV != 0)
+        {
+            OnLeftStick?.Invoke(LeftStickH, LeftStickV);
+        }
+        var RightStickH = (InputMap.RightStick.Inversion.Horizontal ? -1 : 1) * Input.GetAxis($&amp;quot;{name}{InputMap.RightStick.Horizontal}&amp;quot;);
+        var RightStickV = (InputMap.RightStick.Inversion.Vertical ? -1 : 1) * Input.GetAxis($&amp;quot;{name}{InputMap.RightStick.Vertical}&amp;quot;);
+        if (RightStickH != 0 || RightStickV != 0)
+        {
+            OnRightStick?.Invoke(RightStickH, RightStickV);
+        }
+        var DPadH = (InputMap.DPadAxes.Inversion.Horizontal ? -1 : 1) * Input.GetAxis($&amp;quot;{name}{InputMap.DPadAxes.Horizontal}&amp;quot;);
+        var DPadV = (InputMap.DPadAxes.Inversion.Vertical ? -1 : 1) * Input.GetAxis($&amp;quot;{name}{InputMap.DPadAxes.Vertical}&amp;quot;);
+        if (DPadH != 0 || DPadV != 0)
+        {
+            OnDPad?.Invoke(DPadH, DPadV);
+        }
+        var L2Analog = Input.GetAxis($&amp;quot;{name}{InputMap.L2Analog}&amp;quot;);
+        if (L2Analog != 0) { OnLeftTrigger?.Invoke(L2Analog); }
+        var R2Analog = Input.GetAxis($&amp;quot;{name}{InputMap.R2Analog}&amp;quot;);
+        if (R2Analog != 0) { OnRightTrigger?.Invoke(R2Analog); }
+
+        if (Input.GetButtonDown($&amp;quot;{name}{InputMap.DPadButtons.Left}&amp;quot;)) { OnButtonDown?.Invoke(Button.DPadLeft); }
+        if (Input.GetButtonDown($&amp;quot;{name}{InputMap.DPadButtons.Down}&amp;quot;)) { OnButtonDown?.Invoke(Button.DPadDown); }
+        if (Input.GetButtonDown($&amp;quot;{name}{InputMap.DPadButtons.Right}&amp;quot;)) { OnButtonDown?.Invoke(Button.DPadRight); }
+        if (Input.GetButtonDown($&amp;quot;{name}{InputMap.DPadButtons.Up}&amp;quot;)) { OnButtonDown?.Invoke(Button.DPadUp); }
+        if (Input.GetButtonDown($&amp;quot;{name}{InputMap.L1}&amp;quot;)) { OnButtonDown?.Invoke(Button.L1); }
+        if (Input.GetButtonDown($&amp;quot;{name}{InputMap.R1}&amp;quot;)) { OnButtonDown?.Invoke(Button.R1); }
+        if (Input.GetButtonDown($&amp;quot;{name}{InputMap.L2}&amp;quot;)) { OnButtonDown?.Invoke(Button.L2); }
+        if (Input.GetButtonDown($&amp;quot;{name}{InputMap.R2}&amp;quot;)) { OnButtonDown?.Invoke(Button.R2); }
+        if (Input.GetButtonDown($&amp;quot;{name}{InputMap.LeftStick.Press}&amp;quot;)) { OnButtonDown?.Invoke(Button.L3); }
+        if (Input.GetButtonDown($&amp;quot;{name}{InputMap.RightStick.Press}&amp;quot;)) { OnButtonDown?.Invoke(Button.R3); }
+        if (Input.GetButtonDown($&amp;quot;{name}{InputMap.ButtonLeft}&amp;quot;)) { OnButtonDown?.Invoke(Button.ButtonLeft); }
+        if (Input.GetButtonDown($&amp;quot;{name}{InputMap.ButtonBottom}&amp;quot;)) { OnButtonDown?.Invoke(Button.ButtonBottom); }
+        if (Input.GetButtonDown($&amp;quot;{name}{InputMap.ButtonRight}&amp;quot;)) { OnButtonDown?.Invoke(Button.ButtonRight); }
+        if (Input.GetButtonDown($&amp;quot;{name}{InputMap.ButtonTop}&amp;quot;)) { OnButtonDown?.Invoke(Button.ButtonTop); }
+        if (Input.GetButtonDown($&amp;quot;{name}{InputMap.Start}&amp;quot;)) { OnButtonDown?.Invoke(Button.Start); }
+        if (Input.GetButtonDown($&amp;quot;{name}{InputMap.Select}&amp;quot;)) { OnButtonDown?.Invoke(Button.Select); }
+        if (Input.GetButtonDown($&amp;quot;{name}{InputMap.Extra1}&amp;quot;)) { OnButtonDown?.Invoke(Button.Extra1); }
+        if (Input.GetButtonDown($&amp;quot;{name}{InputMap.Extra2}&amp;quot;)) { OnButtonDown?.Invoke(Button.Extra2); }
+        if (Input.GetButtonDown($&amp;quot;{name}{InputMap.Extra3}&amp;quot;)) { OnButtonDown?.Invoke(Button.Extra3); }
+        if (Input.GetButtonDown($&amp;quot;{name}{InputMap.Extra4}&amp;quot;)) { OnButtonDown?.Invoke(Button.Extra4); }
+        if (Input.GetButtonDown($&amp;quot;{name}{InputMap.Extra5}&amp;quot;)) { OnButtonDown?.Invoke(Button.Extra5); }
+        if (Input.GetButtonDown($&amp;quot;{name}{InputMap.Extra6}&amp;quot;)) { OnButtonDown?.Invoke(Button.Extra6); }
+        if (Input.GetButtonDown($&amp;quot;{name}{InputMap.Extra7}&amp;quot;)) { OnButtonDown?.Invoke(Button.Extra7); }
+        if (Input.GetButtonDown($&amp;quot;{name}{InputMap.Extra8}&amp;quot;)) { OnButtonDown?.Invoke(Button.Extra8); }
+        if (Input.GetButtonDown($&amp;quot;{name}{InputMap.Extra9}&amp;quot;)) { OnButtonDown?.Invoke(Button.Extra9); }
+        if (Input.GetButtonDown($&amp;quot;{name}{InputMap.Extra10}&amp;quot;)) { OnButtonDown?.Invoke(Button.Extra10); }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;InputListener.cs&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-cs"&gt;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class InputListener : MonoBehaviour
+{
+    public InputController InputController;
+
+    public virtual void Subscribe(InputController inputController) {
+        inputController.OnLeftStick += OnLeftStick;
+        inputController.OnRightStick += OnRightStick;
+        inputController.OnLeftTrigger += OnLeftTrigger;
+        inputController.OnRightTrigger += OnLeftTrigger;
+        inputController.OnDPad += OnDPad;
+        inputController.OnButtonDown += OnButtonDown;
+
+    }
+
+    public virtual void Unsubscribe(InputController inputController) {
+        inputController.OnLeftStick -= OnLeftStick;
+        inputController.OnRightStick -= OnRightStick;
+        inputController.OnLeftTrigger -= OnLeftTrigger;
+        inputController.OnRightTrigger -= OnLeftTrigger;
+        inputController.OnDPad -= OnDPad;
+        inputController.OnButtonDown -= OnButtonDown;
+    }
+
+    public virtual void OnLeftStick(float horizontal, float vertical) { }
+    public virtual void OnRightStick(float horizontal, float vertical) { }
+    public virtual void OnLeftTrigger(float activation) { }
+    public virtual void OnRightTrigger(float activation) { }
+    public virtual void OnDPad(float horizontal, float vertical) { }
+    public virtual void OnButtonDown(Button button) { }
+
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;InputManager.asset&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-yaml"&gt;
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!13 &amp;amp;1
+InputManager:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Axes:
+  - serializedVersion: 3
+    m_Name: J1A0
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.19
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 0
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: J1A1
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.19
+    sensitivity: 1
+    snap: 0
+    invert: 1
+    type: 2
+    axis: 1
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: J1A2
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.19
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 2
+    joyNum: 1
+# ...
+# ... Large portion omitted for brevity ...
+# ...
+  - serializedVersion: 3
+    m_Name: J1A27
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.19
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 27
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: J1B0
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick button 0
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0
+    sensitivity: 0
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: J1B1
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick button 1
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0
+    sensitivity: 0
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 1
+# ...
+# ... Large portion omitted for brevity ...
+# ...
+  - serializedVersion: 3
+    m_Name: J1B19
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick button 19
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0
+    sensitivity: 0
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 1
+  - serializedVersion: 3
+    m_Name: J1NONE
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0
+    sensitivity: 0
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 1 
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="unityengineinput-and-the-inputmanager-asset-1"&gt;&lt;code&gt;UnityEngine.Input&lt;/code&gt; and the InputManager Asset &lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1"&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/h3&gt;
+&lt;p&gt;First let's talk about the unity input system as it exists today. &lt;a href="https://docs.unity3d.com/Manual/ConventionalGameInput.html"&gt;Relevant unity documentation about "Conventional Game Input"&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Super high level, the way that it works is, Unity interfaces with the OS to detect events coming from Input devices.
+It translates those system level input events into Unity input values accessible through the &lt;code&gt;Input&lt;/code&gt; class.
+All input at the unity level can be thought of as a "Virtual Axis" what that means is every input can take a value between 1 and -1 with 0 meaning
+no input. This makes lots of sense for say a joystick, but it's a little less intuitive for almost all the other buttons on a controller.
+The reason that the inputs are configured as virtual axes is so you can define your own -1 to 1 interval using any buttons you like. This is
+done by setting a "positive" and "negative" button for a given named input.
+Lets take quick look at the default input set up.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Default Input Settings" src="img/InputController/InputSettingsDefault.png" /&gt;&lt;/p&gt;
+&lt;p&gt;You can see that the unity input settings are preconfigured with 18 inputs (i.e. it's an array of 18 virtual axis configurations)
+I wont go to in detail about what all the settings do, because I don't know. Just know that this is where you're going to configure your input.
+I've you've never done that then I highly recommend deleting all the preconfigured inputs and adding all your own to get a feel for how it works.&lt;/p&gt;
+&lt;p&gt;If you just want to copy me then you still need to delete all the existing inputs, do this by setting the size of the settings array to 0.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Empty InputSettings" src="img/InputController/InputSettingsEmpty.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Once we've done this let's replace those old default settings with something a little more uniform.  &lt;/p&gt;
+&lt;p&gt;It's important remember that the inputs are accessed by &lt;strong&gt;name&lt;/strong&gt; at runtime with something like &lt;code&gt;Input.GetAxis("MyStupidInputSettingName")&lt;/code&gt;
+Our system is going to aim to abstract that away so we need a uniform naming scheme, it doesn't need to be complex or clever, just automatable and
+understandable to someone reading the code. The simplest one I came up with was &lt;code&gt;J%nA%a&lt;/code&gt; and &lt;code&gt;J%nB%b&lt;/code&gt; where &lt;code&gt;%n&lt;/code&gt; is the 
+joystick number, &lt;code&gt;%a&lt;/code&gt; is the axis number, and &lt;code&gt;%b&lt;/code&gt; is the button number &lt;sup id="fnref:2"&gt;&lt;a class="footnote-ref" href="#fn:2"&gt;2&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+&lt;p&gt;So for each controller we'll have 28 axes numbered 0-27 (&lt;code&gt;J%nA0&lt;/code&gt;-&lt;code&gt;J%nA27&lt;/code&gt;) and 20 buttons numbered 0-19 (&lt;code&gt;J%nB0&lt;/code&gt;-&lt;code&gt;J%nB19&lt;/code&gt;).
+We'll have 1 additional input for each controller called &lt;code&gt;J%nNONE&lt;/code&gt; We'll use this to map axes and buttons not used but 
+a given controller scheme. This is kind of a chore to set up with the unity serialization ui window for input settings. So I 
+recommend using a power editor of your choice (&lt;strong&gt;&lt;em&gt;&amp;#42;cough&amp;#42;&lt;/em&gt;&lt;/strong&gt; vim &lt;strong&gt;&lt;em&gt;&amp;#42;cough&amp;#42;&lt;/em&gt;&lt;/strong&gt;) to make a macro for each input type and just blow through
+writing the yaml that way, the settings are serialized as YAML in &lt;code&gt;/ProjectSettings/InputManager.asset&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Each axis will define an entry in a yaml list (which is how the settings array gets serialized).
+each item in that list will set the &lt;code&gt;n_Name&lt;/code&gt; following scheme described above. It will also set
+&lt;code&gt;joyNum&lt;/code&gt; to the joyStick number, &lt;code&gt;axis&lt;/code&gt; to the axis number as well as &lt;code&gt;dead&lt;/code&gt; and &lt;code&gt;sensitivity&lt;/code&gt;(these should be set
+according to preference). This is done for once for each axis for each controller, so there will be 28 * N axis inputs
+(where N=number of configured controllers). If you want to you can just set up all 16, but I doubt your game will support local
+16 player, so you should probably limit it to the number of controllers you mean to support.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-yaml"&gt;
+  - serializedVersion: 3
+    m_Name: J1A0
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.19
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 0
+    joyNum: 1
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Each button will set &lt;code&gt;joyNum&lt;/code&gt; in the same way that we did for axes as well as &lt;code&gt;m_Name&lt;/code&gt; using the scheme for buttons,
+but will only need to set &lt;code&gt;positiveButton&lt;/code&gt; to &lt;code&gt;joystick button %n&lt;/code&gt; where again &lt;code&gt;%n&lt;/code&gt; is the button number.
+Just like the axes there needs to be one for each button for each controller.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-yaml"&gt;
+  - serializedVersion: 3
+    m_Name: J1B0
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick button 0
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0
+    sensitivity: 0
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 1
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Finally we set the null input &lt;code&gt;J%nNONE&lt;/code&gt; like an axis with no sensitivity&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-yaml"&gt;  - serializedVersion: 3
+    m_Name: J1NONE
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0
+    sensitivity: 0
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 1 
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;With that done we can detect input on any of our controller through &lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-cs"&gt;
+Input.GetAxis($&amp;quot;J{joyNum}A{axis}&amp;quot;);
+Input.GetButtonDown($&amp;quot;J{joyNum}B{button}&amp;quot;);
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Which is great but it's still not very useful. Different controllers will have different configurations of this
+scheme. So for example a Dual Shock 4(Playstation 4) might have it's left stick horizontal and vertical axis on &lt;code&gt;A0&lt;/code&gt; and &lt;code&gt;A2&lt;/code&gt; respectively.
+Whereas an Xbox 360 controller might have it on &lt;code&gt;A0&lt;/code&gt; and &lt;code&gt;A1&lt;/code&gt;.
+In fact I've even witnessed input mappings varying for a single controller just between wireless mode and wired.
+So we need a way to define which inputs map to what buttons for a given controller. This sounds like a job for scriptable objects.&lt;/p&gt;
+&lt;h3 id="inputmapcs"&gt;InputMap.cs&lt;/h3&gt;
+&lt;p&gt;This brings us to the first piece of source we're gonna look at the &lt;code&gt;InputMap&lt;/code&gt;.
+The &lt;code&gt;InputMap&lt;/code&gt; class is a Unity &lt;code&gt;ScriptableObject&lt;/code&gt; that serves to map between our input scheme and an interface that we can understand
+and that makes sense. The goal here is be able to get a controllers input state with something like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-cs"&gt;
+var leftStickVertical = Input.GetAxis(inputMap.LeftStick.Vertical);
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That looks a lot more manageable. Let's talk about how to do that.
+My initial implementation just had a string from each highlevel input name I wanted
+(LeftStick[Vertical|Horizontal], RightStick[...], L1, R1, ButtonTop, ButtonBottom, etc..) which would return the axis or button it maps to.
+However I decided that its a little bit safer to define enumerations for each possible button and axis and define the &lt;code&gt;InputMap&lt;/code&gt; scriptable object to
+take those enumeration types as it's members. Let's take a look at those enums.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-cs"&gt;
+public enum InputAxis
+{ 
+    A0, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25, A26, A27, NONE
+}
+
+public enum InputButton
+{
+    B0, B1, B2, B3, B4, B5, B6, B7, B8, B9, B10, B11, B12, B13, B14, B15, B16, B17, B18, B19, NONE
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It's not too complicated. There are 2 different enums and each one has a value for each of the possible axes or buttons respectively.&lt;/p&gt;
+&lt;p&gt;I also made a few convenience classes to help model the structure of a controller.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-cs"&gt;
+[System.Serializable]
+public class AxisInversion {
+    public bool Horizontal = false;
+    public bool Vertical = false;
+}
+
+[System.Serializable]
+public class ControlStick {
+    public InputAxis Horizontal = InputAxis.NONE;
+    public InputAxis Vertical = InputAxis.NONE;
+    public InputButton Press = InputButton.NONE;
+    public AxisInversion Inversion;
+}
+
+[System.Serializable]
+public class DPadAxes {
+    public InputAxis Horizontal = InputAxis.NONE; // 1 for right and -1 for left
+    public InputAxis Vertical = InputAxis.NONE; // 1 for up and -1 for down
+    public AxisInversion Inversion; // flip above assumptions
+}
+
+[System.Serializable]
+public class DPadButtons {
+    public InputButton Left = InputButton.NONE;
+    public InputButton Down = InputButton.NONE;
+    public InputButton Right = InputButton.NONE;
+    public InputButton Up = InputButton.NONE;
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;These classes just wrap up the data that constitutes a single joy stick for a controller. As well as a DPad configured as either axes or 
+buttons.&lt;/p&gt;
+&lt;p&gt;Finally we have the actual &lt;code&gt;InputMap&lt;/code&gt; class.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-cs"&gt;
+[CreateAssetMenu(fileName = &amp;quot;InputMap&amp;quot;, menuName = &amp;quot;ScriptableObjects/InputMap&amp;quot;, order = 1)]
+public class InputMap : ScriptableObject
+{
+    public InputType Type;
+    public ControlStick LeftStick;
+    public ControlStick RightStick;
+    public DPadAxes DPadAxes;
+    public DPadButtons DPadButtons;
+    public InputAxis L2Analog = InputAxis.NONE;
+    public InputAxis R2Analog = InputAxis.NONE;
+    public InputButton L1 = InputButton.NONE;
+    public InputButton R1 = InputButton.NONE;
+    public InputButton L2 = InputButton.NONE;
+    public InputButton R2 = InputButton.NONE;
+    public InputButton ButtonLeft = InputButton.NONE;
+    public InputButton ButtonBottom = InputButton.NONE;
+    public InputButton ButtonRight = InputButton.NONE;
+    public InputButton ButtonTop = InputButton.NONE;
+    public InputButton Start = InputButton.NONE;
+    public InputButton Select = InputButton.NONE;
+    public InputButton Extra1 = InputButton.NONE;
+    public InputButton Extra2 = InputButton.NONE;
+    public InputButton Extra3 = InputButton.NONE;
+    public InputButton Extra4 = InputButton.NONE;
+    public InputButton Extra5 = InputButton.NONE;
+    public InputButton Extra6 = InputButton.NONE;
+    public InputButton Extra7 = InputButton.NONE;
+    public InputButton Extra8 = InputButton.NONE;
+    public InputButton Extra9 = InputButton.NONE;
+    public InputButton Extra10 = InputButton.NONE;
+    public InputButton Extra11 = InputButton.NONE;
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;As you can see it has all the buttons and joysticks you would expect a controller to have and then some. It also makes use of a
+unity engine c# attribute &lt;code&gt;CreateAssetMenu&lt;/code&gt; which will make a menu item for creating a new scriptable object asset of type &lt;code&gt;InputMap&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Create Asset Menu" src="img/InputController/CreateAssetMenu.png" /&gt;&lt;/p&gt;
+&lt;h3 id="inputtestcs"&gt;InputTest.cs&lt;/h3&gt;
+&lt;p&gt;Cool. So now that we have an &lt;code&gt;InputMap&lt;/code&gt; Scriptable Object class we can configure a new &lt;code&gt;InputMap&lt;/code&gt; asset for our controller.
+The best way to figure out how a given controller maps to unity's input system is to just plug it in and
+see which inputs it's triggering. Luckily we've already done all the work of wiring up every single possible input to a 
+named and configured input setting so all we need is a little test script to check every single input setting and 
+log which input is firing.&lt;/p&gt;
+&lt;p&gt;Let's see what that looks like.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-cs"&gt;
+[ExecuteInEditMode]
+public class InputTest : MonoBehaviour
+{
+    public const int numAxes = 28;
+    public const int numButtons = 21;
+    public bool testAxes = true;
+    public bool testButtons = true;
+    public bool[] Axes = new bool[numAxes];
+    public bool[] Buttons = new bool[numButtons];
+
+    void Update()
+    {
+        var name = &amp;quot;J1&amp;quot;;
+        if (testAxes)
+        {
+            for (int i = 0; i &amp;lt; numAxes; ++i)
+            {
+                if (Axes[i])
+                {
+                    var axisName = $&amp;quot;{name}A{i}&amp;quot;;
+                    var axis = Input.GetAxis(axisName);
+                    if (axis != 0)
+                    {
+                        Debug.Log($&amp;quot;A{i}: {axis}&amp;quot;);
+                    }
+                }
+            }
+        }
+        if (testButtons)
+        {
+            for (int i = 0; i &amp;lt; numButtons; ++i)
+            {
+                if (Buttons[i])
+                {
+                    var buttonName = $&amp;quot;{name}B{i}&amp;quot;;
+                    if (Input.GetButtonDown(buttonName))
+                    {
+                        Debug.Log(buttonName);
+                    }
+                }
+            }
+        }
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;As you can see this script just checks every single input possible and outputs it's name (using the scheme we devised) when it's triggered.
+Using this script it's easy to figure out the layout of any controller, all we have to do is attach the script to an empty game object in our scene,
+plug in our controller and start pressing buttons. The names of the input should appear in the console window when the corresponding
+button is pressed &lt;sup id="fnref:3"&gt;&lt;a class="footnote-ref" href="#fn:3"&gt;3&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+&lt;p&gt;In the picture below you can see that I've named the Game Object that our script &lt;code&gt;InputTest.cs&lt;/code&gt; is attached to "controller" and if you look at the
+inspector you can see the array of axis inputs as well as our booleans for testing buttons and axis
+(not pictured but further down the inspector's scroll area is the array of button inputs, axis 4 and 5 are disabled because they are the
+L2 and R2 analog inputs on the wireless Dual Shock 4 controller that I'm using.&lt;sup id="fnref2:3"&gt;&lt;a class="footnote-ref" href="#fn:3"&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Input Test Example" src="img/InputController/InputTest.png" /&gt;&lt;/p&gt;
+&lt;h3 id="configuring-an-inputmap-asset"&gt;Configuring an InputMap asset&lt;/h3&gt;
+&lt;p&gt;Now we can piece together our input mapping for our controller using the procedure we outlined above. These are the steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Use the Asset menu to create a new input map asset. ( Assets &amp;gt; Create &amp;gt; Scriptable Objects &amp;gt; Input Map)&lt;/li&gt;
+&lt;li&gt;Name your input map accordingly (I'm using a wireless Dual Shock 4 controller so I'm naming mine &lt;code&gt;DualShock4Wireless.asset&lt;/code&gt;
+I'm differentiating wired and wireless because I happen to know that the mapping will be different depending on the mode.
+(I know it's stupid, that's why we're doing all this))&lt;/li&gt;
+&lt;li&gt;Click on the new asset to view it in the inspector.&lt;/li&gt;
+&lt;li&gt;Play your project and press buttons to observe which name they have.&lt;/li&gt;
+&lt;li&gt;Record those names accordingly in your InputMap asset.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Mine looks like this &lt;sup id="fnref:4"&gt;&lt;a class="footnote-ref" href="#fn:4"&gt;4&lt;/a&gt;&lt;/sup&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Input Map Configuration Example" src="img/InputController/InputMapConfiguration.png" /&gt;&lt;/p&gt;
+&lt;h3 id="inputcontrollercs"&gt;InputController.cs&lt;/h3&gt;
+&lt;p&gt;Next we are gonna build out the system that will allow our behaviors to receive events from our input system
+but writing functions like &lt;code&gt;OnLeftStick&lt;/code&gt; or &lt;code&gt;OnButtonDown&lt;/code&gt;. To do this we're going to be making use of the C# event/delegate system (pattern?).&lt;/p&gt;
+&lt;p&gt;This is were the real magic of our system is going to take place.&lt;/p&gt;
+&lt;p&gt;To kick things off let's take a gander at those 2 enums at the top of the file.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-cs"&gt;
+public enum ControllerNumber
+{
+    J1 = 1,
+    J2 = 2
+}
+
+public enum Button
+{
+    DPadLeft,
+    DPadDown,
+    DPadRight,
+    DPadUp,
+    ButtonLeft, // X on Xbox, Square on PS4, Y on Switch, etc.
+    ButtonBottom, // A on Xbox, X on PS4, B on Switch, etc.
+    ButtonRight, // B on Xbox, Circle on PS4, A on Switch, etc.
+    ButtonTop, // Y on Xbox, Triangle on PS4, X on Switch, etc.
+    L1, // Left Bumper
+    R1, // Right Bumper
+    L2, // Left Trigger (digital, use OnLeftTrigger for analog)
+    R2, // Right Trigger (digital, use OnRightTrigger for analog)
+    L3, // Left stick
+    R3, // Right stick
+    Start, // What was classically start (Right center button)
+    Select, //  What was classically select (Left center button)
+            // All Extras are for home button or other system specific weirdness
+    Extra1, Extra2, Extra3, Extra4, Extra5, Extra6, Extra7, Extra8, Extra9, Extra10
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I think these are fairly self explanitory, but let's talk about it.&lt;/p&gt;
+&lt;p&gt;Fhe first enum &lt;code&gt;ControllerNumber&lt;/code&gt; is just what is sounds like the number of a controller so if your on joystick 1 (&lt;code&gt;J1&lt;/code&gt; in our naming scheme) then you're
+&lt;code&gt;J1&lt;/code&gt; in the enum. Technically you can have more than 2 joysticks on a system but I don't need more than 2 and I don't feel like copy pastaing all that 
+configuration for 16 controllers or whatever it is.&lt;/p&gt;
+&lt;p&gt;Next is the &lt;code&gt;Button&lt;/code&gt; enum, this will give us an identifier to use later to pass to our &lt;code&gt;ButtonDown&lt;/code&gt; event delegate.
+Since buttons don't have any analog input data (there's only 2 states for a button, pressed or not pressed) we only need to
+attribute a name/id to a button, hence this enum.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-cs"&gt;
+
+public class InputController : MonoBehaviour
+{
+    public ControllerNumber Number;
+    public InputMap InputMap;
+
+    // Delegates
+    public delegate void Stick(float horizontal, float vertical);
+    public delegate void DPad(float horizontal, float vertical);
+    public delegate void AnalogTrigger(float activation);
+    public delegate void ButtonDown(Button button);
+
+    // Events
+    public event Stick OnLeftStick;
+    public event Stick OnRightStick;
+    public event AnalogTrigger OnLeftTrigger;
+    public event AnalogTrigger OnRightTrigger;
+    public event DPad OnDPad;
+    public event ButtonDown OnButtonDown;
+
+    // ...see below...
+
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;To start off we give each controller a number and an InputMap.
+What comes next a very simple event listener pattern using builtin c# events and delegates.&lt;sup id="fnref:5"&gt;&lt;a class="footnote-ref" href="#fn:5"&gt;5&lt;/a&gt;&lt;/sup&gt;
+What I have done is for each distinct event I feel a controller might have I've defined a delegate, which is
+like the signature (function type) of a function.&lt;/p&gt;
+&lt;p&gt;I then define the event as being one of these delegates. So in the example I have defined a &lt;code&gt;Stick&lt;/code&gt; delegate taking 2 floats and returning void,
+which both the &lt;code&gt;OnLeftStick&lt;/code&gt; and &lt;code&gt;OnRightStick&lt;/code&gt; events use, this means any function with the same signature(type) as
+the &lt;code&gt;Stick&lt;/code&gt; delegate definition can listen to the events &lt;code&gt;OnLeftStick&lt;/code&gt; or &lt;code&gt;OnRightStick&lt;/code&gt;. What this means is &lt;strong&gt;any&lt;/strong&gt; function that
+takes 2 floats and returns void can listen on the &lt;code&gt;OnLeftStick&lt;/code&gt; or &lt;code&gt;OnRightStick&lt;/code&gt; event. This will make more sense hopefully
+when we look at the InputListener behavior a little later on.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-cs"&gt;
+public class InputController : MonoBehaviour
+{
+    // ...see above...
+
+    void Start()
+    {
+        if(InputMap == null) {
+            Debug.LogError(&amp;quot;You must set the InputMap attribute!&amp;quot;);
+        }
+    }
+
+    void Update()
+    {
+        var name = Number.ToString();
+
+        var LeftStickH = (
+            (InputMap.LeftStick.Inversion.Horizontal ? -1 : 1)
+            *
+            Input.GetAxis($&amp;quot;{name}{InputMap.LeftStick.Horizontal}&amp;quot;)
+        );
+        var LeftStickV = (
+            (InputMap.LeftStick.Inversion.Vertical ? -1 : 1)
+            *
+            Input.GetAxis($&amp;quot;{name}{InputMap.LeftStick.Vertical}&amp;quot;)
+        );
+        if (LeftStickH != 0 || LeftStickV != 0)
+        {
+            OnLeftStick?.Invoke(LeftStickH, LeftStickV);
+        }
+        // ... repeated for right stick, and depad axis ...
+        var L2Analog = Input.GetAxis($&amp;quot;{name}{InputMap.L2Analog}&amp;quot;);
+        if (L2Analog != 0) { OnLeftTrigger?.Invoke(L2Analog); }
+        var R2Analog = Input.GetAxis($&amp;quot;{name}{InputMap.R2Analog}&amp;quot;);
+        if (R2Analog != 0) { OnRightTrigger?.Invoke(R2Analog); }
+
+        if (Input.GetButtonDown($&amp;quot;{name}{InputMap.ButtonLeft}&amp;quot;)) {
+            OnButtonDown?.Invoke(Button.ButtonLeft);
+        }
+        if (Input.GetButtonDown($&amp;quot;{name}{InputMap.ButtonBottom}&amp;quot;)) {
+            OnButtonDown?.Invoke(Button.ButtonBottom);
+        }
+        if (Input.GetButtonDown($&amp;quot;{name}{InputMap.ButtonRight}&amp;quot;)) {
+            OnButtonDown?.Invoke(Button.ButtonRight);
+        }
+        // ... repeat for every single button ...
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Sorry about that split line multiplication but I'm trying to be kind to people with small screens (me on a 13" MBP).&lt;/p&gt;
+&lt;p&gt;So here you see we just go and check every input using our cool new scheme and invoke a corresponding event, any delegates listening
+to that event will be called. Pretty sweet! But wait we still need our delegates that will listen to these events in our behavior.&lt;/p&gt;
+&lt;p&gt;Let's see what that looks like right now.&lt;/p&gt;
+&lt;h3 id="inputlistenercs"&gt;InputListener.cs&lt;/h3&gt;
+&lt;p&gt;Before I show you, I want to emphasize that you don't &lt;strong&gt;need&lt;/strong&gt; this class, as long as you understand events in .NET you can just subscribe to the 
+events in InputController behavior on your own time and at your own discretion. That said this base class provides a nice illustration of how
+this can be done.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-cs"&gt;
+public class InputListener : MonoBehaviour
+{
+    public InputController InputController;
+
+    public virtual void Subscribe(InputController inputController)
+    {
+        inputController.OnLeftStick += OnLeftStick;
+        inputController.OnRightStick += OnRightStick;
+        inputController.OnLeftTrigger += OnLeftTrigger;
+        inputController.OnRightTrigger += OnLeftTrigger;
+        inputController.OnDPad += OnDPad;
+        inputController.OnButtonDown += OnButtonDown;
+
+    }
+
+    public virtual void Unsubscribe(InputController inputController)
+    {
+        inputController.OnLeftStick -= OnLeftStick;
+        inputController.OnRightStick -= OnRightStick;
+        inputController.OnLeftTrigger -= OnLeftTrigger;
+        inputController.OnRightTrigger -= OnLeftTrigger;
+        inputController.OnDPad -= OnDPad;
+        inputController.OnButtonDown -= OnButtonDown;
+    }
+
+    public virtual void OnLeftStick(float horizontal, float vertical) { }
+    public virtual void OnRightStick(float horizontal, float vertical) { }
+    public virtual void OnLeftTrigger(float activation) { }
+    public virtual void OnRightTrigger(float activation) { }
+    public virtual void OnDPad(float horizontal, float vertical) { }
+    public virtual void OnButtonDown(Button button) { }
+
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;As you can see all this class does is define empty virtual functions for all the InputController events and provides a convenience member attribute
+for an InputController and a function to subscribe to it. It's nothing to complicated and you can totally forgo using this class if you understand .NET events.&lt;/p&gt;
+&lt;h3 id="examplebehavior-cameracontroller"&gt;ExampleBehavior: CameraController&lt;/h3&gt;
+&lt;p&gt;Lastly before we finish up let's take a quick look at an example behavior that uses the &lt;code&gt;InputListener&lt;/code&gt; class to implement a player controller.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-cs"&gt;
+// simple sphereical coordinate vector to make going back
+// and forth between sphereical and cartesian coordinates easier
+[System.Serializable]
+public class SVector3 {
+    public float radius;
+    public float theta; 
+    public float phi;
+    public float r { get { return radius; } set { radius = value; } }
+    public float t { get { return theta; } set { theta = value; } }
+    public float p { get { return phi; } set { phi = value; } }
+
+    public SVector3(float r, float t, float p) { this.radius = r; this.theta = t; this.phi = p;}
+
+    public Vector3 ToVector3(Vector3? center = null) {
+        var c = center.HasValue ? center.Value : Vector3.zero;
+        var x = c.x + radius * Mathf.Sin(theta) * Mathf.Sin(phi);
+        var y = c.y + radius * Mathf.Cos(theta);
+        var z = c.z + radius * Mathf.Sin(theta) * Mathf.Cos(phi);
+        return new Vector3(x, y, z);
+    }
+
+    public static SVector3 FromVector3(Vector3 input, Vector3? center = null) {
+        var c = center.HasValue ? center.Value : Vector3.zero;
+        var r = (input - c).magnitude;
+        var t = Mathf.Acos((input.y - c.y) / r);
+        var p = Mathf.Acos((input.z - c.z)/(r * Mathf.Sin(t)));
+        return new SVector3(r, t, p);
+    }
+}
+
+
+// rotates the camera around a Target gameobject using the Right Joystick
+public class CameraController : InputListener
+{
+    [Range(0.5f, 5)]
+    public float RotationSpeed = 2;
+    [Range(0.1f, 1)]
+    public float ZoomSpeed = 0.1f;
+    [Range(0.1f, 1)]
+    public GameObject Target;
+    public SVector3 Offset;
+    public float MinOffsetRadius = 10;
+    public float MaxOffsetRadius = 10;
+
+    private Vector3 smoothingVelocity;
+    private const float halfPI = Mathf.PI / 2; // cached fractions of pi
+    private const float twoPI = Mathf.PI * 2;  // cached fractions of pi
+
+    void Start ()
+    {
+        // assert that the InputController has been set with inspector
+        Debug.Assert(InputController != null);
+        // subscribe to the InputController
+        Subscribe(InputController);
+    }
+
+    public override void OnRightStick(float horizontal, float vertical)
+    {
+        // Do a little math to rotate around the target
+        var moveTheta = -vertical * RotationSpeed * Time.deltaTime;
+        var movePhi = -horizontal * RotationSpeed * Time.deltaTime;
+        var offset = Offset;
+        var newTheta = offset.t + moveTheta;
+        if(offset.t &amp;gt; 0 &amp;amp;&amp;amp; newTheta &amp;lt; 0) {
+            Offset.t = Mathf.Clamp(newTheta, 0, halfPI);
+        } else {
+            Offset.t = Mathf.Clamp(newTheta, -halfPI, 0);
+        }
+        var newPhi = offset.p + movePhi;
+        if(Mathf.Abs(newPhi) &amp;gt; twoPI){
+            newPhi = newPhi - Mathf.Sign(newPhi) * twoPI;
+        }
+        Offset.p = newPhi;
+    }
+
+    void LateUpdate() {
+        // look at the target
+        var targetPosition = Offset.ToVector3(Target.transform.position);
+        transform.position = targetPosition;
+        transform.LookAt(Target.transform.position);
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I wouldn't read the code to closely as I lazily cobbled it together from my real code and didn't bother to make sure I didn't make any glaring errors.
+But you should be able to tell from the code that it makes use of the input controller event system to spin the camera when a &lt;code&gt;OnRightStick&lt;/code&gt; event occurs.
+Pretty sweet!&lt;/p&gt;
+&lt;h3 id="wrap-up-and-thoughts"&gt;Wrap up and thoughts&lt;/h3&gt;
+&lt;p&gt;So that's it. If you followed along and I didn't miss anything then you should have something very similar to what I am currently using
+for input configuration in Unity. It's not a bad scheme and I think it's pretty darn simple.&lt;/p&gt;
+&lt;p&gt;That said, I started this post over a month ago and then basically abandoned it in my &lt;code&gt;_drafts&lt;/code&gt; directory because I go busy with moving.
+I'm just now coming back and finishing it. So there are probably some continuity issues in here.
+At the time that I started I was excited to have quickly and relativily easily written such a decent and simple input configuration scheme.
+Now that I come back to it, I'd like it be a separate package, and I can forsee some headaches and limitations. For example I already know it's
+going to be annoying have to make an &lt;code&gt;InputMap&lt;/code&gt; SO for every platform and controller and it's totally cumbersome to have to switch the configuration manually.
+But it's also probably a good thing that my simple system doesn't make an assumptions and just breaks if the set up is wrong. Trade offs I guess...&lt;/p&gt;
+&lt;p&gt;I hope you enjoyed the write up. I hope it made sense and that you got something out of it. Happy hacking homes!&lt;/p&gt;
+&lt;div class="footnote"&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id="fn:1"&gt;
+&lt;p&gt;While I was fact checking some stuff to write this post, I learned about a new unity package the &lt;a href="https://docs.unity3d.com/Packages/com.unity.inputsystem@1.0/manual/index.html"&gt;"Input System"&lt;/a&gt; that is supposed to serve as a replacement for the "old" style &lt;code&gt;UnityEngine.Input&lt;/code&gt; class... I did not know about this before I wrote all this code... (learning!)&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:2"&gt;
+&lt;p&gt;The Joysticks are numbered 1-16, this means you can have maximum 16 joysticks on one system. Similarly the the axes are numbered 0-27 (for whatever reason the UI for the input settings has them X-Axis, Y-Axis, 1, 2, ... 28. But if you look at the underlying serialization file (&lt;code&gt;InputManager.asset&lt;/code&gt;) the axes are 0 indexed (they start at 0 and go to N-1).). Lastly unity has cryptically set the maximum number of joystick(controller) buttons to 20, starting 0 and accessed by setting the "Positive Button" setting to "joystick button %b" where again %b is the joystick number in zero indexed fashion.&amp;#160;&lt;a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:3"&gt;
+&lt;p&gt;You will probably have 2 axes that output &lt;code&gt;-1&lt;/code&gt; every single frame, this is almost certainly L2 and R2. Most controllers have their L2 and R2 configured on 2 inputs, one emitting an analog signal which varies by the amount the button is depressed, the other a digital signal that is active only when the button is completely depressed (bottomed out).&amp;#160;&lt;a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;a class="footnote-backref" href="#fnref2:3" title="Jump back to footnote 3 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:4"&gt;
+&lt;p&gt;I've mentioned this a couple of times now, but these configurations vary a lot. For example my Dual Shock 4 needs to be configured differently for wireless mode and wired mode, it also needs to be configured differently for different operating systems. I use a windows machine for most of my development purposes, but I often use my macbook for these write ups so I have to have different configurations for each OS and wireless and wired mode. It's crazy.&amp;#160;&lt;a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:5"&gt;
+&lt;p&gt;I've never read &lt;strong&gt;one&lt;/strong&gt; article or blog that I thought "Wow, what a succinct description of delegates and events in C#". So I'm not going to link anything like that unfortunately. However I find that when trying to understand something about C# the best place to start is on the microsoft developer docs.&lt;a href="https://docs.microsoft.com/en-us/dotnet/csharp/delegates-overview"&gt;here is the developer docs for delegates&amp;amp;events&lt;/a&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description><author>owen@studiosodesign.com (Owen Stranathan)</author></item><item><title>Beginner's Mind: Relearning Vim</title><description>&lt;p&gt;&lt;a href="#the-point"&gt;Get to the point&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="vim-is-great"&gt;Vim is great&lt;/h1&gt;
+&lt;p&gt;I use Vim every single day. It's my daily driver text editor, and I definitely have Vim "in my fingers".
+So much do I prefer the ergonomic interface of Vim that I even built a custom keyboard to allow me to remap
+things like arrow keys and page down to the corresponding Vim keys and (sort of) use Vim everywhere.&lt;/p&gt;
+&lt;p&gt;That said. I don't actually know that much about Vim. Obviously I know enough to be productive and to
+prefer Vim over all other editors, but occasionally I will be doing a repetitive edit operation over
+and over and think to myself, there must be something in Vim to make this faster and easier.
+So I'll saunter on over to my browser and open up google and type "How to do X in Vim" and then read
+a bunch of blogs and SO articles and eventually come out knowing something more about how to use Vim.
+This has served me well and has helped me to cement the &lt;em&gt;most useful&lt;/em&gt; features of Vim into my muscle memory.
+The problem with this approach is that a lot of things are super super useful in Vim, but their use cases are not frequent,
+and maybe even not obvious. This makes for a certain subset of Vim commands and features that I have to constantly
+relearn and lookup in order to use effectively, and a larger subset of commands and features that I don't even know about but perhaps maybe I should.&lt;/p&gt;
+&lt;h1 id="vimtutor"&gt;Vimtutor&lt;/h1&gt;
+&lt;p&gt;If you've ever tried to learn Vim before, or thought about learning Vim before, you've probably been told to use Vimtutor&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1"&gt;1&lt;/a&gt;&lt;/sup&gt;.
+If you're like me you opened Vimtutor, did the first couple of exercises, got impatient and either quit, or like me just used Vim anyway
+and looked up everything you wanted to know when you wanted to know it. I like my way. It's a trial by fire and it's
+how I do most things. I think it helped to get Vim in my fingers more quickly because I was using Vim immediately in a real world editing
+context and I learned the commands and the features because I had to or else suffer productivity losses.
+One of the short comings of my "throw away the instructions and just get busy" style is that I only learn about the things I think
+I want to be able to do, which leaves an opening for things I would want to do if I knew about them, to slip and leave me inefficiently
+working in ignorance.&lt;/p&gt;
+&lt;p&gt;So to rectify this I decided to spend this Saturday reading 2 documents.
+The first obviously is Vimtutor, and the second is Learn Vimscript the Hardway, by Steve Losh.
+When reading vimtutor I was shocked at the number of simple commands I had either overlooked or
+neglected to become proficient with. I'm very excited to learn these things and hopefully experience a
+boost in productivity and efficiency as a result. But the short comings of reading only as a form of learning have not
+changed. And so in an attempt to try and improve my retention I've decided to write down all the things I didn't already know
+that I've learned from vimtutor today.&lt;/p&gt;
+&lt;h1 id="the-point"&gt;The Point&lt;/h1&gt;
+&lt;h4 id="stuff-i-learned-from-vimtutor-that-i-didnt-know-before"&gt;Stuff I Learned From Vimtutor, that I Didn't Know Before&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;Undo all the changes on a line with &lt;code&gt;U&lt;/code&gt;. (Vimtutor 2.7)&lt;/li&gt;
+&lt;li&gt;Type  &lt;code&gt;rx&lt;/code&gt;  to replace the character at the cursor with  &lt;code&gt;x&lt;/code&gt;. (Vimtutor 3.2)&lt;/li&gt;
+&lt;li&gt;To change until the end of a word, type  &lt;code&gt;ce&lt;/code&gt;. (Vimtutor 3.3)&lt;/li&gt;
+&lt;li&gt;The change operator is used with the same motions as delete i.e. &lt;code&gt;c$&lt;/code&gt;, &lt;code&gt;c2w&lt;/code&gt;, etc. (Vimtutor 3.4)&lt;/li&gt;
+&lt;li&gt;Type &lt;code&gt;CTRL-G&lt;/code&gt; to show your location in the file and the file status.
+    Type  &lt;code&gt;G&lt;/code&gt;  to move to a line in the file.   (Vimtutor 4.1)&lt;sup id="fnref:2"&gt;&lt;a class="footnote-ref" href="#fn:2"&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;li&gt;Type  &lt;code&gt;%&lt;/code&gt;  to find a matching ),], or }. (Vimtutor 4.3)&lt;/li&gt;
+&lt;li&gt;Type  &lt;code&gt;:%s/old/new/gc&lt;/code&gt;  to find every occurrence in the whole file, with a prompt whether to substitute or not. (Vimtutor 4.4)&lt;/li&gt;
+&lt;li&gt;To save part of the file, type  &lt;code&gt;v  motion  :w FILENAME&lt;/code&gt; (Vimtutor 5.3)&lt;/li&gt;
+&lt;li&gt;To insert the contents of a file, type  &lt;code&gt;:r FILENAME&lt;/code&gt; (this can also insert output from external commands i.e. &lt;code&gt;:r !ls&lt;/code&gt;) (Vimtutor 5.4)&lt;/li&gt;
+&lt;li&gt;Type  &lt;code&gt;a&lt;/code&gt;  to insert text AFTER the cursor. (Vimtutor 6.2) &lt;sup id="fnref:3"&gt;&lt;a class="footnote-ref" href="#fn:3"&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;li&gt;Type a capital  &lt;code&gt;R&lt;/code&gt;  to replace more than one character. (Vimtutor 6.3) &lt;sup id="fnref:4"&gt;&lt;a class="footnote-ref" href="#fn:4"&gt;4&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;li&gt;Type &lt;code&gt;:set ic&lt;/code&gt; to ignore case in search. Use &lt;code&gt;/search\c&lt;/code&gt; to ignore case for just that search. (Vimtutor 6.5)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;If you look at the Vimtutor lesson numbers you can pretty much see where I gave up the last time I used Vimtutor, it was in lesson 2.
+I learned something from each lesson after that, so even for me a fairly well seasoned Vim user, I learned a lot from Vimtutor, this is probably
+more to do with the fact that I've not spent a lot of time sitting down and just learning things about vim. It's a big beautiful tool, and there
+is a lot to learn. If you've never done the Vimtutor, I highly recommend that you do.&lt;/p&gt;
+&lt;div class="footnote"&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id="fn:1"&gt;
+&lt;p&gt;For those who don't know, Vimtutor is a script that is included in &lt;em&gt;most&lt;/em&gt; Vim installs. It launches Vim on a copy of a file the text of which teaches you the basics of using vim. It's a pretty great thing, but it's definitely boring.&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:2"&gt;
+&lt;p&gt;Usually I use &lt;code&gt;:#&lt;/code&gt; to jump to line &lt;code&gt;#&lt;/code&gt;, using &lt;code&gt;G&lt;/code&gt; is pretty much the same as far as speed and ergonomics.&amp;#160;&lt;a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:3"&gt;
+&lt;p&gt;I knew I could use &lt;code&gt;A&lt;/code&gt; to jump to the end of line in insert mode, but didn't know about &lt;code&gt;a&lt;/code&gt;.&amp;#160;&lt;a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:4"&gt;
+&lt;p&gt;This is replace mode. I knew about this, but I haven't internalized it.&amp;#160;&lt;a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description><author>owen@studiosodesign.com (Owen Stranathan)</author></item><item><title>DIY Life: Making a static site compiler</title><description>&lt;p&gt;I used to use Jekyll. I didn't choose Jekyll, Jekyll just happened to be the software available
+with support from github pages, which is where I host my website. I have some gripes about Jekyll,
+I won't enumerate them, but they are the same gripes I have about a lot of general purpose software.
+This is just what using software is like. That said, it's nice when software sucks in some way and rather
+than being frustrated about it you can do a little this and that and make it better, good even.&lt;/p&gt;
+&lt;p&gt;I also use Windows 10, there are many things I don't like about Windows 10, things I would change.
+But I'm not gonna make my own operating system, ain't gonna happen. I'm not even gonna do the laborious
+work of maintaining the 10 million config files required to have my ideal Linux desktop with i3 and fancy keyboard bindings,
+and ranger and all the things. Because after you factor in the time spent configuring all the tools, I won't save that much time.
+Windows is good enough, and most of the time good enough is good enough. Likewise with Firefox; do I wish that Firefox had native vim bindings? Yes.
+Am I going to extend it or otherwise hack it to add them? No. Vimvixen is good enough.
+But operating systems and web browsers are complex software applications, and there are a lot of good reasons not go altering them willy nilly.
+Something, something... &lt;a href="https://en.wikipedia.org/wiki/Wikipedia:Chesterton%27s_fence"&gt;Chesterton's fence&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;However, Jekyll doesn't do anything complicated (at least not for me, maybe it &lt;strong&gt;can&lt;/strong&gt; do complex things but it's not obvious).
+Compiling a list of files written in markdown and running a template engine on a handful of other files
+to produce a static website isn't complex. And more over, I frequently find myself wishing I could do such and such a thing with Jekyll and end up
+combing google and Jekyll docs looking for the right liquid incantations to do so. But I know how to program a computer to munge some files and I'm
+halfway decent with python. So why don't I just do it myself?&lt;/p&gt;
+&lt;p&gt;Well I did. The result is a purpose built custom site compiler that I highly recommend you DO NOT COPY. (Because you can do better yourself, or 
+rather; you can do better FOR yourself).&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/owenstranathan/static-markdown-site-compiler"&gt;Here&lt;/a&gt; is the result. It depends on Jinja2 and Markdown, I prefer not to use pip packages if I can help it but whatever, I ain't writing &lt;a href="https://github.com/owenstranathan/bash-templater"&gt;another&lt;/a&gt;&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1"&gt;1&lt;/a&gt;&lt;/sup&gt; template
+engine.
+I only tested it on windows. Because again I just don't have time for Linux anymore.&lt;/p&gt;
+&lt;p&gt;The site compiler is what built this website. And I can honestly say that at the time of writing I feel that it was worth the 1 - 2 hours it took me to trial and error my way to the current product.
+If I need something I can add it, but most of the time I don't because I know it's more work than it's worth (which was never clear before I knew every detail of the system).
+The only Jekyll features I miss are &lt;code&gt;--watch&lt;/code&gt; (which watches the files in the project for changes and recompiles the site when you change something) and &lt;code&gt;--serve&lt;/code&gt; (which servers the site from a local dev server).
+I can totally implement them because python has built in http dev server, and I don't need anything too fancy for watching the files, but it's a nontrivial task that I don't have time for right now. Maybe soon.&lt;/p&gt;
+&lt;p&gt;The end.&lt;/p&gt;
+&lt;div class="footnote"&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id="fn:1"&gt;
+&lt;p&gt;Technically I didn't author bash-templater. But if you diff my fork from the parent you'll see that I've made enough changes that I feel justified in saying that I've "written" a bash template engine.&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description><author>owen@studiosodesign.com (Owen Stranathan)</author></item><item><title>Spotting Fake GBA Carts</title><description>&lt;p&gt;A few months back I bought an &lt;a href=""&gt;Advanced Wars&lt;/a&gt; cartridge for my wicked sweet modded GameBoy Advanced on ebay,
+but when I got it turned out to be a fake!
+I was really ticked about it, so I made some PSA graphics to post in imgur and reddit.&lt;/p&gt;
+&lt;p&gt;I'm putting them up here as well, because I can and I want to.&lt;/p&gt;
+&lt;h1 id="how-to-spot-a-fake-gba-cartrige"&gt;How to spot a fake GBA cartrige!&lt;/h1&gt;
+&lt;p&gt;&lt;img alt="" src="https://i.imgur.com/3RIp0ap.jpg" width="100%" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="https://i.imgur.com/seUU09g.jpg" width="100%" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="https://i.imgur.com/73K3sV8.jpg" width="100%" /&gt;&lt;/p&gt;</description><author>owen@studiosodesign.com (Owen Stranathan)</author></item><item><title>Practice</title><description>&lt;p&gt;Lately I've been waking up at 5:30 am. I really love the practice of waking up early. But it's a difficult practice and it's taken me a long time to become consistent with it.&lt;/p&gt;
+&lt;p&gt;Here are some of my tips for successfully waking up early everyday:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Go to bed early.&lt;/li&gt;
+&lt;li&gt;Have something that must be addressed at the time you want to wake up.&lt;/li&gt;
+&lt;li&gt;Practice everyday, without expectation and without disappointment.&lt;/li&gt;
+&lt;li&gt;Just do it.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;In my life a lot of the things I want to do are pretty difficult. This is just a fact of life and I've spent countless hours over the years trying to will my way passed
+the difficulty of waking early, or exercising regularly, or practicing the piano everyday, or programming when I really don't even want to look at a computer.
+But in recent months, especially since the pandemic hit, I've had time to slow down my racing thoughts and experiment with my routine and my practices.
+I've learned a few things that help me a lot and I'd like to archive/share them here.&lt;/p&gt;
+&lt;p&gt;To start here is a incomplete list of some of the things I have struggled to do regularly that I've been able to become more consistent with:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Waking up early&lt;/li&gt;
+&lt;li&gt;Going to bed early (this is almost as hard as the former)&lt;/li&gt;
+&lt;li&gt;Cardio&lt;/li&gt;
+&lt;li&gt;Strength training&lt;/li&gt;
+&lt;li&gt;Focusing&lt;/li&gt;
+&lt;li&gt;Journaling&lt;/li&gt;
+&lt;li&gt;Doing chores (cleaning kitchen, laundry, etc)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It's healthy to remember that you'll never be finished and that whatever it is you've made, formulated or otherwise created can always be improved
+(unless you've achieved some theoretical limit, in which case good job!).
+I'm sure I'll find more ways to fine tune my practice and build stronger systems over time.
+For now however I've got about 4 things that really help me in my various practices. I've written them above applied specifically to waking up early.
+But here I've generalized them to any practice:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Practice a complementary discipline.&lt;/li&gt;
+&lt;li&gt;Leverage your environment to encourage your practice&lt;/li&gt;
+&lt;li&gt;Practice everyday, without expectation and without disappointment.&lt;/li&gt;
+&lt;li&gt;Just do it.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;It will be helpful for me to elaborate on them a little further.&lt;/p&gt;
+&lt;h3 id="practice-a-complementary-discipline"&gt;Practice a complementary discipline&lt;/h3&gt;
+&lt;p&gt;When you practice a discipline it's very helpful to have a secondary practice that compliments the primary one. A complimentary practice is one that, in the act of doing it
+the practitioner is actively encouraged, aided or otherwise assisted in practicing some other discipline. Examples of this:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Going to bed early:&lt;/strong&gt;&lt;br /&gt;
+    This one is kind of a no brainer, obviously if you go to bed early you'll be more capable of waking up early because you'll have gotten enough rest.
+    Before recently I never thought about going to bed as a practice. For me the goal was always "Wake up early, so I can have more time to do the things I want to do".
+    For me I wanted to start waking up at 5:30 AM. To do this I knew I needed to go to bed earlier, but how much earlier was always guess work. A big problem that I had was that I
+    would always wake up to my alarm 8 hour after going to bed and I'd feel &lt;strong&gt;&lt;em&gt;extremely&lt;/em&gt;&lt;/strong&gt; tired.
+    The solution for me came when I learned about sleep cycles &lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1"&gt;1&lt;/a&gt;&lt;/sup&gt;.
+    By sleeping 8 hours I was actually interrupting a sleep cycle right as I was slipping into the deeper stages when waking is more
+    uncomfortable. So I decided that 7.5 hours (that's ~5 sleep cycles) was what I should be aiming for. So to wake up at 5:30 and get 7.5 hours of sleep I needed to
+    go to bed by 22:00. And so my new complimentary practice has become going to bed at 21:30 - 22:00 every night.
+    I treat this practice as being just as important as getting up at 5:30. Because when you think about it, it &lt;strong&gt;is&lt;/strong&gt; equally important, if I don't go to sleep on time
+    how on earth can I wake up on time.
+    So now this secondary practice of sleeping at 22:00 compliments my practice of waking up at 5:30 and my practice of waking at 5:30 compliments my practice of going to bed at 22:00
+    (I'm usually pretty tired by 22:00).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Journaling&lt;/strong&gt;&lt;br /&gt;
+    Journaling is a really fantastic practice because it compliments just about everything.
+    Journaling provides a valuable means of accountability and a place to track both successes and failures. It can also provide motivation in the form of dependency.
+    What I mean by that is the practice of logging your efforts and progress made in some practice in your journal is &lt;strong&gt;dependent&lt;/strong&gt; on performing that practice.&lt;br /&gt;
+    For example if I write a task in my journal named "Workout" then I'm immediately motivated to do my workout for the satisfaction of completing my task list.
+    Logging the data of each practice is a fun and easy way to keep on top of a practice. When you look at your log in your journal and see that today has no data
+    for some practice, when every day prior has data then you might be more motivated to complete your practice that day so as not to miss out on filling in that blank. Your
+    journaling practice in effect becomes dependent on your other practices, which are likely more important since a personal journal does not have much value to anyone but the
+    person keeping it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="leverage-your-environment-to-encourage-your-practice"&gt;Leverage your environment to encourage your practice&lt;/h3&gt;
+&lt;p&gt;The goal here is basically to "Set yourself up for success". So for example preparing your clothes for morning exercise the night before, or setting your alarm clock/phone on the
+other side of the room from your bed so you have to get out of bed when it goes off, or establishing some obligation to perform your practice however small. All of these things
+are external forces that can help you perform a given practice. Continuing with my example of getting up early I have several environmental factors I use to help me keep up this
+practice:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;&lt;em&gt;I keep my phone on the other side of the room from my bed.&lt;/em&gt;&lt;/strong&gt;&lt;br /&gt;
+     This has 2 effects:&lt;ol&gt;
+&lt;li&gt;When I go to bed early, and especially when I'm not so tired, I can't endlessly scroll through noise online preventing my silly ape brain from derailing my practice.&lt;/li&gt;
+&lt;li&gt;When the alarm rings at 5:30 am I have to stand up out of bed to turn it off (which I must do quickly lest I incure my wife's wrath)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;em&gt;I have my alarm set to not allow snoozing.&lt;/em&gt;&lt;/strong&gt;&lt;br /&gt;
+     This means if I turn off the alarm I know there will be no second chance, and I must decide right then and there if I'm commited to getting up.
+     Usually taking a leak gives me enough time to think it over and make the right choice.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;em&gt;I have set parental controls on my phone to block major news sites and social media&lt;/em&gt;&lt;/strong&gt;&lt;br /&gt;
+     This is one is more just generally helpful to any practice since news and social media are major wastes of time. But it does prevent me from mindlessly bringing my phone
+     to bed and getting sucked into syndicated garbage.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Be creative and think about what things in your environment inhibit a practice and think about how those things can be flipped or nullified to encourage the practice instead.&lt;/p&gt;
+&lt;h3 id="practice-everyday-without-expectations-and-without-disappointment"&gt;Practice everyday, without expectations and without disappointment&lt;/h3&gt;
+&lt;p&gt;This is far and away the most important item on this list. And it takes some explaining.
+To introduce the idea is a quote from &lt;ins&gt;&lt;strong&gt;Novice to Master: An Ongoing Lesson in the Extent of My Own Stupidity&lt;/strong&gt;&lt;/ins&gt; by &lt;strong&gt;Soko Morinaga&lt;/strong&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;All people regardless of how their lives are structured hold themselves dear. Everyone wants to be happy. And Enlightenment is the starting point of happiness.
+We can use the words "true self-confidence" in place of "enlightenment." True self-confidence means confidence in the true self, and confidence in the true self is a necessary requisite
+to happiness.&lt;/p&gt;
+&lt;p&gt;The Power in which you can come to believe in yourself is not gained through training. It is the great power that transcends the self, that gives life to the self.
+The purpose of Zen practice is to awaken to the original power of which you have lost sight, not to gain some sort of new power.
+When you have sought and sought and finally exhausted all seeking, you become aware of that with which you have been, from the beginning - before ever beginning to search -
+abundantly blessed. After you have ceaselessly knocked and knocked, you realize, as I have said, that the door was standing
+wide open even before you ever started pounding away. That is what practice is all about.&lt;/p&gt;
+&lt;p&gt;Not only in places especially set up for training, but anytime and anywhere, the person who exerts himself or herself with dignity,
+without worrying about results and without giving in to disappointment, is a true practitioner, a true person of the Way.
+I believe that &lt;strong&gt;just this&lt;/strong&gt; is the form of true human well-being&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Essentially what this means is that the transformative power of practice comes from the act of consistently practicing.
+No matter the circumstances, so long as you keep going, keep practicing then you're doing right.
+An important part of consistently practicing regardless of conditions, is overcoming disappointment. If you allow yourself to become disappointed with the effect of your
+practice you will always quit, maybe not today but eventually it will defeat you. You must say "no" to disappointment and take pleasure in the grind.
+Similarly if you begin your practice with expectations of the result you will most often be let down and open the door for a tougher fight with disappointment.
+Moreover setting expectations on the practice places limits on your performance. If you enter into practice with some expectation as to how well you will do or how much 
+you can take you'll likely stop when you reach that predetermined point, without knowing just how far you could have gone.
+You must begin with an empty mind and focus only on the act.&lt;/p&gt;
+&lt;p&gt;As an example:&lt;/p&gt;
+&lt;p&gt;As I stated at the beginning of this post I've begun many new practices in the last year. The biggest and most challenging has probably been fitness.
+I've had fitness practices in the past and always I end up stopping at some point for one reason or another.
+Previously when I trained I would do so with the expectation of being minimally capable, i.e. if last weak I ran an 8 minute mile then this week I should run at least an
+8 minute mile if not faster.
+This small expectation I had placed on myself was good in one sense that it forced me to push myself, and I'm certain that was what I thought at the time.
+But it was ultimately detrimental to my practice for multiple reasons:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;it increased my disappointment.&lt;br /&gt;
+    Expecting to always improve or at least maintain, makes disappointment easy. Many days you just don't have the energy or the conditions just aren't favorable
+    and you under perform. This is just a reality you have to accept.&lt;/li&gt;
+&lt;li&gt;it produced a source of fear and loathing toward my practice.&lt;br /&gt;
+    Expecting that I perform to some standard, even my own standard. Sets up fear of failure and disappointment. If one is afraid to practice he is already starting to fail.
+    If one is afraid to practice he will come to hate his practice. Yoda said "Fear leads to anger, anger leads to hate, hate leads to suffering" true words.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;These and other factors stemming from my expectation of a minimum capability would always and invariably lead me to quit, not just once but everyday, until eventually I was no longer
+practicing at all.&lt;/p&gt;
+&lt;p&gt;Instead of expecting that I always beat or tie my previous best instead I should always just focus on going that mile, however slow. The focus should not be how well I practice but just
+the practice itself. This refocusing manifests itself as being present. When I'm out on my run or when I'm doing my strength routine my mind is wholly focused on each step, on each breath,
+on every muscle engaged in my current effort.&lt;br /&gt;
+If you're running center your thoughts on our breath, on your posture, think with each step of all the muscles engaged in
+one single pursuit, to move your body through space.&lt;br /&gt;
+If you're doing push ups or pull ups focus on the muscles engaged and the explosive breath and energy at the core of your being. Be right there focused and present just for
+that action.&lt;br /&gt;
+Being unenlightened I cannot say for certain, but this must be something approximately similar to enlightenment.&lt;/p&gt;
+&lt;p&gt;Finally do your practice everyday, even if part of the practice is not practicing. This is important. A body cannot heal if it has no time to rest.
+Be mindful of your practice. If today you don't workout because it is a rest day then do so with intention. Say "Today I rest, and I must do so with dedication to my fitness".
+In this way you still practice fitness even though no exercise was performed.&lt;/p&gt;
+&lt;h3 id="just-do-it"&gt;Just do it&lt;/h3&gt;
+&lt;p&gt;Nike slogans aside, this is a powerful statement with a lot of meaning behind it. As Ronnie Coleman said "Ain't nothin' to it but to do it.".&lt;/p&gt;
+&lt;p&gt;What this means is when you go to perform your practice just get on with it.
+At anytime in history man has had plenty to distract him, and myriad methods to procrastinate.
+Now especially we have even more distractions at our disposal.
+It's easy to get bogged down in data and over think the problem. If your goal is to get up early, stop weighing if you've had enough sleep or not and just get up,
+I promise you that before the day is over you'll know if you got enough sleep and you'll get a chance to change your sleep parameters again tonight.
+If you want to run, then stop thinking so hard about your heart rate, or your shoes or your attire and just go outside and run. Afterwards you'll have a much clearer
+picture of what worked well and what needs to change.
+This is applicable to basically everything you can possibly do, it's maybe a bit more nuanced and has some caveats if your goal is say "build a bridge" but there are
+ways to "just do it" there as well.&lt;/p&gt;
+&lt;h3 id="thats-it"&gt;That's it&lt;/h3&gt;
+&lt;p&gt;Ultimately the way you practice is down to you, and you should do what you think is best. The 4 methods listed above are the 4 major things I've learned and that I
+keep telling myself over and over again to help me practice all that I do with enthusiasm and with consistency.
+I hope this helps you in some way.&lt;/p&gt;
+&lt;div class="footnote"&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id="fn:1"&gt;
+&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Sleep_cycle#Length"&gt;Wikipedia: Sleep Cycles -- Length&lt;/a&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description><author>owen@studiosodesign.com (Owen Stranathan)</author></item></channel></rss>
