@@ -3,3 +3,5 @@
 .vscode/
 .vs/
 .env/
+__pycache__/
+.site-compiler/
