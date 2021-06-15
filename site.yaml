@@ -4,7 +4,8 @@ description: Blog for my thoughts, observations, opinions, project, curiosities 
 url: https://owenstranathan.com
 linkedin: https://www.linkedin.com/in/owenstranathan/
 github: https://github.com/owenstranathan/
-email: owen@wabisoft.io
+CV_link: https://owenstranathan.com/extra/owenstranathanCV.pdf
+email: owenstranathan@gmail.com
 author: Owen Stranathan
 markdown-extensions: # this can be used to enable markdown extensions site wide. See https://python-markdown.github.io/extensions/ for list of available extensions
  - "extra"
