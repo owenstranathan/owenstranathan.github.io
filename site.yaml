@@ -5,7 +5,7 @@ url: https://owenstranathan.com
 linkedin: https://www.linkedin.com/in/owenstranathan/
 github: https://github.com/owenstranathan/
 CV_link: https://owenstranathan.com/extra/owenstranathanCV.pdf
-email: owenstranathan@gmail.com
+email: owen@wabisoft.io
 author: Owen Stranathan
 markdown-extensions: # this can be used to enable markdown extensions site wide. See https://python-markdown.github.io/extensions/ for list of available extensions
  - "extra"
