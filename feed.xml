@@ -1,12 +1,72 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Owen Stranathan's Blog</title><link>https://owenstranathan.com/feed</link><description>Blog for my thoughts, observations, opinions, project, curiosities and anything and everything in between</description><atom:link href="https://owenstranathan.com/feed" rel="self"/><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><language>en</language><lastBuildDate>Tue, 15 Jun 2021 17:33:30 +0000</lastBuildDate><item><title>Spotting Fake GBA Carts</title><description>&lt;p&gt;A few months back I bought an &lt;a href=""&gt;Advanced Wars&lt;/a&gt; cartridge for my wicked sweet modded GameBoy Advanced on ebay,
-but when I got it turned out to be a fake!
-I was really ticked about it, so I made some PSA graphics to post in imgur and reddit.&lt;/p&gt;
-&lt;p&gt;I'm putting them up here as well, because I can and I want to.&lt;/p&gt;
-&lt;h1 id="how-to-spot-a-fake-gba-cartrige"&gt;How to spot a fake GBA cartrige!&lt;/h1&gt;
-&lt;p&gt;&lt;img alt="" src="https://i.imgur.com/3RIp0ap.jpg" width="100%" /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="https://i.imgur.com/seUU09g.jpg" width="100%" /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="https://i.imgur.com/73K3sV8.jpg" width="100%" /&gt;&lt;/p&gt;</description><author>owenstranathan@gmail.com (Owen Stranathan)</author><pubDate>Tue, 17 Sep 2019 00:00:00 +0000</pubDate></item><item><title>Practice</title><description>&lt;p&gt;Lately I've been waking up at 5:30 am. I really love the practice of waking up early. But it's a difficult practice and it's taken me a long time to become consistent with it.&lt;/p&gt;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Owen Stranathan's Blog</title><link>https://owenstranathan.com/feed</link><description>Blog for my thoughts, observations, opinions, project, curiosities and anything and everything in between</description><atom:link href="https://owenstranathan.com/feed" rel="self"/><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><language>en</language><lastBuildDate>Wed, 12 Jan 2022 13:12:43 +0000</lastBuildDate><item><title>Beginner's Mind: Relearning Vim</title><description>&lt;p&gt;&lt;a href="#the-point"&gt;Get to the point&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="vim-is-great"&gt;Vim is great&lt;/h1&gt;
+&lt;p&gt;I use Vim every single day. It's my daily driver text editor, and I definitely have Vim "in my fingers".
+So much do I prefer the ergonomic interface of Vim that I even built a custom keyboard to allow me to remap
+things like arrow keys and page down to the corresponding Vim keys and (sort of) use Vim everywhere.&lt;/p&gt;
+&lt;p&gt;That said. I don't actually know that much about Vim. Obviously I know enough to be productive and to
+prefer Vim over all other editors, but occasionally I will be doing a repetitive edit operation over
+and over and think to myself, there must be something in Vim to make this faster and easier.
+So I'll saunter on over to my browser and open up google and type "How to do X in Vim" and then read
+a bunch of blogs and SO articles and eventually come out knowing something more about how to use Vim.
+This has served me well and has helped me to cement the &lt;em&gt;most useful&lt;/em&gt; features of Vim into my muscle memory.
+The problem with this approach is that a lot of things are super super useful in Vim, but their use cases are not frequent,
+and maybe even not obvious. This makes for a certain subset of Vim commands and features that I have to constantly
+relearn and lookup in order to use effectively, and a larger subset of commands and features that I don't even know about but perhaps maybe I should.&lt;/p&gt;
+&lt;h1 id="vimtutor"&gt;Vimtutor&lt;/h1&gt;
+&lt;p&gt;If you've ever tried to learn Vim before, or thought about learning Vim before, you've probably been told to use Vimtutor&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1"&gt;1&lt;/a&gt;&lt;/sup&gt;.
+If you're like me you opened Vimtutor, did the first couple of exercises, got impatient and either quit, or like me just used Vim anyway
+and looked up everything you wanted to know when you wanted to know it. I like my way. It's a trial by fire and it's
+how I do most things. I think it helped to get Vim in my fingers more quickly because I was using Vim immediately in a real world editing
+context and I learned the commands and the features because I had to or else suffer productivity losses.
+One of the short comings of my "throw away the instructions and just get busy" style is that I only learn about the things I think
+I want to be able to do, which leaves an opening for things I would want to do if I knew about them, to slip and leave me inefficiently
+working in ignorance.&lt;/p&gt;
+&lt;p&gt;So to rectify this I decided to spend this Saturday reading 2 documents.
+The first obviously is Vimtutor, and the second is Learn Vimscript the Hardway, by Steve Losh.
+When reading vimtutor I was shocked at the number of simple commands I had either overlooked or
+neglected to become proficient with. I'm very excited to learn these things and hopefully experience a
+boost in productivity and efficiency as a result. But the short comings of reading only as a form of learning have not
+changed. And so in an attempt to try and improve my retention I've decided to write down all the things I didn't already know
+that I've learned from vimtutor today.&lt;/p&gt;
+&lt;h1 id="the-point"&gt;The Point&lt;/h1&gt;
+&lt;h4 id="stuff-i-learned-from-vimtutor-that-i-didnt-know-before"&gt;Stuff I Learned From Vimtutor, that I Didn't Know Before&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;Undo all the changes on a line with &lt;code&gt;U&lt;/code&gt;. (Vimtutor 2.7)&lt;/li&gt;
+&lt;li&gt;Type  &lt;code&gt;rx&lt;/code&gt;  to replace the character at the cursor with  &lt;code&gt;x&lt;/code&gt;. (Vimtutor 3.2)&lt;/li&gt;
+&lt;li&gt;To change until the end of a word, type  &lt;code&gt;ce&lt;/code&gt;. (Vimtutor 3.3)&lt;/li&gt;
+&lt;li&gt;The change operator is used with the same motions as delete i.e. &lt;code&gt;c$&lt;/code&gt;, &lt;code&gt;c2w&lt;/code&gt;, etc. (Vimtutor 3.4)&lt;/li&gt;
+&lt;li&gt;Type &lt;code&gt;CTRL-G&lt;/code&gt; to show your location in the file and the file status.
+    Type  &lt;code&gt;G&lt;/code&gt;  to move to a line in the file.   (Vimtutor 4.1)&lt;sup id="fnref:2"&gt;&lt;a class="footnote-ref" href="#fn:2"&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;li&gt;Type  &lt;code&gt;%&lt;/code&gt;  to find a matching ),], or }. (Vimtutor 4.3)&lt;/li&gt;
+&lt;li&gt;Type  &lt;code&gt;:%s/old/new/gc&lt;/code&gt;  to find every occurrence in the whole file, with a prompt whether to substitute or not. (Vimtutor 4.4)&lt;/li&gt;
+&lt;li&gt;To save part of the file, type  &lt;code&gt;v  motion  :w FILENAME&lt;/code&gt; (Vimtutor 5.3)&lt;/li&gt;
+&lt;li&gt;To insert the contents of a file, type  &lt;code&gt;:r FILENAME&lt;/code&gt; (this can also insert output from external commands i.e. &lt;code&gt;:r !ls&lt;/code&gt;) (Vimtutor 5.4)&lt;/li&gt;
+&lt;li&gt;Type  &lt;code&gt;a&lt;/code&gt;  to insert text AFTER the cursor. (Vimtutor 6.2) &lt;sup id="fnref:3"&gt;&lt;a class="footnote-ref" href="#fn:3"&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;li&gt;Type a capital  &lt;code&gt;R&lt;/code&gt;  to replace more than one character. (Vimtutor 6.3) &lt;sup id="fnref:4"&gt;&lt;a class="footnote-ref" href="#fn:4"&gt;4&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;li&gt;Type &lt;code&gt;:set ic&lt;/code&gt; to ignore case in search. Use &lt;code&gt;/search\c&lt;/code&gt; to ignore case for just that search. (Vimtutor 6.5)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;If you look at the Vimtutor lesson numbers you can pretty much see where I gave up the last time I used Vimtutor, it was in lesson 2.
+I learned something from each lesson after that, so even for me a fairly well seasoned Vim user, I learned a lot from Vimtutor, this is probably
+more to do with the fact that I've not spent a lot of time sitting down and just learning things about vim. It's a big beautiful tool, and there
+is a lot to learn. If you've never done the Vimtutor, I highly recommend that you do.&lt;/p&gt;
+&lt;div class="footnote"&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id="fn:1"&gt;
+&lt;p&gt;For those who don't know, Vimtutor is a script that is included in &lt;em&gt;most&lt;/em&gt; Vim installs. It launches Vim on a copy of a file the text of which teaches you the basics of using vim. It's a pretty great thing, but it's definitely boring.&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:2"&gt;
+&lt;p&gt;Usually I use &lt;code&gt;:#&lt;/code&gt; to jump to line &lt;code&gt;#&lt;/code&gt;, using &lt;code&gt;G&lt;/code&gt; is pretty much the same as far as speed and ergonomics.&amp;#160;&lt;a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:3"&gt;
+&lt;p&gt;I knew I could use &lt;code&gt;A&lt;/code&gt; to jump to the end of line in insert mode, but didn't know about &lt;code&gt;a&lt;/code&gt;.&amp;#160;&lt;a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:4"&gt;
+&lt;p&gt;This is replace mode. I knew about this, but I haven't internalized it.&amp;#160;&lt;a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description><author>owenstranathan@gmail.com (Owen Stranathan)</author><pubDate>Sat, 11 Apr 2020 00:00:00 +0000</pubDate></item><item><title>Practice</title><description>&lt;p&gt;Lately I've been waking up at 5:30 am. I really love the practice of waking up early. But it's a difficult practice and it's taken me a long time to become consistent with it.&lt;/p&gt;
 &lt;p&gt;Here are some of my tips for successfully waking up early everyday:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Go to bed early.&lt;/li&gt;
@@ -165,7 +225,82 @@ I hope this helps you in some way.&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Sleep_cycle#Length"&gt;Wikipedia: Sleep Cycles -- Length&lt;/a&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;/div&gt;</description><author>owenstranathan@gmail.com (Owen Stranathan)</author><pubDate>Mon, 23 Nov 2020 00:00:00 +0000</pubDate></item><item><title>Unity Input Controller</title><description>&lt;h3 id="backstory"&gt;Backstory&lt;/h3&gt;
+&lt;/div&gt;</description><author>owenstranathan@gmail.com (Owen Stranathan)</author><pubDate>Mon, 23 Nov 2020 00:00:00 +0000</pubDate></item><item><title>Spotting Fake GBA Carts</title><description>&lt;p&gt;A few months back I bought an &lt;a href=""&gt;Advanced Wars&lt;/a&gt; cartridge for my wicked sweet modded GameBoy Advanced on ebay,
+but when I got it turned out to be a fake!
+I was really ticked about it, so I made some PSA graphics to post in imgur and reddit.&lt;/p&gt;
+&lt;p&gt;I'm putting them up here as well, because I can and I want to.&lt;/p&gt;
+&lt;h1 id="how-to-spot-a-fake-gba-cartrige"&gt;How to spot a fake GBA cartrige!&lt;/h1&gt;
+&lt;p&gt;&lt;img alt="" src="https://i.imgur.com/3RIp0ap.jpg" width="100%" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="https://i.imgur.com/seUU09g.jpg" width="100%" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="https://i.imgur.com/73K3sV8.jpg" width="100%" /&gt;&lt;/p&gt;</description><author>owenstranathan@gmail.com (Owen Stranathan)</author><pubDate>Tue, 17 Sep 2019 00:00:00 +0000</pubDate></item><item><title>Dedicate to being dedicated</title><description>&lt;p&gt;Work is hard. It's just a fact of life, and we all come to realize it eventually.
+Beyond the challenge of work itself, there is a meta challenge of going to work.
+Getting yourself together and going willingly to do something that you &lt;strong&gt;know&lt;/strong&gt; will
+be difficult and mostly unpleasant is a challenge in and of itself.
+The moment we consider how difficult the task of our work will be there is a moment of
+friction that can paralyze us. This is the first challenge of work, overcoming the inertia of rest
+to begin the output of energy in pursuit of some ends.&lt;/p&gt;
+&lt;p&gt;How can we overcome this inertia, this potent force that holds us back from our ambitions and our responsibilities?
+I'm sure you can name a few methods of motivation, and no doubt you use all of them from time to time in your own life.&lt;/p&gt;
+&lt;p&gt;Most methods we easily think of depend on gratification or the promise thereof.
+When for example we wake from our rest, beginning our day in peace, then come to the point where we must rouse ourselves
+to go to work, be it at an office, a construction site, a restaurant, a factory, a school, or even in our home for our families,
+the cessation of rest is a difficult thing to perform. We think to ourselves, "the pay day will be nice", or "this weekend I'll
+go out for some fun and enjoy myself as a treat", or "my family needs support and I can't let them down", or some other formulation of the
+same thought. Namely we think "If I do X now, even though I &lt;strong&gt;don't&lt;/strong&gt; want to, I'll get Y later which I &lt;strong&gt;do&lt;/strong&gt; want".
+This is pretty motivating, and I think you could live your entire life using just this method of motivation to overcome the inertia of rest.&lt;/p&gt;
+&lt;p&gt;Sometimes the trade isn't so obvious or forthcoming. Sometimes we do X in exchange for Y to trade it for Z to use it in the process of doing A so that we might attain B all over the span of years.
+Bearing in mind that the variables of the sentence need not be tangible items, one can see that the idea of work, its products, and motivations can become very complex
+and hard to conceptualize. The very reason we work often requires separate work to maintain. Our own motivation needs input to be sustained and as such often wains,
+as does the quality of our workmanship, and we start to slip, working with less vigor and more contempt. The contempt bleeds into our very being and we begin
+to live every facet of our lives with the same lack of drive and the same uncertainty of reason. This is not the good life. Just as muscle atrophy, obesity,
+cancer, and addiction, this should be avoided.&lt;/p&gt;
+&lt;p&gt;How do we overcome the collapsing of motivation?&lt;/p&gt;
+&lt;p&gt;Call it having faith. Call it being driven.&lt;/p&gt;
+&lt;p&gt;I call it dedication. Not just to your work, to your family, or to your goals but to yourself, to the idea.&lt;/p&gt;
+&lt;p&gt;Suppose you've started to slip, the trade has become too complex and you no longer see how waking up at 5am to sneak in
+a run, just to hurry home, shower, eat a boring but healthy breakfast and then run along to your job relates, advances or provides
+for your goals, your desires, or your happiness. In this moment you need to stop thinking on the trade, stop focusing on the echo and focus on
+the shout. You're not working to make the money or to be famous or to have a bigger house to die in, you're working because you're dedicated, you're a professional.&lt;/p&gt;
+&lt;p&gt;Focus on the shout.&lt;br /&gt;
+Without expectation, without disappointment.&lt;br /&gt;
+Be a pro.&lt;br /&gt;
+Be dedicated.&lt;br /&gt;
+Be dedicated to being dedicated.&lt;/p&gt;</description><author>owenstranathan@gmail.com (Owen Stranathan)</author><pubDate>Sat, 29 Aug 2020 00:00:00 +0000</pubDate></item><item><title>DIY Life: Making a static site compiler</title><description>&lt;p&gt;I used to use Jekyll. I didn't choose Jekyll, Jekyll just happened to be the software available
+with support from github pages, which is where I host my website. I have some gripes about Jekyll,
+I won't enumerate them, but they are the same gripes I have about a lot of general purpose software.
+This is just what using software is like. That said, it's nice when software sucks in some way and rather
+than being frustrated about it you can do a little this and that and make it better, good even.&lt;/p&gt;
+&lt;p&gt;I also use Windows 10, there are many things I don't like about Windows 10, things I would change.
+But I'm not gonna make my own operating system, ain't gonna happen. I'm not even gonna do the laborious
+work of maintaining the 10 million config files required to have my ideal Linux desktop with i3 and fancy keyboard bindings,
+and ranger and all the things. Because after you factor in the time spent configuring all the tools, I won't save that much time.
+Windows is good enough, and most of the time good enough is good enough. Likewise with Firefox; do I wish that Firefox had native vim bindings? Yes.
+Am I going to extend it or otherwise hack it to add them? No. Vimvixen is good enough.
+But operating systems and web browsers are complex software applications, and there are a lot of good reasons not go altering them willy nilly.
+Something, something... &lt;a href="https://en.wikipedia.org/wiki/Wikipedia:Chesterton%27s_fence"&gt;Chesterton's fence&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;However, Jekyll doesn't do anything complicated (at least not for me, maybe it &lt;strong&gt;can&lt;/strong&gt; do complex things but it's not obvious).
+Compiling a list of files written in markdown and running a template engine on a handful of other files
+to produce a static website isn't complex. And more over, I frequently find myself wishing I could do such and such a thing with Jekyll and end up
+combing google and Jekyll docs looking for the right liquid incantations to do so. But I know how to program a computer to munge some files and I'm
+halfway decent with python. So why don't I just do it myself?&lt;/p&gt;
+&lt;p&gt;Well I did. The result is a purpose built custom site compiler that I highly recommend you DO NOT COPY. (Because you can do better yourself, or 
+rather; you can do better FOR yourself).&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/owenstranathan/static-markdown-site-compiler"&gt;Here&lt;/a&gt; is the result. It depends on Jinja2 and Markdown, I prefer not to use pip packages if I can help it but whatever, I ain't writing &lt;a href="https://github.com/owenstranathan/bash-templater"&gt;another&lt;/a&gt;&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1"&gt;1&lt;/a&gt;&lt;/sup&gt; template
+engine.
+I only tested it on windows. Because again I just don't have time for Linux anymore.&lt;/p&gt;
+&lt;p&gt;The site compiler is what built this website. And I can honestly say that at the time of writing I feel that it was worth the 1 - 2 hours it took me to trial and error my way to the current product.
+If I need something I can add it, but most of the time I don't because I know it's more work than it's worth (which was never clear before I knew every detail of the system).
+The only Jekyll features I miss are &lt;code&gt;--watch&lt;/code&gt; (which watches the files in the project for changes and recompiles the site when you change something) and &lt;code&gt;--serve&lt;/code&gt; (which servers the site from a local dev server).
+I can totally implement them because python has built in http dev server, and I don't need anything too fancy for watching the files, but it's a nontrivial task that I don't have time for right now. Maybe soon.&lt;/p&gt;
+&lt;p&gt;The end.&lt;/p&gt;
+&lt;div class="footnote"&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id="fn:1"&gt;
+&lt;p&gt;Technically I didn't author bash-templater. But if you diff my fork from the parent you'll see that I've made enough changes that I feel justified in saying that I've "written" a bash template engine.&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description><author>owenstranathan@gmail.com (Owen Stranathan)</author><pubDate>Tue, 25 Aug 2020 00:00:00 +0000</pubDate></item><item><title>Unity Input Controller</title><description>&lt;h3 id="backstory"&gt;Backstory&lt;/h3&gt;
 &lt;p&gt;&lt;a href="#succinct-description-of-goals"&gt;Just get to the code bud.&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;I'm 26 years old. That places me firmly in the console only generation. What that means is that I started gaming well after the
 proliferation and success of game consoles. My fist console was the Super Nintendo (actually it was my brother Ian's),
@@ -1194,139 +1329,51 @@ But it's also probably a good thing that my simple system doesn't make an assump
 &lt;p&gt;I've never read &lt;strong&gt;one&lt;/strong&gt; article or blog that I thought "Wow, what a succinct description of delegates and events in C#". So I'm not going to link anything like that unfortunately. However I find that when trying to understand something about C# the best place to start is on the microsoft developer docs.&lt;a href="https://docs.microsoft.com/en-us/dotnet/csharp/delegates-overview"&gt;here is the developer docs for delegates&amp;amp;events&lt;/a&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;/div&gt;</description><author>owenstranathan@gmail.com (Owen Stranathan)</author><pubDate>Fri, 28 Feb 2020 00:00:00 +0000</pubDate></item><item><title>Beginner's Mind: Relearning Vim</title><description>&lt;p&gt;&lt;a href="#the-point"&gt;Get to the point&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id="vim-is-great"&gt;Vim is great&lt;/h1&gt;
-&lt;p&gt;I use Vim every single day. It's my daily driver text editor, and I definitely have Vim "in my fingers".
-So much do I prefer the ergonomic interface of Vim that I even built a custom keyboard to allow me to remap
-things like arrow keys and page down to the corresponding Vim keys and (sort of) use Vim everywhere.&lt;/p&gt;
-&lt;p&gt;That said. I don't actually know that much about Vim. Obviously I know enough to be productive and to
-prefer Vim over all other editors, but occasionally I will be doing a repetitive edit operation over
-and over and think to myself, there must be something in Vim to make this faster and easier.
-So I'll saunter on over to my browser and open up google and type "How to do X in Vim" and then read
-a bunch of blogs and SO articles and eventually come out knowing something more about how to use Vim.
-This has served me well and has helped me to cement the &lt;em&gt;most useful&lt;/em&gt; features of Vim into my muscle memory.
-The problem with this approach is that a lot of things are super super useful in Vim, but their use cases are not frequent,
-and maybe even not obvious. This makes for a certain subset of Vim commands and features that I have to constantly
-relearn and lookup in order to use effectively, and a larger subset of commands and features that I don't even know about but perhaps maybe I should.&lt;/p&gt;
-&lt;h1 id="vimtutor"&gt;Vimtutor&lt;/h1&gt;
-&lt;p&gt;If you've ever tried to learn Vim before, or thought about learning Vim before, you've probably been told to use Vimtutor&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1"&gt;1&lt;/a&gt;&lt;/sup&gt;.
-If you're like me you opened Vimtutor, did the first couple of exercises, got impatient and either quit, or like me just used Vim anyway
-and looked up everything you wanted to know when you wanted to know it. I like my way. It's a trial by fire and it's
-how I do most things. I think it helped to get Vim in my fingers more quickly because I was using Vim immediately in a real world editing
-context and I learned the commands and the features because I had to or else suffer productivity losses.
-One of the short comings of my "throw away the instructions and just get busy" style is that I only learn about the things I think
-I want to be able to do, which leaves an opening for things I would want to do if I knew about them, to slip and leave me inefficiently
-working in ignorance.&lt;/p&gt;
-&lt;p&gt;So to rectify this I decided to spend this Saturday reading 2 documents.
-The first obviously is Vimtutor, and the second is Learn Vimscript the Hardway, by Steve Losh.
-When reading vimtutor I was shocked at the number of simple commands I had either overlooked or
-neglected to become proficient with. I'm very excited to learn these things and hopefully experience a
-boost in productivity and efficiency as a result. But the short comings of reading only as a form of learning have not
-changed. And so in an attempt to try and improve my retention I've decided to write down all the things I didn't already know
-that I've learned from vimtutor today.&lt;/p&gt;
-&lt;h1 id="the-point"&gt;The Point&lt;/h1&gt;
-&lt;h4 id="stuff-i-learned-from-vimtutor-that-i-didnt-know-before"&gt;Stuff I Learned From Vimtutor, that I Didn't Know Before&lt;/h4&gt;
+&lt;/div&gt;</description><author>owenstranathan@gmail.com (Owen Stranathan)</author><pubDate>Fri, 28 Feb 2020 00:00:00 +0000</pubDate></item><item><title>Perception and Work</title><description>&lt;p&gt;It's been a while since I last made a post and I'm not really sure where to begin.
+I'd like to start writing regularly again and while I do write a little blurb in my analog journal every morning,
+I want to do more long form blog posts as an outlet for some of my philosophical thoughts and energies that don't get
+expressed in my regular work. It's pretty dang early right now so my thoughts are a little less than totally coherent but I'll
+give this a go any how.&lt;/p&gt;
+&lt;p&gt;This morning I'm thinking about time, I think about time a lot these days. This is in large part because it seems to pass me by at
+lighting speed. The hours melt into day which melt into weeks and months and years. I can't believe it's been 3 months since I left Disbelief.
+I've gotten an amazing amount done in this 3 months but it doesn't ever quite feel like enough.&lt;/p&gt;
+&lt;p&gt;That's the big kicker, "what it feels like". Perception is everything in life. When I was a kid I turned my nose up at liver because I &lt;strong&gt;perceived&lt;/strong&gt; it as being
+unpalatable, but as an adult beef and chicken liver is one my favorite foods. When I was a teenager and young adult working as a line cook fine restaurants
+I envied programmers and professional gamers because I &lt;strong&gt;perceived&lt;/strong&gt; that they had a relaxing and &lt;em&gt;easy&lt;/em&gt; job. My job cooking at the time was very demanding and
+I was on the road to burn out (a concept I didn't yet understand).
+When I first started out in programming I felt insecure and doubted my self endlessly because I &lt;strong&gt;perceived&lt;/strong&gt; that my code was of poor quality and too slowly composed.&lt;/p&gt;
+&lt;p&gt;All of these perceptions were only partially correct but failed to wholistically understand the picture of my situation at the time.&lt;/p&gt;
+&lt;p&gt;Liver is indeed &lt;em&gt;unpalatable&lt;/em&gt; when you compare it to the hyper palatable foods I was accustomed to as a child (chicken nuggets, potato chips, french fries, ice cream).
+But when you really feel hunger and your body &lt;strong&gt;genuinely&lt;/strong&gt; need nutrients, say after a long fast or when you enter ketosis or if you just get off sugar for a while, then
+foods like liver and veggies and fermented dairy and other food perceived as being &lt;em&gt;unpalatable&lt;/em&gt; actually start to taste good.&lt;/p&gt;
+&lt;p&gt;Programming is certainly a "relaxing" and "easy" job when you only compare it to running around a hot kitchen for 12 hours at a time without eating and to consider the mental energy
+required as well as the more considerable opportunity cost to sitting in a chair staring at a computer monitor all day every day (specifically the health costs).&lt;/p&gt;
+&lt;p&gt;My code as a new programmer was certainly low quality and slowly written if you were to only to compare it to my code now, 6 years in, or the code of my boss at the time. But if
+you think about the purpose of my code at that time, which was generally written for lower priority, low stakes projects and tasks then the quality and speed was likely exactly
+appropriate.&lt;/p&gt;
+&lt;p&gt;My perception, and more broadly &lt;em&gt;people's&lt;/em&gt; perception in general, is always incomplete and semi-unreliable. You're eyes see everything in front of you but not behind. Your ears hear all
+around you but only so far. Of everything you see only a small part is perceived by your concious mind. Of everything you hear the majority is filtered out to save your mind from madness.
+Of all that your concious mind perceives your thought can only wrap themselves around and carry part of it. Humans can focus well on one or 2 things and cast predictions just so far into
+the future, and then our limited minds begin to show there limits. We must accept that we are flawed and have &lt;em&gt;faith&lt;/em&gt; that we can carry on through our limitations.&lt;/p&gt;
+&lt;p&gt;Before I get to lofty and platonic let me tie this back to my life and the &lt;strong&gt;real world&lt;/strong&gt;.
+Since leaving Disbelief and my most recent job as a programmer in October of last year (2021) I've been working hard every day building my homestead here in Vermont.
+I particular I've been working on 3 things simultaneously.&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;Undo all the changes on a line with &lt;code&gt;U&lt;/code&gt;. (Vimtutor 2.7)&lt;/li&gt;
-&lt;li&gt;Type  &lt;code&gt;rx&lt;/code&gt;  to replace the character at the cursor with  &lt;code&gt;x&lt;/code&gt;. (Vimtutor 3.2)&lt;/li&gt;
-&lt;li&gt;To change until the end of a word, type  &lt;code&gt;ce&lt;/code&gt;. (Vimtutor 3.3)&lt;/li&gt;
-&lt;li&gt;The change operator is used with the same motions as delete i.e. &lt;code&gt;c$&lt;/code&gt;, &lt;code&gt;c2w&lt;/code&gt;, etc. (Vimtutor 3.4)&lt;/li&gt;
-&lt;li&gt;Type &lt;code&gt;CTRL-G&lt;/code&gt; to show your location in the file and the file status.
-    Type  &lt;code&gt;G&lt;/code&gt;  to move to a line in the file.   (Vimtutor 4.1)&lt;sup id="fnref:2"&gt;&lt;a class="footnote-ref" href="#fn:2"&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
-&lt;li&gt;Type  &lt;code&gt;%&lt;/code&gt;  to find a matching ),], or }. (Vimtutor 4.3)&lt;/li&gt;
-&lt;li&gt;Type  &lt;code&gt;:%s/old/new/gc&lt;/code&gt;  to find every occurrence in the whole file, with a prompt whether to substitute or not. (Vimtutor 4.4)&lt;/li&gt;
-&lt;li&gt;To save part of the file, type  &lt;code&gt;v  motion  :w FILENAME&lt;/code&gt; (Vimtutor 5.3)&lt;/li&gt;
-&lt;li&gt;To insert the contents of a file, type  &lt;code&gt;:r FILENAME&lt;/code&gt; (this can also insert output from external commands i.e. &lt;code&gt;:r !ls&lt;/code&gt;) (Vimtutor 5.4)&lt;/li&gt;
-&lt;li&gt;Type  &lt;code&gt;a&lt;/code&gt;  to insert text AFTER the cursor. (Vimtutor 6.2) &lt;sup id="fnref:3"&gt;&lt;a class="footnote-ref" href="#fn:3"&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
-&lt;li&gt;Type a capital  &lt;code&gt;R&lt;/code&gt;  to replace more than one character. (Vimtutor 6.3) &lt;sup id="fnref:4"&gt;&lt;a class="footnote-ref" href="#fn:4"&gt;4&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
-&lt;li&gt;Type &lt;code&gt;:set ic&lt;/code&gt; to ignore case in search. Use &lt;code&gt;/search\c&lt;/code&gt; to ignore case for just that search. (Vimtutor 6.5)&lt;/li&gt;
+&lt;li&gt;I've been building a 25' Yurt from scratch for my wife and I to live in.&lt;/li&gt;
+&lt;li&gt;I've been working our 11 acre piece of land to ready it for the yurt and to generally make it livable (i.e. Infrastructure like a drive way, a well, electricity, etc.)&lt;/li&gt;
+&lt;li&gt;I've been designing and building a sauna building on the land for us to use as a sauna, shower house and storage/guest building.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;If you look at the Vimtutor lesson numbers you can pretty much see where I gave up the last time I used Vimtutor, it was in lesson 2.
-I learned something from each lesson after that, so even for me a fairly well seasoned Vim user, I learned a lot from Vimtutor, this is probably
-more to do with the fact that I've not spent a lot of time sitting down and just learning things about vim. It's a big beautiful tool, and there
-is a lot to learn. If you've never done the Vimtutor, I highly recommend that you do.&lt;/p&gt;
-&lt;div class="footnote"&gt;
-&lt;hr /&gt;
-&lt;ol&gt;
-&lt;li id="fn:1"&gt;
-&lt;p&gt;For those who don't know, Vimtutor is a script that is included in &lt;em&gt;most&lt;/em&gt; Vim installs. It launches Vim on a copy of a file the text of which teaches you the basics of using vim. It's a pretty great thing, but it's definitely boring.&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:2"&gt;
-&lt;p&gt;Usually I use &lt;code&gt;:#&lt;/code&gt; to jump to line &lt;code&gt;#&lt;/code&gt;, using &lt;code&gt;G&lt;/code&gt; is pretty much the same as far as speed and ergonomics.&amp;#160;&lt;a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:3"&gt;
-&lt;p&gt;I knew I could use &lt;code&gt;A&lt;/code&gt; to jump to the end of line in insert mode, but didn't know about &lt;code&gt;a&lt;/code&gt;.&amp;#160;&lt;a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:4"&gt;
-&lt;p&gt;This is replace mode. I knew about this, but I haven't internalized it.&amp;#160;&lt;a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;</description><author>owenstranathan@gmail.com (Owen Stranathan)</author><pubDate>Sat, 11 Apr 2020 00:00:00 +0000</pubDate></item><item><title>Dedicate to being dedicated</title><description>&lt;p&gt;Work is hard. It's just a fact of life, and we all come to realize it eventually.
-Beyond the challenge of work itself, there is a meta challenge of going to work.
-Getting yourself together and going willingly to do something that you &lt;strong&gt;know&lt;/strong&gt; will
-be difficult and mostly unpleasant is a challenge in and of itself.
-The moment we consider how difficult the task of our work will be there is a moment of
-friction that can paralyze us. This is the first challenge of work, overcoming the inertia of rest
-to begin the output of energy in pursuit of some ends.&lt;/p&gt;
-&lt;p&gt;How can we overcome this inertia, this potent force that holds us back from our ambitions and our responsibilities?
-I'm sure you can name a few methods of motivation, and no doubt you use all of them from time to time in your own life.&lt;/p&gt;
-&lt;p&gt;Most methods we easily think of depend on gratification or the promise thereof.
-When for example we wake from our rest, beginning our day in peace, then come to the point where we must rouse ourselves
-to go to work, be it at an office, a construction site, a restaurant, a factory, a school, or even in our home for our families,
-the cessation of rest is a difficult thing to perform. We think to ourselves, "the pay day will be nice", or "this weekend I'll
-go out for some fun and enjoy myself as a treat", or "my family needs support and I can't let them down", or some other formulation of the
-same thought. Namely we think "If I do X now, even though I &lt;strong&gt;don't&lt;/strong&gt; want to, I'll get Y later which I &lt;strong&gt;do&lt;/strong&gt; want".
-This is pretty motivating, and I think you could live your entire life using just this method of motivation to overcome the inertia of rest.&lt;/p&gt;
-&lt;p&gt;Sometimes the trade isn't so obvious or forthcoming. Sometimes we do X in exchange for Y to trade it for Z to use it in the process of doing A so that we might attain B all over the span of years.
-Bearing in mind that the variables of the sentence need not be tangible items, one can see that the idea of work, its products, and motivations can become very complex
-and hard to conceptualize. The very reason we work often requires separate work to maintain. Our own motivation needs input to be sustained and as such often wains,
-as does the quality of our workmanship, and we start to slip, working with less vigor and more contempt. The contempt bleeds into our very being and we begin
-to live every facet of our lives with the same lack of drive and the same uncertainty of reason. This is not the good life. Just as muscle atrophy, obesity,
-cancer, and addiction, this should be avoided.&lt;/p&gt;
-&lt;p&gt;How do we overcome the collapsing of motivation?&lt;/p&gt;
-&lt;p&gt;Call it having faith. Call it being driven.&lt;/p&gt;
-&lt;p&gt;I call it dedication. Not just to your work, to your family, or to your goals but to yourself, to the idea.&lt;/p&gt;
-&lt;p&gt;Suppose you've started to slip, the trade has become too complex and you no longer see how waking up at 5am to sneak in
-a run, just to hurry home, shower, eat a boring but healthy breakfast and then run along to your job relates, advances or provides
-for your goals, your desires, or your happiness. In this moment you need to stop thinking on the trade, stop focusing on the echo and focus on
-the shout. You're not working to make the money or to be famous or to have a bigger house to die in, you're working because you're dedicated, you're a professional.&lt;/p&gt;
-&lt;p&gt;Focus on the shout.&lt;br /&gt;
-Without expectation, without disappointment.&lt;br /&gt;
-Be a pro.&lt;br /&gt;
-Be dedicated.&lt;br /&gt;
-Be dedicated to being dedicated.&lt;/p&gt;</description><author>owenstranathan@gmail.com (Owen Stranathan)</author><pubDate>Sat, 29 Aug 2020 00:00:00 +0000</pubDate></item><item><title>DIY Life: Making a static site compiler</title><description>&lt;p&gt;I used to use Jekyll. I didn't choose Jekyll, Jekyll just happened to be the software available
-with support from github pages, which is where I host my website. I have some gripes about Jekyll,
-I won't enumerate them, but they are the same gripes I have about a lot of general purpose software.
-This is just what using software is like. That said, it's nice when software sucks in some way and rather
-than being frustrated about it you can do a little this and that and make it better, good even.&lt;/p&gt;
-&lt;p&gt;I also use Windows 10, there are many things I don't like about Windows 10, things I would change.
-But I'm not gonna make my own operating system, ain't gonna happen. I'm not even gonna do the laborious
-work of maintaining the 10 million config files required to have my ideal Linux desktop with i3 and fancy keyboard bindings,
-and ranger and all the things. Because after you factor in the time spent configuring all the tools, I won't save that much time.
-Windows is good enough, and most of the time good enough is good enough. Likewise with Firefox; do I wish that Firefox had native vim bindings? Yes.
-Am I going to extend it or otherwise hack it to add them? No. Vimvixen is good enough.
-But operating systems and web browsers are complex software applications, and there are a lot of good reasons not go altering them willy nilly.
-Something, something... &lt;a href="https://en.wikipedia.org/wiki/Wikipedia:Chesterton%27s_fence"&gt;Chesterton's fence&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;However, Jekyll doesn't do anything complicated (at least not for me, maybe it &lt;strong&gt;can&lt;/strong&gt; do complex things but it's not obvious).
-Compiling a list of files written in markdown and running a template engine on a handful of other files
-to produce a static website isn't complex. And more over, I frequently find myself wishing I could do such and such a thing with Jekyll and end up
-combing google and Jekyll docs looking for the right liquid incantations to do so. But I know how to program a computer to munge some files and I'm
-halfway decent with python. So why don't I just do it myself?&lt;/p&gt;
-&lt;p&gt;Well I did. The result is a purpose built custom site compiler that I highly recommend you DO NOT COPY. (Because you can do better yourself, or 
-rather; you can do better FOR yourself).&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/owenstranathan/static-markdown-site-compiler"&gt;Here&lt;/a&gt; is the result. It depends on Jinja2 and Markdown, I prefer not to use pip packages if I can help it but whatever, I ain't writing &lt;a href="https://github.com/owenstranathan/bash-templater"&gt;another&lt;/a&gt;&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1"&gt;1&lt;/a&gt;&lt;/sup&gt; template
-engine.
-I only tested it on windows. Because again I just don't have time for Linux anymore.&lt;/p&gt;
-&lt;p&gt;The site compiler is what built this website. And I can honestly say that at the time of writing I feel that it was worth the 1 - 2 hours it took me to trial and error my way to the current product.
-If I need something I can add it, but most of the time I don't because I know it's more work than it's worth (which was never clear before I knew every detail of the system).
-The only Jekyll features I miss are &lt;code&gt;--watch&lt;/code&gt; (which watches the files in the project for changes and recompiles the site when you change something) and &lt;code&gt;--serve&lt;/code&gt; (which servers the site from a local dev server).
-I can totally implement them because python has built in http dev server, and I don't need anything too fancy for watching the files, but it's a nontrivial task that I don't have time for right now. Maybe soon.&lt;/p&gt;
-&lt;p&gt;The end.&lt;/p&gt;
-&lt;div class="footnote"&gt;
-&lt;hr /&gt;
-&lt;ol&gt;
-&lt;li id="fn:1"&gt;
-&lt;p&gt;Technically I didn't author bash-templater. But if you diff my fork from the parent you'll see that I've made enough changes that I feel justified in saying that I've "written" a bash template engine.&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;</description><author>owenstranathan@gmail.com (Owen Stranathan)</author><pubDate>Tue, 25 Aug 2020 00:00:00 +0000</pubDate></item></channel></rss>
+&lt;p&gt;When I think about these projects I get a little freaked out because I see how much more there is to do and feel discouraged by my apparent lack of progress.
+I struggle to perceive my real situation, that of on man working on a 3 projects large enough for a dozen and limited by time, money, weather and skill (which increases slowly each day).
+My desire to move onto my land come spring adds to my anxiety and further distorts my perception by adding a looming sense of urgency to complete all these
+projects in the next 4 months before the ground thaws and I get a new set of projects to complete (yurt platform, garden, workshop building, electrical trenching, well drilling, etc, etc.)&lt;/p&gt;
+&lt;p&gt;Add on top of that the emotional and psychological anxiety and perception warping influence of not having the security of a full time job and living with your parents and you quickly
+end up in self-doubtville.
+When tackling any project it's important to have faith in your ability to get it done, and to set your mind to the work irrespective of the time line. It's easy to get discouraged by
+slow progress and quit altogether. But if realize that if you just keep working, keep grinding, keep hammering you'll get there, you'll achieve &lt;em&gt;something&lt;/em&gt; then you can have faith in 
+yourself and the process to complete your projects and live your life fully. &lt;/p&gt;
+&lt;p&gt;Boiling it down a cliches and a platitudes: "Never give up" or "Just don't quit" are good candidates.
+But understanding the problems of perception that prevent you from heeding those wise saying can be helpful to keep working and stop worrying.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;I'm running out of time this AM and don't want to get too carried away with this post. I've not proof read this fully and know for sure I've made some spelling and grammar mistakes.
+However excessive editing can cause a writer to never publish and since this is just a post on my mostly meaningless personal blog even one proof read might be over kill.
+Please excuse my many errors&lt;/em&gt;&lt;/p&gt;</description><author>owenstranathan@gmail.com (Owen Stranathan)</author><pubDate>Wed, 12 Jan 2022 00:00:00 +0000</pubDate></item></channel></rss>
