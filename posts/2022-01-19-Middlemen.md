@@ -1,7 +1,7 @@
 ---
 categories:
 - philosophy
-date: '2022-01-19'
+date: 2022-01-19
 title: Middlemen
 ---
 
