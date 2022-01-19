@@ -1,6 +1,7 @@
 name: Owen Stranathan's Blog
 title: Owen Stranathan
 description: Blog for my thoughts, observations, opinions, project, curiosities and anything and everything in between
+# TODO (owen): Make it so blogger can have a local url that is injected when blogger serves the site locally
 url: https://owenstranathan.com
 linkedin: https://www.linkedin.com/in/owenstranathan/
 github: https://github.com/owenstranathan/
@@ -21,5 +22,6 @@ copy-paths:
  - "fonts/"
  - "img/"
  - "CNAME"
+ - "js/"
 ignore-patterns:
  - "*.swp"
