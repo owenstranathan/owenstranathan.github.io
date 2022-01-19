@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
+{% set page_title = "About" %}
 {% include "includes/header.html" %}
 
 <body>
-    <div class="bottom-right">
-        <button id="toggle-button" class="toggle-light" onclick="toggleDark()">Lights</button>
-    </div>
-
+    {% include "includes/nav.html" %}
     <div class="full-pager">
             <div class="about">
                     <p>
@@ -27,77 +25,8 @@
                     <p>
                     You can reach me via email: <a href="mailto:{{site.email}}">{{site.email}}</a>
                     </p>
-                    <p class="bottom">
-                    Personal blog below...
-                    </p>
             </div>
-    </div>
-    <hr/>
-    <hr/>
-    <hr/>
-    <div class="table-of-contents">
-            <h3>Table of Contents:</h3>
-            {% set sorted_posts = posts | sort(reverse=True, attribute='date') %}
-            <ul>
-            {% for post in sorted_posts %}
-                    {% if post | attr("title")%}
-                            <li>{{ post.metadata['date'].strftime('%Y-%m-%d') }} <a href="#{{post.toc}}">{{post.title}}</a></li>
-                    {% elif post | attr("name") %}
-                            <li>{{ post.metadata['date'].strftime('%Y-%m-%d') }} <a href="#{{post.toc}}">{{post.name}}</a></li>
-                    {% endif %}
-            {% endfor %}
-            </ul>
-    </div>
-    <!-- TODO: put each post in the page date, title full text, and add a break between posts -->
-    {% for post in posts|sort(reverse=True, attribute='date') %}
-    <hr/>
-    <hr/>
-    <hr/>
-    <div class="post">
-            {% set title = post | attr("title") %}
-            {% if post | attr("title")%}
-            <h1 id="{{post.toc}}"> {{post.title}}</h1>
-            {% elif post | attr("name") %}
-            <h1 id="{{post.toc}}">{{post.name}}</h1>
-            {% endif %}
-            <div class="date">
-                    <p>{{ post.metadata['date'].strftime('%A, %B %e, %Y') }}<p>
-            </div>
-            <div class="categories">
-                    <p>
-                            categories:
-                            {% for category in post.categories %}
-                            {% if not loop.last %}
-                            <span>{{category}}, </span>
-                            {% else %}
-                            <span>{{category}} </span>
-                            {% endif %}
-                            {% endfor %}
-                    <p>
-                    {% if post | attr("links") %}
-                    <p> Related reading:
-                    {% for key, value in post.links.items() %}
-                            {% if not loop.last %}
-                            <span><a href="{{value}}">{{key}}</a>, </span>
-                            {% else %}
-                            <span><a href="{{value}}">{{key}}</a> </span>
-                            {% endif %}
-                    {% endfor %}
-                    </p>
-                    {% endif %}
-            </div>
-            <div class="post-content">
-                    {{post.html}}
-            </div>
-    </div>
-    {% endfor %}
-    <hr/>
-    <hr/>
-    <hr/>
-    <div class="footer">
-        <p>
-        &copy;Owen Stranathan 2020. Made quickly with some python, copy it <a href="{{site.github}}/static-markdown-site-compiler">here</a> you mongrel 
-        </p>
+            {% include "includes/footer.html" %}
     </div>
 </body>
 </html>

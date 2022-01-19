@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% set page_title = post.title %}
+{% include "includes/header.html" %}
+
+<body>
+    {% include "includes/nav.html" %}
+    <div class="post">
+            {% set title = post | attr("title") %}
+            <h1 class="post-title" id="{{post.toc}}"> {{post.title}}</h1>
+            <div class="date">
+                    <p>{{ post.metadata['date'].strftime('%A, %B %e, %Y') }}<p>
+            </div>
+            <div class="categories">
+                    <p>
+                            categories:
+                            {% for category in post.categories %}
+                            {% if not loop.last %}
+                            <span>{{category}}, </span>
+                            {% else %}
+                            <span>{{category}} </span>
+                            {% endif %}
+                            {% endfor %}
+                    <p>
+                    {% if post | attr("links") %}
+                    <p> Related reading:
+                    {% for key, value in post.links.items() %}
+                            {% if not loop.last %}
+                            <span><a href="{{value}}">{{key}}</a>, </span>
+                            {% else %}
+                            <span><a href="{{value}}">{{key}}</a> </span>
+                            {% endif %}
+                    {% endfor %}
+                    </p>
+                    {% endif %}
+            </div>
+            <div class="post-content">
+                    {{post.html}}
+            </div>
+    </div>
+    <div class="relative", style="margin-top:5em;">
+    {% include "includes/footer.html" %}
+    </div>
+</body>
+</html>

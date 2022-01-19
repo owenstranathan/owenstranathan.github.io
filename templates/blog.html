@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+{% set page_title = "Blog" %}
+{% include "includes/header.html" %}
+
+<body>
+    {% include "includes/nav.html" %}
+    <div class="full-pager">
+        <div class="table-of-contents">
+            <h3>Table of Contents:</h3>
+            {% set sorted_posts = posts | sort(reverse=True, attribute='date') %}
+            <ul>
+            {% for post in sorted_posts %}
+                    <li>{{ post.metadata['date'].strftime('%Y-%m-%d') }} <a href="{{post.metadata['path']}}">{{post.title}}</a></li>
+            {% endfor %}
+            </ul>
+        </div>
+        {% include "includes/footer.html" %}
+    </div>
+</body>
+</html>

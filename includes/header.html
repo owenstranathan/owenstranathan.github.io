@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
         <meta content="width=device-width, initial-scale=1" name="viewport" />
     <!--SEO -->
-    <title>{{site.title}}</title>
+    <title>{{site.title}}: {{page_title}}</title>
     <meta property="og:title" content="owen's thoughts" />
     <meta property="og:locale" content="en_US" />
     <meta name="description" content="" />
@@ -26,8 +26,14 @@
         var body = document.body;
         body.classList.toggle("dark");
         var button = document.getElementById("toggle-button")
+        var about = document.getElementById("nav-about")
+        var blog = document.getElementById("nav-blog")
         button.classList.toggle("toggle-light")
         button.classList.toggle("toggle-dark")
+        about.classList.toggle("toggle-light")
+        about.classList.toggle("toggle-dark")
+        blog.classList.toggle("toggle-light")
+        blog.classList.toggle("toggle-dark")
     }
     </script>
 
