@@ -7,18 +7,20 @@ html, body
 
 @media only screen and (max-width: 1000px) {
   body {
-    background-color: lightblue;
   }
 }
+
+@media only screen and (min-width: 1000px) {
+
+}
+
 body {
     width: 100%;
-    font-family: 'Times New Roman', serif;
+    font-family: 'Helvetica', serif;
     font-size: 18px;
-    /*padding: 2em 4em;*/
     letter-spacing: normal;
     line-height: 1.6em;
 }
-
 code
 {
     font-family: 'IBM Plex Mono', monospace;
@@ -36,12 +38,6 @@ code
     padding: 10px;
 }
 
-.bottom
-{
-    position:absolute;
-    bottom: 0;
-}
-
 .about{
     font-family: 'IBM Plex Mono', monospace;
     font-size: 18px;
@@ -57,6 +53,7 @@ code
     width: 95%;
     margin-left: 2%;
     margin-right: 3%;
+    font-family: 'IBM Plex Mono', monospace;
 }
 
 .table-of-contents ul {
@@ -73,11 +70,13 @@ hr
 }
 
 .post{
-    padding-top: 4vw;
-    padding-bottom: 4vw;
-    width: 95%;
-    margin-left: 2%;
-    margin-right: 3%;
+    padding: 2em 4em;
+    max-width: 80vw;
+}
+
+.post-title
+{
+  font-family: 'IBM Plex Mono', monospace;
 }
 
 .bottom-right
@@ -87,12 +86,51 @@ hr
     right: 1vw;
 }
 
+.nav
+{
+  position: fixed;
+  top:1vw;
+  right: 1vw;
+  margin-right:1vw;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.nav a
+{
+  margin-right:1vw;
+}
+
+a:hover
+{
+  font-weight:1000;
+}
+
+a, a:visited, a:active {
+  color: inherit;
+}
+
+.top-right
+{
+  position: fixed;
+  top:1vw;
+  right: 1vw;
+  margin-right:1vw;
+}
+
+.relative
+{
+position:relative;
+}
 .footer
 {
     width: 95%;
-    margin-left: 2%;
-    margin-right: 3%;
-    font-size: 12px;
+    position:absolute;
+    bottom: 0;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 400;
+    padding: 2em 4em;
+    max-width: 80vw;
+    letter-spacing: .1em;
 }
 
 .toggle-light
@@ -119,13 +157,6 @@ hr
     background-color: #161616;
     color: white;
 }
-.dark a{
-    color: #6262ff;
-}
-.dark a:visited
-{
-    color: #ab6cff;
-}
 
 blockquote {
   background: #f9f9f9;
@@ -142,6 +173,4 @@ blockquote:before {
   line-height: 0.1em;
   margin-right: 0.25em;
   vertical-align: -0.4em;
-}
-blockquote p {
 }

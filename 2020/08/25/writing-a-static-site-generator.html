@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+    <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <!--SEO -->
+    <title>Owen Stranathan: DIY Life: Making a static site compiler</title>
+    <meta property="og:title" content="owen's thoughts" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="description" content="" />
+    <meta property="og:description" content="" />
+    <link rel="canonical" href="http://localhost:4000/" />
+    <meta property="og:url" content="http://localhost:4000/" />
+    <meta property="og:site_name" content="Owen Stranathan" />
+    <script type="application/ld+json">
+        {
+            "name": "owenstranathan",
+            "description": "owenstranathan.com",
+            "@type": "WebSite",
+            "url": "owenstranathan.com",
+            "headline": "Yay!",
+            "@context": "http://schema.org"
+        }
+    </script>
+    <script>
+    function toggleDark() {
+        var body = document.body;
+        body.classList.toggle("dark");
+        var button = document.getElementById("toggle-button")
+        var about = document.getElementById("nav-about")
+        var blog = document.getElementById("nav-blog")
+        button.classList.toggle("toggle-light")
+        button.classList.toggle("toggle-dark")
+        about.classList.toggle("toggle-light")
+        about.classList.toggle("toggle-dark")
+        blog.classList.toggle("toggle-light")
+        blog.classList.toggle("toggle-dark")
+    }
+    </script>
+
+
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;300&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;300&family=Roboto&display=swap" rel="stylesheet"> 
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/owiewestside.css" />
+    <script src="https://www.w3counter.com/tracker.js?id=141283"></script>
+</head>
+
+<body>
+        <div class="nav">
+      <a id="nav-about" class="toggle-light" href="/index.html">About</a>
+      <a id="nav-blog" class="toggle-light" href="/blog.html">Blog</a>
+      <button id="toggle-button" class="toggle-light" onclick="toggleDark()">Lights</button>
+    </div>
+    <div class="post">
+            
+            <h1 class="post-title" id="DIY-Life:-Making-a-static-site-compiler"> DIY Life: Making a static site compiler</h1>
+            <div class="date">
+                    <p>Tuesday, August 25, 2020<p>
+            </div>
+            <div class="categories">
+                    <p>
+                            categories:
+                            
+                            
+                            <span>programming, </span>
+                            
+                            
+                            
+                            <span>DIY </span>
+                            
+                            
+                    <p>
+                    
+                    <p> Related reading:
+                    
+                            
+                            <span><a href="https://motherfuckingwebsite.com/">A perspective I appriciate</a> </span>
+                            
+                    
+                    </p>
+                    
+            </div>
+            <div class="post-content">
+                    <p>I used to use Jekyll. I didn't choose Jekyll, Jekyll just happened to be the software available
+with support from github pages, which is where I host my website. I have some gripes about Jekyll,
+I won't enumerate them, but they are the same gripes I have about a lot of general purpose software.
+This is just what using software is like. That said, it's nice when software sucks in some way and rather
+than being frustrated about it you can do a little this and that and make it better, good even.</p>
+<p>I also use Windows 10, there are many things I don't like about Windows 10, things I would change.
+But I'm not gonna make my own operating system, ain't gonna happen. I'm not even gonna do the laborious
+work of maintaining the 10 million config files required to have my ideal Linux desktop with i3 and fancy keyboard bindings,
+and ranger and all the things. Because after you factor in the time spent configuring all the tools, I won't save that much time.
+Windows is good enough, and most of the time good enough is good enough. Likewise with Firefox; do I wish that Firefox had native vim bindings? Yes.
+Am I going to extend it or otherwise hack it to add them? No. Vimvixen is good enough.
+But operating systems and web browsers are complex software applications, and there are a lot of good reasons not go altering them willy nilly.
+Something, something... <a href="https://en.wikipedia.org/wiki/Wikipedia:Chesterton%27s_fence">Chesterton's fence</a>.</p>
+<p>However, Jekyll doesn't do anything complicated (at least not for me, maybe it <strong>can</strong> do complex things but it's not obvious).
+Compiling a list of files written in markdown and running a template engine on a handful of other files
+to produce a static website isn't complex. And more over, I frequently find myself wishing I could do such and such a thing with Jekyll and end up
+combing google and Jekyll docs looking for the right liquid incantations to do so. But I know how to program a computer to munge some files and I'm
+halfway decent with python. So why don't I just do it myself?</p>
+<p>Well I did. The result is a purpose built custom site compiler that I highly recommend you DO NOT COPY. (Because you can do better yourself, or 
+rather; you can do better FOR yourself).</p>
+<p><a href="https://github.com/owenstranathan/static-markdown-site-compiler">Here</a> is the result. It depends on Jinja2 and Markdown, I prefer not to use pip packages if I can help it but whatever, I ain't writing <a href="https://github.com/owenstranathan/bash-templater">another</a><sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> template
+engine.
+I only tested it on windows. Because again I just don't have time for Linux anymore.</p>
+<p>The site compiler is what built this website. And I can honestly say that at the time of writing I feel that it was worth the 1 - 2 hours it took me to trial and error my way to the current product.
+If I need something I can add it, but most of the time I don't because I know it's more work than it's worth (which was never clear before I knew every detail of the system).
+The only Jekyll features I miss are <code>--watch</code> (which watches the files in the project for changes and recompiles the site when you change something) and <code>--serve</code> (which servers the site from a local dev server).
+I can totally implement them because python has built in http dev server, and I don't need anything too fancy for watching the files, but it's a nontrivial task that I don't have time for right now. Maybe soon.</p>
+<p>The end.</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Technically I didn't author bash-templater. But if you diff my fork from the parent you'll see that I've made enough changes that I feel justified in saying that I've "written" a bash template engine.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+            </div>
+    </div>
+    <div class="relative", style="margin-top:5em;">
+    <div class="footer">
+    <p>
+    &copy;Owen Stranathan 2022. Made quickly with some python, copy it <a href="https://github.com/owenstranathan//static-markdown-site-compiler">here</a>.
+    </p>
+</div>
+    </div>
+</body>
+</html>
