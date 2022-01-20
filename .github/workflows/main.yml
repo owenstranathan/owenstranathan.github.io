@@ -45,7 +45,7 @@ jobs:
 
     - name: Run blogger
       run: |
-        cd ${GITHUB_WORKSPACE} && python -m blogger.blogger compile -o build ${GITHUB_WORKSPACE} -vvvv
+        cd ${GITHUB_WORKSPACE} && PYTHONPATH="${GITHUB_WORKSPACE}/blogger" python -m blogger.blogger compile -o build ${GITHUB_WORKSPACE} -vvvv
 
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@3.7.1
