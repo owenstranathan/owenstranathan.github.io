@@ -1,0 +1,3 @@
+[submodule "blogger_extensions"]
+	path = extensions
+	url = https://github.com/owenstranathan/blogger-extensions.git

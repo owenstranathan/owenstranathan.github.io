@@ -39,7 +39,11 @@ jobs:
       run: |
          cd blogger && pip install -r requirements.txt
 
-    - name: Run blogger 
+    - name: Initialize extensions submodule
+      run : |
+          cd ${GITHUB_WORKSPACE} && git submodule update --init --recursive
+
+    - name: Run blogger
       run: |
         python ${GITHUB_WORKSPACE}/blogger/blogger.py compile -o build ${GITHUB_WORKSPACE} -vvvv
 
