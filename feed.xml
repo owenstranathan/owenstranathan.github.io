@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Owen Stranathan</title><link>https://owenstranathan.com/feed</link><description>Blog for my thoughts, observations, opinions, project, curiosities and anything and everything in between</description><atom:link href="https://owenstranathan.com/feed" rel="self"/><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><language>en</language><lastBuildDate>Thu, 20 Jan 2022 13:50:03 +0000</lastBuildDate><item><title>DIY Life: Making a static site compiler</title><link>https://owenstranathan.com/2020/08/25/writing-a-static-site-generator.html</link><description>&lt;p&gt;I used to use Jekyll. I didn't choose Jekyll, Jekyll just happened to be the software available
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Owen Stranathan</title><link>https://owenstranathan.com/feed</link><description>Blog for my thoughts, observations, opinions, project, curiosities and anything and everything in between</description><atom:link href="https://owenstranathan.com/feed" rel="self"/><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><language>en</language><lastBuildDate>Sat, 22 Jan 2022 03:43:32 +0000</lastBuildDate><item><title>DIY Life: Making a static site compiler</title><link>https://owenstranathan.com/2020/08/25/writing-a-static-site-generator.html</link><description>&lt;p&gt;I used to use Jekyll. I didn't choose Jekyll, Jekyll just happened to be the software available
 with support from github pages, which is where I host my website. I have some gripes about Jekyll,
 I won't enumerate them, but they are the same gripes I have about a lot of general purpose software.
 This is just what using software is like. That said, it's nice when software sucks in some way and rather
@@ -34,7 +34,71 @@ I can totally implement them because python has built in http dev server, and I 
 &lt;p&gt;Technically I didn't author bash-templater. But if you diff my fork from the parent you'll see that I've made enough changes that I feel justified in saying that I've "written" a bash template engine.&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;/div&gt;</description><author>owen@wabisoft.io (Owen Stranathan)</author><pubDate>Tue, 25 Aug 2020 00:00:00 +0000</pubDate></item><item><title>Practice</title><link>https://owenstranathan.com/2020/11/23/practice.html</link><description>&lt;p&gt;Lately I've been waking up at 5:30 am. I really love the practice of waking up early. But it's a difficult practice and it's taken me a long time to become consistent with it.&lt;/p&gt;
+&lt;/div&gt;</description><author>owen@wabisoft.io (Owen Stranathan)</author><pubDate>Tue, 25 Aug 2020 00:00:00 +0000</pubDate></item><item><title>High Carbon Cookery</title><link>https://owenstranathan.com/2022/01/21/high-carbon-cookery.html</link><description>&lt;p&gt;Since the world turned upside down and I began spending most days at or very near to home I generally cook my own lunch (and breakfast and dinner for that matter) everyday.
+I enjoy the freedom and opportunity to eat exactly what and how I want. I'm actually a pretty good cook and at one time in my life I actually cooked for a living. Restaurants are a fun place to work
+if you like fast, fierce and fiery, but they'll burn you up if you're not a special kind of crazy, which I guess I'm not. But I learned a lot working as a cook and I use that knowledge everyday of my live
+when I cook for myself and my family. I credit my time in kitchens with my general interest in not just cooking food, but where food comes from(how it's grown) and where food goes (what it does in your body). These are topics
+I'd like to explore more and discuss more here.&lt;/p&gt;
+&lt;p&gt;One aspect of my cookery that I feel strongly about is my avoidance of synthetic materials (such as plastic containers and utensils), ingredients that sound like something from chemistry class and industrial seed oils like canola,
+rapeseed, peanut or safflower. I'm highly suspicious of the negative effects these materials can cause my body.
+Importantly what this means is that I only use metal cooking vessels &lt;strong&gt;not&lt;/strong&gt; coated with synthetic non-stick polymers. Specifically no Teflon.&lt;/p&gt;
+&lt;p&gt;If you've ever cooked before then you know that food, and in particular protein, when heated likes to stick to things, especially metal. This can become messy when it comes time to clean the dishes.
+There are Teflon alternatives I could use. Like the allegedly nonstick ceramic or stone coated pans. I've tried several and they work for about 3 or 4 uses, then they are permanently sticky. No amount of oil or cleaning will bring them
+back to a usable state.&lt;/p&gt;
+&lt;p&gt;Then of course there is what I prefer, cast iron and/or high carbon steel. These are cooking vessels made from metal with relatively high carbon content (iron or steel with added carbon).
+What that high carbon content allows one to do is to make and maintain their own
+nonstick surface. Now I won't pretend to know &lt;em&gt;exactly&lt;/em&gt; how this works but I know enough to give you some search terms should you want to know more.
+When you heat high carbon metal to a relatively high temperature (400&amp;deg;F - 500&amp;deg;F) and you add a fat, usually in the form of oil, you will burn that fat. When you burn that fat
+at that high temperature in that high carbon metal cooking vessel you will start a reaction between the carbon in the metal and the constituent chemicals in the fat/oil.
+The exact nature of this reaction is where my understanding of the phenomenon ends so forgive me for not knowing what exactly it is that's in fats that cause them to react in this way with carbon.
+What happens as a result of this reaction is that the fats polymerizes and &lt;em&gt;bind&lt;/em&gt; to the carbon in the metal.
+If you build up a good coating of polymerized fats bonded to the outer layer of carbon-y metal on your pan you essentially create a solid oil sheath around the cooking surface of your pan.&lt;/p&gt;
+&lt;p&gt;Do you know what is special about oil in cooking? Stuff doesn't stick to it, even when it's polymerized and stuck to your pan.&lt;/p&gt;
+&lt;p&gt;In cooking this process of building up a layer of polymerized oil on a high carbon metal such as cast iron or carbon steel is usually referred to as "Seasoning". And you may have heard some of your obnoxious
+food network watching, Bon-Appetit reading friends bragging about "seasoning" their pans. I agree with you that those guys are terrible and I don't know why you're friends with them.
+But they're terrible only because they boast and &lt;strong&gt;not&lt;/strong&gt; because they season metal.
+The more you use your high carbon cookware the more "seasoned" or non-stick they become. Each meal you cook becomes a part of the pan and contributes to the easy and quality of use for the next meal.&lt;/p&gt;
+&lt;p&gt;I'm a firm proponent of high carbon metal cookware. Obviously not all of your pots and pans need to be carbon steel or cast iron. You don't need a non-stick surface to make a soup or most sauces
+(and if you think you do, then you're doing it wrong. That's OK keep trying and you'll get the hang of it. Maybe read a recipe book or two?)
+You really only &lt;strong&gt;need&lt;/strong&gt; just a couple of carbon-y cooking vessels. A saute pan, a pot and skillet ought to give you all you need in this department.
+Examples:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Saute Pan - The classic cast iron pan we all picture when we hear the words "cast iron" and "pan" together. It has a heavy flat bottom, a short handle and vertical walls that allow one make a pan sauce.&lt;/li&gt;
+&lt;li&gt;Pot - You know what a pot looks like, a dutch oven is the most likely incarnation you will find (I for one have never encountered a carbon steel pot, but that doesn't mean they do not exist).&lt;/li&gt;
+&lt;li&gt;Skillet - this is &lt;strong&gt;a lot&lt;/strong&gt; like a saute pan but the walls are not vertical but curvilinear from the bottom of the pan to the rim. The curvature allows one to toss the food around and do the cool 
+flipping moves you see chefs do on TV. It's all in the wrist.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There are a few other specialized cast iron or carbon steel vessels you may wish to acquire if you're really in to cooking such as:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;a crepe pan - like a saute pan but without walls just a small lip on the edge of the pan. These are used for, you guessed it, making crepes. They also make a good griddle in a pinch, some people even call them that.&lt;/li&gt;
+&lt;li&gt;a griddle - this is just a big ol' flat slab of cast iron that you can cook on. Good ones typically have a rim so liquids don't escape and a flat side and a grooved side for marking meats if that's your thing.&lt;/li&gt;
+&lt;li&gt;a wok - if you're using a Teflon wok then you're missing out on half the fun of using a wok. For one those Rachel Ray Paula Deen flat bottom woks are bullshit and the flat makes tossing your food around like you're &lt;strong&gt;supposed to&lt;/strong&gt;
+almost impossible. But more importantly you're supposed to use woks at a super crazy high temperature and keep your food moving in them and cook &lt;strong&gt;fast&lt;/strong&gt;.
+The result is seared outsides to meat and veggies with the juices intact in the former and the inner crispness intact in the latter.
+Also there's the whole idea of "wok hei", but I'm not legit enough to tell you what that is or how you can get it.
+The real deal woks I've only seen online (don't you use amazon now) or in Asian run restaurant supply stores (these are magical places that I highly recommend you visit if you have one near you).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Cooking is a skill that you must hone with practice. Cooking with cast iron and carbon steel is a skill just the same.
+You need to understand how the high carbon metal interacts with the food to use it effectively and to save yourself a lot of headache seasoning and re-seasoning your pans.
+For example you should avoid if you can, adding acidic ingredients in your pan. Vinegar, tomato, citrus, all of these ingredients will strip the seasoning right off the bottom of your pan and you'll be back to square one.
+But don't worry you can re-season a pan just as easily as you seasoned it. Just like cooking you add heat and fat and give it some time.&lt;/p&gt;
+&lt;p&gt;When you cook with your seasoned pans you need to heat them properly and you need to use fat. I honestly think Teflon only exists because the sugar industry brainwashed entire generations of people into trying to cook eggs without
+oil.
+You should heat your pan to the temperature you intend to cook your food at, &lt;strong&gt;then&lt;/strong&gt; once your pan is hot add your oil, then once your oil is hot (it shimmers when it's hot) you can add your food. Hot pan, hot fat, in that order.
+When you sear a steak there is a thing going on called the Maillard reaction, this is what causes the tasty crusty browning we like on the outside of a good steak. If you don't let that take place thoroughly your meat will stick to
+your pan. If you don't know this and you try to sear a steak in your high carbon cookware "you're gonna have a bad time".&lt;/p&gt;
+&lt;p&gt;In a way carbon cookware will teach you how to cook, albeit in a very unforgiving way (not unlike a real chef).&lt;/p&gt;
+&lt;p&gt;I see a lot of youtube and general internet content about seasoning carbon steel and cast iron. This is all mostly unnecessary. You &lt;strong&gt;don't&lt;/strong&gt; need to watch 100 videos on seasoning. You &lt;strong&gt;don't&lt;/strong&gt; need to fret about carbon build up
+and which oil you use when you season (I wouldn't use virgin olive oil because it burns at too low of a temperature and doesn't season the pan well. I usually use animal fats because I think they work the best).
+You just need to get your pan hot, then you need to rub it down with a thin layer of oil. Then you need to let it sit on that heat for a while. Then you need to let it cool down. That's it.
+People  get caught up in doing things perfectly the first time. You &lt;strong&gt;will not&lt;/strong&gt; season your pan perfectly the first time. You will &lt;strong&gt;probably&lt;/strong&gt; season it just OK the first time.
+You &lt;strong&gt;will&lt;/strong&gt; destroy that seasoning in short order and have to re-season it.
+You will learn how this should work as you go. Don't obsess over, don't pornograph-y the learning process and waste your short life watching other people do things. Just get up and give it a whirl.&lt;/p&gt;
+&lt;p&gt;I'm a big fan of these cooking tools. They're robust, repairable, require skill, they'll last forever if you care for them, and they've got thousands of years of usage history to suggest that chemically they're safe for
+human food and have a strong place in the kitchen of a healthy family. Not much in life has all that going for it anymore.&lt;/p&gt;
+&lt;p&gt;I like cooking. I like eating even more. I like being and feeling healthy the most. Carbon steel and cast iron facilitates all 3 and that's why I love them.&lt;/p&gt;
+&lt;p&gt;I don't have a point to this post. You should go get some cast iron and carbon steel. Don't buy a new one. Go to an antique store, or a garage sale, or if you hate fresh air and friendly faces there's always eBay.
+The world doesn't need more new things. Find a use for some old things. Be creative. Love your food, love your tools and love your work. They'll love you back.&lt;/p&gt;</description><author>owen@wabisoft.io (Owen Stranathan)</author><pubDate>Fri, 21 Jan 2022 00:00:00 +0000</pubDate></item><item><title>Practice</title><link>https://owenstranathan.com/2020/11/23/practice.html</link><description>&lt;p&gt;Lately I've been waking up at 5:30 am. I really love the practice of waking up early. But it's a difficult practice and it's taken me a long time to become consistent with it.&lt;/p&gt;
 &lt;p&gt;Here are some of my tips for successfully waking up early everyday:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Go to bed early.&lt;/li&gt;
