@@ -12,7 +12,7 @@ Since the world turned upside down and I began spending most days at or very nea
 I enjoy the freedom and opportunity to eat exactly what and how I want. I'm actually a pretty good cook and at one time in my life I actually cooked for a living. Restaurants are a fun place to work
 if you like fast, fierce and fiery, but they'll burn you up if you're not a special kind of crazy, which I guess I'm not. But I learned a lot working as a cook and I use that knowledge everyday of my live
 when I cook for myself and my family. I credit my time in kitchens with my general interest in not just cooking food, but where food comes from(how it's grown) and where food goes (what it does in your body). These are topics
-I'd like to explore more and discuss more here.
+I'd like to explore more and discuss more on this blog in the future.
 
 One aspect of my cookery that I feel strongly about is my avoidance of synthetic materials (such as plastic containers and utensils), ingredients that sound like something from chemistry class and industrial seed oils like canola,
 rapeseed, peanut or safflower. I'm highly suspicious of the negative effects these materials can cause my body.
@@ -31,12 +31,12 @@ The exact nature of this reaction is where my understanding of the phenomenon en
 What happens as a result of this reaction is that the fats polymerizes and *bind* to the carbon in the metal.
 If you build up a good coating of polymerized fats bonded to the outer layer of carbon-y metal on your pan you essentially create a solid oil sheath around the cooking surface of your pan.
 
-Do you know what is special about oil in cooking? Stuff doesn't stick to it, even when it's polymerized and stuck to your pan.
+Do you know what is special about oil in cooking? Stuff doesn't stick to it, even when it's polymerized and bound to the surface of your pan.
 
 In cooking this process of building up a layer of polymerized oil on a high carbon metal such as cast iron or carbon steel is usually referred to as "Seasoning". And you may have heard some of your obnoxious
 food network watching, Bon-Appetit reading friends bragging about "seasoning" their pans. I agree with you that those guys are terrible and I don't know why you're friends with them.
-But they're terrible only because they boast and **not** because they season metal.
-The more you use your high carbon cookware the more "seasoned" or non-stick they become. Each meal you cook becomes a part of the pan and contributes to the easy and quality of use for the next meal.
+But they're terrible only because they boast and **not** because they season their pans.
+The more you use your high carbon cookware the more "seasoned" or non-stick they become. Each meal you cook becomes a part of the pan and contributes to the ease and quality of use for the next meal.
 
 I'm a firm proponent of high carbon metal cookware. Obviously not all of your pots and pans need to be carbon steel or cast iron. You don't need a non-stick surface to make a soup or most sauces
 (and if you think you do, then you're doing it wrong. That's OK keep trying and you'll get the hang of it. Maybe read a recipe book or two?)
