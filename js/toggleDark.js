@@ -1,5 +1,5 @@
-setInitDarkness
 
+$(document).ready(setInitDarkness);
 function setInitDarkness()
 {
     if(checkDark())
@@ -12,8 +12,14 @@ function checkDark()
 {
     if(document.cookie== "")
     {
-        document.cookie = "dark=0"
-        return false
+        if(window.matchMedia('(prefers-color-scheme: dark)').matches)
+        {
+            document.cookie = "dark=1"
+        }
+        else
+        {
+            document.cookie = "dark=0"
+        }
     }
     return parseInt(document.cookie.split("; ").find(row => row.startsWith("dark=")).split("=")[1]);
 }
