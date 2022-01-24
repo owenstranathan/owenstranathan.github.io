@@ -15,6 +15,8 @@
     <meta property="og:url" content="https://owenstranathan.com" />
     <meta property="og:site_name" content="Owen Stranathan's Blog" />
     <meta property="og:type" content="website" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <script type="application/ld+json">
         {
             "name": "Owen Stranathan's Blog",
@@ -29,18 +31,29 @@
 
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;300&family=Roboto&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
     <!-- styles -->
     <link rel="stylesheet" href="/css/main.css" />
-    <script src="https://owenstranathan.com/js/toggleDark.js"></script>
+    <script src="/js/toggleDark.js"></script>
+    <script src="/js/sideNav.js"></script>
     <script src="https://www.w3counter.com/tracker.js?id=141283"></script>
 </head>
 
 <body>
-        <div class="nav">
-      <a id="nav-about" class="toggle-light" href="/index.html">About</a>
-      <a id="nav-blog" class="toggle-light" href="/blog.html">Blog</a>
-      <button id="toggle-button" class="toggle-light" onclick="toggleDark()">Lights</button>
-    </div>
+    <div class="nav-hide-mobile">
+  <a id="nav-about" class="toggle-light" href="/index.html">About</a>
+  <a id="nav-blog" class="toggle-light" href="/blog.html">Blog</a>
+  <button id="toggle-button" class="toggle-light" onclick="toggleDark()">Lights</button>
+</div>
+
+<span class="show-mobile" id="mobile-nav-button" onclick="openNav()">&#9776;</span>
+<div id="side-nav" class="nav-show-mobile">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a id="nav-about" class="dark" href="/index.html">About</a>
+  <a id="nav-blog" class="dark" href="/blog.html">Blog</a>
+  <button id="toggle-button" style="text-decoration: none;border:none;outline: none;" class="dark" onclick="toggleDark()">Lights</button>
+</div>
     <div class="full-pager">
             <div class="about">
                     <p>
@@ -61,10 +74,12 @@
                     You can reach me via email: <a href="mailto:owen@wabisoft.io">owen@wabisoft.io</a>
                     </p>
             </div>
-            <div class="footer">
-    <p>
-    &copy;Owen Stranathan 2022. Made quickly with some python, copy it <a href="https://github.com/owenstranathan//static-markdown-site-compiler">here</a>.
-    </p>
+            <div class="hide-mobile">
+    <div class="footer">
+        <p>
+        &copy;Owen Stranathan 2022. Made quickly with some python, copy it <a href="https://github.com/owenstranathan//static-markdown-site-compiler">here</a>.
+        </p>
+    </div>
 </div>
     </div>
 </body>

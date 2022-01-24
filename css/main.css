@@ -1,163 +1,33 @@
+:root
+{
+    --mobile-padding: .5em;
+    --desktop-padding: 2em 4em;
+    --stylized-font: 'IBM Plex Mono', monospace;
+    --reader-font: 'Helvetica', serif;
+    --light-fg-color: #161616;
+    --light-bg-color: white;
+    --dark-fg-color: white;
+    --dark-bg-color: #161616;
+}
+
 html, body
 {
     height: 100%;
     margin:0;
     max-width: 100%;
 }
-
-@media only screen and (max-width: 1000px) {
-  body {
-  }
-}
-
-@media only screen and (min-width: 1000px) {
-
-}
-
 body {
     width: 100%;
-    font-family: 'Helvetica', serif;
+    font-family: var(--reader-font);
     font-size: 18px;
     letter-spacing: normal;
     line-height: 1.6em;
 }
 code
 {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: var(--stylized-font);
     letter-spacing: normal;
 }
-
-.full-pager
-{
-    min-height: 100%;
-}
-
-.center {
-    margin: auto;
-    width: 50%;
-    padding: 10px;
-}
-
-.about{
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 18px;
-    font-weight: 400;
-    padding: 2em 4em;
-    max-width: 40vw;
-    letter-spacing: .1em;
-    line-height: 1.6em;
-    height:100%;
-}
-
-.table-of-contents {
-    width: 95%;
-    margin-left: 2%;
-    margin-right: 3%;
-    font-family: 'IBM Plex Mono', monospace;
-}
-
-.table-of-contents ul {
-    padding-top: 4vw;
-    padding: 2vw 4vw;
-    list-style-type:none;
-}
-
-hr
-{
-    width:97%;
-    margin-right: 3%;
-    margin-left: 2%;
-}
-
-.post{
-    padding: 2em 4em;
-    max-width: 80vw;
-}
-
-.post-title
-{
-  font-family: 'IBM Plex Mono', monospace;
-}
-
-.bottom-right
-{
-    position: fixed;
-    bottom: 1vw;
-    right: 1vw;
-}
-
-.nav
-{
-  position: fixed;
-  top:1vw;
-  right: 1vw;
-  margin-right:1vw;
-  font-family: 'IBM Plex Mono', monospace;
-}
-
-.nav a
-{
-  margin-right:1vw;
-}
-
-a:hover
-{
-  font-weight:1000;
-}
-
-a, a:visited, a:active {
-  color: inherit;
-}
-
-.top-right
-{
-  position: fixed;
-  top:1vw;
-  right: 1vw;
-  margin-right:1vw;
-}
-
-.relative
-{
-position:relative;
-}
-.footer
-{
-    width: 95%;
-    position:absolute;
-    bottom: 0;
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 400;
-    padding: 2em 4em;
-    max-width: 80vw;
-    letter-spacing: .1em;
-}
-
-.toggle-light
-{
-    font-family: 'IBM Plex Mono', monospace;
-    background-color:white;
-    text-decoration: none;
-    border:none;
-    color: #161616;
-    outline: none;
-}
-
-.toggle-dark
-{
-    font-family: 'IBM Plex Mono', monospace;
-    background-color: #161616;
-    text-decoration: none;
-    border: none ;
-    color: white;
-    outline: none;
-}
-
-.dark{
-    background-color: #161616;
-    color: white;
-}
-
 blockquote {
   background: #f9f9f9;
   margin: 1.5em 10px;
@@ -173,4 +43,198 @@ blockquote:before {
   line-height: 0.1em;
   margin-right: 0.25em;
   vertical-align: -0.4em;
+}
+hr
+{
+    width:97%;
+    margin-right: 3%;
+    margin-left: 2%;
+}
+.about{
+    font-family: var(--stylized-font);
+    font-weight: 400;
+    line-height: 1.6em;
+    height:100%;
+}
+.full-pager
+{
+    min-height: 100%;
+}
+.center {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+.table-of-contents {
+    width: 95%;
+    margin-left: 2%;
+    margin-right: 3%;
+    font-family: var(--stylized-font);
+}
+.table-of-contents ul {
+    padding-top: 4vw;
+    padding: 2vw 4vw;
+    list-style-type:none;
+}
+.post-title
+{
+  font-family: var(--stylized-font);
+}
+a:hover
+{
+  font-weight:1000;
+}
+a, a:visited, a:active {
+  color: inherit;
+}
+.toggle-light
+{
+    font-family: var(--stylized-font);
+    background-color: var(--light-bg-color);
+    color: var(--light-fg-color);
+    text-decoration: none;
+    border:none;
+    outline: none;
+}
+.toggle-dark
+{
+    font-family: var(--stylized-font);
+    background-color: var(--dark-bg-color);
+    color: var(--dark-fg-color);
+    text-decoration: none;
+    border: none ;
+    outline: none;
+}
+.dark{
+    background-color: var(--dark-bg-color);
+    color: var(--dark-fg-color);
+}
+.relative
+{
+position:relative;
+}
+
+/*Mobile*/
+@media only screen and (max-width: 1000px) {
+    .hide-mobile{
+        display: none;
+    }
+    .nav-hide-mobile{
+        display: none;
+    }
+    .show-mobile{
+        display: block;
+    }
+    #mobile-nav-button{
+        position: fixed;
+        top:1vw;
+        right: 1vw;
+        margin-right:1vw;
+        font-family: var(--stylized-font);
+        font-size:30px;
+        cursor:pointer;
+    }
+    .nav-show-mobile{
+        display: block;
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        right: 0;
+        background-color: var(--dark-bg-color);
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+    }
+    .nav-show-mobile a
+    {
+        text-decoration: none;
+        font-size: 20px;
+        display: block;
+        transition: 0.3s;
+        text-align:center;
+        color: var(--dark-fg-color);
+    }
+    .nav-show-mobile .closebtn {
+          color: var(--dark-fg-color);
+          position: absolute;
+          top: 1vw;
+          right: 1vw;
+          font-size: 30px;
+          /*margin-left: 50px;*/
+    }
+    .about{
+        font-size: 16px;
+        padding: var(--mobile-padding) ;
+        max-width: 90vw;
+        letter-spacing: .025em;
+    }
+    .table-of-contents {
+        font-size: 16px;
+    }
+    .post{
+        padding: var(--mobile-padding);
+        max-width: 90vw;
+        font-size: 16px;
+    }
+    .footer
+    {
+        position:absolute;
+        bottom: 0;
+        font-family: var(--stylized-font);
+        font-weight: 400;
+        font-size:12px;
+        padding: var(--mobile-padding);
+        max-width: 98vw;
+        letter-spacing: normal;
+        line-height: normal;
+    }
+}
+
+/*Not Mobile*/
+@media only screen and (min-width: 1000px) {
+    .hide-mobile{
+        display: block;
+    }
+    .nav-hide-mobile{
+        display: block;
+        position: fixed;
+        top:1vw;
+        right: 1vw;
+        margin-right:1vw;
+        font-family: var(--stylized-font);
+    }
+    .show-mobile{
+        display: none;
+    }
+    .nav-show-mobile{
+        display: none;
+    }
+    .nav-hide-moile a
+    {
+      margin-right:1vw;
+    }
+    .about{
+        font-size: 18px;
+        padding: 2em 4em;
+        max-width: 40vw;
+        letter-spacing: .1em;
+    }
+    .post{
+        padding: 2em 4em;
+        max-width: 80vw;
+    }
+    .footer
+    {
+        width: 95%;
+        position:absolute;
+        bottom: 0;
+        font-family: var(--stylized-font);
+        font-weight: 400;
+        padding: var(--desktop-padding);
+        font-size:12px;
+        max-width: 80vw;
+        letter-spacing: .1em;
+    }
 }

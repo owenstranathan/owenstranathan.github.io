@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Owen Stranathan</title><link>https://owenstranathan.com/feed</link><description>Blog for my thoughts, observations, opinions, project, curiosities and anything and everything in between</description><atom:link href="https://owenstranathan.com/feed" rel="self"/><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><language>en</language><lastBuildDate>Sun, 23 Jan 2022 23:25:43 +0000</lastBuildDate><item><title>DIY Life: Making a static site compiler</title><link>https://owenstranathan.com/2020/08/25/writing-a-static-site-generator.html</link><description>&lt;p&gt;I used to use Jekyll. I didn't choose Jekyll, Jekyll just happened to be the software available
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Owen Stranathan</title><link>https://owenstranathan.com/feed</link><description>Blog for my thoughts, observations, opinions, project, curiosities and anything and everything in between</description><atom:link href="https://owenstranathan.com/feed" rel="self"/><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><language>en</language><lastBuildDate>Mon, 24 Jan 2022 14:23:21 +0000</lastBuildDate><item><title>DIY Life: Making a static site compiler</title><link>https://owenstranathan.com/2020/08/25/writing-a-static-site-generator.html</link><description>&lt;p&gt;I used to use Jekyll. I didn't choose Jekyll, Jekyll just happened to be the software available
 with support from github pages, which is where I host my website. I have some gripes about Jekyll,
 I won't enumerate them, but they are the same gripes I have about a lot of general purpose software.
 This is just what using software is like. That said, it's nice when software sucks in some way and rather
@@ -98,249 +98,7 @@ You will learn how this should work as you go. Don't obsess over, don't pornogra
 human food and have a strong place in the kitchen of a healthy family. Not much in life has all that going for it anymore.&lt;/p&gt;
 &lt;p&gt;I like cooking. I like eating even more. I like being and feeling healthy the most. Carbon steel and cast iron facilitates all 3 and that's why I love them.&lt;/p&gt;
 &lt;p&gt;I don't have a point to this post. You should go get some cast iron and carbon steel. Don't buy a new one. Go to an antique store, or a garage sale, or if you hate fresh air and friendly faces there's always eBay.
-The world doesn't need more new things. Find a use for some old things. Be creative. Love your food, love your tools and love your work. They'll love you back.&lt;/p&gt;</description><author>owen@wabisoft.io (Owen Stranathan)</author><pubDate>Fri, 21 Jan 2022 00:00:00 +0000</pubDate></item><item><title>Practice</title><link>https://owenstranathan.com/2020/11/23/practice.html</link><description>&lt;p&gt;Lately I've been waking up at 5:30 am. I really love the practice of waking up early. But it's a difficult practice and it's taken me a long time to become consistent with it.&lt;/p&gt;
-&lt;p&gt;Here are some of my tips for successfully waking up early everyday:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Go to bed early.&lt;/li&gt;
-&lt;li&gt;Have something that must be addressed at the time you want to wake up.&lt;/li&gt;
-&lt;li&gt;Practice everyday, without expectation and without disappointment.&lt;/li&gt;
-&lt;li&gt;Just do it.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;In my life a lot of the things I want to do are pretty difficult. This is just a fact of life and I've spent countless hours over the years trying to will my way passed
-the difficulty of waking early, or exercising regularly, or practicing the piano everyday, or programming when I really don't even want to look at a computer.
-But in recent months, especially since the pandemic hit, I've had time to slow down my racing thoughts and experiment with my routine and my practices.
-I've learned a few things that help me a lot and I'd like to archive/share them here.&lt;/p&gt;
-&lt;p&gt;To start here is a incomplete list of some of the things I have struggled to do regularly that I've been able to become more consistent with:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Waking up early&lt;/li&gt;
-&lt;li&gt;Going to bed early (this is almost as hard as the former)&lt;/li&gt;
-&lt;li&gt;Cardio&lt;/li&gt;
-&lt;li&gt;Strength training&lt;/li&gt;
-&lt;li&gt;Focusing&lt;/li&gt;
-&lt;li&gt;Journaling&lt;/li&gt;
-&lt;li&gt;Doing chores (cleaning kitchen, laundry, etc)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;It's healthy to remember that you'll never be finished and that whatever it is you've made, formulated or otherwise created can always be improved
-(unless you've achieved some theoretical limit, in which case good job!).
-I'm sure I'll find more ways to fine tune my practice and build stronger systems over time.
-For now however I've got about 4 things that really help me in my various practices. I've written them above applied specifically to waking up early.
-But here I've generalized them to any practice:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Practice a complementary discipline.&lt;/li&gt;
-&lt;li&gt;Leverage your environment to encourage your practice&lt;/li&gt;
-&lt;li&gt;Practice everyday, without expectation and without disappointment.&lt;/li&gt;
-&lt;li&gt;Just do it.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;It will be helpful for me to elaborate on them a little further.&lt;/p&gt;
-&lt;h3 id="practice-a-complementary-discipline"&gt;Practice a complementary discipline&lt;/h3&gt;
-&lt;p&gt;When you practice a discipline it's very helpful to have a secondary practice that compliments the primary one. A complimentary practice is one that, in the act of doing it
-the practitioner is actively encouraged, aided or otherwise assisted in practicing some other discipline. Examples of this:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Going to bed early:&lt;/strong&gt;&lt;br /&gt;
-    This one is kind of a no brainer, obviously if you go to bed early you'll be more capable of waking up early because you'll have gotten enough rest.
-    Before recently I never thought about going to bed as a practice. For me the goal was always "Wake up early, so I can have more time to do the things I want to do".
-    For me I wanted to start waking up at 5:30 AM. To do this I knew I needed to go to bed earlier, but how much earlier was always guess work. A big problem that I had was that I
-    would always wake up to my alarm 8 hour after going to bed and I'd feel &lt;strong&gt;&lt;em&gt;extremely&lt;/em&gt;&lt;/strong&gt; tired.
-    The solution for me came when I learned about sleep cycles &lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1"&gt;1&lt;/a&gt;&lt;/sup&gt;.
-    By sleeping 8 hours I was actually interrupting a sleep cycle right as I was slipping into the deeper stages when waking is more
-    uncomfortable. So I decided that 7.5 hours (that's ~5 sleep cycles) was what I should be aiming for. So to wake up at 5:30 and get 7.5 hours of sleep I needed to
-    go to bed by 22:00. And so my new complimentary practice has become going to bed at 21:30 - 22:00 every night.
-    I treat this practice as being just as important as getting up at 5:30. Because when you think about it, it &lt;strong&gt;is&lt;/strong&gt; equally important, if I don't go to sleep on time
-    how on earth can I wake up on time.
-    So now this secondary practice of sleeping at 22:00 compliments my practice of waking up at 5:30 and my practice of waking at 5:30 compliments my practice of going to bed at 22:00
-    (I'm usually pretty tired by 22:00).&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Journaling&lt;/strong&gt;&lt;br /&gt;
-    Journaling is a really fantastic practice because it compliments just about everything.
-    Journaling provides a valuable means of accountability and a place to track both successes and failures. It can also provide motivation in the form of dependency.
-    What I mean by that is the practice of logging your efforts and progress made in some practice in your journal is &lt;strong&gt;dependent&lt;/strong&gt; on performing that practice.&lt;br /&gt;
-    For example if I write a task in my journal named "Workout" then I'm immediately motivated to do my workout for the satisfaction of completing my task list.
-    Logging the data of each practice is a fun and easy way to keep on top of a practice. When you look at your log in your journal and see that today has no data
-    for some practice, when every day prior has data then you might be more motivated to complete your practice that day so as not to miss out on filling in that blank. Your
-    journaling practice in effect becomes dependent on your other practices, which are likely more important since a personal journal does not have much value to anyone but the
-    person keeping it.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id="leverage-your-environment-to-encourage-your-practice"&gt;Leverage your environment to encourage your practice&lt;/h3&gt;
-&lt;p&gt;The goal here is basically to "Set yourself up for success". So for example preparing your clothes for morning exercise the night before, or setting your alarm clock/phone on the
-other side of the room from your bed so you have to get out of bed when it goes off, or establishing some obligation to perform your practice however small. All of these things
-are external forces that can help you perform a given practice. Continuing with my example of getting up early I have several environmental factors I use to help me keep up this
-practice:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;&lt;em&gt;I keep my phone on the other side of the room from my bed.&lt;/em&gt;&lt;/strong&gt;&lt;br /&gt;
-     This has 2 effects:&lt;ol&gt;
-&lt;li&gt;When I go to bed early, and especially when I'm not so tired, I can't endlessly scroll through noise online preventing my silly ape brain from derailing my practice.&lt;/li&gt;
-&lt;li&gt;When the alarm rings at 5:30 am I have to stand up out of bed to turn it off (which I must do quickly lest I incure my wife's wrath)&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;em&gt;I have my alarm set to not allow snoozing.&lt;/em&gt;&lt;/strong&gt;&lt;br /&gt;
-     This means if I turn off the alarm I know there will be no second chance, and I must decide right then and there if I'm commited to getting up.
-     Usually taking a leak gives me enough time to think it over and make the right choice.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;em&gt;I have set parental controls on my phone to block major news sites and social media&lt;/em&gt;&lt;/strong&gt;&lt;br /&gt;
-     This is one is more just generally helpful to any practice since news and social media are major wastes of time. But it does prevent me from mindlessly bringing my phone
-     to bed and getting sucked into syndicated garbage.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Be creative and think about what things in your environment inhibit a practice and think about how those things can be flipped or nullified to encourage the practice instead.&lt;/p&gt;
-&lt;h3 id="practice-everyday-without-expectations-and-without-disappointment"&gt;Practice everyday, without expectations and without disappointment&lt;/h3&gt;
-&lt;p&gt;This is far and away the most important item on this list. And it takes some explaining.
-To introduce the idea is a quote from &lt;ins&gt;&lt;strong&gt;Novice to Master: An Ongoing Lesson in the Extent of My Own Stupidity&lt;/strong&gt;&lt;/ins&gt; by &lt;strong&gt;Soko Morinaga&lt;/strong&gt;.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;All people regardless of how their lives are structured hold themselves dear. Everyone wants to be happy. And Enlightenment is the starting point of happiness.
-We can use the words "true self-confidence" in place of "enlightenment." True self-confidence means confidence in the true self, and confidence in the true self is a necessary requisite
-to happiness.&lt;/p&gt;
-&lt;p&gt;The Power in which you can come to believe in yourself is not gained through training. It is the great power that transcends the self, that gives life to the self.
-The purpose of Zen practice is to awaken to the original power of which you have lost sight, not to gain some sort of new power.
-When you have sought and sought and finally exhausted all seeking, you become aware of that with which you have been, from the beginning - before ever beginning to search -
-abundantly blessed. After you have ceaselessly knocked and knocked, you realize, as I have said, that the door was standing
-wide open even before you ever started pounding away. That is what practice is all about.&lt;/p&gt;
-&lt;p&gt;Not only in places especially set up for training, but anytime and anywhere, the person who exerts himself or herself with dignity,
-without worrying about results and without giving in to disappointment, is a true practitioner, a true person of the Way.
-I believe that &lt;strong&gt;just this&lt;/strong&gt; is the form of true human well-being&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Essentially what this means is that the transformative power of practice comes from the act of consistently practicing.
-No matter the circumstances, so long as you keep going, keep practicing then you're doing right.
-An important part of consistently practicing regardless of conditions, is overcoming disappointment. If you allow yourself to become disappointed with the effect of your
-practice you will always quit, maybe not today but eventually it will defeat you. You must say "no" to disappointment and take pleasure in the grind.
-Similarly if you begin your practice with expectations of the result you will most often be let down and open the door for a tougher fight with disappointment.
-Moreover setting expectations on the practice places limits on your performance. If you enter into practice with some expectation as to how well you will do or how much 
-you can take you'll likely stop when you reach that predetermined point, without knowing just how far you could have gone.
-You must begin with an empty mind and focus only on the act.&lt;/p&gt;
-&lt;p&gt;As an example:&lt;/p&gt;
-&lt;p&gt;As I stated at the beginning of this post I've begun many new practices in the last year. The biggest and most challenging has probably been fitness.
-I've had fitness practices in the past and always I end up stopping at some point for one reason or another.
-Previously when I trained I would do so with the expectation of being minimally capable, i.e. if last weak I ran an 8 minute mile then this week I should run at least an
-8 minute mile if not faster.
-This small expectation I had placed on myself was good in one sense that it forced me to push myself, and I'm certain that was what I thought at the time.
-But it was ultimately detrimental to my practice for multiple reasons:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;it increased my disappointment.&lt;br /&gt;
-    Expecting to always improve or at least maintain, makes disappointment easy. Many days you just don't have the energy or the conditions just aren't favorable
-    and you under perform. This is just a reality you have to accept.&lt;/li&gt;
-&lt;li&gt;it produced a source of fear and loathing toward my practice.&lt;br /&gt;
-    Expecting that I perform to some standard, even my own standard. Sets up fear of failure and disappointment. If one is afraid to practice he is already starting to fail.
-    If one is afraid to practice he will come to hate his practice. Yoda said "Fear leads to anger, anger leads to hate, hate leads to suffering" true words.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;These and other factors stemming from my expectation of a minimum capability would always and invariably lead me to quit, not just once but everyday, until eventually I was no longer
-practicing at all.&lt;/p&gt;
-&lt;p&gt;Instead of expecting that I always beat or tie my previous best instead I should always just focus on going that mile, however slow. The focus should not be how well I practice but just
-the practice itself. This refocusing manifests itself as being present. When I'm out on my run or when I'm doing my strength routine my mind is wholly focused on each step, on each breath,
-on every muscle engaged in my current effort.&lt;br /&gt;
-If you're running center your thoughts on our breath, on your posture, think with each step of all the muscles engaged in
-one single pursuit, to move your body through space.&lt;br /&gt;
-If you're doing push ups or pull ups focus on the muscles engaged and the explosive breath and energy at the core of your being. Be right there focused and present just for
-that action.&lt;br /&gt;
-Being unenlightened I cannot say for certain, but this must be something approximately similar to enlightenment.&lt;/p&gt;
-&lt;p&gt;Finally do your practice everyday, even if part of the practice is not practicing. This is important. A body cannot heal if it has no time to rest.
-Be mindful of your practice. If today you don't workout because it is a rest day then do so with intention. Say "Today I rest, and I must do so with dedication to my fitness".
-In this way you still practice fitness even though no exercise was performed.&lt;/p&gt;
-&lt;h3 id="just-do-it"&gt;Just do it&lt;/h3&gt;
-&lt;p&gt;Nike slogans aside, this is a powerful statement with a lot of meaning behind it. As Ronnie Coleman said "Ain't nothin' to it but to do it.".&lt;/p&gt;
-&lt;p&gt;What this means is when you go to perform your practice just get on with it.
-At anytime in history man has had plenty to distract him, and myriad methods to procrastinate.
-Now especially we have even more distractions at our disposal.
-It's easy to get bogged down in data and over think the problem. If your goal is to get up early, stop weighing if you've had enough sleep or not and just get up,
-I promise you that before the day is over you'll know if you got enough sleep and you'll get a chance to change your sleep parameters again tonight.
-If you want to run, then stop thinking so hard about your heart rate, or your shoes or your attire and just go outside and run. Afterwards you'll have a much clearer
-picture of what worked well and what needs to change.
-This is applicable to basically everything you can possibly do, it's maybe a bit more nuanced and has some caveats if your goal is say "build a bridge" but there are
-ways to "just do it" there as well.&lt;/p&gt;
-&lt;h3 id="thats-it"&gt;That's it&lt;/h3&gt;
-&lt;p&gt;Ultimately the way you practice is down to you, and you should do what you think is best. The 4 methods listed above are the 4 major things I've learned and that I
-keep telling myself over and over again to help me practice all that I do with enthusiasm and with consistency.
-I hope this helps you in some way.&lt;/p&gt;
-&lt;div class="footnote"&gt;
-&lt;hr /&gt;
-&lt;ol&gt;
-&lt;li id="fn:1"&gt;
-&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Sleep_cycle#Length"&gt;Wikipedia: Sleep Cycles -- Length&lt;/a&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;</description><author>owen@wabisoft.io (Owen Stranathan)</author><pubDate>Mon, 23 Nov 2020 00:00:00 +0000</pubDate></item><item><title>Dedicate to being dedicated</title><link>https://owenstranathan.com/2020/08/29/dedication.html</link><description>&lt;p&gt;Work is hard. It's just a fact of life, and we all come to realize it eventually.
-Beyond the challenge of work itself, there is a meta challenge of going to work.
-Getting yourself together and going willingly to do something that you &lt;strong&gt;know&lt;/strong&gt; will
-be difficult and mostly unpleasant is a challenge in and of itself.
-The moment we consider how difficult the task of our work will be there is a moment of
-friction that can paralyze us. This is the first challenge of work, overcoming the inertia of rest
-to begin the output of energy in pursuit of some ends.&lt;/p&gt;
-&lt;p&gt;How can we overcome this inertia, this potent force that holds us back from our ambitions and our responsibilities?
-I'm sure you can name a few methods of motivation, and no doubt you use all of them from time to time in your own life.&lt;/p&gt;
-&lt;p&gt;Most methods we easily think of depend on gratification or the promise thereof.
-When for example we wake from our rest, beginning our day in peace, then come to the point where we must rouse ourselves
-to go to work, be it at an office, a construction site, a restaurant, a factory, a school, or even in our home for our families,
-the cessation of rest is a difficult thing to perform. We think to ourselves, "the pay day will be nice", or "this weekend I'll
-go out for some fun and enjoy myself as a treat", or "my family needs support and I can't let them down", or some other formulation of the
-same thought. Namely we think "If I do X now, even though I &lt;strong&gt;don't&lt;/strong&gt; want to, I'll get Y later which I &lt;strong&gt;do&lt;/strong&gt; want".
-This is pretty motivating, and I think you could live your entire life using just this method of motivation to overcome the inertia of rest.&lt;/p&gt;
-&lt;p&gt;Sometimes the trade isn't so obvious or forthcoming. Sometimes we do X in exchange for Y to trade it for Z to use it in the process of doing A so that we might attain B all over the span of years.
-Bearing in mind that the variables of the sentence need not be tangible items, one can see that the idea of work, its products, and motivations can become very complex
-and hard to conceptualize. The very reason we work often requires separate work to maintain. Our own motivation needs input to be sustained and as such often wains,
-as does the quality of our workmanship, and we start to slip, working with less vigor and more contempt. The contempt bleeds into our very being and we begin
-to live every facet of our lives with the same lack of drive and the same uncertainty of reason. This is not the good life. Just as muscle atrophy, obesity,
-cancer, and addiction, this should be avoided.&lt;/p&gt;
-&lt;p&gt;How do we overcome the collapsing of motivation?&lt;/p&gt;
-&lt;p&gt;Call it having faith. Call it being driven.&lt;/p&gt;
-&lt;p&gt;I call it dedication. Not just to your work, to your family, or to your goals but to yourself, to the idea.&lt;/p&gt;
-&lt;p&gt;Suppose you've started to slip, the trade has become too complex and you no longer see how waking up at 5am to sneak in
-a run, just to hurry home, shower, eat a boring but healthy breakfast and then run along to your job relates, advances or provides
-for your goals, your desires, or your happiness. In this moment you need to stop thinking on the trade, stop focusing on the echo and focus on
-the shout. You're not working to make the money or to be famous or to have a bigger house to die in, you're working because you're dedicated, you're a professional.&lt;/p&gt;
-&lt;p&gt;Focus on the shout.&lt;br /&gt;
-Without expectation, without disappointment.&lt;br /&gt;
-Be a pro.&lt;br /&gt;
-Be dedicated.&lt;br /&gt;
-Be dedicated to being dedicated.&lt;/p&gt;</description><author>owen@wabisoft.io (Owen Stranathan)</author><pubDate>Sat, 29 Aug 2020 00:00:00 +0000</pubDate></item><item><title>Constraints</title><link>https://owenstranathan.com/2022/01/13/constraints.html</link><description>&lt;p&gt;This morning I wrote an email to a friend in response to some images he shared with me of an old computer he's restoring.&lt;br /&gt;
-I'm not talking about a 2000 Hewlett-Packard, I mean a really old computer, the kind where the name is like a CIA code name of letters and numbers and just saying it
-makes you feel a little bit dorkier.
-I think it's really cool that he restores old computers. I like to "restore" old hand tools, and
-think that if you can breath new life into old equipment then you're doing a really beautiful thing (I'm less inclined toward "museum" type restoration, if
-an item has out lived it's value then allowing it to die is not a bad thing.)&lt;/p&gt;
-&lt;p&gt;What struck me immediately about the photos of his restoration was the complexity of the machine and the picture he took of the thick binder titled "Maintenance Manual".
-It instantly told me one thing about old computer restoration. I would really struggle to do it.&lt;/p&gt;
-&lt;p&gt;The reason?&lt;/p&gt;
-&lt;p&gt;Constraints.&lt;/p&gt;
-&lt;p&gt;Constraints are a very important part of any work you do. When you chop down a tree: the lean of the tree, the strength and direction of the wind, the species, the age, the degree of rot,
-the sharpness and bit profile of your axe, these are all constraints on that work.&lt;/p&gt;
-&lt;p&gt;When you write (or more commonly edit) a computer program you have constraints as well. The tech stack, the quality/organization/cleanliness of the code base, the complexity of the problem
-your edits aim to resolve, the urgency of the task, the importance of the task (note that these are separate things), the design choices of your predecessors, and on and on;
-all these are common constraints of programming.&lt;/p&gt;
-&lt;p&gt;There is at least one (and probably more) fundamental difference in these 2 types of work and to my eye that difference is in the constraints.
-In chopping down a tree the constraints are all set by God.
-In programming the constraints are nearly all set by peers and/or predecessors.&lt;/p&gt;
-&lt;p&gt;When you consider a constraint like "Species of tree"  the constraint is really the behavior and properties of the wood.
-For example, cedar is a soft wood, and of the softwoods it's a lot more prone to splitting and splintering (in my experience). And so when you cut one down or
-do any sort of wood working with cedar you must bear that in mind in your approach to cutting it.
-Compare that with a hardwood like maple or oak and your approach will greatly differ because those woods are much less given to splintering (again, in my experience).
-All the constraints I can think of in chopping down a tree (unless you're a professional following some set of OSHA guide lines) are given by nature.&lt;/p&gt;
-&lt;p&gt;Now consider the constrains for programming. Unless you're Dijkstra sitting around in Holland thinking up algorithms then you're almost always working with constraints
-from other people. The software used to build, run, debug the code constrains you. The design of the software you're editing constrains you. The priorities of your company's leaders
-constrain you. Your peers adherence to the coding standard (assuming you have one... you should...) constrains you. And whether you notice it or not the cumulative
-decisions of programmers from Dennis Ritchie to Bjarne Stroustroup to Linus Torvolds to Guido van Rossum, to the countless non-famous programmers and engineers
-that have ever worked on a programming language, software development tool, operating system or processor architecture constrains you.
-They all solved their problems to varying degrees of completeness and success. These solutions of theirs where good enough to be co-opted by others and built upon.&lt;/p&gt;
-&lt;p&gt;It makes sense that a good solution should be expanded upon, it's the way we humans have been driving innovation all throughout history.
-Newton famously stated "If I have seen farther than other it is merely because I stood on the shoulders of giants" or something like that.
-But Newton was observing natural laws and contributing to the expansion of our understanding of mathematics (the perfect platonic language of the gods).
-He and scientist like him work(ed) in fundamental constraints provided by God (not unlike a lumberjack chopping a tree).&lt;/p&gt;
-&lt;p&gt;But the poor programmer of today is less fortunate. See the building up of the software milieu is predicated on the false assumption that the software we build from is any good or
-better yet, fundamentally correct (which mathematicians are lucky to be able to independently verify about the work of their progenitors).
-But as my good friend and mentor Alex Quick once taught me: "The first problem with every piece of software is that it was written in the first place".
-Or if you like xkcd he's got a pretty good &lt;a href="https://xkcd.com/927/"&gt;take on it&lt;/a&gt;.
-And so the fundamental problem I have with programming and antique computer restoration both, is that the constraints of that work come from man.
-Flawed, myopic, untrustworthy, unintuitive, bad-at-reasoning mankind calls the shots with computers.
-When we get to set the rules, the constraints become arbitrary ("It was just easier if we did X")
-and endless ("We can worry about Y later, right now we need to get an MVP", or my favorite "Move fast and break things").
-So solving a problem in that space quickly and frustratingly becomes totally impossible.
-Most of the time the best you can hope for is a diversion, or band aide rather than an actual solution (because the problem often is fundamental to the system).&lt;/p&gt;
-&lt;p&gt;I'm not sure what my point is here, perhaps I'm just trying to say "I like wood more than computers" and that's definitely true.
-But working with constraints is part of all work.
-And although the constraints of nature are some how easier for me to stomach, it's true that if you can keep from pulling your hair out, computers,
-even computers running on fossil fuel and the flawed choices of our computational forebears, can be made to do remarkable, useful and even beautiful things.
-And if you are patient enough and abuse your body by sitting in a chair and shooting high intensity blue light down your retinas even you can write some software
-that will do a thing just well enough for you and maybe even a few peers to get some use or even better enjoyment out of it.
-And then you too, like Dennis, Bjarne, Linus, and Guido before you, will become another sinner willing evil code into our fragile universe.
-Shame on us all.&lt;/p&gt;</description><author>owen@wabisoft.io (Owen Stranathan)</author><pubDate>Thu, 13 Jan 2022 00:00:00 +0000</pubDate></item><item><title>Middlemen</title><link>https://owenstranathan.com/2022/01/19/middlemen.html</link><description>&lt;p&gt;On Sunday my wife got up early and cleaned the whole house and made me breakfast, carnivore Eggs Benedict (that's just Eggs Benedict with egg whites where the English muffins usually are).
+The world doesn't need more new things. Find a use for some old things. Be creative. Love your food, love your tools and love your work. They'll love you back.&lt;/p&gt;</description><author>owen@wabisoft.io (Owen Stranathan)</author><pubDate>Fri, 21 Jan 2022 00:00:00 +0000</pubDate></item><item><title>Middlemen</title><link>https://owenstranathan.com/2022/01/19/middlemen.html</link><description>&lt;p&gt;On Sunday my wife got up early and cleaned the whole house and made me breakfast, carnivore Eggs Benedict (that's just Eggs Benedict with egg whites where the English muffins usually are).
 I have to say I rather enjoyed the pampering of that, while I read and programmed and messed about on my phone, all the morning chores, coffee, breakfast, tidy. Just
 got done without my input.&lt;/p&gt;
 &lt;p&gt;Suffice it to say that this is a rather unusual occurrence and was meant and taken as a special treat and early payment for a favor I'd not yet conferred but that I would be doing soon.
@@ -498,61 +256,7 @@ But wait he can't sell it to you because in order to use money (a middleman in i
 he has to go through the USDA (a big fat middleman).
 So don't mess around just trade the farmer for some meat. Or better yet, trade him for a calf or a kid or a lamb or a box of chicks and raise your own meat.&lt;/p&gt;
 &lt;p&gt;As humans we know what we need intrinsically. We just waste a lot of time and energy and happiness searching for the middleman who will give it to us.
-Life is out there, you just have to take the shortest path there.&lt;/p&gt;</description><author>owen@wabisoft.io (Owen Stranathan)</author><pubDate>Wed, 19 Jan 2022 00:00:00 +0000</pubDate></item><item><title>Spotting Fake GBA Carts</title><link>https://owenstranathan.com/2019/09/17/spotting-fake-gba-carts.html</link><description>&lt;p&gt;A few months back I bought an &lt;a href=""&gt;Advanced Wars&lt;/a&gt; cartridge for my wicked sweet modded GameBoy Advanced on ebay,
-but when I got it turned out to be a fake!
-I was really ticked about it, so I made some PSA graphics to post in imgur and reddit.&lt;/p&gt;
-&lt;p&gt;I'm putting them up here as well, because I can and I want to.&lt;/p&gt;
-&lt;h1 id="how-to-spot-a-fake-gba-cartrige"&gt;How to spot a fake GBA cartrige!&lt;/h1&gt;
-&lt;p&gt;&lt;img alt="" src="https://i.imgur.com/3RIp0ap.jpg" width="100%" /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="https://i.imgur.com/seUU09g.jpg" width="100%" /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="https://i.imgur.com/73K3sV8.jpg" width="100%" /&gt;&lt;/p&gt;</description><author>owen@wabisoft.io (Owen Stranathan)</author><pubDate>Tue, 17 Sep 2019 00:00:00 +0000</pubDate></item><item><title>Perception and Work</title><link>https://owenstranathan.com/2022/01/12/perception-and-work.html</link><description>&lt;p&gt;It's been a while since I last made a post and I'm not really sure where to begin.
-I'd like to start writing regularly again and while I do write a little blurb in my analog journal every morning,
-I want to do more long form blog posts as an outlet for some of my philosophical thoughts and energies that don't get
-expressed in my regular work. It's pretty dang early right now so my thoughts are a little less than totally coherent but I'll
-give this a go any how.&lt;/p&gt;
-&lt;p&gt;This morning I'm thinking about time, I think about time a lot these days. This is in large part because it seems to pass me by at
-lighting speed. The hours melt into day which melt into weeks and months and years. I can't believe it's been 3 months since I left Disbelief.
-I've gotten an amazing amount done in this 3 months but it doesn't ever quite feel like enough.&lt;/p&gt;
-&lt;p&gt;That's the big kicker, "what it feels like". Perception is everything in life. When I was a kid I turned my nose up at liver because I &lt;strong&gt;perceived&lt;/strong&gt; it as being
-unpalatable, but as an adult beef and chicken liver is one my favorite foods. When I was a teenager and young adult working as a line cook fine restaurants
-I envied programmers and professional gamers because I &lt;strong&gt;perceived&lt;/strong&gt; that they had a relaxing and &lt;em&gt;easy&lt;/em&gt; job. My job cooking at the time was very demanding and
-I was on the road to burn out (a concept I didn't yet understand).
-When I first started out in programming I felt insecure and doubted my self endlessly because I &lt;strong&gt;perceived&lt;/strong&gt; that my code was of poor quality and too slowly composed.&lt;/p&gt;
-&lt;p&gt;All of these perceptions were only partially correct but failed to wholistically understand the picture of my situation at the time.&lt;/p&gt;
-&lt;p&gt;Liver is indeed &lt;em&gt;unpalatable&lt;/em&gt; when you compare it to the hyper palatable foods I was accustomed to as a child (chicken nuggets, potato chips, french fries, ice cream).
-But when you really feel hunger and your body &lt;strong&gt;genuinely&lt;/strong&gt; need nutrients, say after a long fast or when you enter ketosis or if you just get off sugar for a while, then
-foods like liver and veggies and fermented dairy and other food perceived as being &lt;em&gt;unpalatable&lt;/em&gt; actually start to taste good.&lt;/p&gt;
-&lt;p&gt;Programming is certainly a "relaxing" and "easy" job when you only compare it to running around a hot kitchen for 12 hours at a time without eating and to consider the mental energy
-required as well as the more considerable opportunity cost to sitting in a chair staring at a computer monitor all day every day (specifically the health costs).&lt;/p&gt;
-&lt;p&gt;My code as a new programmer was certainly low quality and slowly written if you were to only to compare it to my code now, 6 years in, or the code of my boss at the time. But if
-you think about the purpose of my code at that time, which was generally written for lower priority, low stakes projects and tasks then the quality and speed was likely exactly
-appropriate.&lt;/p&gt;
-&lt;p&gt;My perception, and more broadly &lt;em&gt;people's&lt;/em&gt; perception in general, is always incomplete and semi-unreliable. You're eyes see everything in front of you but not behind. Your ears hear all
-around you but only so far. Of everything you see only a small part is perceived by your concious mind. Of everything you hear the majority is filtered out to save your mind from madness.
-Of all that your concious mind perceives your thought can only wrap themselves around and carry part of it. Humans can focus well on one or 2 things and cast predictions just so far into
-the future, and then our limited minds begin to show there limits. We must accept that we are flawed and have &lt;em&gt;faith&lt;/em&gt; that we can carry on through our limitations.&lt;/p&gt;
-&lt;p&gt;Before I get to lofty and platonic let me tie this back to my life and the &lt;strong&gt;real world&lt;/strong&gt;.
-Since leaving Disbelief and my most recent job as a programmer in October of last year (2021) I've been working hard every day building my homestead here in Vermont.
-I particular I've been working on 3 things simultaneously.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;I've been building a 25' Yurt from scratch for my wife and I to live in.&lt;/li&gt;
-&lt;li&gt;I've been working our 11 acre piece of land to ready it for the yurt and to generally make it livable (i.e. Infrastructure like a drive way, a well, electricity, etc.)&lt;/li&gt;
-&lt;li&gt;I've been designing and building a sauna building on the land for us to use as a sauna, shower house and storage/guest building.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;When I think about these projects I get a little freaked out because I see how much more there is to do and feel discouraged by my apparent lack of progress.
-I struggle to perceive my real situation, that of on man working on a 3 projects large enough for a dozen and limited by time, money, weather and skill (which increases slowly each day).
-My desire to move onto my land come spring adds to my anxiety and further distorts my perception by adding a looming sense of urgency to complete all these
-projects in the next 4 months before the ground thaws and I get a new set of projects to complete (yurt platform, garden, workshop building, electrical trenching, well drilling, etc, etc.)&lt;/p&gt;
-&lt;p&gt;Add on top of that the emotional and psychological anxiety and perception warping influence of not having the security of a full time job and living with your parents and you quickly
-end up in self-doubtville.
-When tackling any project it's important to have faith in your ability to get it done, and to set your mind to the work irrespective of the time line. It's easy to get discouraged by
-slow progress and quit altogether. But if realize that if you just keep working, keep grinding, keep hammering you'll get there, you'll achieve &lt;em&gt;something&lt;/em&gt; then you can have faith in 
-yourself and the process to complete your projects and live your life fully. &lt;/p&gt;
-&lt;p&gt;Boiling it down a cliches and a platitudes: "Never give up" or "Just don't quit" are good candidates.
-But understanding the problems of perception that prevent you from heeding those wise saying can be helpful to keep working and stop worrying.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;I'm running out of time this AM and don't want to get too carried away with this post. I've not proof read this fully and know for sure I've made some spelling and grammar mistakes.
-However excessive editing can cause a writer to never publish and since this is just a post on my mostly meaningless personal blog even one proof read might be over kill.
-Please excuse my many errors&lt;/em&gt;&lt;/p&gt;</description><author>owen@wabisoft.io (Owen Stranathan)</author><pubDate>Wed, 12 Jan 2022 00:00:00 +0000</pubDate></item><item><title>Unity Input Controller</title><link>https://owenstranathan.com/2020/02/28/unity-input-controller.html</link><description>&lt;h3 id="backstory"&gt;Backstory&lt;/h3&gt;
+Life is out there, you just have to take the shortest path there.&lt;/p&gt;</description><author>owen@wabisoft.io (Owen Stranathan)</author><pubDate>Wed, 19 Jan 2022 00:00:00 +0000</pubDate></item><item><title>Unity Input Controller</title><link>https://owenstranathan.com/2020/02/28/unity-input-controller.html</link><description>&lt;h3 id="backstory"&gt;Backstory&lt;/h3&gt;
 &lt;p&gt;&lt;a href="#succinct-description-of-goals"&gt;Just get to the code bud.&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;I'm 26 years old. That places me firmly in the console only generation. What that means is that I started gaming well after the
 proliferation and success of game consoles. My fist console was the Super Nintendo (actually it was my brother Ian's),
@@ -1581,7 +1285,296 @@ But it's also probably a good thing that my simple system doesn't make an assump
 &lt;p&gt;I've never read &lt;strong&gt;one&lt;/strong&gt; article or blog that I thought "Wow, what a succinct description of delegates and events in C#". So I'm not going to link anything like that unfortunately. However I find that when trying to understand something about C# the best place to start is on the microsoft developer docs.&lt;a href="https://docs.microsoft.com/en-us/dotnet/csharp/delegates-overview"&gt;here is the developer docs for delegates&amp;amp;events&lt;/a&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;/div&gt;</description><author>owen@wabisoft.io (Owen Stranathan)</author><pubDate>Fri, 28 Feb 2020 00:00:00 +0000</pubDate></item><item><title>Beginner's Mind: Relearning Vim</title><link>https://owenstranathan.com/2020/04/11/relearning-vi.html</link><description>&lt;p&gt;&lt;a href="#the-point"&gt;Get to the point&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;</description><author>owen@wabisoft.io (Owen Stranathan)</author><pubDate>Fri, 28 Feb 2020 00:00:00 +0000</pubDate></item><item><title>Dedicate to being dedicated</title><link>https://owenstranathan.com/2020/08/29/dedication.html</link><description>&lt;p&gt;Work is hard. It's just a fact of life, and we all come to realize it eventually.
+Beyond the challenge of work itself, there is a meta challenge of going to work.
+Getting yourself together and going willingly to do something that you &lt;strong&gt;know&lt;/strong&gt; will
+be difficult and mostly unpleasant is a challenge in and of itself.
+The moment we consider how difficult the task of our work will be there is a moment of
+friction that can paralyze us. This is the first challenge of work, overcoming the inertia of rest
+to begin the output of energy in pursuit of some ends.&lt;/p&gt;
+&lt;p&gt;How can we overcome this inertia, this potent force that holds us back from our ambitions and our responsibilities?
+I'm sure you can name a few methods of motivation, and no doubt you use all of them from time to time in your own life.&lt;/p&gt;
+&lt;p&gt;Most methods we easily think of depend on gratification or the promise thereof.
+When for example we wake from our rest, beginning our day in peace, then come to the point where we must rouse ourselves
+to go to work, be it at an office, a construction site, a restaurant, a factory, a school, or even in our home for our families,
+the cessation of rest is a difficult thing to perform. We think to ourselves, "the pay day will be nice", or "this weekend I'll
+go out for some fun and enjoy myself as a treat", or "my family needs support and I can't let them down", or some other formulation of the
+same thought. Namely we think "If I do X now, even though I &lt;strong&gt;don't&lt;/strong&gt; want to, I'll get Y later which I &lt;strong&gt;do&lt;/strong&gt; want".
+This is pretty motivating, and I think you could live your entire life using just this method of motivation to overcome the inertia of rest.&lt;/p&gt;
+&lt;p&gt;Sometimes the trade isn't so obvious or forthcoming. Sometimes we do X in exchange for Y to trade it for Z to use it in the process of doing A so that we might attain B all over the span of years.
+Bearing in mind that the variables of the sentence need not be tangible items, one can see that the idea of work, its products, and motivations can become very complex
+and hard to conceptualize. The very reason we work often requires separate work to maintain. Our own motivation needs input to be sustained and as such often wains,
+as does the quality of our workmanship, and we start to slip, working with less vigor and more contempt. The contempt bleeds into our very being and we begin
+to live every facet of our lives with the same lack of drive and the same uncertainty of reason. This is not the good life. Just as muscle atrophy, obesity,
+cancer, and addiction, this should be avoided.&lt;/p&gt;
+&lt;p&gt;How do we overcome the collapsing of motivation?&lt;/p&gt;
+&lt;p&gt;Call it having faith. Call it being driven.&lt;/p&gt;
+&lt;p&gt;I call it dedication. Not just to your work, to your family, or to your goals but to yourself, to the idea.&lt;/p&gt;
+&lt;p&gt;Suppose you've started to slip, the trade has become too complex and you no longer see how waking up at 5am to sneak in
+a run, just to hurry home, shower, eat a boring but healthy breakfast and then run along to your job relates, advances or provides
+for your goals, your desires, or your happiness. In this moment you need to stop thinking on the trade, stop focusing on the echo and focus on
+the shout. You're not working to make the money or to be famous or to have a bigger house to die in, you're working because you're dedicated, you're a professional.&lt;/p&gt;
+&lt;p&gt;Focus on the shout.&lt;br /&gt;
+Without expectation, without disappointment.&lt;br /&gt;
+Be a pro.&lt;br /&gt;
+Be dedicated.&lt;br /&gt;
+Be dedicated to being dedicated.&lt;/p&gt;</description><author>owen@wabisoft.io (Owen Stranathan)</author><pubDate>Sat, 29 Aug 2020 00:00:00 +0000</pubDate></item><item><title>Perception and Work</title><link>https://owenstranathan.com/2022/01/12/perception-and-work.html</link><description>&lt;p&gt;It's been a while since I last made a post and I'm not really sure where to begin.
+I'd like to start writing regularly again and while I do write a little blurb in my analog journal every morning,
+I want to do more long form blog posts as an outlet for some of my philosophical thoughts and energies that don't get
+expressed in my regular work. It's pretty dang early right now so my thoughts are a little less than totally coherent but I'll
+give this a go any how.&lt;/p&gt;
+&lt;p&gt;This morning I'm thinking about time, I think about time a lot these days. This is in large part because it seems to pass me by at
+lighting speed. The hours melt into day which melt into weeks and months and years. I can't believe it's been 3 months since I left Disbelief.
+I've gotten an amazing amount done in this 3 months but it doesn't ever quite feel like enough.&lt;/p&gt;
+&lt;p&gt;That's the big kicker, "what it feels like". Perception is everything in life. When I was a kid I turned my nose up at liver because I &lt;strong&gt;perceived&lt;/strong&gt; it as being
+unpalatable, but as an adult beef and chicken liver is one my favorite foods. When I was a teenager and young adult working as a line cook fine restaurants
+I envied programmers and professional gamers because I &lt;strong&gt;perceived&lt;/strong&gt; that they had a relaxing and &lt;em&gt;easy&lt;/em&gt; job. My job cooking at the time was very demanding and
+I was on the road to burn out (a concept I didn't yet understand).
+When I first started out in programming I felt insecure and doubted my self endlessly because I &lt;strong&gt;perceived&lt;/strong&gt; that my code was of poor quality and too slowly composed.&lt;/p&gt;
+&lt;p&gt;All of these perceptions were only partially correct but failed to wholistically understand the picture of my situation at the time.&lt;/p&gt;
+&lt;p&gt;Liver is indeed &lt;em&gt;unpalatable&lt;/em&gt; when you compare it to the hyper palatable foods I was accustomed to as a child (chicken nuggets, potato chips, french fries, ice cream).
+But when you really feel hunger and your body &lt;strong&gt;genuinely&lt;/strong&gt; need nutrients, say after a long fast or when you enter ketosis or if you just get off sugar for a while, then
+foods like liver and veggies and fermented dairy and other food perceived as being &lt;em&gt;unpalatable&lt;/em&gt; actually start to taste good.&lt;/p&gt;
+&lt;p&gt;Programming is certainly a "relaxing" and "easy" job when you only compare it to running around a hot kitchen for 12 hours at a time without eating and to consider the mental energy
+required as well as the more considerable opportunity cost to sitting in a chair staring at a computer monitor all day every day (specifically the health costs).&lt;/p&gt;
+&lt;p&gt;My code as a new programmer was certainly low quality and slowly written if you were to only to compare it to my code now, 6 years in, or the code of my boss at the time. But if
+you think about the purpose of my code at that time, which was generally written for lower priority, low stakes projects and tasks then the quality and speed was likely exactly
+appropriate.&lt;/p&gt;
+&lt;p&gt;My perception, and more broadly &lt;em&gt;people's&lt;/em&gt; perception in general, is always incomplete and semi-unreliable. You're eyes see everything in front of you but not behind. Your ears hear all
+around you but only so far. Of everything you see only a small part is perceived by your concious mind. Of everything you hear the majority is filtered out to save your mind from madness.
+Of all that your concious mind perceives your thought can only wrap themselves around and carry part of it. Humans can focus well on one or 2 things and cast predictions just so far into
+the future, and then our limited minds begin to show there limits. We must accept that we are flawed and have &lt;em&gt;faith&lt;/em&gt; that we can carry on through our limitations.&lt;/p&gt;
+&lt;p&gt;Before I get to lofty and platonic let me tie this back to my life and the &lt;strong&gt;real world&lt;/strong&gt;.
+Since leaving Disbelief and my most recent job as a programmer in October of last year (2021) I've been working hard every day building my homestead here in Vermont.
+I particular I've been working on 3 things simultaneously.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;I've been building a 25' Yurt from scratch for my wife and I to live in.&lt;/li&gt;
+&lt;li&gt;I've been working our 11 acre piece of land to ready it for the yurt and to generally make it livable (i.e. Infrastructure like a drive way, a well, electricity, etc.)&lt;/li&gt;
+&lt;li&gt;I've been designing and building a sauna building on the land for us to use as a sauna, shower house and storage/guest building.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;When I think about these projects I get a little freaked out because I see how much more there is to do and feel discouraged by my apparent lack of progress.
+I struggle to perceive my real situation, that of on man working on a 3 projects large enough for a dozen and limited by time, money, weather and skill (which increases slowly each day).
+My desire to move onto my land come spring adds to my anxiety and further distorts my perception by adding a looming sense of urgency to complete all these
+projects in the next 4 months before the ground thaws and I get a new set of projects to complete (yurt platform, garden, workshop building, electrical trenching, well drilling, etc, etc.)&lt;/p&gt;
+&lt;p&gt;Add on top of that the emotional and psychological anxiety and perception warping influence of not having the security of a full time job and living with your parents and you quickly
+end up in self-doubtville.
+When tackling any project it's important to have faith in your ability to get it done, and to set your mind to the work irrespective of the time line. It's easy to get discouraged by
+slow progress and quit altogether. But if realize that if you just keep working, keep grinding, keep hammering you'll get there, you'll achieve &lt;em&gt;something&lt;/em&gt; then you can have faith in 
+yourself and the process to complete your projects and live your life fully. &lt;/p&gt;
+&lt;p&gt;Boiling it down a cliches and a platitudes: "Never give up" or "Just don't quit" are good candidates.
+But understanding the problems of perception that prevent you from heeding those wise saying can be helpful to keep working and stop worrying.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;I'm running out of time this AM and don't want to get too carried away with this post. I've not proof read this fully and know for sure I've made some spelling and grammar mistakes.
+However excessive editing can cause a writer to never publish and since this is just a post on my mostly meaningless personal blog even one proof read might be over kill.
+Please excuse my many errors&lt;/em&gt;&lt;/p&gt;</description><author>owen@wabisoft.io (Owen Stranathan)</author><pubDate>Wed, 12 Jan 2022 00:00:00 +0000</pubDate></item><item><title>Practice</title><link>https://owenstranathan.com/2020/11/23/practice.html</link><description>&lt;p&gt;Lately I've been waking up at 5:30 am. I really love the practice of waking up early. But it's a difficult practice and it's taken me a long time to become consistent with it.&lt;/p&gt;
+&lt;p&gt;Here are some of my tips for successfully waking up early everyday:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Go to bed early.&lt;/li&gt;
+&lt;li&gt;Have something that must be addressed at the time you want to wake up.&lt;/li&gt;
+&lt;li&gt;Practice everyday, without expectation and without disappointment.&lt;/li&gt;
+&lt;li&gt;Just do it.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;In my life a lot of the things I want to do are pretty difficult. This is just a fact of life and I've spent countless hours over the years trying to will my way passed
+the difficulty of waking early, or exercising regularly, or practicing the piano everyday, or programming when I really don't even want to look at a computer.
+But in recent months, especially since the pandemic hit, I've had time to slow down my racing thoughts and experiment with my routine and my practices.
+I've learned a few things that help me a lot and I'd like to archive/share them here.&lt;/p&gt;
+&lt;p&gt;To start here is a incomplete list of some of the things I have struggled to do regularly that I've been able to become more consistent with:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Waking up early&lt;/li&gt;
+&lt;li&gt;Going to bed early (this is almost as hard as the former)&lt;/li&gt;
+&lt;li&gt;Cardio&lt;/li&gt;
+&lt;li&gt;Strength training&lt;/li&gt;
+&lt;li&gt;Focusing&lt;/li&gt;
+&lt;li&gt;Journaling&lt;/li&gt;
+&lt;li&gt;Doing chores (cleaning kitchen, laundry, etc)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It's healthy to remember that you'll never be finished and that whatever it is you've made, formulated or otherwise created can always be improved
+(unless you've achieved some theoretical limit, in which case good job!).
+I'm sure I'll find more ways to fine tune my practice and build stronger systems over time.
+For now however I've got about 4 things that really help me in my various practices. I've written them above applied specifically to waking up early.
+But here I've generalized them to any practice:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Practice a complementary discipline.&lt;/li&gt;
+&lt;li&gt;Leverage your environment to encourage your practice&lt;/li&gt;
+&lt;li&gt;Practice everyday, without expectation and without disappointment.&lt;/li&gt;
+&lt;li&gt;Just do it.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;It will be helpful for me to elaborate on them a little further.&lt;/p&gt;
+&lt;h3 id="practice-a-complementary-discipline"&gt;Practice a complementary discipline&lt;/h3&gt;
+&lt;p&gt;When you practice a discipline it's very helpful to have a secondary practice that compliments the primary one. A complimentary practice is one that, in the act of doing it
+the practitioner is actively encouraged, aided or otherwise assisted in practicing some other discipline. Examples of this:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Going to bed early:&lt;/strong&gt;&lt;br /&gt;
+    This one is kind of a no brainer, obviously if you go to bed early you'll be more capable of waking up early because you'll have gotten enough rest.
+    Before recently I never thought about going to bed as a practice. For me the goal was always "Wake up early, so I can have more time to do the things I want to do".
+    For me I wanted to start waking up at 5:30 AM. To do this I knew I needed to go to bed earlier, but how much earlier was always guess work. A big problem that I had was that I
+    would always wake up to my alarm 8 hour after going to bed and I'd feel &lt;strong&gt;&lt;em&gt;extremely&lt;/em&gt;&lt;/strong&gt; tired.
+    The solution for me came when I learned about sleep cycles &lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1"&gt;1&lt;/a&gt;&lt;/sup&gt;.
+    By sleeping 8 hours I was actually interrupting a sleep cycle right as I was slipping into the deeper stages when waking is more
+    uncomfortable. So I decided that 7.5 hours (that's ~5 sleep cycles) was what I should be aiming for. So to wake up at 5:30 and get 7.5 hours of sleep I needed to
+    go to bed by 22:00. And so my new complimentary practice has become going to bed at 21:30 - 22:00 every night.
+    I treat this practice as being just as important as getting up at 5:30. Because when you think about it, it &lt;strong&gt;is&lt;/strong&gt; equally important, if I don't go to sleep on time
+    how on earth can I wake up on time.
+    So now this secondary practice of sleeping at 22:00 compliments my practice of waking up at 5:30 and my practice of waking at 5:30 compliments my practice of going to bed at 22:00
+    (I'm usually pretty tired by 22:00).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Journaling&lt;/strong&gt;&lt;br /&gt;
+    Journaling is a really fantastic practice because it compliments just about everything.
+    Journaling provides a valuable means of accountability and a place to track both successes and failures. It can also provide motivation in the form of dependency.
+    What I mean by that is the practice of logging your efforts and progress made in some practice in your journal is &lt;strong&gt;dependent&lt;/strong&gt; on performing that practice.&lt;br /&gt;
+    For example if I write a task in my journal named "Workout" then I'm immediately motivated to do my workout for the satisfaction of completing my task list.
+    Logging the data of each practice is a fun and easy way to keep on top of a practice. When you look at your log in your journal and see that today has no data
+    for some practice, when every day prior has data then you might be more motivated to complete your practice that day so as not to miss out on filling in that blank. Your
+    journaling practice in effect becomes dependent on your other practices, which are likely more important since a personal journal does not have much value to anyone but the
+    person keeping it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="leverage-your-environment-to-encourage-your-practice"&gt;Leverage your environment to encourage your practice&lt;/h3&gt;
+&lt;p&gt;The goal here is basically to "Set yourself up for success". So for example preparing your clothes for morning exercise the night before, or setting your alarm clock/phone on the
+other side of the room from your bed so you have to get out of bed when it goes off, or establishing some obligation to perform your practice however small. All of these things
+are external forces that can help you perform a given practice. Continuing with my example of getting up early I have several environmental factors I use to help me keep up this
+practice:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;&lt;em&gt;I keep my phone on the other side of the room from my bed.&lt;/em&gt;&lt;/strong&gt;&lt;br /&gt;
+     This has 2 effects:&lt;ol&gt;
+&lt;li&gt;When I go to bed early, and especially when I'm not so tired, I can't endlessly scroll through noise online preventing my silly ape brain from derailing my practice.&lt;/li&gt;
+&lt;li&gt;When the alarm rings at 5:30 am I have to stand up out of bed to turn it off (which I must do quickly lest I incure my wife's wrath)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;em&gt;I have my alarm set to not allow snoozing.&lt;/em&gt;&lt;/strong&gt;&lt;br /&gt;
+     This means if I turn off the alarm I know there will be no second chance, and I must decide right then and there if I'm commited to getting up.
+     Usually taking a leak gives me enough time to think it over and make the right choice.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;em&gt;I have set parental controls on my phone to block major news sites and social media&lt;/em&gt;&lt;/strong&gt;&lt;br /&gt;
+     This is one is more just generally helpful to any practice since news and social media are major wastes of time. But it does prevent me from mindlessly bringing my phone
+     to bed and getting sucked into syndicated garbage.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Be creative and think about what things in your environment inhibit a practice and think about how those things can be flipped or nullified to encourage the practice instead.&lt;/p&gt;
+&lt;h3 id="practice-everyday-without-expectations-and-without-disappointment"&gt;Practice everyday, without expectations and without disappointment&lt;/h3&gt;
+&lt;p&gt;This is far and away the most important item on this list. And it takes some explaining.
+To introduce the idea is a quote from &lt;ins&gt;&lt;strong&gt;Novice to Master: An Ongoing Lesson in the Extent of My Own Stupidity&lt;/strong&gt;&lt;/ins&gt; by &lt;strong&gt;Soko Morinaga&lt;/strong&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;All people regardless of how their lives are structured hold themselves dear. Everyone wants to be happy. And Enlightenment is the starting point of happiness.
+We can use the words "true self-confidence" in place of "enlightenment." True self-confidence means confidence in the true self, and confidence in the true self is a necessary requisite
+to happiness.&lt;/p&gt;
+&lt;p&gt;The Power in which you can come to believe in yourself is not gained through training. It is the great power that transcends the self, that gives life to the self.
+The purpose of Zen practice is to awaken to the original power of which you have lost sight, not to gain some sort of new power.
+When you have sought and sought and finally exhausted all seeking, you become aware of that with which you have been, from the beginning - before ever beginning to search -
+abundantly blessed. After you have ceaselessly knocked and knocked, you realize, as I have said, that the door was standing
+wide open even before you ever started pounding away. That is what practice is all about.&lt;/p&gt;
+&lt;p&gt;Not only in places especially set up for training, but anytime and anywhere, the person who exerts himself or herself with dignity,
+without worrying about results and without giving in to disappointment, is a true practitioner, a true person of the Way.
+I believe that &lt;strong&gt;just this&lt;/strong&gt; is the form of true human well-being&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Essentially what this means is that the transformative power of practice comes from the act of consistently practicing.
+No matter the circumstances, so long as you keep going, keep practicing then you're doing right.
+An important part of consistently practicing regardless of conditions, is overcoming disappointment. If you allow yourself to become disappointed with the effect of your
+practice you will always quit, maybe not today but eventually it will defeat you. You must say "no" to disappointment and take pleasure in the grind.
+Similarly if you begin your practice with expectations of the result you will most often be let down and open the door for a tougher fight with disappointment.
+Moreover setting expectations on the practice places limits on your performance. If you enter into practice with some expectation as to how well you will do or how much 
+you can take you'll likely stop when you reach that predetermined point, without knowing just how far you could have gone.
+You must begin with an empty mind and focus only on the act.&lt;/p&gt;
+&lt;p&gt;As an example:&lt;/p&gt;
+&lt;p&gt;As I stated at the beginning of this post I've begun many new practices in the last year. The biggest and most challenging has probably been fitness.
+I've had fitness practices in the past and always I end up stopping at some point for one reason or another.
+Previously when I trained I would do so with the expectation of being minimally capable, i.e. if last weak I ran an 8 minute mile then this week I should run at least an
+8 minute mile if not faster.
+This small expectation I had placed on myself was good in one sense that it forced me to push myself, and I'm certain that was what I thought at the time.
+But it was ultimately detrimental to my practice for multiple reasons:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;it increased my disappointment.&lt;br /&gt;
+    Expecting to always improve or at least maintain, makes disappointment easy. Many days you just don't have the energy or the conditions just aren't favorable
+    and you under perform. This is just a reality you have to accept.&lt;/li&gt;
+&lt;li&gt;it produced a source of fear and loathing toward my practice.&lt;br /&gt;
+    Expecting that I perform to some standard, even my own standard. Sets up fear of failure and disappointment. If one is afraid to practice he is already starting to fail.
+    If one is afraid to practice he will come to hate his practice. Yoda said "Fear leads to anger, anger leads to hate, hate leads to suffering" true words.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;These and other factors stemming from my expectation of a minimum capability would always and invariably lead me to quit, not just once but everyday, until eventually I was no longer
+practicing at all.&lt;/p&gt;
+&lt;p&gt;Instead of expecting that I always beat or tie my previous best instead I should always just focus on going that mile, however slow. The focus should not be how well I practice but just
+the practice itself. This refocusing manifests itself as being present. When I'm out on my run or when I'm doing my strength routine my mind is wholly focused on each step, on each breath,
+on every muscle engaged in my current effort.&lt;br /&gt;
+If you're running center your thoughts on our breath, on your posture, think with each step of all the muscles engaged in
+one single pursuit, to move your body through space.&lt;br /&gt;
+If you're doing push ups or pull ups focus on the muscles engaged and the explosive breath and energy at the core of your being. Be right there focused and present just for
+that action.&lt;br /&gt;
+Being unenlightened I cannot say for certain, but this must be something approximately similar to enlightenment.&lt;/p&gt;
+&lt;p&gt;Finally do your practice everyday, even if part of the practice is not practicing. This is important. A body cannot heal if it has no time to rest.
+Be mindful of your practice. If today you don't workout because it is a rest day then do so with intention. Say "Today I rest, and I must do so with dedication to my fitness".
+In this way you still practice fitness even though no exercise was performed.&lt;/p&gt;
+&lt;h3 id="just-do-it"&gt;Just do it&lt;/h3&gt;
+&lt;p&gt;Nike slogans aside, this is a powerful statement with a lot of meaning behind it. As Ronnie Coleman said "Ain't nothin' to it but to do it.".&lt;/p&gt;
+&lt;p&gt;What this means is when you go to perform your practice just get on with it.
+At anytime in history man has had plenty to distract him, and myriad methods to procrastinate.
+Now especially we have even more distractions at our disposal.
+It's easy to get bogged down in data and over think the problem. If your goal is to get up early, stop weighing if you've had enough sleep or not and just get up,
+I promise you that before the day is over you'll know if you got enough sleep and you'll get a chance to change your sleep parameters again tonight.
+If you want to run, then stop thinking so hard about your heart rate, or your shoes or your attire and just go outside and run. Afterwards you'll have a much clearer
+picture of what worked well and what needs to change.
+This is applicable to basically everything you can possibly do, it's maybe a bit more nuanced and has some caveats if your goal is say "build a bridge" but there are
+ways to "just do it" there as well.&lt;/p&gt;
+&lt;h3 id="thats-it"&gt;That's it&lt;/h3&gt;
+&lt;p&gt;Ultimately the way you practice is down to you, and you should do what you think is best. The 4 methods listed above are the 4 major things I've learned and that I
+keep telling myself over and over again to help me practice all that I do with enthusiasm and with consistency.
+I hope this helps you in some way.&lt;/p&gt;
+&lt;div class="footnote"&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id="fn:1"&gt;
+&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Sleep_cycle#Length"&gt;Wikipedia: Sleep Cycles -- Length&lt;/a&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description><author>owen@wabisoft.io (Owen Stranathan)</author><pubDate>Mon, 23 Nov 2020 00:00:00 +0000</pubDate></item><item><title>Constraints</title><link>https://owenstranathan.com/2022/01/13/constraints.html</link><description>&lt;p&gt;This morning I wrote an email to a friend in response to some images he shared with me of an old computer he's restoring.&lt;br /&gt;
+I'm not talking about a 2000 Hewlett-Packard, I mean a really old computer, the kind where the name is like a CIA code name of letters and numbers and just saying it
+makes you feel a little bit dorkier.
+I think it's really cool that he restores old computers. I like to "restore" old hand tools, and
+think that if you can breath new life into old equipment then you're doing a really beautiful thing (I'm less inclined toward "museum" type restoration, if
+an item has out lived it's value then allowing it to die is not a bad thing.)&lt;/p&gt;
+&lt;p&gt;What struck me immediately about the photos of his restoration was the complexity of the machine and the picture he took of the thick binder titled "Maintenance Manual".
+It instantly told me one thing about old computer restoration. I would really struggle to do it.&lt;/p&gt;
+&lt;p&gt;The reason?&lt;/p&gt;
+&lt;p&gt;Constraints.&lt;/p&gt;
+&lt;p&gt;Constraints are a very important part of any work you do. When you chop down a tree: the lean of the tree, the strength and direction of the wind, the species, the age, the degree of rot,
+the sharpness and bit profile of your axe, these are all constraints on that work.&lt;/p&gt;
+&lt;p&gt;When you write (or more commonly edit) a computer program you have constraints as well. The tech stack, the quality/organization/cleanliness of the code base, the complexity of the problem
+your edits aim to resolve, the urgency of the task, the importance of the task (note that these are separate things), the design choices of your predecessors, and on and on;
+all these are common constraints of programming.&lt;/p&gt;
+&lt;p&gt;There is at least one (and probably more) fundamental difference in these 2 types of work and to my eye that difference is in the constraints.
+In chopping down a tree the constraints are all set by God.
+In programming the constraints are nearly all set by peers and/or predecessors.&lt;/p&gt;
+&lt;p&gt;When you consider a constraint like "Species of tree"  the constraint is really the behavior and properties of the wood.
+For example, cedar is a soft wood, and of the softwoods it's a lot more prone to splitting and splintering (in my experience). And so when you cut one down or
+do any sort of wood working with cedar you must bear that in mind in your approach to cutting it.
+Compare that with a hardwood like maple or oak and your approach will greatly differ because those woods are much less given to splintering (again, in my experience).
+All the constraints I can think of in chopping down a tree (unless you're a professional following some set of OSHA guide lines) are given by nature.&lt;/p&gt;
+&lt;p&gt;Now consider the constrains for programming. Unless you're Dijkstra sitting around in Holland thinking up algorithms then you're almost always working with constraints
+from other people. The software used to build, run, debug the code constrains you. The design of the software you're editing constrains you. The priorities of your company's leaders
+constrain you. Your peers adherence to the coding standard (assuming you have one... you should...) constrains you. And whether you notice it or not the cumulative
+decisions of programmers from Dennis Ritchie to Bjarne Stroustroup to Linus Torvolds to Guido van Rossum, to the countless non-famous programmers and engineers
+that have ever worked on a programming language, software development tool, operating system or processor architecture constrains you.
+They all solved their problems to varying degrees of completeness and success. These solutions of theirs where good enough to be co-opted by others and built upon.&lt;/p&gt;
+&lt;p&gt;It makes sense that a good solution should be expanded upon, it's the way we humans have been driving innovation all throughout history.
+Newton famously stated "If I have seen farther than other it is merely because I stood on the shoulders of giants" or something like that.
+But Newton was observing natural laws and contributing to the expansion of our understanding of mathematics (the perfect platonic language of the gods).
+He and scientist like him work(ed) in fundamental constraints provided by God (not unlike a lumberjack chopping a tree).&lt;/p&gt;
+&lt;p&gt;But the poor programmer of today is less fortunate. See the building up of the software milieu is predicated on the false assumption that the software we build from is any good or
+better yet, fundamentally correct (which mathematicians are lucky to be able to independently verify about the work of their progenitors).
+But as my good friend and mentor Alex Quick once taught me: "The first problem with every piece of software is that it was written in the first place".
+Or if you like xkcd he's got a pretty good &lt;a href="https://xkcd.com/927/"&gt;take on it&lt;/a&gt;.
+And so the fundamental problem I have with programming and antique computer restoration both, is that the constraints of that work come from man.
+Flawed, myopic, untrustworthy, unintuitive, bad-at-reasoning mankind calls the shots with computers.
+When we get to set the rules, the constraints become arbitrary ("It was just easier if we did X")
+and endless ("We can worry about Y later, right now we need to get an MVP", or my favorite "Move fast and break things").
+So solving a problem in that space quickly and frustratingly becomes totally impossible.
+Most of the time the best you can hope for is a diversion, or band aide rather than an actual solution (because the problem often is fundamental to the system).&lt;/p&gt;
+&lt;p&gt;I'm not sure what my point is here, perhaps I'm just trying to say "I like wood more than computers" and that's definitely true.
+But working with constraints is part of all work.
+And although the constraints of nature are some how easier for me to stomach, it's true that if you can keep from pulling your hair out, computers,
+even computers running on fossil fuel and the flawed choices of our computational forebears, can be made to do remarkable, useful and even beautiful things.
+And if you are patient enough and abuse your body by sitting in a chair and shooting high intensity blue light down your retinas even you can write some software
+that will do a thing just well enough for you and maybe even a few peers to get some use or even better enjoyment out of it.
+And then you too, like Dennis, Bjarne, Linus, and Guido before you, will become another sinner willing evil code into our fragile universe.
+Shame on us all.&lt;/p&gt;</description><author>owen@wabisoft.io (Owen Stranathan)</author><pubDate>Thu, 13 Jan 2022 00:00:00 +0000</pubDate></item><item><title>Beginner's Mind: Relearning Vim</title><link>https://owenstranathan.com/2020/04/11/relearning-vi.html</link><description>&lt;p&gt;&lt;a href="#the-point"&gt;Get to the point&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id="vim-is-great"&gt;Vim is great&lt;/h1&gt;
 &lt;p&gt;I use Vim every single day. It's my daily driver text editor, and I definitely have Vim "in my fingers".
 So much do I prefer the ergonomic interface of Vim that I even built a custom keyboard to allow me to remap
@@ -1648,4 +1641,11 @@ is a lot to learn. If you've never done the Vimtutor, I highly recommend that yo
 &lt;p&gt;This is replace mode. I knew about this, but I haven't internalized it.&amp;#160;&lt;a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;/div&gt;</description><author>owen@wabisoft.io (Owen Stranathan)</author><pubDate>Sat, 11 Apr 2020 00:00:00 +0000</pubDate></item></channel></rss>
+&lt;/div&gt;</description><author>owen@wabisoft.io (Owen Stranathan)</author><pubDate>Sat, 11 Apr 2020 00:00:00 +0000</pubDate></item><item><title>Spotting Fake GBA Carts</title><link>https://owenstranathan.com/2019/09/17/spotting-fake-gba-carts.html</link><description>&lt;p&gt;A few months back I bought an &lt;a href=""&gt;Advanced Wars&lt;/a&gt; cartridge for my wicked sweet modded GameBoy Advanced on ebay,
+but when I got it turned out to be a fake!
+I was really ticked about it, so I made some PSA graphics to post in imgur and reddit.&lt;/p&gt;
+&lt;p&gt;I'm putting them up here as well, because I can and I want to.&lt;/p&gt;
+&lt;h1 id="how-to-spot-a-fake-gba-cartrige"&gt;How to spot a fake GBA cartrige!&lt;/h1&gt;
+&lt;p&gt;&lt;img alt="" src="https://i.imgur.com/3RIp0ap.jpg" width="100%" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="https://i.imgur.com/seUU09g.jpg" width="100%" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="https://i.imgur.com/73K3sV8.jpg" width="100%" /&gt;&lt;/p&gt;</description><author>owen@wabisoft.io (Owen Stranathan)</author><pubDate>Tue, 17 Sep 2019 00:00:00 +0000</pubDate></item></channel></rss>
