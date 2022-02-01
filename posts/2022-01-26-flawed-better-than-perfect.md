@@ -10,6 +10,8 @@ title: Flawed. Better than perfect
 
 
 
+
+
 It's hard to do things you've never done before. In essence it's a form of pure improvisation.
 Every action you take when you're doing the new thing is just the best course you can come up with based solely on just
 the limited information your senses are bringing in. That may sound like a description of doing anything but it's not.
